@@ -11,16 +11,19 @@ var mr_firstSectionHeight,
 nlccapp.controller('homeCtrl', ['$scope', '$ocLazyLoad', function($scope, $ocLazyLoad){
   console.log("Homepage controller");
   
-  addEventListener('scroll', function() {
-    mr_scrollTop = window.pageYOffset;
-  }, false);
-  
   $scope.stage='initial'
   angular.element(document).ready(function () {
     $scope.stage='ready';
-    $ocLazyLoad.load('<%= asset_path("parallax.js") %>').then(function(){
+    /*$ocLazyLoad.load('<%= asset_path("parallax.js") %>').then(function(){
       console.log('Parallax.js loaded');
-    });
+    });*/
+    
+    addEventListener('scroll', function() {
+      mr_scrollTop = window.pageYOffset;
+    }, false);
+    
+    $('#owl-carousel-media .entry-image').fitVids();
+    initOwlMedia();
     $('.background-image-holder').each(function() {
       var imgSrc = $(this).children('img').attr('src');
       console.log(imgSrc);
@@ -319,4 +322,13 @@ function updateFloatingFilters() {
             });
         }
     }
+}
+
+function initOwlMedia(){
+  $("#owl-carousel-media").owlCarousel({
+    items : 4,
+    lazyLoad: true,
+    nav: true,
+    navText: ['<i class="icon-angle-left"></i>','<i class="icon-angle-right"></i>']
+  }); 
 }

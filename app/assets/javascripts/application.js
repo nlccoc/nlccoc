@@ -20,6 +20,8 @@
 //= require angular-rails-templates
 //= require masonry/dist/masonry.pkgd.js
 //= require oclazyload/dist/ocLazyLoad.js
+//= require jquery.fitvids/jquery.fitvids.js
+//= require owl.carousel/dist/owl.carousel
 //= require nlccapp
 //= require nlccapp-controller
 //= require nlccapp-config

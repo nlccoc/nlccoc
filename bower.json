@@ -16,6 +16,8 @@
   ],
   "dependencies": {
     "oclazyload": "^1.0.9",
-    "masonry": "^4.1.1"
+    "masonry": "^4.1.1",
+    "owl.carousel": "^2.1.6",
+    "jquery.fitvids": "FitVids#^1.1.0"
   }
 }
