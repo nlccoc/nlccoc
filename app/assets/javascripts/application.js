@@ -18,6 +18,8 @@
 //= require angular-animate
 //= require angular-ui-router
 //= require angular-rails-templates
+//= require masonry/dist/masonry.pkgd.js
+//= require oclazyload/dist/ocLazyLoad.js
 //= require nlccapp
 //= require nlccapp-controller
 //= require nlccapp-config

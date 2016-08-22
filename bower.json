@@ -1,0 +1,21 @@
+{
+  "name": "nlcc",
+  "authors": [
+    "NateC"
+  ],
+  "description": "nlcc app",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "oclazyload": "^1.0.9",
+    "masonry": "^4.1.1"
+  }
+}
