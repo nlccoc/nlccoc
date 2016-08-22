@@ -5002,7 +5002,7 @@ footer.bg-dark a {
   color: #fff;
 }
 .footer-1 .logo {
-  max-height: 30px;
+  max-height: 80px;
 }
 .footer-1 .sub {
   opacity: .5;
@@ -6036,3 +6036,50 @@ footer.bg-dark a {
 
 .owl-carousel .owl-dots .owl-dot.active span,
 .owl-carousel .owl-dots .owl-dot:hover span { opacity: 1; }
+
+/* ----------------------------------------------------------------
+	27. Go To Top
+-----------------------------------------------------------------*/
+
+
+#gotoTop {
+	display: none;
+	z-index: 299;
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	background-color: #333;
+	background-color: rgba(0,0,0,0.3);
+	font-size: 20px;
+	line-height: 36px;
+	text-align: center;
+	color: #FFF;
+	top: auto;
+	left: auto;
+	right: 30px;
+	bottom: 50px;
+	cursor: pointer;
+	border-radius: 2px;
+}
+
+body:not(.device-touch) #gotoTop {
+	transition: background-color .2s linear;
+	-webkit-transition: background-color .2s linear;
+	-o-transition: background-color .2s linear;
+}
+
+.stretched #gotoTop { bottom: 30px; }
+
+#gotoTop:hover { background-color: $mainColor; }
+
+.one-page-arrow {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 50%;
+  margin-left: -16px;
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+  text-align: center;
+}

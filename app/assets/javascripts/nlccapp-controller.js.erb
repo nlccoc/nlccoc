@@ -7,16 +7,36 @@ var mr_firstSectionHeight,
     mr_navFixed = false,
     mr_outOfSight = false,
     mr_floatingProjectSections,
-    mr_scrollTop = 0;
+    mr_scrollTop = 0,
+    $goToTopEl;
 nlccapp.controller('homeCtrl', ['$scope', '$ocLazyLoad', function($scope, $ocLazyLoad){
   console.log("Homepage controller");
   
   $scope.stage='initial'
   angular.element(document).ready(function () {
     $scope.stage='ready';
+    $goToTopEl = $('#gotoTop');
+    console.log($goToTopEl);
     /*$ocLazyLoad.load('<%= asset_path("parallax.js") %>').then(function(){
       console.log('Parallax.js loaded');
     });*/
+    
+    // Smooth scroll to inner links
+    
+    $('.inner-link').each(function(){
+      var href = $(this).attr('href');
+      if(href.charAt(0) !== "#"){
+        $(this).removeClass('inner-link');
+      }
+    });
+
+  	if($('.inner-link').length){
+  		$('.inner-link').smoothScroll({
+  			offset: -55,
+  			speed: 800
+  		});
+    }
+
     
     addEventListener('scroll', function() {
       mr_scrollTop = window.pageYOffset;
@@ -165,6 +185,7 @@ nlccapp.controller('homeCtrl', ['$scope', '$ocLazyLoad', function($scope, $ocLaz
         if (mr_outOfSight) {
             mr_outOfSight = false;
             mr_nav.removeClass('outOfSight');
+            $goToTopEl.fadeOut();
         }
         if (mr_navScrolled) {
             mr_navScrolled = false;
@@ -189,12 +210,14 @@ nlccapp.controller('homeCtrl', ['$scope', '$ocLazyLoad', function($scope, $ocLaz
             if (scrollY > mr_navOuterHeight +10) {
                 if (!mr_outOfSight) {
                     mr_nav.addClass('outOfSight');
+                    $goToTopEl.fadeIn();
                     mr_outOfSight = true;
                 }
             } else {
                 if (mr_outOfSight) {
                     mr_outOfSight = false;
                     mr_nav.removeClass('outOfSight');
+                    $goToTopEl.fadeOut();
                 }
             }
         } else {
@@ -205,6 +228,7 @@ nlccapp.controller('homeCtrl', ['$scope', '$ocLazyLoad', function($scope, $ocLaz
             if (mr_outOfSight) {
                 mr_outOfSight = false;
                 mr_nav.removeClass('outOfSight');
+                $goToTopEl.fadeOut();
             }
         }
 
@@ -219,7 +243,7 @@ nlccapp.controller('homeCtrl', ['$scope', '$ocLazyLoad', function($scope, $ocLaz
     // Fix nav to top while scrolling
 
     mr_nav = $('body .nav-container nav:first');
-    mr_navOuterHeight = $('body .nav-container nav:first').outerHeight();
+    mr_navOuterHeight = $('body .nav-container nav:first').outerHeight()-100;
     mr_fixedAt = typeof mr_nav.attr('data-fixed-at') !== typeof undefined ? parseInt(mr_nav.attr('data-fixed-at').replace('px', '')) : parseInt($('section:nth-of-type(1)').outerHeight());
     window.addEventListener("scroll", updateNav, false);
     

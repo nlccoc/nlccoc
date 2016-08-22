@@ -22,6 +22,7 @@
 //= require oclazyload/dist/ocLazyLoad.js
 //= require jquery.fitvids/jquery.fitvids.js
 //= require owl.carousel/dist/owl.carousel
+//= require jquery-smooth-scroll/jquery.smooth-scroll.js
 //= require nlccapp
 //= require nlccapp-controller
 //= require nlccapp-config

@@ -18,10 +18,10 @@
   </div>
   <!--end of row-->
 </div>
-<!--end of container-->
-<div class="align-bottom text-center hidden-xs">
+  <!--end of container-->
+  <div class="align-bottom text-center hidden-xs">
   <a class="btn btn-white mb32" href="#">Connect</a></a>
-    <ul class="list-inline social-list mb24">
+    <ul class="list-inline social-list mb64">
       <li>
         <a href="#">
           <i class="ti-instagram"></i>
@@ -44,10 +44,13 @@
       </li>
     </ul>
   </div>
+  <div class="align-bottom text-center hidden-xs">
+    <a class='inner-link one-page-arrow' href='#whoweare'><i class="icon-angle-down infinite animated fadeInDown"></i></a>
+  </div>
 </section>
 
 <section class="">
-  <div class="container">
+  <div class="container" id="whoweare">
       <div class="row">
           <div class="col-sm-10 col-sm-offset-1 text-center">
               <h3 class="uppercase mb40 mb-xs-24">Who We Are</h3>
@@ -144,7 +147,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 text-center">
-        <h2 class="uppercase mb40 mb-xs-24">Connect</h2>
+        <h2 class="uppercase mb40 mb-xs-24" id='connect'>Connect</h2>
         <p class="lead mb64">
           Spiritual maturity is for everyone — no matter what your age is
         </p>
@@ -154,15 +157,15 @@
     <div class="row">
       <div class="col-md-4 col-sm-6">
         <div class="image-tile outer-title text-center">
-              <img alt="Pic" src="<%= asset_path('cellgroups.jpg') %>" />
-              <div class="title mb16">
-                  <h5 class="uppercase mb0">細胞小組</h5>
-                  <span>尋找一個小組並扎根</span>
-              </div>
-              <p class="mb0">
-                  小組是教會生活的機元組織，在小組中組員得到牧養、受裝備去參與服事、以及彼此造就。小組的二大宗旨是對內彼此造就，對外傳福音；透過群體及關係來為主得人，完成大使命。
-              </p>
+          <img alt="Pic" src="<%= asset_path('cellgroups.jpg') %>" />
+          <div class="title mb16">
+              <h5 class="uppercase mb0">細胞小組</h5>
+              <span>尋找一個小組並扎根</span>
           </div>
+          <p class="mb0">
+              小組是教會生活的機元組織，在小組中組員得到牧養、受裝備去參與服事、以及彼此造就。小組的二大宗旨是對內彼此造就，對外傳福音；透過群體及關係來為主得人，完成大使命。
+          </p>
+        </div>
       </div>
       <div class="col-md-4 col-sm-6">
         <div class="image-tile outer-title text-center">
@@ -200,7 +203,7 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-sm-12 text-center">
+      <div class="col-sm-12 text-center" id='ministries'>
         <h3 class="uppercase mb0" style='font-weight:500;'>Ministries</h3>
       </div>
     </div>
@@ -209,53 +212,53 @@
 </section>
 <section class="portfolio-pullup">
   <div class="container">
-      <div class="row row-gapless masonry masonryFlyIn">
-          <div class="col-md-3 col-sm-4 masonry-item project" data-filter="People">
-              <div class="image-tile inner-title hover-reveal text-center">
-                  <a href="#">
-                      <img alt="Pic" src="<%=asset_path('worship.jpg') %>" />
-                      <div class="title">
-                          <h5 class="uppercase mb0">敬拜事工</h5>
-                          <span>敬拜、讚美</span>
-                      </div>
-                  </a>
-              </div>
-          </div>
-          <div class="col-md-3 col-sm-4 masonry-item project" data-filter="Animals">
-              <div class="image-tile inner-title hover-reveal text-center">
-                  <a href="#">
-                      <img alt="Pic" src="<%=asset_path('equipping.jpg') %>" />
-                      <div class="title">
-                          <h5 class="uppercase mb0">裝備事工</h5>
-                          <span>裝備事工</span>
-                      </div>
-                  </a>
-              </div>
-          </div>
-          <div class="col-md-3 col-sm-4 masonry-item project" data-filter="People">
-              <div class="image-tile inner-title hover-reveal text-center">
-                  <a href="#">
-                      <img alt="Pic" src="<%=asset_path('prayer.jpg') %>" />
-                      <div class="title">
-                          <h5 class="uppercase mb0">禱告事工</h5>
-                          <span>禱告事工</span>
-                      </div>
-                  </a>
-              </div>
-          </div>
-          <div class="col-md-3 col-sm-4 masonry-item project" data-filter="Objects">
-              <div class="image-tile inner-title hover-reveal text-center">
-                  <a href="#">
-                      <img alt="Pic" src="<%=asset_path('prayer2.jpg') %>" />
-                      <div class="title">
-                          <h5 class="uppercase mb0">宣教事工</h5>
-                          <span>宣教事工</span>
-                      </div>
-                  </a>
-              </div>
+    <div class="row row-gapless masonry masonryFlyIn">
+      <div class="col-md-3 col-sm-4 masonry-item project" data-filter="People">
+          <div class="image-tile inner-title hover-reveal text-center">
+              <a href="#">
+                  <img alt="Pic" src="<%=asset_path('worship.jpg') %>" />
+                  <div class="title">
+                      <h5 class="uppercase mb0">敬拜事工</h5>
+                      <span>敬拜、讚美</span>
+                  </div>
+              </a>
           </div>
       </div>
-      <!--end of row-->
+      <div class="col-md-3 col-sm-4 masonry-item project" data-filter="Animals">
+          <div class="image-tile inner-title hover-reveal text-center">
+              <a href="#">
+                  <img alt="Pic" src="<%=asset_path('equipping.jpg') %>" />
+                  <div class="title">
+                      <h5 class="uppercase mb0">裝備事工</h5>
+                      <span>裝備事工</span>
+                  </div>
+              </a>
+          </div>
+      </div>
+      <div class="col-md-3 col-sm-4 masonry-item project" data-filter="People">
+          <div class="image-tile inner-title hover-reveal text-center">
+              <a href="#">
+                  <img alt="Pic" src="<%=asset_path('prayer.jpg') %>" />
+                  <div class="title">
+                      <h5 class="uppercase mb0">禱告事工</h5>
+                      <span>禱告事工</span>
+                  </div>
+              </a>
+          </div>
+      </div>
+      <div class="col-md-3 col-sm-4 masonry-item project" data-filter="Objects">
+            <div class="image-tile inner-title hover-reveal text-center">
+                <a href="#">
+                    <img alt="Pic" src="<%=asset_path('prayer2.jpg') %>" />
+                    <div class="title">
+                        <h5 class="uppercase mb0">宣教事工</h5>
+                        <span>宣教事工</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--end of row-->
   </div>
   <!--end of container-->
 </section>
@@ -263,9 +266,9 @@
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-sm-12">
-        <h2 class="uppercase">Media</h6>
-        <hr>
+      <div class="col-sm-12" id='media'>
+        <h3 class="uppercase">Media</h3>
+        <hr />
       </div>
     </div>
     <!--end of row-->
