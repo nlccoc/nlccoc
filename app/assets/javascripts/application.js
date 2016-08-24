@@ -23,6 +23,7 @@
 //= require jquery.fitvids/jquery.fitvids.js
 //= require owl.carousel/dist/owl.carousel
 //= require jquery-smooth-scroll/jquery.smooth-scroll.js
+//= require jrespond/js/jRespond.js
 //= require nlccapp
 //= require nlccapp-controller
 //= require nlccapp-config

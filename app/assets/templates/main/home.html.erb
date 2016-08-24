@@ -65,8 +65,8 @@
 </section>
 
 <section class="projects p0 bg-dark">
-  <ul class="filters floating cast-shadow mb0">
-  </ul>
+  <!--<ul class="filters floating cast-shadow mb0">
+  </ul>-->
   <div class="row masonry-loader fixed-center">
     <div class="col-sm-12 text-center">
       <div class="spinner"></div>
@@ -77,10 +77,14 @@
       <div class="image-tile inner-title hover-reveal text-center">
         <a href="#">
           <img alt="Pic" src="<%= asset_path('who2.jpg') %>" />
-          <div class="title">
+          <div class='thumb-title'>
             <h5 class="uppercase mb0">Passion</h5>
             <span>充滿熱情的教會</span>
           </div>
+          <!--<div class="title">
+            <h5 class="uppercase mb0">Passion</h5>
+            <span>充滿熱情的教會</span>
+          </div>-->
         </a>
       </div>
     </div>
@@ -88,34 +92,46 @@
       <div class="image-tile inner-title hover-reveal text-center">
         <a href="#">
           <img alt="Pic" src="<%= asset_path('who1.jpg') %>" />
-          <div class="title">
+          <div class='thumb-title'>
             <h5 class="uppercase mb0">Generation to Generation</h5>
             <span>代代相傳的教會</span>
           </div>
+          <!--<div class="title">
+            <h5 class="uppercase mb0">Generation to Generation</h5>
+            <span>代代相傳的教會</span>
+          </div>-->
         </a>
       </div>
     </div>
     <div class="col-md-3 col-sm-6 masonry-item project" data-filter="People">
-        <div class="image-tile inner-title hover-reveal text-center">
-            <a href="#">
-                <img alt="Pic" src="<%= asset_path('who5.jpg') %>" />
-                <div class="title">
-                    <h5 class="uppercase mb0">Compassion</h5>
-                    <span>充滿憐憫的教會</span>
-                </div>
-            </a>
-        </div>
+      <div class="image-tile inner-title hover-reveal text-center">
+        <a href="#">
+          <img alt="Pic" src="<%= asset_path('who5.jpg') %>" />
+          <div class='thumb-title'>
+            <h5 class="uppercase mb0">Compassion</h5>
+            <span>充滿憐憫的教會</span>
+          </div>
+          <!--<div class="title">
+            <h5 class="uppercase mb0">Compassion</h5>
+            <span>充滿憐憫的教會</span>
+          </div>-->
+        </a>
+      </div>
     </div>
     <div class="col-md-3 col-sm-6 masonry-item project" data-filter="Objects">
-        <div class="image-tile inner-title hover-reveal text-center">
-            <a href="#">
-                <img alt="Pic" src="<%= asset_path('who6.jpg') %>" />
-                <div class="title">
-                    <h5 class="uppercase mb0">Mission</h5>
-                    <span>注重宣教的教會</span>
-                </div>
-            </a>
-        </div>
+      <div class="image-tile inner-title hover-reveal text-center">
+        <a href="#">
+          <img alt="Pic" src="<%= asset_path('who6.jpg') %>" />
+          <div class='thumb-title'>
+            <h5 class="uppercase mb0">Mission</h5>
+            <span>注重宣教的教會</span>
+          </div>
+          <!--<div class="title">
+            <h5 class="uppercase mb0">Mission</h5>
+            <span>注重宣教的教會</span>
+          </div>-->
+        </a>
+      </div>
     </div>
     <!--<div class="col-md-3 col-sm-6 masonry-item project" data-filter="Objects">
         <div class="image-tile inner-title hover-reveal text-center">
@@ -155,7 +171,7 @@
     </div>
     <!--end of row-->
     <div class="row">
-      <div class="col-md-4 col-sm-6">
+      <div class="col-md-4 col-sm-4 col-xs-12">
         <div class="image-tile outer-title text-center">
           <img alt="Pic" src="<%= asset_path('cellgroups.jpg') %>" />
           <div class="title mb16">
@@ -167,7 +183,7 @@
           </p>
         </div>
       </div>
-      <div class="col-md-4 col-sm-6">
+      <div class="col-md-4 col-sm-4 col-xs-12">
         <div class="image-tile outer-title text-center">
               <img alt="Pic" src="<%= asset_path('youngadults.jpg') %>" />
               <div class="title mb16">
@@ -179,7 +195,7 @@
               </p>
           </div>
       </div>
-      <div class="col-md-4 col-sm-6">
+      <div class="col-md-4 col-sm-4 col-xs-12">
         <div class="image-tile outer-title text-center">
             <img alt="Pic" src="<%= asset_path('children.jpg') %>" />
             <div class="title mb16">
@@ -200,8 +216,8 @@
 <section>
   <div class="container" id='events'>
       <div class="row">
-          <div class="col-sm-6 col-sm-offset-1">
-              <div class="feature bordered"  style='padding-bottom: 150px;'>
+          <div class="col-md-7 col-md-offset-1 col-sm-7 col-sm-offset-1 col-xs-12">
+              <div class="feature bordered pb160 pb-xs-0">
                   <h3 class="large uppercase mb64 mb-xs-24">Events & Conferences</h3>
                   <p class="mb80 mb-xs-24">
                     主日資訊 | 裝備課程 | 教會活動 | 小組動態
@@ -209,7 +225,7 @@
                   <a class="btn btn-lg btn-filled inner-link" href="#book-table">尋找更多活動</a>
               </div>
           </div>
-          <div class="col-sm-5">
+          <div class="col-sm-4">
             <!--<img class="" alt="Pic" src="<%= asset_path('event_parenting-1.jpg') %>" />-->
             <img class="mt80 mt-xs-0 mb24" alt="Pic" src="<%= asset_path('event_301-3.jpg') %>" />
             <img class="col-md-pull-4 relative" alt="Pic" src="<%= asset_path('event_ipromise-0.jpg') %>" />
@@ -288,7 +304,7 @@
 </section>
 
 <section>
-  <div class="container">
+  <div class="container" id='section-media'>
     <div class="row">
       <div class="col-sm-12" id='media'>
         <h3 class="uppercase">Media</h3>
@@ -320,7 +336,7 @@
     </div>
     <div class='row'>
       <h4>最新講道錄音</h4>
-      <div class='audio_title'>家庭保衛戰</div>
+      <div class='audio_title mb16'>家庭保衛戰</div>
         <audio controls>
           <source src="http://www.nlccoc.org/uploadfolder/doc_audiosermon//563__2016-08-07.mp3" type="audio/mp3">\
           Your browser does not support the audio element.

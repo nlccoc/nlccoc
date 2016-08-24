@@ -1,28 +1,50 @@
-/* global nlccapp, $, angular */
+/* global nlccapp, $, angular, Masonry, jRespond */
 var mr_firstSectionHeight,
     mr_nav,
     mr_fixedAt,
     mr_navOuterHeight,
-    mr_navScrolled = false,
-    mr_navFixed = false,
-    mr_outOfSight = false,
     mr_floatingProjectSections,
     mr_scrollTop = 0,
-    $goToTopEl;
-nlccapp.controller('homeCtrl', ['$scope', '$ocLazyLoad', function($scope, $ocLazyLoad){
+    $body;
+
+console.log(nlccapp);
+    
+nlccapp.controller('homeCtrl', ['$scope', '$window', '$ocLazyLoad', function($scope, $window, $ocLazyLoad){
   console.log("Homepage controller");
+  $scope.responsiveClass='device-xxx';
+  $scope.navFixed = false;
+  $scope.outOfSight = false;
+  $scope.navScrolled = false;
+  $scope.goToTop = false;
+  $scope.stage='initial';
   
-  $scope.stage='initial'
+  $scope.$watch('navScrolled', function(newvalue, oldvalue){
+    //console.log('navscroll changed');
+  });
+  
+  $scope.$watch('outOfSight', function(newvalue, oldvalue){
+    //console.log('outOfSight changed');
+  });
   angular.element(document).ready(function () {
     $scope.stage='ready';
-    $goToTopEl = $('#gotoTop');
-    console.log($goToTopEl);
-    /*$ocLazyLoad.load('<%= asset_path("parallax.js") %>').then(function(){
-      console.log('Parallax.js loaded');
-    });*/
+    //$goToTopEl = $('#gotoTop');
+    $body = $('body');
+    $scope.responsiveClasses();
+    
+    // Fix nav to top while scrolling
+
+    mr_nav = $('body .nav-container nav:first');
+    mr_navOuterHeight = $('body .nav-container nav:first').outerHeight()-100;
+    mr_fixedAt = typeof mr_nav.attr('data-fixed-at') !== typeof undefined ? parseInt(mr_nav.attr('data-fixed-at').replace('px', '')) : parseInt($('section:nth-of-type(1)').outerHeight());
+    $scope.updateNav();
+
+    //angular.element($window).bind("scroll", function() {
+      //console.log("scrolled");
+      //console.log($window.pageYOffset);
+    //});
     
     // Smooth scroll to inner links
-    
+
     $('.inner-link').each(function(){
       var href = $(this).attr('href');
       if(href.charAt(0) !== "#"){
@@ -36,14 +58,10 @@ nlccapp.controller('homeCtrl', ['$scope', '$ocLazyLoad', function($scope, $ocLaz
   			speed: 800
   		});
     }
-
-    
-    addEventListener('scroll', function() {
-      mr_scrollTop = window.pageYOffset;
-    }, false);
     
     $('#owl-carousel-media .entry-image').fitVids();
     initOwlMedia();
+    
     $('.background-image-holder').each(function() {
       var imgSrc = $(this).children('img').attr('src');
       console.log(imgSrc);
@@ -73,13 +91,11 @@ nlccapp.controller('homeCtrl', ['$scope', '$ocLazyLoad', function($scope, $ocLaz
       });
 
       // Compensate the height of parallax element for inline nav
-
       if ($(window).width() > 768) {
         $('.parallax:nth-of-type(1) .background-image-holder').css('top', -($('nav').outerHeight(true)));
       }
 
       // Adjust fullscreen elements
-
       if ($(window).width() > 768) {
         $('section.fullscreen:nth-of-type(1)').css('height', ($(window).height() - $('nav').outerHeight(true)));
       }
@@ -173,115 +189,197 @@ nlccapp.controller('homeCtrl', ['$scope', '$ocLazyLoad', function($scope, $ocLaz
         $('section').removeClass('parallax');
     }
     
-    function updateNav() {
-
-      var scrollY = mr_scrollTop;
-
-      if (scrollY <= 0) {
-        if (mr_navFixed) {
-            mr_navFixed = false;
-            mr_nav.removeClass('fixed');
-        }
-        if (mr_outOfSight) {
-            mr_outOfSight = false;
-            mr_nav.removeClass('outOfSight');
-            $goToTopEl.fadeOut();
-        }
-        if (mr_navScrolled) {
-            mr_navScrolled = false;
-            mr_nav.removeClass('scrolled');
-        }
-        return;
-    }
-
-    if (scrollY > mr_navOuterHeight + mr_fixedAt) {
-        if (!mr_navScrolled) {
-            mr_nav.addClass('scrolled');
-            mr_navScrolled = true;
-            return;
-        }
-    } else {
-        if (scrollY > mr_navOuterHeight) {
-           if (!mr_navFixed) {
-                mr_nav.addClass('fixed');
-                mr_navFixed = true;
-            }
-
-            if (scrollY > mr_navOuterHeight +10) {
-                if (!mr_outOfSight) {
-                    mr_nav.addClass('outOfSight');
-                    $goToTopEl.fadeIn();
-                    mr_outOfSight = true;
-                }
-            } else {
-                if (mr_outOfSight) {
-                    mr_outOfSight = false;
-                    mr_nav.removeClass('outOfSight');
-                    $goToTopEl.fadeOut();
-                }
-            }
-        } else {
-            if (mr_navFixed) {
-                mr_navFixed = false;
-                mr_nav.removeClass('fixed');
-            }
-            if (mr_outOfSight) {
-                mr_outOfSight = false;
-                mr_nav.removeClass('outOfSight');
-                $goToTopEl.fadeOut();
-            }
-        }
-
-        if (mr_navScrolled) {
-            mr_navScrolled = false;
-            mr_nav.removeClass('scrolled');
-        }
-
-      }
-    }
     
-    // Fix nav to top while scrolling
-
-    mr_nav = $('body .nav-container nav:first');
-    mr_navOuterHeight = $('body .nav-container nav:first').outerHeight()-100;
-    mr_fixedAt = typeof mr_nav.attr('data-fixed-at') !== typeof undefined ? parseInt(mr_nav.attr('data-fixed-at').replace('px', '')) : parseInt($('section:nth-of-type(1)').outerHeight());
-    window.addEventListener("scroll", updateNav, false);
+    window.addEventListener("scroll", $scope.updateNav, false);
     
     // Initialize Masonry
 
     setTimeout(initializeMasonry, 1000);
   });
-}])
+  
+  $scope.responsiveClasses = function(){
+    if( typeof jRespond === 'undefined' ) {
+    	console.log('responsiveClasses: jRespond not Defined.');
+    	return true;
+    }
+    
+    var jRes = jRespond([
+    	{
+    		label: 'smallest',
+    		enter: 0,
+    		exit: 479
+    	},{
+    		label: 'handheld',
+    		enter: 480,
+    		exit: 767
+    	},{
+    		label: 'tablet',
+    		enter: 768,
+    		exit: 991
+    	},{
+    		label: 'laptop',
+    		enter: 992,
+    		exit: 1199
+    	},{
+    		label: 'desktop',
+    		enter: 1200,
+    		exit: 10000
+    	}
+    ]);
+    jRes.addFunc([
+    	{
+    		breakpoint: 'desktop',
+    		enter: function() { 
+    			//console.log($body);
+    			//$body.addClass('device-lg');
+    			$scope.responsiveClass='device-lg';
+    			$scope.$apply();
+    			console.log("Jrespond: desktop: enter");
+    		},
+    		exit: function() { 
+    			//$body.removeClass('device-lg'); 
+    			console.log("Jrespond: desktop: exit");
+    		}
+    	},{
+    		breakpoint: 'laptop',
+    		enter: function() { 
+    			//$body.addClass('device-md'); 
+    			console.log($scope.responsiveClass);
+    			$scope.responsiveClass='device-md'
+    			$scope.$apply();
+    			console.log("Jrespond: laptop: enter");
+    		},
+    		exit: function() { $body.removeClass('device-md'); }
+    	},{
+    		breakpoint: 'tablet',
+    		enter: function() { 
+    			//$body.addClass('device-sm'); 
+    			$scope.responsiveClass='device-sm';
+    			$scope.$apply();
+    			console.log("Jrespond: tablet: enter");
+    		},
+    		exit: function() { 
+    		  //$body.removeClass('device-sm'); 
+    		}
+    	},{
+    		breakpoint: 'handheld',
+    		enter: function() { 
+    		  //$body.addClass('device-xs'); 
+    		  $scope.responsiveClass='device-xs';
+    		  $scope.$apply();
+    		},
+    		exit: function() { 
+    		  //$body.removeClass('device-xs');
+    		}
+    	},{
+    		breakpoint: 'smallest',
+    		enter: function() { 
+    		  //$body.addClass('device-xxs'); 
+    		  $scope.responsiveClass='device-xxs';
+    		  $scope.$apply();
+    		},
+    		exit: function() { $body.removeClass('device-xxs'); }
+    	}
+    ]);
+  };
+  $scope.updateNav = function() {
+    var mr_scrollTop = $window.pageYOffset;
+    console.log($window.pageYOffset)
+    var scrollY = mr_scrollTop;
+
+    if (scrollY <= 0) {
+      if ($scope.navFixed) {
+          $scope.navFixed = false;
+      }
+      if ($scope.outOfSight) {
+        $scope.outOfSight = false;
+        $scope.goToTop = false;
+      }
+      if ($scope.navScrolled) {
+        $scope.navScrolled = false;
+      }
+      $scope.$apply();
+      return;
+    }
+    
+    if (scrollY > mr_navOuterHeight + mr_fixedAt) {
+      if (!$scope.navScrolled) {
+          $scope.navScrolled = true;
+          $scope.goToTop = true;
+          $scope.navFixed = true;
+          $scope.outOfSight = true;
+          $scope.$apply();
+          return;
+      }
+    } else {
+      if (scrollY > mr_navOuterHeight) {
+         if (!$scope.navFixed) {
+              $scope.navFixed = true;
+          }
+
+          if (scrollY > mr_navOuterHeight +10) {
+              if (!$scope.outOfSight) {
+                  //mr_nav.addClass('outOfSight');
+                  //$goToTopEl.fadeIn();
+                  $scope.outOfSight = true;
+                  $scope.goToTop = true;
+              }
+          } else {
+              if ($scope.outOfSight) {
+                  $scope.outOfSight = false;
+                  //mr_nav.removeClass('outOfSight');
+                  //$goToTopEl.fadeOut();
+                  $scope.goToTop = false;
+              }
+          }
+      } else {
+          if ($scope.navFixed) {
+              $scope.navFixed = false;
+          }
+          if ($scope.outOfSight) {
+              $scope.outOfSight = false;
+              $scope.goToTop = false;
+          }
+      }
+
+      if ($scope.navScrolled) {
+          $scope.navScrolled = false;
+      }
+
+    }
+    $scope.$apply();
+  }
+}]);
 
 
 function initializeMasonry(){
-    $('.masonry').each(function(){
-        var container = $(this).get(0);
-        var msnry = new Masonry(container, {
-            itemSelector: '.masonry-item'
-        });
+  $('.masonry').each(function(){
+      var container = $(this).get(0);
+      var msnry = new Masonry(container, {
+          itemSelector: '.masonry-item'
+      });
 
-        msnry.on('layoutComplete', function() {
+      msnry.on('layoutComplete', function() {
 
-            mr_firstSectionHeight = $('.main-container section:nth-of-type(1)').outerHeight(true);
+          mr_firstSectionHeight = $('.main-container section:nth-of-type(1)').outerHeight(true);
 
-            // Fix floating project filters to bottom of projects container
+          // Fix floating project filters to bottom of projects container
 
-            if ($('.filters.floating').length) {
-                setupFloatingProjectFilters();
-                updateFloatingFilters();
-                window.addEventListener("scroll", updateFloatingFilters, false);
-            }
+          if ($('.filters.floating').length) {
+              //setupFloatingProjectFilters();
+              //updateFloatingFilters();
+              window.addEventListener("scroll", updateFloatingFilters, false);
+          }
 
-            $('.masonry').addClass('fadeIn');
-            $('.masonry-loader').addClass('fadeOut');
-            if ($('.masonryFlyIn').length) {
-                masonryFlyIn();
-            }
-        });
+          $('.masonry').addClass('fadeIn');
+          $('.masonry-loader').addClass('fadeOut');
+          if ($('.masonryFlyIn').length) {
+              masonryFlyIn();
+          }
+      });
 
-        msnry.layout();
-    });
+      msnry.layout();
+  });
 }
 
 function masonryFlyIn() {
@@ -312,7 +410,7 @@ function setupFloatingProjectFilters() {
         });
     });
 }
-
+/*
 function updateFloatingFilters() {
     var l = mr_floatingProjectSections.length;
     while (l--) {
@@ -347,12 +445,105 @@ function updateFloatingFilters() {
         }
     }
 }
-
+*/
 function initOwlMedia(){
   $("#owl-carousel-media").owlCarousel({
     items : 4,
+    margin: 20,
     lazyLoad: true,
     nav: true,
-    navText: ['<i class="icon-angle-left"></i>','<i class="icon-angle-right"></i>']
-  }); 
+    navText: ['<i class="icon-angle-left"></i>','<i class="icon-angle-right"></i>'],
+    responsive:{
+			0:{ items: 2},
+			480:{ items: 2 },
+			768:{ items: 3 },
+			992:{ items: 4 },
+			1200:{ items: 4 }
+		},
+		touchDrag: true,
+		video: true,
+  	animateIn: true,
+  	animateOut: true
+  });
+}
+
+function responsiveClasses(scope){
+  if( typeof jRespond === 'undefined' ) {
+  	console.log('responsiveClasses: jRespond not Defined.');
+  	return true;
+  }
+  
+  var jRes = jRespond([
+  	{
+  		label: 'smallest',
+  		enter: 0,
+  		exit: 479
+  	},{
+  		label: 'handheld',
+  		enter: 480,
+  		exit: 767
+  	},{
+  		label: 'tablet',
+  		enter: 768,
+  		exit: 991
+  	},{
+  		label: 'laptop',
+  		enter: 992,
+  		exit: 1199
+  	},{
+  		label: 'desktop',
+  		enter: 1200,
+  		exit: 10000
+  	}
+  ]);
+  jRes.addFunc([
+  	{
+  		breakpoint: 'desktop',
+  		enter: function() { 
+  			console.log($body);
+  			//$body.addClass('device-lg');
+  			scope.responsiveClass='device-lg'
+  			console.log("Jrespond: desktop: enter");
+  		},
+  		exit: function() { 
+  			//$body.removeClass('device-lg'); 
+  			console.log("Jrespond: desktop: exit");
+  		}
+  	},{
+  		breakpoint: 'laptop',
+  		enter: function() { 
+  			//$body.addClass('device-md'); 
+  			console.log(scope.responsiveClass);
+  			scope.responsiveClass='device-md'
+  			console.log("Jrespond: laptop: enter");
+  		},
+  		exit: function() { $body.removeClass('device-md'); }
+  	},{
+  		breakpoint: 'tablet',
+  		enter: function() { 
+  			//$body.addClass('device-sm'); 
+  			scope.responsiveClass='device-sm';
+  			console.log("Jrespond: tablet: enter");
+  		},
+  		exit: function() { 
+  		  //$body.removeClass('device-sm'); 
+  		}
+  	},{
+  		breakpoint: 'handheld',
+  		enter: function() { 
+  		  //$body.addClass('device-xs'); 
+  		  scope.responsiveClass='device-xs';
+  		},
+  		exit: function() { 
+  		  //$body.removeClass('device-xs');
+  		}
+  	},{
+  		breakpoint: 'smallest',
+  		enter: function() { 
+  		  //$body.addClass('device-xxs'); 
+  		  scope.responsiveClass='device-xxs';
+  		},
+  		exit: function() { $body.removeClass('device-xxs'); }
+  	}
+  ]);
 }

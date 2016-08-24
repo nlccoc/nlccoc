@@ -1439,6 +1439,7 @@ nav .cart-overview a {
   .mobile-toggle {
     border-left: 1px solid #ccc !important;
     border-bottom: none !important;
+    border-top: none !important;
   }
   .mobile-toggle i {
     line-height: 53px !important;
@@ -5268,7 +5269,7 @@ footer.bg-dark a {
   padding-bottom: 120px;
 }
 .pb160 {
-  padding-bottom: 160px;
+  padding-bottom: 160px !important;
 }
 .pb180 {
   padding-bottom: 180px;
@@ -5666,7 +5667,7 @@ footer.bg-dark a {
     padding-top: 240px !important;
   }
   .pb-xs-0 {
-    padding-bottom: 0;
+    padding-bottom: 0 !important;
   }
   .pb-xs-8 {
     padding-bottom: 8px;
@@ -5725,10 +5726,6 @@ footer.bg-dark a {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.entry-image {
-  margin: 3px;
 }
 
 /* ----------------------------------------------------------------
@@ -6043,7 +6040,6 @@ footer.bg-dark a {
 
 
 #gotoTop {
-	display: none;
 	z-index: 299;
 	position: fixed;
 	width: 40px;
@@ -6060,12 +6056,13 @@ footer.bg-dark a {
 	bottom: 50px;
 	cursor: pointer;
 	border-radius: 2px;
+	opacity: 1;
 }
 
 body:not(.device-touch) #gotoTop {
-	transition: background-color .2s linear;
-	-webkit-transition: background-color .2s linear;
-	-o-transition: background-color .2s linear;
+	transition: background-color .2s linear, opacity .5s linear;
+	-webkit-transition: background-color .2s linear, opacity .5s linear;
+	-o-transition: background-color .2s linear, opacity .5s linear;
 }
 
 .stretched #gotoTop { bottom: 30px; }
@@ -6083,3 +6080,38 @@ body:not(.device-touch) #gotoTop {
   font-size: 32px;
   text-align: center;
 }
+
+#section-media audio {
+  width: 100%;
+}
+
+.thumb-title {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: rgba(36, 27, 28, 0.5);
+  width: 80%;
+  bottom: 30px;
+  color: #FFF;
+  font-size: 12px;
+  font-weight: 600;
+  left: 0;
+  letter-spacing: 0px;
+  padding: 9px 11px 9px;
+  position: absolute;
+  //text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  z-index: 1;
+  line-height: 20px;
+}
+
+.ng-animate.ng-hide:not(.ng-hide-animate) {
+  /* this is just another form of hiding an element */
+  display: block !important;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  opacity: 0 !important;
+}
+
