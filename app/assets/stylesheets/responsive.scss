@@ -1,0 +1,36 @@
+//device-xxs
+
+.device-xxs {
+  .masonry-item {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+  .ministries .masonry-item {
+    height: 250px !important;
+  }
+  .ministries .masonry-item .title {
+    bottom: 150px
+  }
+  .col-xs-12 {
+    width: 100%;
+  }
+  .who .masonry-item .inner-title {
+    bottom: 100px;
+  }
+  .who .masonry-item .thumb-title {
+    bottom: 100px;
+  }
+  .who .masonry-item .title {
+    bottom: 100px;
+  }
+}
+//device-xs
+
+.device-xs .col-xs-12 {
+  width: 50%;
+}
+
+.device-xs .connect .col-xs-12 {
+  width: 33%;
+}

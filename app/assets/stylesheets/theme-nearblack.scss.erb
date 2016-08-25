@@ -683,6 +683,9 @@ footer.bg-dark li,
   top: 0;
   left: 0;
   z-index: 1;
+  min-height: 400px;
+  background: transparent;
+
   background: #292929;
   background-size: cover !important;
   background-position: 50% 50% !important;
@@ -690,6 +693,7 @@ footer.bg-dark li,
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   opacity: 0;
+  
 }
 .background-image-holder img {
   display: none;
@@ -3149,6 +3153,10 @@ img {
 }
 .inner-title:hover {
   opacity: .95;
+}
+
+.inner-title:hover .thumb-title {
+  opacity: 0;
 }
 .inner-title.hover-reveal:before {
   opacity: 0;
@@ -6104,6 +6112,10 @@ body:not(.device-touch) #gotoTop {
   text-transform: uppercase;
   z-index: 1;
   line-height: 20px;
+}
+
+.thumb-title span {
+  font-size: 14px;
 }
 
 .ng-animate.ng-hide:not(.ng-hide-animate) {

@@ -30,7 +30,7 @@ nlccapp.controller('homeCtrl', ['$scope', '$window', '$ocLazyLoad', function($sc
     //$goToTopEl = $('#gotoTop');
     $body = $('body');
     $scope.responsiveClasses();
-    
+   
     // Fix nav to top while scrolling
 
     mr_nav = $('body .nav-container nav:first');
@@ -38,6 +38,7 @@ nlccapp.controller('homeCtrl', ['$scope', '$window', '$ocLazyLoad', function($sc
     mr_fixedAt = typeof mr_nav.attr('data-fixed-at') !== typeof undefined ? parseInt(mr_nav.attr('data-fixed-at').replace('px', '')) : parseInt($('section:nth-of-type(1)').outerHeight());
     $scope.updateNav();
 
+    $ocLazyLoad.load('<%= asset_path("parallax.js/parallax") %>');
     //angular.element($window).bind("scroll", function() {
       //console.log("scrolled");
       //console.log($window.pageYOffset);
@@ -234,11 +235,11 @@ nlccapp.controller('homeCtrl', ['$scope', '$window', '$ocLazyLoad', function($sc
     			//$body.addClass('device-lg');
     			$scope.responsiveClass='device-lg';
     			$scope.$apply();
-    			console.log("Jrespond: desktop: enter");
+    			//console.log("Jrespond: desktop: enter");
     		},
     		exit: function() { 
     			//$body.removeClass('device-lg'); 
-    			console.log("Jrespond: desktop: exit");
+    			//console.log("Jrespond: desktop: exit");
     		}
     	},{
     		breakpoint: 'laptop',
@@ -284,8 +285,11 @@ nlccapp.controller('homeCtrl', ['$scope', '$window', '$ocLazyLoad', function($sc
   };
   $scope.updateNav = function() {
     var mr_scrollTop = $window.pageYOffset;
-    console.log($window.pageYOffset)
+    //console.log($window.pageYOffset);
+    //console.log($('#bg').position().top);
     var scrollY = mr_scrollTop;
+    
+    //$scope.parallaxY = scrollY*0.5;
 
     if (scrollY <= 0) {
       if ($scope.navFixed) {
@@ -352,6 +356,16 @@ nlccapp.controller('homeCtrl', ['$scope', '$window', '$ocLazyLoad', function($sc
 }]);
 
 
+nlccapp.controller('parallaxCtrl', ['$scope', '$window',function($scope, $window){
+  console.log('parallaxCtrl');
+  $scope.parallaxY = 0;
+  
+  angular.element($window).bind("scroll", function() {
+      //console.log("scrolled");
+      $scope.parallaxY = $window.pageYOffset * 0.3;
+      //console.log($window.pageYOffset);
+  });
+}]);
 function initializeMasonry(){
   $('.masonry').each(function(){
       var container = $(this).get(0);
@@ -500,22 +514,21 @@ function responsiveClasses(scope){
   	{
   		breakpoint: 'desktop',
   		enter: function() { 
-  			console.log($body);
   			//$body.addClass('device-lg');
   			scope.responsiveClass='device-lg'
-  			console.log("Jrespond: desktop: enter");
+  			//console.log("Jrespond: desktop: enter");
   		},
   		exit: function() { 
   			//$body.removeClass('device-lg'); 
-  			console.log("Jrespond: desktop: exit");
+  			//console.log("Jrespond: desktop: exit");
   		}
   	},{
   		breakpoint: 'laptop',
   		enter: function() { 
   			//$body.addClass('device-md'); 
-  			console.log(scope.responsiveClass);
+  			
   			scope.responsiveClass='device-md'
-  			console.log("Jrespond: laptop: enter");
+  			//console.log("Jrespond: laptop: enter");
   		},
   		exit: function() { $body.removeClass('device-md'); }
   	},{
@@ -523,7 +536,7 @@ function responsiveClasses(scope){
   		enter: function() { 
   			//$body.addClass('device-sm'); 
   			scope.responsiveClass='device-sm';
-  			console.log("Jrespond: tablet: enter");
+  			//console.log("Jrespond: tablet: enter");
   		},
   		exit: function() { 
   		  //$body.removeClass('device-sm'); 
