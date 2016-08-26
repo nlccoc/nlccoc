@@ -1,8 +1,23 @@
+//device-md
+
+.device-md {
+  #give .background-image-holder, .page-title-3 .background-image-holder {
+    min-height: 240px;
+    height: 240px !important;
+    //top: 0px !important;
+  }
+  #give {
+    height: 240px;
+  }
+  
+  .tabbed-content {
+    min-height: 00px;
+  }
+}
 //device-xxs
 
 .device-xxs {
   .masonry-item {
-    width: 100%;
     height: 300px;
     overflow: hidden;
   }
@@ -27,10 +42,49 @@
 }
 //device-xs
 
-.device-xs .col-xs-12 {
-  width: 50%;
-}
+.device-xs {
+  .col-xs-12 {
+    width: 50%;
+  }
 
-.device-xs .connect .col-xs-12 {
-  width: 33%;
+  .connect .col-xs-12 {
+    width: 33%;
+  }
+
+  .masonry-item {
+    height: 250px;
+    overflow: hidden;
+  }
+  .ministries .masonry-item {
+    height: 250px !important;
+  }
+  .ministries .masonry-item .title {
+    bottom: 150px
+  }
+  
+  .who .masonry-item .inner-title {
+    bottom: 100px;
+  }
+  .who .masonry-item .thumb-title {
+    bottom: 100px;
+  }
+  .who .masonry-item .title {
+    bottom: 100px;
+  }
+  
+  .owl-carousel-media {
+    padding: 10px 0;
+  }
+  .owl-dot {
+    width: 32px;
+    height: 32px;
+  }
+  .owl-dot span {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  
+  .owl-carousel-media {
+    padding: 0 15px !important;
+  }
 }

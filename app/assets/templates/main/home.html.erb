@@ -1,5 +1,5 @@
-<section class="fullscreen cover parallax image-bg overlay" ng-controller='parallaxCtrl'>
-  <div id='bg' ng-style='{top: parallaxY}' class="background-image-holder" duParallax y='background'>
+<section class="fullscreen cover image-bg overlay parallax">
+  <div id='bg' class="background-image-holder" data-parallax="scroll">
     <img alt="image" class="background-image" src="<%= asset_path('bg2.jpg') %>" />
   </div>
   <div class="container v-align-transform">
@@ -20,7 +20,7 @@
 </div>
   <!--end of container-->
   <div class="align-bottom text-center hidden-xs">
-  <a class="btn btn-white mb32" href="#">Connect</a></a>
+  <a class="btn btn-white mb32 inner-link" href="#connect">Connect</a></a>
     <ul class="list-inline social-list mb64">
       <li>
         <a href="#">
@@ -72,7 +72,7 @@
       <div class="spinner"></div>
     </div>
   </div>
-  <div class="row masonry masonryFlyIn">
+  <div class="row masonry masonryFlyIn col-md-12" style='margin: 0px;padding: 0px;'>
     <div class="col-md-3 col-sm-6 col-xs-12 masonry-item project" data-filter="People">
       <div class="image-tile inner-title hover-reveal text-center">
         <a href="#">
@@ -213,32 +213,170 @@
   <!--end of container-->
 </section>
 
-<section>
-  <div class="container" id='events'>
-      <div class="row">
-          <div class="col-md-7 col-md-offset-1 col-sm-7 col-sm-offset-1 col-xs-12">
-              <div class="feature bordered pb160 pb-xs-0">
-                  <h3 class="large uppercase mb64 mb-xs-24">Events & Conferences</h3>
-                  <p class="mb80 mb-xs-24">
-                    主日資訊 | 裝備課程 | 教會活動 | 小組動態
-                  </p>
-                  <a class="btn btn-lg btn-filled inner-link" href="#book-table">尋找更多活動</a>
-              </div>
-          </div>
-          <div class="col-sm-4">
-            <!--<img class="" alt="Pic" src="<%= asset_path('event_parenting-1.jpg') %>" />-->
-            <img class="mt80 mt-xs-0 mb24" alt="Pic" src="<%= asset_path('event_301-3.jpg') %>" />
-            <img class="col-md-pull-4 relative" alt="Pic" src="<%= asset_path('event_ipromise-0.jpg') %>" />
-              
+<section class='pt0 events' id='events'>
+  <div class="container">
+      <div class="row mb80 mb-xs-40">
+          <div class="col-sm-12 text-center">
+              <h3 class="uppercase fade-1-4 mb0">Events & Conferences</h3>
           </div>
       </div>
       <!--end of row-->
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="tabbed-content button-tabs">
+            <ul class="tabs forths mb64 mb-xs-24">
+              <li class="active">
+                <div class="tab-title">
+                  <span>裝備課程</span>
+                </div>
+                <div class="tab-content text-left">
+                    <div>
+                        <div class="overflow-hidden">
+                            <div class="inline-block pull-left col-md-8">
+                                <h6 class="uppercase mb8">09:00am - 09:50am</h6>
+                                <h4>奠定紮實的信仰基礎</h4>
+                                <p class="mb0">
+                                    信徒建造裝備課程系列幫助我們認識基督徒的基本信仰，奠定我們的信仰基礎。 本次301課程為12週，由裝備課程事工負責人Jerry Yen弟兄授課。上課時間為8/7起至10/23止，每週日上午9:50~10:50。地點為J教室。歡迎初信徒參與，也歡迎資深基督徒再次審視您的信仰生活！
+                                    <a href="#"></a>
+                                </p>
+                            </div>
+                            <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
+                                <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
+                            </div>
+                        </div>
+                        <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
+                    </div>
+                    <!--end of class-->
+                    <div>
+                        <div class="overflow-hidden">
+                            <div class="inline-block pull-left col-md-8">
+                                <h6 class="uppercase mb8">09:00am - 09:50am</h6>
+                                <h4>一秒的Yes 一輩子的承諾</h4>
+                                <p class="mb0">
+                                    全程使用全美最受歡迎的婚姻專家史葛利博士所編寫的教材，加上馬鞍峰教會製作的影片，幽默實用、以聖經真理為基礎。六堂課，找出你的最佳伴侶相處之道！
+                
+                                    <a href="#"></a>
+                                </p>
+                            </div>
+                            <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
+                                <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
+                            </div>
+                        </div>
+                        <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
+                    </div>
+                    <!--end of class-->
+                    <div>
+                        <div class="overflow-hidden">
+                            <div class="inline-block pull-left col-md-8">
+                                <h6 class="uppercase mb8">9/17 - 9/20</h6>
+                                <h4>好孩子，就從好父母開始</h4>
+                                <p class="mb0">
+                                    曾在AM1300電台擔任親子節目的名主持人王祈女士，將前來與社區鄰里分享親子關係與教育。王祈女士為洛杉磯家庭局認證的專業訓練講師，並擁有行為分析顧問執照，且著有多本暢銷書如《高EQ驚人的影響力》《優質下一代的教養關鍵》等。
+                                    <a href="#"></a>
+                                </p>
+                            </div>
+                            <div class="inline-block pull-right pt48 pt-xs-24 col-md-4">
+                                <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
+                            </div>
+                        </div>
+                        <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
+                    </div>
+                    <!--end of class-->
+                </div>
+                <!--end of tab content-->
+              </li>
+              <li>
+                  <div class="tab-title">
+                      <span>主日資訊</span>
+                  </div>
+                  <div class="tab-content text-left">
+                      <div>
+                          <div class="overflow-hidden">
+                              <div class="inline-block pull-left col-md-8">
+                                  <h6 class="uppercase mb8">8/21 11:00am - 12:30pm</h6>
+                                  <h4>耶穌的第四個神蹟</h4>
+                                  <p class="mb0">
+                                      主講：陳牧師
+                                      <br /> 
+                                      <br />
+                                      <a href="#">地點：爾灣新生命靈糧堂大堂</a>
+                                  </p>
+                              </div>
+                              <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
+                                  <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
+                              </div>
+                          </div>
+                          <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
+                      </div>
+                      <!--end of class-->
+                  </div>
+                  <!--end of tab content-->
+              </li>
+              <li>
+                  <div class="tab-title">
+                      <span>教會活動</span>
+                  </div>
+                  <div class="tab-content text-left">
+                      <div>
+                          <div class="overflow-hidden">
+                              <div class="inline-block pull-left col-md-8">
+                                  <h6 class="uppercase mb8">8/21 11:00am - 12:30pm</h6>
+                                  <h4>青少年退修會</h4>
+                                  <p class="mb0">
+                                      XXX
+                                      <br /> 
+                                      <br />
+                                      <a href="#">地點：吃飯的地方</a>
+                                  </p>
+                              </div>
+                              <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
+                                  <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
+                              </div>
+                          </div>
+                          <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
+                      </div>
+                      <!--end of class-->
+                  </div>
+                  <!--end of tab content-->
+              </li>
+              <li>
+                  <div class="tab-title">
+                      <span>小組動態</span>
+                  </div>
+                  <div class="tab-content text-left">
+                <div>
+                          <div class="overflow-hidden">
+                              <div class="inline-block pull-left col-md-8">
+                                  <h6 class="uppercase mb8">8/21 11:00am - 12:30pm</h6>
+                                  <h4>耶穌的第四個神蹟</h4>
+                                  <p class="mb0">
+                                      主講：陳牧師
+                                      <br /> 
+                                      <br />
+                                      <a href="#">地點：爾灣新生命靈糧堂大堂</a>
+                                  </p>
+                              </div>
+                              <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
+                                  <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
+                              </div>
+                          </div>
+                          <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
+                      </div>
+                      <!--end of class-->
+                  </div>
+                  <!--end of tab content-->
+              </li>
+            </ul>
+          </div>
+          <!--end of button tabs-->
+        </div>
+      </div>
   </div>
   <!--end of container-->
 </section>
 
-<section class='page-title page-title-3 image-bg overlay'>
-  <div du-parallax class="background-image-holder">
+<section class='page-title page-title-3 image-bg overlay parallax'>
+  <div class="background-image-holder" data-parallax="scroll">
     <img alt="Background Image" class="background-image" src="<%= asset_path('mission-cover.jpg') %>" />
   </div>
   <div class="container">
@@ -252,7 +390,7 @@
 </section>
 <section class="portfolio-pullup ministries">
   <div class="container">
-    <div class="row row-gapless masonry masonryFlyIn text-center">
+    <div class="row row-gapless masonry masonryFlyIn text-center col-md-12" style='padding: 0;'>
       <div class="col-md-3 col-sm-4 col-xs-12 masonry-item project" data-filter="">
           <div class="image-tile inner-title hover-reveal text-center">
               <a href="#">
@@ -345,6 +483,19 @@
     </div>
   </div>
   <!--end of container-->
+</section>
+
+<section id="give" class='overlay mb0 parallax' style='padding: 0;'>
+  <div id='bg' class="background-image-holder" data-parallax="scroll">
+    <img alt="image" class="background-image" src="<%= asset_path('project-single-4.jpg') %>" />
+  </div>
+  <div class="row">
+    <div class="col-sm-12 text-center" style='padding-top: 30px; z-index:999; color: #fff'>
+      <h2 class="uppercase mb8" style='color: #fff; font-weight: 700;'>We Give <span style='font-size: 20px;'><i>because</i></span> God Gave First</h2>
+      <p class="lead mb40">Your gift helps further the impact of the ministries of NLCC</p>
+      <a class="btn btn-lg btn-white mb0" href="#" style='cursor: pointer;'>Give</a>
+    </div>
+  </div>
 </section>
             
   

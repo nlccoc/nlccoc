@@ -27,10 +27,37 @@ nlccapp.controller('homeCtrl', ['$scope', '$window', '$ocLazyLoad', function($sc
   });
   angular.element(document).ready(function () {
     $scope.stage='ready';
-    //$goToTopEl = $('#gotoTop');
     $body = $('body');
     $scope.responsiveClasses();
-   
+
+    // Disable parallax on mobile
+
+    if ((/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
+      $('section').removeClass('parallax');
+      $('.background-image-holder').each(function() {
+        var imgSrc = $(this).children('img').attr('src');
+        console.log(imgSrc);
+        $(this).css('background', 'url("' + imgSrc + '")');
+        $(this).children('img').hide();
+        $(this).css('background-position', 'initial');
+      });
+      setTimeout(function() {
+        $('.background-image-holder').each(function() {
+          $(this).addClass('fadeIn');
+        });
+      }, 200);
+    }
+    else {
+    //$('.parallax-window').parallax({imageSrc: '<%= asset_path("Psalm-118_1-give-thanks.jpg") %>'});
+      $('.parallax .background-image-holder').each(function(){
+        var imgSrc = $(this).children('img').attr('src');
+        console.log(imgSrc);
+        $(this).parallax({
+          imageSrc: imgSrc
+        });
+      });
+    }
+    initTabs();
     // Fix nav to top while scrolling
 
     mr_nav = $('body .nav-container nav:first');
@@ -63,22 +90,22 @@ nlccapp.controller('homeCtrl', ['$scope', '$window', '$ocLazyLoad', function($sc
     $('#owl-carousel-media .entry-image').fitVids();
     initOwlMedia();
     
-    $('.background-image-holder').each(function() {
+    /*$('.background-image-holder').each(function() {
       var imgSrc = $(this).children('img').attr('src');
       console.log(imgSrc);
       $(this).css('background', 'url("' + imgSrc + '")');
       $(this).children('img').hide();
       $(this).css('background-position', 'initial');
     });
-    
+*/    
     // Fade in background images
   
-    setTimeout(function() {
+    /*setTimeout(function() {
       $('.background-image-holder').each(function() {
         $(this).addClass('fadeIn');
       });
     }, 200);
-    
+    */
     // Navigation
 
     if (!$('nav').hasClass('fixed') && !$('nav').hasClass('absolute')) {
@@ -355,17 +382,6 @@ nlccapp.controller('homeCtrl', ['$scope', '$window', '$ocLazyLoad', function($sc
   }
 }]);
 
-
-nlccapp.controller('parallaxCtrl', ['$scope', '$window',function($scope, $window){
-  console.log('parallaxCtrl');
-  $scope.parallaxY = 0;
-  
-  angular.element($window).bind("scroll", function() {
-      //console.log("scrolled");
-      $scope.parallaxY = $window.pageYOffset * 0.3;
-      //console.log($window.pageYOffset);
-  });
-}]);
 function initializeMasonry(){
   $('.masonry').each(function(){
       var container = $(this).get(0);
@@ -559,4 +575,30 @@ function responsiveClasses(scope){
   		exit: function() { $body.removeClass('device-xxs'); }
   	}
   ]);
+}
+
+function initTabs(){
+  // Tabbed Content
+
+  $('.tabbed-content').each(function() {
+      $(this).append('<ul class="content"></ul>');
+  });
+
+  $('.tabs li').each(function() {
+      var originalTab = $(this),
+          activeClass = "";
+      if (originalTab.is('.tabs>li:first-child')) {
+          activeClass = ' class="active"';
+      }
+      var tabContent = originalTab.find('.tab-content').detach().wrap('<li' + activeClass + '></li>').parent();
+      originalTab.closest('.tabbed-content').find('.content').append(tabContent);
+  });
+
+  $('.tabs li').click(function() {
+      $(this).closest('.tabs').find('li').removeClass('active');
+      $(this).addClass('active');
+      var liIndex = $(this).index() + 1;
+      $(this).closest('.tabbed-content').find('.content>li').removeClass('active');
+      $(this).closest('.tabbed-content').find('.content>li:nth-of-type(' + liIndex + ')').addClass('active');
+  });
 }

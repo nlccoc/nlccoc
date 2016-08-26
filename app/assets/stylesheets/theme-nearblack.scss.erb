@@ -676,6 +676,7 @@ footer.bg-dark li,
   position: relative;
   z-index: 3;
 }
+
 .background-image-holder {
   position: absolute;
   width: 100%;
@@ -695,6 +696,7 @@ footer.bg-dark li,
   opacity: 0;
   
 }
+
 .background-image-holder img {
   display: none;
 }
@@ -2238,6 +2240,16 @@ button[type="submit"] .form-loading {
 .tabs.thirds .tab-title {
   width: 100%;
 }
+
+.tabs.forths {
+  width: 100%;
+}
+.tabs.forths li {
+  width: 25%;
+}
+.tabs.forths .tab-title {
+  width: 100%;
+}
 .button-tabs .tabs {
   display: inline-block;
   overflow: hidden;
@@ -2254,6 +2266,7 @@ button[type="submit"] .form-loading {
   display: inline-block;
   text-align: center;
   min-width: 150px;
+  
   background: #f5f5f5;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -2847,6 +2860,7 @@ button[type="submit"] .form-loading {
 .page-title-2 {
   height: 400px;
 }
+
 .page-title-1 .breadcrumb,
 .page-title-3 .breadcrumb {
   position: absolute;
@@ -3080,8 +3094,9 @@ img {
   margin-bottom: 24px;
 }
 .image-tile img {
-  width: 100%;
-  display: inline-block;
+  width: 120%;
+  //display: inline-block;
+  display: block;
 }
 .image-tile .label {
   position: absolute;
@@ -4248,6 +4263,7 @@ video {
 .masonry-item {
   max-width: 100%;
   border: 0px;
+  width: 25%;
 }
 .container .masonry-item {
   margin-bottom: 30px;
@@ -6127,3 +6143,12 @@ body:not(.device-touch) #gotoTop {
   opacity: 0 !important;
 }
 
+.parallax-window {
+    min-height: 350px;
+    background: transparent;
+}
+
+.events h2, .events h1, .events h3, .events h4, .events h5, .events h6{ 
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #010101;
+}
