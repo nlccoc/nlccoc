@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'mgmts/index'
+  get 'mgmts' => 'mgmts#index'
+  devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations' }
   get 'main/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
