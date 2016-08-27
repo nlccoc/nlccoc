@@ -1,3 +1,50 @@
+<section class="cover fullscreen image-bg overlay">
+  <div class="background-image-holder">
+      <img alt="image" class="background-image" src="<%= asset_path('home12.jpg') %>" />
+  </div>
+  <div class="container v-align-transform">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+        <div class="feature bordered text-center">
+          <h4 class="uppercase">Login Here</h4>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'text-left'}) do |f| %>
+          <!--<form class="text-left">-->
+            
+            
+            <%= f.text_field :email, autofocus: true, placeholder: 'Email', class: 'mb0' %>
+            <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'mb0' %>
+            <input type="submit" value="Login" />
+          <% end %>
+          <p class="mb0">Forgot your password?
+            <a href="#">Click Here To Reset</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--end of row-->
+  </div>
+  <!--end of container-->
+</section>
+
+<script>
+  $(document).ready(function(){
+    $('.background-image-holder').each(function() {
+      var imgSrc = $(this).children('img').attr('src');
+      $(this).css('background', 'url("' + imgSrc + '")');
+      $(this).children('img').hide();
+      $(this).css('background-position', 'initial');
+    });
+
+    // Fade in background images
+
+    setTimeout(function() {
+      $('.background-image-holder').each(function() {
+        $(this).addClass('fadeIn');
+      });
+    }, 200);
+  });
+</script>
+<!--
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -22,5 +69,5 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
+-->
 <%= render "mgmts/shared/links" %>
