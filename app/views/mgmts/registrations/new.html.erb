@@ -1,29 +1,45 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<section class="cover fullscreen image-bg overlay">
+  <div class="background-image-holder">
+      <img alt="image" class="background-image" src="<%= asset_path('home5.jpg') %>" />
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="container v-align-transform">
+      <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+              <div class="feature bordered text-center">
+                  <h4 class="uppercase">Register Here</h4>
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { :class => 'text-left'}) do |f| %>
+                    <%= devise_error_messages! %>
+                    <%= f.email_field :email, autofocus: true, placeholder: "Email Address" %>
+                    <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
+                    <%= f.password_field :password, autocomplete: "off", placeholder: "Confirm Password"  %>
+                    <%= f.submit "Register" %>
+                  <% end %>
+                  <p class="mb0">By signing up, you agree to our
+                      <a href="#">Terms Of Use</a>
+                  </p>
+              </div>
+          </div>
+      </div>
+      <!--end of row-->
   </div>
+  <!--end of container-->
+</section>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+<script>
+  $(document).ready(function(){
+    $('.background-image-holder').each(function() {
+      var imgSrc = $(this).children('img').attr('src');
+      $(this).css('background', 'url("' + imgSrc + '")');
+      $(this).children('img').hide();
+      $(this).css('background-position', 'initial');
+    });
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    // Fade in background images
 
-<%= render "mgmts/shared/links" %>
+    setTimeout(function() {
+      $('.background-image-holder').each(function() {
+        $(this).addClass('fadeIn');
+      });
+    }, 200);
+  });
+</script>

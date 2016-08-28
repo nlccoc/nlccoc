@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
-  get 'mgmts/index'
-  get 'mgmts' => 'mgmts#index'
+  # devise customized controllers: sessions, registrations
   devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations' }
   get 'main/index'
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
   root 'main#index'
+  
+  get 'mgmts/index'
+  get 'mgmts' => 'mgmts#index'
+  
+  # For ui.router
   get "*path" => "main#index"
   get "*path.html" => "main#index"
+  
+  get "mgmts/*path" => "mgmts#index"
+  get "mgmts/*path.html" => "mgmts#index"
+  
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
