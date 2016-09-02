@@ -1,6 +1,4 @@
 //= require jquery
-//# require jquery.min
-//# require jquery-ui.min
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require angular

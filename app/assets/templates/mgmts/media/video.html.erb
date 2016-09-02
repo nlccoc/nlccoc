@@ -1,1 +1,70 @@
-Media - Video
+<h1>Media - Video</h1>
+
+<div class="video-container">
+  
+  <div id="newEventHolder">
+    <span><i class="fa fa-plus"></i> Add New Event</span>
+  </div>
+  
+  <div id="newEventForm">
+    <label for="event-date">Event Date</label>
+    <input type="text" id="eventDate">
+    <label for="event-title">Event Title</label>
+    <input type="text" name="event-title" id="eventTitleInput" maxlength="80"/>
+    <label for="event-description">Description</label>
+    <textarea name="event-descripton" id="eventDescriptionInput">Event Description</textarea>
+    <button name="add-event" id="addEvent">Add New Event</button>
+    <button name="cancel-add-event" id="cancelAddEvent">Cancel</button>
+  </div>
+  
+  <ul id="upcomingEvents">
+    <li id="eventHolder">  
+      <div class="event-date-holder">
+        <span id="dateNumber">23</span>
+        <span id="dateDay">Jan</span>
+      </div>
+      <div class="event-details-holder">
+        <h1>Akron Flea</h1>
+        <span id="eventDescription">Lorem ipsum dolar sit amet&hellip;</span>
+          <ul id="editTools">
+             <li><i class="fa fa-pencil-square-o"></i></li>
+             <li><i class="fa fa-bars"></i></li>
+             <li><i class="fa fa-times" id="removeEvent"></i></li>
+          </ul>
+      </div>
+    </li>
+
+    <li id="eventHolder">
+      <div class="event-date-holder">
+        <span id="dateNumber">23</span>
+        <span id="dateDay">Jan</span>
+      </div>
+      <div class="event-details-holder">
+        <h1>Cleveland Flea</h1>
+        <span id="eventDescription">Lorem ipsum dolar sit amet&hellip;</span>
+          <ul id="editTools">
+             <li><i class="fa fa-pencil-square-o"></i></li>
+             <li><i class="fa fa-bars"></i></li>
+             <li><i class="fa fa-times" id="removeEvent"></i></li>
+          </ul>
+      </div>
+    </li>
+
+    <li id="eventHolder">
+      <div class="event-date-holder">
+        <span id="dateNumber">23</span>
+        <span id="dateDay">Jan</span>
+      </div>
+      <div class="event-details-holder">
+        <h1>Columbus Flea</h1>
+        <span id="eventDescription">Lorem ipsum dolar sit amet&hellip;</span>
+          <ul id="editTools">
+             <li><i class="fa fa-pencil-square-o"></i></li>
+             <li><i class="fa fa-bars"></i></li>
+             <li><i class="fa fa-times" id="removeEvent"></i></li>
+          </ul>
+      </div>
+    <li>
+  </ul>
+</div>
+

@@ -22,10 +22,47 @@ nlccmgmtapp.controller('sidebarController', ['$scope', function($scope) {
 }]);
 
 nlccmgmtapp.controller('quicksidebarController', ['$scope', function($scope) {
-  console.log("Siderbar Controller");
+  console.log("quicksidebarController Controller");
   $scope.$on('$includeContentLoaded', function() {
     setTimeout(function(){
       QuickSidebar.init(); // init quick sidebar        
     }, 2000)
+  });
+}]);
+
+nlccmgmtapp.controller('mediaVideoCtrl', ['$scope', '$timeout', function($scope, $timeout) {
+  console.log("mediaVideoCtrl Controller");
+  
+  $scope.$on('$viewContentLoaded', function() {
+    console.log("view content loaded");
+    $timeout(function(){
+      var newEventHolder = document.getElementById("newEventHolder");
+      var eventForm = document.getElementById("newEventForm");
+      var eventDate = document.getElementById("eventDate");
+      var addEvent = document.getElementById("addEvent");
+      var cancel = document.getElementById("cancelAddEvent");
+      var upcomingEvents = document.getElementById("upcomingEvents");
+      var eventHolder = document.getElementById("eventHolder");
+      var removeEvent = document.getElementById("removeEvent");
+      
+      // Show New Event form
+      $('#newEventHolder').click(function() {
+        console.log("click!");
+        $(eventForm).slideDown(400);
+      });
+      
+      // Add Datepicker to Date input
+      //$(eventDate).datepicker();
+      
+      // Close New Event form
+      $(cancel).click(function() {
+        $(eventForm).slideUp(400);
+      });
+      
+      // Delete icon removed event from list
+      $(removeEvent).click(function() {
+        $(eventHolder).addClass('hide').stop();
+      });
+     }, 0)
   });
 }]);
