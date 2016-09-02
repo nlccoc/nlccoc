@@ -1,2 +1,34 @@
-<h1>Mgmts#index</h1>
-<%= link_to('Logout', destroy_mgmt_session_path, :method => :delete) %>
+
+<!-- BEGIN PAGE SPINNER -->
+<div ng-spinner-bar class="page-spinner-bar">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+</div>
+<!-- END PAGE SPINNER -->
+
+<!-- BEGIN HEADER -->
+<div ng-include="'mgmts/header.html'" ng-controller="headerController" class="page-header navbar navbar-fixed-top"></div>
+<!-- END HEADER -->
+<div class="page-container">
+  <!-- BEGIN SIDEBAR -->
+  <div ng-include="'mgmts/sidebar.html'" ng-controller="sidebarController" class="page-sidebar-wrapper"> </div>
+  <!-- END SIDEBAR -->
+  <!-- BEGIN CONTENT -->
+  <div class="page-content-wrapper">
+    <div class="page-content" ng-style="{'min-height':'700px'}">
+      <!-- BEGIN ACTUAL CONTENT -->
+      <div ui-view class="fade-in-up"> </div>
+      <!-- END ACTUAL CONTENT -->
+    </div>
+  </div>
+  <!-- END CONTENT -->
+  
+  <!-- BEGIN QUICK SIDEBAR -->
+  <a href="javascript:;" class="page-quick-sidebar-toggler">
+    <i class="icon-login"></i>
+  </a>
+  <div data-ng-include="'mgmts/quick-sidebar.html'" data-ng-controller="quicksidebarController" class="page-quick-sidebar-wrapper"></div>
+  
+  <!-- END QUICK SIDEBAR -->
+</div>

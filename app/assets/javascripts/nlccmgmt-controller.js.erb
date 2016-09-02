@@ -1,0 +1,31 @@
+/* global nlccmgmtapp, gon, Layout */
+
+nlccmgmtapp.controller('mgmtCtrl', ['$scope', 'Auth', function($scope, Auth){
+  console.log('Mgmt Controller');
+  console.log(gon.current_mgmt);
+  $scope.current_mgmt = gon.current_mgmt;
+  $scope.fullHeight = '700px';
+}])
+
+/* Setup Layout Part - Header */
+nlccmgmtapp.controller('headerController', ['$scope', function($scope) {
+  console.log("Header Controller")
+  $scope.$on('$includeContentLoaded', function() {
+    Layout.initHeader(); // init header
+  });
+}]);
+nlccmgmtapp.controller('sidebarController', ['$scope', function($scope) {
+  console.log("Siderbar Controller");
+  $scope.$on('$includeContentLoaded', function() {
+    Layout.initSidebar();
+  });
+}]);
+
+nlccmgmtapp.controller('quicksidebarController', ['$scope', function($scope) {
+  console.log("Siderbar Controller");
+  $scope.$on('$includeContentLoaded', function() {
+    setTimeout(function(){
+      QuickSidebar.init(); // init quick sidebar        
+    }, 2000)
+  });
+}]);

@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html ng-app='nlcc'>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js" data-ng-app="nlccmgmtapp"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js" data-ng-app="nlccmgmtapp"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" ng-app="nlccmgmtapp">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
 <head>
   <title>New Life Christian Center 新生命靈糧堂</title>
+  <%= Gon::Base.render_data %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'mgmts', media: 'all' %>
   <%= javascript_include_tag 'mgmts' %>
   <%= csrf_meta_tags %>
 </head>
-<body class='scroll-assist' ng-class='responsiveClass' >
-  <div class="main-container">
-    <%= yield %>
-  </div>
+<body ng-controller="mgmtCtrl" class="page-header-fixed page-sidebar-closed-hide-logo page-on-load" ng-class="{'page-content-white': settings.layout.pageContentWhite,'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
+<%= yield %>
 </body>
 </html>

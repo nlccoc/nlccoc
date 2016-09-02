@@ -7,13 +7,14 @@ Rails.application.routes.draw do
   get 'mgmts/index'
   get 'mgmts' => 'mgmts#index'
   
-  # For ui.router
-  get "*path" => "main#index"
-  get "*path.html" => "main#index"
-  
+    
   get "mgmts/*path" => "mgmts#index"
   get "mgmts/*path.html" => "mgmts#index"
   
+  # For ui.router
+  get "*path" => "main#index"
+  get "*path.html" => "main#index"
+
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

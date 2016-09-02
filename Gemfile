@@ -9,6 +9,8 @@ gem 'angularjs-rails'
 gem 'angular-rails-templates'
 gem 'angular-ui-router-rails'
 gem "font-awesome-rails"
+gem 'simple-line-icons-rails'
+gem 'gon'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

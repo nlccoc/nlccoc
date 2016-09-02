@@ -18,5 +18,5 @@
 //= require nlccapp
 //= require nlccapp-controller
 //= require nlccapp-config
-//= require_tree ../templates
+//= require_tree ../templates/main
 // require_tree .

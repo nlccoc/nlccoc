@@ -1,0 +1,24 @@
+/* global nlccmgmtapp */
+nlccmgmtapp.config([
+ '$stateProvider', 
+ '$urlRouterProvider', 
+ '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
+    $stateProvider.state('dashboard', {
+      url: '/mgmts/dashboard',templateUrl: 'mgmts/home.html'/*,
+      controller: 'mainCtrl'*/
+    }).state('media-video', {
+      url: '/mgmts/media-video',templateUrl: 'mgmts/media.video.html'/*,
+      controller: 'mainCtrl'*/
+    }).state('media-audio', {
+      url: '/mgmts/media-audio',templateUrl: 'mgmts/media.audio.html'/*,
+      controller: 'mainCtrl'*/
+    }).state('media-photo', {
+      url: '/mgmts/media-photo',templateUrl: 'mgmts/media.photo.html'/*,
+      controller: 'mainCtrl'*/
+    });
+    $urlRouterProvider.otherwise('/mgmts/dashboard');
+    $locationProvider.html5Mode({
+       enabled:true,
+       requireBase: false
+    });
+}]);
