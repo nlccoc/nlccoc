@@ -7,13 +7,23 @@ nlccmgmtapp.config([
       url: '/mgmts/dashboard',templateUrl: 'mgmts/home.html'/*,
       controller: 'mainCtrl'*/
     }).state('media-video', {
-      url: '/mgmts/media-video',templateUrl: 'mgmts/media.video.html'/*,
+      url: '/mgmts/media-video',templateUrl: 'mgmts/media/video.html'/*,
       controller: 'mainCtrl'*/
     }).state('media-audio', {
-      url: '/mgmts/media-audio',templateUrl: 'mgmts/media.audio.html'/*,
+      url: '/mgmts/media-audio',templateUrl: 'mgmts/media/audio.html'/*,
       controller: 'mainCtrl'*/
     }).state('media-photo', {
-      url: '/mgmts/media-photo',templateUrl: 'mgmts/media.photo.html'/*,
+      url: '/mgmts/media-photo',templateUrl: 'mgmts/media/photo.html'/*,
+      controller: 'mainCtrl'*/
+    }).state('events-all', {
+      url: '/mgmts/events-all',templateUrl: 'mgmts/events/all.html'/*,
+      controller: 'mainCtrl'*/
+    }).state('events-category', {
+      url: '/mgmts/events-category',templateUrl: 'mgmts/events/category.html'/*,
+      controller: 'mainCtrl'*/
+    })
+    .state('user-profile', {
+      url: '/mgmts/user-profile',templateUrl: 'mgmts/profile.html'/*,
       controller: 'mainCtrl'*/
     });
     $urlRouterProvider.otherwise('/mgmts/dashboard');
