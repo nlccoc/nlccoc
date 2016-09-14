@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations' }
   get 'main/index'
   root 'main#index'
+  get "share" => "main#share"  
   
   get 'mgmts/index'
   get 'mgmts' => 'mgmts#index'
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
   get "*path" => "main#index"
   get "*path.html" => "main#index"
 
-  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
