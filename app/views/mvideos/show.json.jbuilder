@@ -1,0 +1,1 @@
+json.partial! "mvideos/mvideo", mvideo: @mvideo

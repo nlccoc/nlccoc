@@ -150,7 +150,7 @@
                       <li>
                           <a href="#/profile/dashboard">
                               <span class="photo">
-                                  <img src="{{settings.layoutPath}}/img/avatar2.jpg" class="img-circle" alt=""> </span>
+                                  <img src="<%= asset_path('users/avatar2.jpg') %>" class="img-circle" alt=""> </span>
                               <span class="subject">
                                   <span class="from"> Lisa Wong </span>
                                   <span class="time">Just Now </span>
@@ -161,7 +161,7 @@
                       <li>
                           <a href="#/profile/dashboard">
                               <span class="photo">
-                                  <img src="{{settings.layoutPath}}/img/avatar3.jpg" class="img-circle" alt=""> </span>
+                                  <img src="<%= asset_path('users/avatar3.jpg') %>" class="img-circle" alt=""> </span>
                               <span class="subject">
                                   <span class="from"> Richard Doe </span>
                                   <span class="time">16 mins </span>
@@ -172,7 +172,7 @@
                       <li>
                           <a href="#/profile/dashboard">
                               <span class="photo">
-                                  <img src="{{settings.layoutPath}}/img/avatar1.jpg" class="img-circle" alt=""> </span>
+                                  <img src="<%= asset_path('users/avatar1.jpg') %>" class="img-circle" alt=""> </span>
                               <span class="subject">
                                   <span class="from"> Bob Nilson </span>
                                   <span class="time">2 hrs </span>
@@ -183,7 +183,7 @@
                       <li>
                           <a href="#/profile/dashboard">
                               <span class="photo">
-                                  <img src="{{settings.layoutPath}}/img/avatar2.jpg" class="img-circle" alt=""> </span>
+                                  <img src="<%= asset_path('users/avatar2.jpg') %>" class="img-circle" alt=""> </span>
                               <span class="subject">
                                   <span class="from"> Lisa Wong </span>
                                   <span class="time">40 mins </span>
@@ -194,7 +194,7 @@
                       <li>
                           <a href="#/profile/dashboard">
                               <span class="photo">
-                                  <img src="{{settings.layoutPath}}/img/avatar3.jpg" class="img-circle" alt=""> </span>
+                                  <img src="<%= asset_path('users/avatar3.jpg') %>" class="img-circle" alt=""> </span>
                               <span class="subject">
                                   <span class="from"> Richard Doe </span>
                                   <span class="time">46 mins </span>
@@ -329,19 +329,19 @@
           <ul class="dropdown-menu dropdown-menu-default">
               <li class="active">
                   <a href="#">
-                      <img alt="" src="{{settings.globalPath}}/img/flags/us.png"> English </a>
+                      <img alt="" src="<%= asset_path('flags/us.png') %>"> English </a>
               </li>
               <li>
                   <a href="#">
-                      <img alt="" src="{{settings.globalPath}}/img/flags/de.png"> German </a>
+                      <img alt="" src="<%= asset_path('flags/de.png') %>"> German </a>
               </li>
               <li>
                   <a href="#">
-                      <img alt="" src="{{settings.globalPath}}/img/flags/ru.png"> Russian </a>
+                      <img alt="" src="<%= asset_path('flags/ru.png') %>"> Russian </a>
               </li>
               <li>
                   <a href="#">
-                      <img alt="" src="{{settings.globalPath}}/img/flags/fr.png"> French </a>
+                      <img alt="" src="<%= asset_path('flags/fr.png') %>"> French </a>
               </li>
           </ul>
       </li>

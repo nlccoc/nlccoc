@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @mvideo.title %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @mvideo.date %>
+</p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @mvideo.path %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @mvideo.desc %>
+</p>
+
+<%= link_to 'Edit', edit_mvideo_path(@mvideo) %> |
+<%= link_to 'Back', mvideos_path %>

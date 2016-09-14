@@ -1,24 +1,151 @@
+<style>
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  margin: 14em auto;
+  background: #FFF;
+  border: none;
+  border-radius: 0;
+  /*border-radius: .25em .25em .4em .4em;*/
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-40px);
+  -moz-transform: translateY(-40px);
+  -ms-transform: translateY(-40px);
+  -o-transform: translateY(-40px);
+  transform: translateY(-40px);
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-backface-visibility: hidden;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.modal-content p {
+  padding: 3em 1em;
+}
+.modal-content .cd-buttons,
+.modal-content p {
+  margin-bottom: 0px;
+}
+
+
+.modal-content .cd-buttons:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.modal-content .cd-buttons {
+  padding: 0px;
+}
+.modal-content .cd-buttons li {
+  list-style: none;
+  float: left;
+  width: 50%;
+}
+.modal-content .cd-buttons a {
+  display: block;
+  height: 60px;
+  line-height: 60px;
+  text-transform: uppercase;
+  color: #FFF;
+  -webkit-transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+.modal-content .cd-buttons li:first-child a {
+  background: #fc7169;
+  /*border-radius: 0 0 0 .25em;*/
+}
+.no-touch .modal-content .cd-buttons li:first-child a:hover {
+  background-color: #fc8982;
+}
+.modal-content .cd-buttons li:last-child a {
+  background: #b6bece;
+  /*border-radius: 0 0 .25em 0;*/
+}
+.no-touch .modal-content .cd-buttons li:last-child a:hover {
+  background-color: #c5ccd8;
+}
+.modal-content .cd-popup-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+}
+.modal-content .cd-popup-close::before, .modal-content .cd-popup-close::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  width: 14px;
+  height: 3px;
+  background-color: #8f9cb5;
+}
+.modal-content .cd-popup-close::before {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  left: 8px;
+}
+.modal-content .cd-popup-close::after {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  right: 8px;
+}
+</style>
 <h1>Media - Video</h1>
 
 <div class="video-container">
+  Did it work? 
   
-  <div id="newEventHolder">
-    <span><i class="fa fa-plus"></i> Add New Event</span>
+<ng-include src="'stringCondition'"></ng-include>
+  
+  <div id="newEventHolder" ng-click='showform();'>
+    <span><i class="fa fa-plus"></i> Add New Media</span>
   </div>
   
   <div id="newEventForm">
-    <label for="event-date">Event Date</label>
-    <input type="text" id="eventDate">
-    <label for="event-title">Event Title</label>
-    <input type="text" name="event-title" id="eventTitleInput" maxlength="80"/>
+    <label for="event-title">Title</label>
+    <input type="text" name="mvideo[title]" id="mvideo_title"  maxlength="80" ng-model='newvideo.title' />
+    <label for="event-date">Date</label>
+    <input type="text" name='mvideo[date]' id="eventDate" ng-model='newvideo.date'>
+    <label for="event-title">Media Youtube Address (Embedded one)</label>
+    <input type="text" name="mvideo[path]" id="mvideo_path" maxlength="80" ng-model='newvideo.path'/>
+    
     <label for="event-description">Description</label>
-    <textarea name="event-descripton" id="eventDescriptionInput">Event Description</textarea>
-    <button name="add-event" id="addEvent">Add New Event</button>
-    <button name="cancel-add-event" id="cancelAddEvent">Cancel</button>
+    <textarea name="mvideo[desc]" id="eventDescriptionInput" ng-model='newvideo.desc'>Media Description</textarea>
+    <button name="add-event" id="addEvent" ng-click='createMVideo(newvideo)'>Add New Media</button>
+    <button name="cancel-add-event" id="cancelAddEvent" ng-click='hideform()'>Cancel</button>
+    
+    {{newvideo}}
   </div>
-  
   <ul id="upcomingEvents">
-    <li id="eventHolder">  
+    <li id='eventHolder' ng-repeat='video in mvideos'>
+      <div class="event-date-holder">
+        <span id="dateNumber">{{getDay(video.date)}}</span>
+        <span id="dateDay">{{getMonth(video.date)}}</span>
+      </div>
+      <div class="event-details-holder">
+        <h1>{{video.title}}</h1>
+        <!--<span id="eventDescription"></span>-->
+          <ul id="editTools">
+             <li><i class="fa fa-pencil-square-o"></i></li>
+             <li><i class="fa fa-bars"></i></li>
+             <li><i class="fa fa-times" ng-click='deleteMVideo(video);' id="removeEvent"></i></li>
+          </ul>
+      </div>
+    </li>
+    <!--<li id="eventHolder">  
       <div class="event-date-holder">
         <span id="dateNumber">23</span>
         <span id="dateDay">Jan</span>
@@ -33,7 +160,7 @@
           </ul>
       </div>
     </li>
-
+  
     <li id="eventHolder">
       <div class="event-date-holder">
         <span id="dateNumber">23</span>
@@ -59,12 +186,23 @@
         <h1>Columbus Flea</h1>
         <span id="eventDescription">Lorem ipsum dolar sit amet&hellip;</span>
           <ul id="editTools">
-             <li><i class="fa fa-pencil-square-o"></i></li>
-             <li><i class="fa fa-bars"></i></li>
-             <li><i class="fa fa-times" id="removeEvent"></i></li>
+            <li><i class="fa fa-pencil-square-o"></i></li>
+            <li><i class="fa fa-bars"></i></li>
+            <li><i class="fa fa-times" id="removeEvent"></i></li>
           </ul>
       </div>
     <li>
-  </ul>
+  </ul>-->
 </div>
 
+<script type="text/ng-template" id="stringCondition">
+  Yes, yes it did.  This is in the template
+</script>
+<script type="text/ng-template" id="myModalContent.html">
+	<p>Are you sure you want to delete this element? {{lib.name}}</p>
+	<ul class="cd-buttons">
+		<li><a href="#0" ng-click="ok()">Yes</a></li>
+		<li><a href="#0" ng-click="cancel()">No</a></li>
+	</ul>
+
+</script>

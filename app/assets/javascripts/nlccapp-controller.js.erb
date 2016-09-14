@@ -6,10 +6,10 @@ var mr_firstSectionHeight,
     mr_floatingProjectSections,
     mr_scrollTop = 0,
     $body;
-console.log('nlccapp-controller');
-console.log(nlccapp);
     
-nlccapp.controller('homeCtrl', ['$scope', '$window', '$ocLazyLoad', function($scope, $window, $ocLazyLoad){
+nlccapp.controller('homeCtrl', 
+['$scope', '$window', '$ocLazyLoad', 'mvideoFactory', '$timeout', 'tools', 
+function($scope, $window, $ocLazyLoad, mvideoFactory, $timeout, tools){
   console.log("Homepage controller");
   $scope.responsiveClass='device-xxx';
   $scope.navFixed = false;
@@ -25,12 +25,29 @@ nlccapp.controller('homeCtrl', ['$scope', '$window', '$ocLazyLoad', function($sc
   $scope.$watch('outOfSight', function(newvalue, oldvalue){
     //console.log('outOfSight changed');
   });
+  
+  $scope.trustUrl = tools.trustUrl;
+  
+  //$scope.$on('ngRepeatFinished', [ 'ngRepeatFinishedEvent', function(ngRepeatFinishedEvent) {
+    //you also get the actual event object
+    //do stuff, execute functions -- whatever...
+    //console.log('ng-repeat render done.');
+  //}]);
+    
+  //$scope.$on('$viewContentLoaded', function() {
   angular.element(document).ready(function () {
+    console.log($scope.mvideos);
     $scope.stage='ready';
     $body = $('body');
     $scope.responsiveClasses();
-
-    // Disable parallax on mobile
+    mvideoFactory.getAllMvideos().then(function(data){
+      $scope.mvideos = data;
+      console.log(data);
+      $timeout(function(){
+        $('#owl-carousel-media .entry-image').fitVids();
+        initOwlMedia();
+        
+        // Disable parallax on mobile
 
     if ((/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
       $('section').removeClass('parallax');
@@ -57,6 +74,9 @@ nlccapp.controller('homeCtrl', ['$scope', '$window', '$ocLazyLoad', function($sc
         });
       });
     }
+      }, 1000);
+    });
+    
     initTabs();
     // Fix nav to top while scrolling
 
@@ -87,8 +107,8 @@ nlccapp.controller('homeCtrl', ['$scope', '$window', '$ocLazyLoad', function($sc
   		});
     }
     
-    $('#owl-carousel-media .entry-image').fitVids();
-    initOwlMedia();
+    //$('#owl-carousel-media .entry-image').fitVids();
+    //initOwlMedia();
     
     /*$('.background-image-holder').each(function() {
       var imgSrc = $(this).children('img').attr('src');

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827064135) do
+ActiveRecord::Schema.define(version: 20160904235119) do
 
   create_table "mgmts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -30,5 +30,14 @@ ActiveRecord::Schema.define(version: 20160827064135) do
 
   add_index "mgmts", ["email"], name: "index_mgmts_on_email", unique: true
   add_index "mgmts", ["reset_password_token"], name: "index_mgmts_on_reset_password_token", unique: true
+
+  create_table "mvideos", force: :cascade do |t|
+    t.string   "title"
+    t.date     "date"
+    t.string   "path"
+    t.text     "desc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mvideos
   # devise customized controllers: sessions, registrations
   devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations' }
   get 'main/index'

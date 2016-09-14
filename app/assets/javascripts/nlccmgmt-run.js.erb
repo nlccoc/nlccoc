@@ -1,4 +1,6 @@
 /* global nlccmgmtapp */
 nlccmgmtapp.run(["$rootScope", "$state", function($rootScope, $state) {
   console.log("nlcc mgmt run");
+  $rootScope.$state = $state; // state to be accessed from view
+  //$rootScope.$settings = settings; // state to be accessed from view
 }]);

@@ -1,11 +1,15 @@
-/* global nlccmgmtapp, gon, Layout */
+/* global nlccmgmtapp, gon, Layout, $ */
 
-nlccmgmtapp.controller('mgmtCtrl', ['$scope', 'Auth', function($scope, Auth){
+nlccmgmtapp.controller('mgmtCtrl', ['$scope', '$rootScope', 'settings', function($scope, $rootScope, settings){
   console.log('Mgmt Controller');
-  console.log(gon.current_mgmt);
+  //console.log(gon.current_mgmt);
   $scope.current_mgmt = gon.current_mgmt;
   $scope.fullHeight = '700px';
-}])
+  // set default layout mode
+	$rootScope.settings.layout.pageContentWhite = true;
+  $rootScope.settings.layout.pageBodySolid = false;
+  $rootScope.settings.layout.pageSidebarClosed = false;
+}]);
 
 /* Setup Layout Part - Header */
 nlccmgmtapp.controller('headerController', ['$scope', function($scope) {
@@ -30,39 +34,104 @@ nlccmgmtapp.controller('quicksidebarController', ['$scope', function($scope) {
   });
 }]);
 
-nlccmgmtapp.controller('mediaVideoCtrl', ['$scope', '$timeout', function($scope, $timeout) {
+nlccmgmtapp.controller('mediaVideoCtrl', 
+['$scope', '$timeout', 'mvideoFactory', '$uibModal', 
+function($scope, $timeout, mvideoFactory, $uibModal) {
   console.log("mediaVideoCtrl Controller");
+  $scope.animationsEnabled = true;
+  $scope.newvideo={};
+  $scope.newvideo.title='';
+  $scope.newvideo.date='';
+  $scope.newvideo.path='';
+  $scope.newvideo.desc='';
+  $scope.getMonth = function(date) {
+    var monthNames = [
+      "Jan", "Feb", "Mar",
+      "Apr", "May", "Jun", "Jul",
+      "Aug", "Sep", "Oct",
+      "Nov", "Dec"
+    ];
+    var d = new Date(date);
+    //console.log('get month');
+    return monthNames[d.getMonth()]
+  }
+  
+  $scope.getDay = function(date) {
+    var d = new Date(date);
+    //console.log(date);
+    return d.getDate()+1;
+  }
+  
+  $scope.createMVideo = function(mvideo){
+    console.log(mvideo)
+    mvideoFactory.createMVideo(mvideo).then(function(data){
+      $scope.mvideos.push(data);
+      $scope.hideform();
+      console.log("Success create a Media");
+    });
+  }
+  
+  $scope.deleteMVideo = function(mvideo){
+    console.log("DeleteMVideo");
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'myModalContent.html',
+      controller: 'modalDeleteMvideoCtrl',
+      resolve: {
+        mvideo: function () {
+          return mvideo;
+        }
+      }
+    });
+    
+    modalInstance.result.then(function (result) {
+      console.log(result);
+      if(result == 0) {
+        var idx = 0;
+        for(idx=0; idx<$scope.mvideos.length; idx++){
+          if (mvideo.id == $scope.mvideos[idx].id){
+            $scope.mvideos.splice(idx, 1);
+            return;
+          }
+        }
+      }
+    });
+  
+  }
+  
+  $scope.showform = function() {
+    $('#newEventForm').slideDown(400);
+  }
+  
+  $scope.hideform = function() {
+    $('#newEventForm').slideUp(400);
+  }
   
   $scope.$on('$viewContentLoaded', function() {
     console.log("view content loaded");
+    mvideoFactory.getAllMvideos().then(function(data){
+      $scope.mvideos = data;
+      //console.log(data);
+    });
     $timeout(function(){
-      var newEventHolder = document.getElementById("newEventHolder");
-      var eventForm = document.getElementById("newEventForm");
-      var eventDate = document.getElementById("eventDate");
-      var addEvent = document.getElementById("addEvent");
-      var cancel = document.getElementById("cancelAddEvent");
-      var upcomingEvents = document.getElementById("upcomingEvents");
-      var eventHolder = document.getElementById("eventHolder");
-      var removeEvent = document.getElementById("removeEvent");
-      
-      // Show New Event form
-      $('#newEventHolder').click(function() {
-        console.log("click!");
-        $(eventForm).slideDown(400);
-      });
-      
-      // Add Datepicker to Date input
-      //$(eventDate).datepicker();
-      
-      // Close New Event form
-      $(cancel).click(function() {
-        $(eventForm).slideUp(400);
-      });
-      
-      // Delete icon removed event from list
-      $(removeEvent).click(function() {
-        $(eventHolder).addClass('hide').stop();
-      });
      }, 0)
   });
+}]);
+
+
+nlccmgmtapp.controller('modalDeleteMvideoCtrl', 
+['$scope', '$uibModalInstance', 'mvideoFactory', 'mvideo', 
+function ($scope, $uibModalInstance, mvideoFactory, mvideo) {
+
+  $scope.ok = function () {
+    console.log("delete {" + mvideo.id + "}");
+    mvideoFactory.deleteMVideo(mvideo.id).then(function(data){
+      console.log("Successfully delete the m-video");
+    });
+    $uibModalInstance.close(0);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
 }]);

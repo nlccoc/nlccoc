@@ -15,6 +15,8 @@
 //= require owl.carousel/dist/owl.carousel
 //= require jquery-smooth-scroll/jquery.smooth-scroll.js
 //= require jrespond/js/jRespond.js
+//= require nlccapp-factory
+//= require nlccapp-directives
 //= require nlccapp
 //= require nlccapp-controller
 //= require nlccapp-config

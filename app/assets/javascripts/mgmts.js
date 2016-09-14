@@ -3,13 +3,15 @@
 //= require bootstrap-sprockets
 //= require angular
 //= require angular-animate
+//= require angular-resource
 //= require angular-ui-router
 //= require angular-rails-templates
-//= require angular-devise/lib/devise
+//= require angular-bootstrap/ui-bootstrap-tpls
 //= require app
 //= require layout
 //= require quick-sidebar
 //= require nlccapp-directives
+//= require nlccapp-factory
 //= require nlccmgmtapp
 //= require nlccmgmt-config
 //= require nlccmgmt-controller
