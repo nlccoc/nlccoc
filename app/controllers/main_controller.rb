@@ -1,6 +1,6 @@
 class MainController < ApplicationController
-  #layout 'share', only: [:share]
-  layout false, only: [:share]
+  layout 'share', only: [:share]
+  
   def index
   end
   
