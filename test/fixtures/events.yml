@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  desc: MyText
+  start_time: 2016-09-20 17:23:13
+  interval_min: 1
+  date: 2016-09-20
+  interval_day: 1
+  more_link: MyString
+
+two:
+  title: MyString
+  desc: MyText
+  start_time: 2016-09-20 17:23:13
+  interval_min: 1
+  date: 2016-09-20
+  interval_day: 1
+  more_link: MyString
