@@ -12,6 +12,7 @@
       <th>Date</th>
       <th>Interval day</th>
       <th>More link</th>
+      <th>Event Type</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,6 +27,7 @@
         <td><%= event.date %></td>
         <td><%= event.interval_day %></td>
         <td><%= event.more_link %></td>
+        <td><%= event.event_type.name %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
