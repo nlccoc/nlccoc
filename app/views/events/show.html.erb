@@ -44,6 +44,10 @@
   <strong>Event Status:</strong>
   <%= @event.event_status.name unless @event_status.nil? %>
 </p>
+<p>
+  <strong>Event Category:</strong>
+  <%= @event.event_category.name unless @event_category.nil? %>
+</p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

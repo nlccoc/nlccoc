@@ -47,6 +47,10 @@
     <%= f.label :event_status %><br>
     <%= f.collection_select(:event_status_id, EventStatus.all, :id, :name, :variable => 'Please select status') %>
   </div>
+  <div class="field">
+    <%= f.label :event_category %><br>
+    <%= f.collection_select(:event_category_id, EventCategory.all, :id, :name, :variable => 'Please select status') %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

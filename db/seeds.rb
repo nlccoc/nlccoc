@@ -24,3 +24,13 @@ event_status = [
 event_status.each do |name, var|
   EventStatus.create(name: name, variable: var)
 end
+
+event_category = [
+  [ "Equipping", "EQUIP"],
+  [ "SundayService", "SS"],
+  [ "Activities", "ACTS"],
+  [ "CELLGROUP", "CELL"]
+]
+event_category.each do |name, var|
+  EventCategory.create(name: name, variable: var)
+end
