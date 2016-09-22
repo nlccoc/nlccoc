@@ -3,10 +3,17 @@ Rails.application.routes.draw do
   resources :events
   resources :mvideos
   #end
+  get 'mgmts/index'
+  get 'mgmts' => 'mgmts#index'
+  
+    
+  get "mgmts/*path" => "mgmts#index"
+  get "mgmts/*path.html" => "mgmts#index"
+  
   # devise customized controllers: sessions, registrations
   devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations' }
   
-  scope "/:locale", :locale => /en|zh|cn/ do
+  scope "/:locale", :locale => /en|zh|cn/, :except => 'mgmts' do
     get 'main/index'
     root 'main#index'
   end
@@ -18,14 +25,6 @@ Rails.application.routes.draw do
   get "/" => "main#index"
   
   get "share" => "main#share"  
-  
-  get 'mgmts/index'
-  get 'mgmts' => 'mgmts#index'
-  
-    
-  get "mgmts/*path" => "mgmts#index"
-  get "mgmts/*path.html" => "mgmts#index"
-  
   
   # For ui.router
   get "*path" => "main#index"
