@@ -18,8 +18,19 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
   $scope.goToTop = false;
   $scope.stage='initial';
   $scope.mvideos=[];
+  $scope.language = { 'en': 'ENG', 'zh': '繁體中文','cn': '簡體中文' };
+  var lang_code = '<%= I18n.locale %>';
+  $scope.current_lang_code = lang_code;
+  console.log("lang: " + lang_code);
+  console.log($scope.current_lang_code);
+  $scope.current_lang_code = '<%= I18n.locale %>' ;
+  $scope.current_language = $scope.language[$scope.current_lang_code];
+  //console.log($scope.current_language);
   
+  $scope.lang_list = (JSON.parse(JSON.stringify($scope.language)));
   
+  // The languge list without the current one.
+  delete $scope.lang_list[$scope.current_lang_code]
   
   $scope.$watch('navScrolled', function(newvalue, oldvalue){
     //console.log('navscroll changed');

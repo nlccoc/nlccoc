@@ -15,6 +15,7 @@ angular.module('nlcc.tools', [])
         // display the spinner bar whenever the route changes(the content part started loading)
         $rootScope.$on('$stateChangeStart', function() {
           element.removeClass('hide'); // show spinner bar
+          console.log("$stateChangeStart");
         });
 
         // hide the spinner bar on rounte change success(after the content loaded)
