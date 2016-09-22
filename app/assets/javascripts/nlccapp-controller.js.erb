@@ -8,8 +8,8 @@ var mr_firstSectionHeight,
     $body;
     
 nlccapp.controller('homeCtrl', 
-['$scope', '$window', '$ocLazyLoad', 'mvideoFactory', '$timeout', 'tools', 
-function($scope, $window, $ocLazyLoad, mvideoFactory, $timeout, tools){
+['$scope', '$rootScope', '$window', '$ocLazyLoad', 'mvideoFactory', '$timeout', 'tools', '$stateParams', '$location', 
+function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tools, $stateParams, $location){
   console.log("Homepage controller");
   $scope.responsiveClass='device-xxx';
   $scope.navFixed = false;
@@ -17,6 +17,9 @@ function($scope, $window, $ocLazyLoad, mvideoFactory, $timeout, tools){
   $scope.navScrolled = false;
   $scope.goToTop = false;
   $scope.stage='initial';
+  $scope.mvideos=[];
+  
+  
   
   $scope.$watch('navScrolled', function(newvalue, oldvalue){
     //console.log('navscroll changed');

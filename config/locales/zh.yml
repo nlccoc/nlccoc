@@ -19,11 +19,11 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+zh:
   hello: "Hello world"
-  who: "Who We Are"
-  connect: "Connect"
-  events: "Events"
-  ministries: "Ministries"
-  media: "Media"
-  give: "Give"
+  who: "關於我們"
+  connect: "生根發芽"
+  events: "最新活動"
+  ministries: "教會事工"
+  media: "影音媒體"
+  give: "線上奉獻"

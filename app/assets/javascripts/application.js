@@ -6,6 +6,7 @@
 //= require angular-animate
 //= require angular-ui-router
 //= require angular-rails-templates
+//= require angular-translate/angular-translate
 //= require angular-scroll/angular-scroll.js
 //= require ng-parallax/angular-parallax.js
 //= require parallax.js/parallax.js
