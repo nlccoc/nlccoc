@@ -19,6 +19,7 @@
 //= require nlccapp-factory
 //= require nlccapp-directives
 //= require nlccapp
+//= require nlccapp-run
 //= require nlccapp-controller
 //= require nlccapp-config
 //= require_tree ../templates/main

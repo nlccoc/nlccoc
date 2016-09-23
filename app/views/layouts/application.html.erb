@@ -5,12 +5,16 @@
   <%# stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%# javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= Gon::Base.render_data %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-controller='homeCtrl' class='scroll-assist' ng-class='responsiveClass' >
+<body ng-controller='homeCtrl' class='scroll-assist {{responsiveClass}}' ng-class="{'loaded':loaded}">
 <%= render 'shared/main/header' %>
+<div id="loader-wrapper">
+  <div id="spinner"></div>
+</div>
 <%= yield %>
 <%= render 'shared/main/footer'%>
 <a href='#top' class='inner-link'><div id="gotoTop" class="ng-animate icon-angle-up" ng-show='goToTop'></div></a>
