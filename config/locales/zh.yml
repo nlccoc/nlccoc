@@ -19,10 +19,12 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-cn:
-  who: "关于我们"
-  connect: "生根发芽"
-  events: "最新活动"
-  ministries: "教会事工"
-  media: "影音媒体"
-  give: "线上奉献"
+zh:
+  hello: "Hello world"
+  who: "關於我們"
+  connect: "生根發芽"
+  events: "最新活動"
+  ministries: "教會事工"
+  media: "影音媒體"
+  give: "線上奉獻"
+  nlcc: "橙縣 新生命靈糧堂"
