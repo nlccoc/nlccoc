@@ -1,3 +1,4 @@
+    
 /* global nlccapp, $, angular, Masonry, jRespond, gon, I18n */
 var mr_firstSectionHeight,
     mr_nav,
@@ -11,6 +12,7 @@ nlccapp.controller('homeCtrl',
 ['$scope', '$rootScope', '$window', '$ocLazyLoad', 'mvideoFactory', '$timeout', 'tools', '$stateParams', '$location', 
 function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tools, $stateParams, $location){
   console.log("Homepage controller");
+  
   $scope.I18n = I18n;
   $scope.loaded=false;
   $scope.responsiveClass='device-xxx';
@@ -21,7 +23,7 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
   $scope.stage='initial';
   $scope.mvideos=[];
   $scope.language = { 'en': 'ENG', 'zh': '繁體中文','cn': '簡體中文' };
-  console.log("lang: " + gon.current_lang);
+  //console.log("lang: " + gon.current_lang);
   $scope.current_lang_code = gon.current_lang;
   $scope.clan = $scope.language[$scope.current_lang_code];
   //console.log($scope.current_language);
@@ -49,53 +51,20 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
     
   //$scope.$on('$viewContentLoaded', function() {
   angular.element(document).ready(function () {
-    console.log($scope.mvideos);
+    
+    //console.log($scope.mvideos);
     $scope.stage='ready';
     $body = $('body');
     $scope.responsiveClasses();
     mvideoFactory.getAllMvideos().then(function(data){
       $scope.mvideos = data;
-      console.log(data);
+      //console.log(data);
       $timeout(function(){
         $('#owl-carousel-media .entry-image').fitVids();
         initOwlMedia();
-        
-        // Disable parallax on mobile
-
-    if ((/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
-      $('section').removeClass('parallax');
-      $('.background-image-holder').each(function() {
-        var imgSrc = $(this).children('img').attr('src');
-        console.log(imgSrc);
-        $(this).css('background', 'url("' + imgSrc + '")');
-        $(this).children('img').hide();
-        $(this).css('background-position', 'initial');
-      });
-      setTimeout(function() {
-        $('.background-image-holder').each(function() {
-          $(this).addClass('fadeIn');
-        });
+      
       }, 200);
-    }
-    else {
-    //$('.parallax-window').parallax({imageSrc: '<%= asset_path("Psalm-118_1-give-thanks.jpg") %>'});
-      $('.parallax .background-image-holder').each(function(){
-        var imgSrc = $(this).children('img').attr('src');
-        console.log(imgSrc);
-        $(this).parallax({
-          imageSrc: imgSrc
-        });
-      });
-    }
-      }, 1000);
     });
-    
-    // Fix nav to top while scrolling
-
-    mr_nav = $('body .nav-container nav:first');
-    mr_navOuterHeight = $('body .nav-container nav:first').outerHeight()-100;
-    mr_fixedAt = typeof mr_nav.attr('data-fixed-at') !== typeof undefined ? parseInt(mr_nav.attr('data-fixed-at').replace('px', '')) : parseInt($('section:nth-of-type(1)').outerHeight());
-    $scope.updateNav();
 
     $ocLazyLoad.load('<%= asset_path("parallax.js/parallax") %>');
     //angular.element($window).bind("scroll", function() {
@@ -249,14 +218,45 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
         $('section').removeClass('parallax');
     }
     
-    
-    window.addEventListener("scroll", $scope.updateNav, false);
-    
-    setTimeout(initTabs, 1000);
-    // Initialize Masonry
-
-    setTimeout(initializeMasonry, 1000);
     setTimeout(function(){
+      initTabs();
+      initializeMasonry();
+      $ocLazyLoad.load('<%= asset_path("justfont.js") %>');
+       // Fix nav to top while scrolling
+
+      mr_nav = $('body .nav-container nav:first');
+      mr_navOuterHeight = $('body .nav-container nav:first').outerHeight()-600;
+      mr_fixedAt = typeof mr_nav.attr('data-fixed-at') !== typeof undefined ? parseInt(mr_nav.attr('data-fixed-at').replace('px', '')) : parseInt($('section:nth-of-type(1)').outerHeight());
+      $scope.updateNav();
+      window.addEventListener("scroll", $scope.updateNav, false);
+      
+      // Disable parallax on mobile
+
+      if ((/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
+        $('section').removeClass('parallax');
+        $('.background-image-holder').each(function() {
+          var imgSrc = $(this).children('img').attr('src');
+          //console.log(imgSrc);
+          $(this).css('background', 'url("' + imgSrc + '")');
+          $(this).children('img').hide();
+          $(this).css('background-position', 'initial');
+        });
+        setTimeout(function() {
+          $('.background-image-holder').each(function() {
+            $(this).addClass('fadeIn');
+          });
+        }, 100);
+      }
+      else {
+      //$('.parallax-window').parallax({imageSrc: '<%= asset_path("Psalm-118_1-give-thanks.jpg") %>'});
+        $('.parallax .background-image-holder').each(function(){
+          var imgSrc = $(this).children('img').attr('src');
+          //console.log(imgSrc);
+          $(this).parallax({
+            imageSrc: imgSrc
+          });
+        });
+      }
       $scope.loaded=true;
     }, 1000);
   });
@@ -349,10 +349,8 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
   
   $scope.updateNav = function() {
     var mr_scrollTop = $window.pageYOffset;
-    //console.log($window.pageYOffset);
-    //console.log($('#bg').position().top);
     var scrollY = mr_scrollTop;
-    
+    console.log(scrollY);
     //$scope.parallaxY = scrollY*0.5;
 
     if (scrollY <= 0) {
@@ -370,6 +368,8 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
       return;
     }
     
+    console.log('mr_navOuterHeight = ' + mr_navOuterHeight);
+    console.log('mr_fixedAt = ' + mr_fixedAt);
     if (scrollY > mr_navOuterHeight + mr_fixedAt) {
       if (!$scope.navScrolled) {
           $scope.navScrolled = true;
@@ -617,9 +617,7 @@ function responsiveClasses(scope){
 function initTabs(){
   // Tabbed Content
 
-  console.log("Init tab");
   $('.tabbed-content').each(function() {
-    console.log("Yay");
       $(this).append('<ul class="content"></ul>');
   });
 
