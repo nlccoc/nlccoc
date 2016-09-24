@@ -1,4 +1,4 @@
-/* global nlccapp, $, angular, Masonry, jRespond, gon */
+/* global nlccapp, $, angular, Masonry, jRespond, gon, I18n */
 var mr_firstSectionHeight,
     mr_nav,
     mr_fixedAt,
@@ -90,7 +90,6 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
       }, 1000);
     });
     
-    initTabs();
     // Fix nav to top while scrolling
 
     mr_nav = $('body .nav-container nav:first');
@@ -253,6 +252,7 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
     
     window.addEventListener("scroll", $scope.updateNav, false);
     
+    setTimeout(initTabs, 1000);
     // Initialize Masonry
 
     setTimeout(initializeMasonry, 1000);
@@ -617,7 +617,9 @@ function responsiveClasses(scope){
 function initTabs(){
   // Tabbed Content
 
+  console.log("Init tab");
   $('.tabbed-content').each(function() {
+    console.log("Yay");
       $(this).append('<ul class="content"></ul>');
   });
 
