@@ -2,6 +2,8 @@
 //= require jquery_ujs
 //# require turbolinks
 //= require bootstrap-sprockets
+//= require i18n
+//= require i18n/translations
 //= require angular
 //= require angular-animate
 //= require angular-ui-router

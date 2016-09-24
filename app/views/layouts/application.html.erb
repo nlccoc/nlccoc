@@ -6,9 +6,18 @@
   <%# javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= Gon::Base.render_data %>
+  
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  
+  <script src="//s3-ap-northeast-1.amazonaws.com/justfont-user-script/jf-45036.js"></script>
+  <script type="text/javascript">
+    I18n.defaultLocale = "<%= I18n.default_locale %>";
+    I18n.locale = "<%= I18n.locale %>";
+    I18n.locales.no = 'en'
+    I18n.currentLocale();
+  </script>
 </head>
 <body ng-controller='homeCtrl' class='scroll-assist {{responsiveClass}}' ng-class="{'loaded':loaded}">
 <%= render 'shared/main/header' %>

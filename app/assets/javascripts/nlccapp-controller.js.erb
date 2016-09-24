@@ -11,6 +11,7 @@ nlccapp.controller('homeCtrl',
 ['$scope', '$rootScope', '$window', '$ocLazyLoad', 'mvideoFactory', '$timeout', 'tools', '$stateParams', '$location', 
 function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tools, $stateParams, $location){
   console.log("Homepage controller");
+  $scope.I18n = I18n;
   $scope.loaded=false;
   $scope.responsiveClass='device-xxx';
   $scope.navFixed = false;
