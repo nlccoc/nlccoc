@@ -12,7 +12,7 @@ nlccapp.controller('homeCtrl',
 ['$scope', '$rootScope', '$window', '$ocLazyLoad', 'mvideoFactory', '$timeout', 'tools', '$stateParams', '$location', 
 function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tools, $stateParams, $location){
   console.log("Homepage controller");
-  
+  $scope.codepage=gon.current_lang;
   $scope.I18n = I18n;
   $scope.loaded=false;
   $scope.responsiveClass='device-xxx';
@@ -22,7 +22,7 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
   $scope.goToTop = false;
   $scope.stage='initial';
   $scope.mvideos=[];
-  $scope.language = { 'en': 'ENG', 'zh': '繁體中文','cn': '簡體中文' };
+  $scope.language = { 'en': 'ENG', 'zh': '繁體中文','cn': '简体中文' };
   //console.log("lang: " + gon.current_lang);
   $scope.current_lang_code = gon.current_lang;
   $scope.clan = $scope.language[$scope.current_lang_code];
@@ -49,7 +49,7 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
     //console.log('ng-repeat render done.');
   //}]);
     
-  //$scope.$on('$viewContentLoaded', function() {
+  
   angular.element(document).ready(function () {
     
     //console.log($scope.mvideos);
@@ -62,7 +62,6 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
       $timeout(function(){
         $('#owl-carousel-media .entry-image').fitVids();
         initOwlMedia();
-      
       }, 200);
     });
 
@@ -71,22 +70,6 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
       //console.log("scrolled");
       //console.log($window.pageYOffset);
     //});
-    
-    // Smooth scroll to inner links
-
-    $('.inner-link').each(function(){
-      var href = $(this).attr('href');
-      if(href.charAt(0) !== "#"){
-        $(this).removeClass('inner-link');
-      }
-    });
-
-  	if($('.inner-link').length){
-  		$('.inner-link').smoothScroll({
-  			offset: -55,
-  			speed: 800
-  		});
-    }
     
     //$('#owl-carousel-media .entry-image').fitVids();
     //initOwlMedia();
@@ -112,13 +95,10 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
     if (!$('nav').hasClass('fixed') && !$('nav').hasClass('absolute')) {
 
       // Make nav container height of nav
-
       $('.nav-container').css('min-height', $('nav').outerHeight(true));
-
       $(window).resize(function() {
         $('.nav-container').css('min-height', $('nav').outerHeight(true));
       });
-
       // Compensate the height of parallax element for inline nav
       if ($(window).width() > 768) {
         $('.parallax:nth-of-type(1) .background-image-holder').css('top', -($('nav').outerHeight(true)));
@@ -154,33 +134,33 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
     // Mobile Menu
 
     $('.mobile-toggle').click(function() {
-        $('.nav-bar').toggleClass('nav-open');
-        $(this).toggleClass('active');
+      $('.nav-bar').toggleClass('nav-open');
+      $(this).toggleClass('active');
     });
 
     $('.menu li').click(function(e) {
-        if (!e) e = window.event;
-        e.stopPropagation();
-        if ($(this).find('ul').length) {
-            $(this).toggleClass('toggle-sub');
-        } else {
-            $(this).parents('.toggle-sub').removeClass('toggle-sub');
-        }
+      if (!e) e = window.event;
+      e.stopPropagation();
+      if ($(this).find('ul').length) {
+          $(this).toggleClass('toggle-sub');
+      } else {
+          $(this).parents('.toggle-sub').removeClass('toggle-sub');
+      }
     });
 
     $('.menu li a').click(function() {
-        if ($(this).hasClass('inner-link')){
-            $(this).closest('.nav-bar').removeClass('nav-open');
-        }
+      if ($(this).hasClass('inner-link')){
+          $(this).closest('.nav-bar').removeClass('nav-open');
+      }
     });
 
     $('.module.widget-handle').click(function() {
-        $(this).toggleClass('toggle-widget-handle');
+      $(this).toggleClass('toggle-widget-handle');
     });
 
     $('.search-widget-handle .search-form input').click(function(e){
-        if (!e) e = window.event;
-        e.stopPropagation();
+      if (!e) e = window.event;
+      e.stopPropagation();
     });
   
     // Offscreen Nav
@@ -189,7 +169,7 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
     	$('body').addClass('has-offscreen-nav');
     }
     else{
-        $('body').removeClass('has-offscreen-nav');
+      $('body').removeClass('has-offscreen-nav');
     }
     
     $('.offscreen-toggle').click(function(){
@@ -217,11 +197,17 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
     if ((/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
         $('section').removeClass('parallax');
     }
+ 
+    setTimeout(function(){
+      $ocLazyLoad.load('<%= asset_path("justfont.js") %>');
+    }, 500);
     
     setTimeout(function(){
+      
+      initInnerlink();
       initTabs();
       initializeMasonry();
-      $ocLazyLoad.load('<%= asset_path("justfont.js") %>');
+      
        // Fix nav to top while scrolling
 
       mr_nav = $('body .nav-container nav:first');
@@ -257,8 +243,11 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
           });
         });
       }
+    }, 500);
+    
+    $timeout(function(){
       $scope.loaded=true;
-    }, 1000);
+    }, 1000)
   });
   
   $scope.responsiveClasses = function(){
@@ -308,7 +297,7 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
     		breakpoint: 'laptop',
     		enter: function() { 
     			//$body.addClass('device-md'); 
-    			console.log($scope.responsiveClass);
+    			//console.log($scope.responsiveClass);
     			$scope.responsiveClass='device-md'
     			$scope.$apply();
     			console.log("Jrespond: laptop: enter");
@@ -350,7 +339,7 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
   $scope.updateNav = function() {
     var mr_scrollTop = $window.pageYOffset;
     var scrollY = mr_scrollTop;
-    console.log(scrollY);
+   
     //$scope.parallaxY = scrollY*0.5;
 
     if (scrollY <= 0) {
@@ -368,8 +357,6 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
       return;
     }
     
-    console.log('mr_navOuterHeight = ' + mr_navOuterHeight);
-    console.log('mr_fixedAt = ' + mr_fixedAt);
     if (scrollY > mr_navOuterHeight + mr_fixedAt) {
       if (!$scope.navScrolled) {
           $scope.navScrolled = true;
@@ -638,4 +625,24 @@ function initTabs(){
       $(this).closest('.tabbed-content').find('.content>li').removeClass('active');
       $(this).closest('.tabbed-content').find('.content>li:nth-of-type(' + liIndex + ')').addClass('active');
   });
+}
+
+
+var initInnerlink = function(){
+  
+  // Smooth scroll to inner links
+
+  $('.inner-link').each(function(){
+    var href = $(this).attr('href');
+    if(href.charAt(0) !== "#"){
+      $(this).removeClass('inner-link');
+    }
+  });
+
+	if($('.inner-link').length){
+		$('.inner-link').smoothScroll({
+			offset: -55,
+			speed: 800
+		});
+  }
 }

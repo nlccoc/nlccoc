@@ -17,7 +17,7 @@
     I18n.currentLocale();
   </script>
 </head>
-<body ng-controller='homeCtrl' class='scroll-assist {{responsiveClass}}' ng-class="{'loaded':loaded}">
+<body ng-controller='homeCtrl' class='scroll-assist {{responsiveClass}} {{codepage}}' ng-class="{'loaded':loaded}">
 <%= render 'shared/main/header' %>
 <div id="loader-wrapper">
   <div id="spinner"></div>
