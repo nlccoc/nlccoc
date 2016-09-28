@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   #get 'mgmts/index'
   get 'mgmts' => 'mgmts#index'
   
-    
+  
   #get "mgmts/*path" => "mgmts#index"
   #get "mgmts/*path.html" => "mgmts#index"
   
