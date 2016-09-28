@@ -25,6 +25,7 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
   $scope.language = { 'en': 'ENG', 'zh': '繁體中文','cn': '简体中文' };
   //console.log("lang: " + gon.current_lang);
   $scope.current_lang_code = gon.current_lang;
+  $scope.lang = $scope.current_lang_code;
   $scope.clan = $scope.language[$scope.current_lang_code];
   //console.log($scope.current_language);
   
@@ -247,7 +248,7 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
     
     $timeout(function(){
       $scope.loaded=true;
-    }, 1000)
+    }, 2000)
   });
   
   $scope.responsiveClasses = function(){

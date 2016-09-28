@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   resources :events
   resources :mvideos
   #end
-  get 'mgmts/index'
+  
+  #get 'mgmts/index'
   get 'mgmts' => 'mgmts#index'
   
     
-  get "mgmts/*path" => "mgmts#index"
-  get "mgmts/*path.html" => "mgmts#index"
+  #get "mgmts/*path" => "mgmts#index"
+  #get "mgmts/*path.html" => "mgmts#index"
   
   # devise customized controllers: sessions, registrations
   devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations' }
