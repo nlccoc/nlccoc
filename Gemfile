@@ -26,19 +26,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'i18n-js', ">= 3.0.0.rc11"
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 4.3'
 
 group :production do
   gem 'pg'
   gem 'rails_12factor'
   gem 'puma'
+  gem 'fog'
 end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
