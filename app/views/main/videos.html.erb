@@ -55,13 +55,16 @@
  
       </div>
     </div>
-    <div class='row text-center'>
-      <div class="col-sm-12">
+    <div class='row list'>
+      <div class="col-sm-4">
+        <ul class="lead" data-bullet="ti-plus">
         <% @mvideos.each do |video| %>
-          <div>
+          <li>
             <%= video.title %>
-          </div>
+            <span style='float:right'><%= video.date %></span>
+          </li>
         <% end %>
+        </ul>
       </div>
     </div>
   </div>

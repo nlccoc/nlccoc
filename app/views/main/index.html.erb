@@ -196,13 +196,16 @@
       <div class="row text-center">
         <a href='cellgroups'>
         <div class="col-md-4 col-sm-4 col-xs-12">
-          <div class="image-tile outer-title text-center">
-            <img alt="Pic" src="<%= asset_path('cellgroups.jpg') %>" />
-            <div class="title mb16">
+          <div class="image-tile hover-tile outer-title text-center">
+            <img alt="Pic" src="<%= asset_path('cellgroups.jpg') %>" class='mb0' />
+            <div class="hover-state" style='top:35%;'>
+              <a><h1><i class="ti-search"></i></h1></a>
+            </div>
+            <div class="title mb0 pt16" style='background-color: #fff; color: #666;'>
                 <h5 class="uppercase mb0">細胞小組</h5>
                 <span>尋找一個小組並扎根</span>
             </div>
-            <p class="mb0">
+            <p class="mb0 pt16" style='background-color: #fff; color: #666;'>
                 小組是教會生活的機元組織，在小組中組員得到牧養、受裝備去參與服事、以及彼此造就。小組的二大宗旨是對內彼此造就，對外傳福音；透過群體及關係來為主得人，完成大使命。
             </p>
           </div>
@@ -400,13 +403,13 @@
     <!--end of container-->
   </section>
   
-  <section class="page-title page-title-4 image-bg overlay parallax">
+  <section class="page-title page-title-4 image-bg overlay parallax" id='ministries'>
       <div class="background-image-holder">
           <img alt="Background Image" class="background-image" src="<%= asset_path('mission-cover.jpg') %>" />
       </div>
       <div class="container">
           <div class="row">
-              <div class="col-md-12 text-center" id='ministries'>
+              <div class="col-md-12 text-center">
                   <h3 class="uppercase mb0">Ministries</h3>
               </div>
               <!--<div class="col-md-6 text-right">
