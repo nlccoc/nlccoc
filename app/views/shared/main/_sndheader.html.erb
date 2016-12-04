@@ -1,9 +1,9 @@
 <div class="nav-container">
   <a id="top"></a>
-  <nav class="absolute transparent">
+  <nav class="absolute <%= @header_bg %>">
     <div class="nav-bar">
       <div class="module left">
-        <a href="index.html">
+        <a href="/">
           <img class="logo logo-light" alt="Foundry" src="<%= asset_path('logo-light.png') %>" />
           <img class="logo logo-dark" alt="Foundry" src="<%= asset_path('logo-dark.png') %>" />
         </a>
@@ -15,7 +15,7 @@
         <div class="module left">
           <ul class="menu">
               <li>
-                  <a class="inner-link" href="#whoweare">
+                  <a class="inner-link" href="/#whoweare">
                       <%= t('who') %>
                   </a>
                   <!--<ul class="mega-menu">
@@ -106,7 +106,7 @@
                   </ul>-->
               </li>
               <li class="">
-                  <a class='inner-link' href="#connect">
+                  <a class='inner-link' href="/#connect">
                       <%= t('rooted') %>
                   </a>
                   <!--<ul class="mega-menu">
@@ -178,7 +178,7 @@
                   </ul>-->
               </li>
               <li>
-                <a href="#events" class='inner-link'>
+                <a href="/#events" class='inner-link'>
                     <%= t('events') %>
                 </a>
                 <!--<ul>
@@ -273,7 +273,7 @@
               <!--<li class="has-dropdown">-->
               
               <li class="Media">
-                  <a href="#media" class='inner-link'>
+                  <a href="/#media">
                       <%= t('media') %>
                   </a>
                   <!--<ul>
@@ -408,22 +408,10 @@
           <ul class="menu">
             <li class="has-dropdown">
               <a href="#">ENG</a>
-                <ul>
-                  <li><a href='#'>繁體中文</a></li>
-                  <li><a href='#'>簡體中文</a></li>
-                </ul>
-              <!--<a href="#">t('clan')</a>
               <ul>
-                <li ng-repeat='(code, lang) in lang_list'>
-                  <a href='/{{code}}'>{{lang}}</a>
-                </li>-->
-                <!--<li>
-                  <a href="#">繁體中文</a>
-                </li>
-                <li>
-                  <a href="#">简体中文</a>
-                </li>-->
-              <!--</ul>-->
+                <li><a href='#'>繁體中文</a></li>
+                <li><a href='#'>簡體中文</a></li>
+              </ul>
             </li>
           </ul>
         </div>

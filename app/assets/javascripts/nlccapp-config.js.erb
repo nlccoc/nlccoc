@@ -23,27 +23,34 @@ nlccapp.config([
  '$stateProvider', 
  '$urlRouterProvider', 
  '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
-    $stateProvider.state('nlcc', {
-      abstract: true,
-      url: '/{lang:(?:zh|cn|en)}',
-      template: '<ui-view/>'
-    });
+    //$stateProvider.state('nlcc', {
+    //  abstract: true,
+    //  url: '/{lang:(?:zh|cn|en)}',
+    //  template: '<ui-view/>'
+    //});
     
-    $stateProvider.state('home', {
-      url: '/',templateUrl: '<%= asset_path("main/home.html") %>'/*,
-      controller: 'mainCtrl'*/
-    }).state('nlcc.home', {
-      url: '',templateUrl: '<%= asset_path("main/home.html") %>'/*,
-      controller: 'mainCtrl'*/
-    }).state('nlcc.give', {
-      url: '/give',templateUrl: '<%= asset_path("main/give.html") %>'/*,
-      controller: 'giveCtrl'*/
-    });
-    $urlRouterProvider.otherwise('/');
-    $locationProvider.html5Mode({
-       enabled:true,
-       requireBase: false
-    });
+    //$stateProvider.state('home', {
+    //  url: '/',templateUrl: '<%= asset_path("main/home.html") %>'/*,
+    //  controller: 'mainCtrl'*/
+    //}).state('nlcc.home', {
+     // url: '',templateUrl: '<%= asset_path("main/home.html") %>'/*,
+    //  controller: 'mainCtrl'*/
+    //}).state('nlcc.give', {
+    //  url: '/give',templateUrl: '<%= asset_path("main/give.html") %>'/*,
+    //  controller: 'giveCtrl'*/
+    //});
+    //$urlRouterProvider.otherwise('/');
+    //$locationProvider.html5Mode({
+    //   enabled:true,
+    //   requireBase: false
+    //});
 }]);
 
 nlccapp.config(['$provide', configureTemplateFactory]);
+
+/*nlccext.config([
+ '$stateProvider', 
+ '$urlRouterProvider', 
+ '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
+   
+ }]);*/

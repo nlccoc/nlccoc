@@ -1,5 +1,5 @@
     
-/* global nlccapp, $, angular, Masonry, jRespond, gon, I18n */
+/* global nlccapp, nlccext, $, angular, Masonry, jRespond, gon, I18n */
 var mr_firstSectionHeight,
     mr_nav,
     mr_fixedAt,
@@ -8,6 +8,15 @@ var mr_firstSectionHeight,
     mr_scrollTop = 0,
     $body;
     
+    
+nlccext.controller('homeExtCtrl', ['$scope', '$timeout', function($scope, $timeout){
+  $scope.loaded=false;
+  console.log('Home Ext Controller');
+  $timeout(function(){
+    $scope.loaded=true;
+  }, 2000)
+}])
+
 nlccapp.controller('homeCtrl', 
 ['$scope', '$rootScope', '$window', '$ocLazyLoad', 'mvideoFactory', '$timeout', 'tools', '$stateParams', '$location', 
 function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tools, $stateParams, $location){
@@ -248,7 +257,7 @@ function($scope, $rootScope, $window, $ocLazyLoad, mvideoFactory, $timeout, tool
     
     $timeout(function(){
       $scope.loaded=true;
-    }, 2000)
+    }, 2000);
   });
   
   $scope.responsiveClasses = function(){

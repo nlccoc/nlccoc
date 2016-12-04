@@ -6,8 +6,8 @@
   <%# javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= Gon::Base.render_data %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'home', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   
   <script type="text/javascript">
@@ -16,15 +16,8 @@
     I18n.locales.no = 'en'
     I18n.currentLocale();
   </script>
-  
-  <%= content_for :javascript do %>
-  
-    <script type="text/javascript" src="<%= asset_path('flexslider.min.js') %>"></script>
-    <script type="text/javascript" src="<%= asset_path('parallax.js') %>"></script>
-    <script type="text/javascript" src="<%= asset_path('scripts.js') %>"></script>
-  <% end %>
 </head>
-<body>
+<body ng-controller='homeCtrl' class='scroll-assist {{responsiveClass}} {{codepage}}' ng-class="{'loaded':loaded}">
 <%= render 'shared/main/header' %>
 <div id="loader-wrapper">
   <div id="spinner"></div>

@@ -52,5 +52,17 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  
+  private
+    def set_content_type(*args)
+      content_type = file.content_type == 'application/octet-stream' || file.content_type.blank? ? MIME::Types.type_for(original_filename).first : file.content_type
+  
+      self.file.instance_variable_set(:@content_type, content_type)
+    end
+  
+    def image?(new_file)
+      new_file.content_type.include? 'image'
+    end
+
 
 end
