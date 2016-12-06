@@ -31,4 +31,8 @@ en:
   nlcc: "New Life Chistian Center"
   menu:
     languages:
-      lang: "ENG"
+      lang: "ENGLISH"
+    about:
+      "About NLCC"
+  more:
+    about: "More about NLCC"

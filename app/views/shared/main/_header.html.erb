@@ -19,7 +19,11 @@
                       <%= t('who') %>
                   </a>
                   <ul>
-                    <li><a href='/about'>關於我們</a></li>
+                    <li>
+                      <%= link_to about_path do %>
+                        <%= t('menu.about') %>
+                      <% end %>
+                    </li>
                     <li><a>牧者團隊</a></li>
                     <li><a>聯絡我們</a></li>
                   </ul>

@@ -417,10 +417,16 @@
         <div class="module widget-handle language left">
           <ul class="menu">
             <li class="has-dropdown">
-              <a href="#">ENG</a>
+              <a href="#"><%= t('menu.languages.lang') %></a>
+              <% other_locales = I18n.available_locales.reject!{ |k| k == I18n.locale } %>
               <ul>
-                <li><a href='#'>繁體中文</a></li>
-                <li><a href='#'>簡體中文</a></li>
+                <% other_locales.each do |l| %>
+                <li>
+                  <%= link_to url_for( :locale => l ) do %>
+                    <%= t('menu.languages.lang', locale: l) %>
+                  <% end %>
+                </li>
+                <% end %>
               </ul>
             </li>
           </ul>

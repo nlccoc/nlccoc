@@ -179,7 +179,11 @@
         </div>-->
     </div>
     <div class='row text-center' style='background-color:#fff;'>
-      <a class="btn btn-filled mb16 mt16" href="/about">更 多 關 於 我 們</a>
+      <%= link_to about_path, { :class=>"btn btn-filled mb16 mt16"} do %>
+       <%= t('more.about') %>
+      <% end %>
+      
+      <!--<a class="btn btn-filled mb16 mt16" href="/about"><%= t('more.about') %></a>-->
     </div>
   </section>
   

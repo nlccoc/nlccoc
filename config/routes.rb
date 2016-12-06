@@ -15,25 +15,22 @@ Rails.application.routes.draw do
   # devise customized controllers: sessions, registrations
   devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations' }
   
-  get "share" => "main#share" 
-  get 'home' => 'main#home'
-  get "tithe" => "main#tithe"
-  get "cellgroups" => "main#cellgroups"
-  get "videos" => "main#videos"
-  get "about" => "main#about"
-  scope "/:locale", :locale => /en|zh|cn/, :except => 'mgmts' do
+  scope "(:locale)", :locale => /en|zh|cn/, :except => 'mgmts' do
     get 'main/index' => 'main#index'
     
     root 'main#index'
+    
+    get "share" => "main#share" 
+    get 'home' => 'main#home'
     get "tithe" => "main#tithe"
     get "cellgroups" => "main#cellgroups"
+    get "videos" => "main#videos"
+    get "about" => "main#about"
     get "youngadults" => "main#youngadults"
     get "children" => "main#children"
-    get 'give' => 'main#give'
     get "worship" => "main#worship"
     get "equipping" => "main#equipping"
     get "mission" => "main#mission"
-    get "videos" => "main#mvideo"
   end
   
   
