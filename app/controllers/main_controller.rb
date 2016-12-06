@@ -25,6 +25,10 @@ class MainController < ApplicationController
     
   end
   
+  def about
+    @header_bg='transparent'
+  end
+  
   def home
     gon.push({
       :current_lang => I18n.locale

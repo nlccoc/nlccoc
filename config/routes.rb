@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "tithe" => "main#tithe"
   get "cellgroups" => "main#cellgroups"
   get "videos" => "main#videos"
+  get "about" => "main#about"
   scope "/:locale", :locale => /en|zh|cn/, :except => 'mgmts' do
     get 'main/index' => 'main#index'
     
