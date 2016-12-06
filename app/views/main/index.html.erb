@@ -71,7 +71,7 @@
     </ul>
   </section>
   
-  <section class="">
+  <section class="pb0">
     <div class="container" id="whoweare">
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1 text-center">
@@ -178,7 +178,9 @@
             </div>
         </div>-->
     </div>
-    <!--end of row-->
+    <div class='row text-center' style='background-color:#fff;'>
+      <a class="btn btn-filled mb16 mt16" href="/videos">更 多 關 於 我 們</a>
+    </div>
   </section>
   
   
@@ -194,13 +196,15 @@
       </div>
       <!--end of row-->
       <div class="row text-center">
-        <a href='cellgroups'>
         <div class="col-md-4 col-sm-4 col-xs-12">
+          <a href='cellgroups'>
           <div class="image-tile hover-tile outer-title text-center">
-            <img alt="Pic" src="<%= asset_path('cellgroups.jpg') %>" class='mb0' />
-            <div class="hover-state" style='top:35%;'>
-              <a><h1><i class="ti-search"></i></h1></a>
+            
+            <img alt="Pic" src="<%= asset_path('cellgroups.jpg') %>" class='mb0'/>
+            <div class="hover-state" style='top:35%; cursor: pointer'>
+              <h1><i class="ti-search"></i></h1>
             </div>
+
             <div class="title mb0 pt16" style='background-color: #fff; color: #666;'>
                 <h5 class="uppercase mb0">細胞小組</h5>
                 <span>尋找一個小組並扎根</span>
@@ -531,7 +535,7 @@
         </div>
       </div>
       <div class='row text-right'>
-        <a class="btn btn-filled btn-lg mb16 mt16" href="/videos">更 多 主 日 影 音</a>
+        <a class="btn btn-filled mb16 mt16" href="/videos">更 多 主 日 影 音</a>
       </div>
       <div class='row'>
         <h4>最新講道錄音</h4>
@@ -542,7 +546,7 @@
           </audio>
       </div>
       <div class='row text-right'>
-        <a class="image-bg btn btn-filled btn-lg mb16 mt16" href="/videos">更 多 講 道 錄 音</a>
+        <a class="image-bg btn btn-filled mb16 mt16" href="/videos">更 多 講 道 錄 音</a>
       </div>
     </div>
     <!--end of container-->
