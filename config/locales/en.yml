@@ -29,3 +29,6 @@ en:
   media: "Media"
   give: "Give"
   nlcc: "New Life Chistian Center"
+  menu:
+    languages:
+      lang: "ENG"

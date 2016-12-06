@@ -25,5 +25,7 @@ module Workspace
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components', 'fonts')
     
     config.middleware.use I18n::JS::Middleware
+    
+    config.i18n.default_locale = :zh
   end
 end
