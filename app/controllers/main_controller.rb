@@ -25,6 +25,10 @@ class MainController < ApplicationController
     @header_bg='bg-dark'
   end
   
+  def children
+    @header_bg='bg-dark'
+  end
+  
   def share
     
   end
