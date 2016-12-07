@@ -8,7 +8,8 @@ var mr_firstSectionHeight,
     mr_navFixed = false,
     mr_outOfSight = false,
     mr_floatingProjectSections,
-    mr_scrollTop = 0;
+    mr_scrollTop = 0,
+    mr_isTop = false;
     
 $(document).ready(function() { 
     "use strict";
@@ -23,7 +24,7 @@ $(document).ready(function() {
     // Update scroll variable for scrolling functions
 
     addEventListener('scroll', function() {
-        mr_scrollTop = window.pageYOffset;
+      mr_scrollTop = window.pageYOffset;
     }, false);
 
     // Append .background-image-holder <img>'s as CSS backgrounds
@@ -99,6 +100,8 @@ $(document).ready(function() {
     mr_navOuterHeight = $('body .nav-container nav:first').outerHeight();
     mr_fixedAt = typeof mr_nav.attr('data-fixed-at') !== typeof undefined ? parseInt(mr_nav.attr('data-fixed-at').replace('px', '')) : parseInt($('section:nth-of-type(1)').outerHeight());
     mr_totop = $('#gotoTop');
+    mr_scrollTop = window.pageYOffset;
+    updateNav();
     window.addEventListener("scroll", updateNav, false);
 
     // Menu dropdown positioning
@@ -1008,73 +1011,89 @@ $(window).load(function() {
 
 }); 
 function updateNav() {
-
-    var scrollY = mr_scrollTop;
-    mr_totop = $('#gotoTop');
-    if (scrollY <= 0) {
-        if (mr_navFixed) {
-            mr_navFixed = false;
-            mr_nav.removeClass('fixed');
-        }
-        if (mr_outOfSight) {
-            mr_outOfSight = false;
-            mr_nav.removeClass('outOfSight');
-            mr_totop.addClass('hide');
-            mr_totop.removeClass('show');
-            
-        }
-        if (mr_navScrolled) {
-            mr_navScrolled = false;
-            mr_nav.removeClass('scrolled');
-        }
-        return;
+  var scrollY = mr_scrollTop;
+  mr_totop = $('#gotoTop');
+  if (scrollY <= 0) {
+      if (mr_navFixed) {
+          mr_navFixed = false;
+          mr_nav.removeClass('fixed');
+      }
+      if (mr_outOfSight) {
+          mr_outOfSight = false;
+          mr_nav.removeClass('outOfSight');
+          mr_totop.addClass('hide');
+          mr_totop.removeClass('show');
+          
+      }
+      if (mr_navScrolled) {
+          mr_navScrolled = false;
+          mr_nav.removeClass('scrolled');
+      }
+      
+      if (mr_isTop){
+        mr_isTop = false;
+        mr_totop.addClass('hide');
+        mr_totop.removeClass('show');
+      }
+      return;
+  } 
+  
+  if (scrollY > mr_navOuterHeight + mr_fixedAt) {
+    if (!mr_navScrolled) {
+      
+      mr_navScrolled = true;
+      mr_nav.addClass('scrolled');
+      mr_totop.addClass('show');
+      mr_totop.removeClass('hide');
+      if (!mr_outOfSight) {
+        mr_nav.addClass('outOfSight');
+        mr_outOfSight=true;
+      }
+      if (!mr_navFixed) {
+        mr_navFixed = true;
+        mr_nav.addClass('fixed');
+      }
+      return;
     }
+  } else {
+      if (scrollY > mr_navOuterHeight) {
+         if (!mr_navFixed) {
+              mr_nav.addClass('fixed');
+              mr_navFixed = true;
+          }
 
-    if (scrollY > mr_navOuterHeight + mr_fixedAt) {
-        if (!mr_navScrolled) {
-            mr_nav.addClass('scrolled');
-            mr_navScrolled = true;
-            return;
-        }
-    } else {
-        if (scrollY > mr_navOuterHeight) {
-           if (!mr_navFixed) {
-                mr_nav.addClass('fixed');
-                mr_navFixed = true;
-            }
+          if (scrollY > mr_navOuterHeight +10) {
+              if (!mr_outOfSight) {
+                  mr_nav.addClass('outOfSight');
+                  mr_outOfSight = true;
+                  mr_totop.addClass('show');
+                  mr_totop.removeClass('hide');
+              }
+          } else {
+              if (mr_outOfSight) {
+                  mr_outOfSight = false;
+                  mr_nav.removeClass('outOfSight');
+              }
+          }
+      } else {
+          if (mr_navFixed) {
+              mr_navFixed = false;
+              mr_nav.removeClass('fixed');
+          }
+          if (mr_outOfSight) {
+              mr_outOfSight = false;
+              mr_nav.removeClass('outOfSight');
+              mr_totop.addClass('hide');
+              mr_totop.removeClass('show');
+          }
+      }
 
-            if (scrollY > mr_navOuterHeight +10) {
-                if (!mr_outOfSight) {
-                    mr_nav.addClass('outOfSight');
-                    mr_outOfSight = true;
-                    mr_totop.addClass('show');
-                    mr_totop.removeClass('hide');
-                }
-            } else {
-                if (mr_outOfSight) {
-                    mr_outOfSight = false;
-                    mr_nav.removeClass('outOfSight');
-                }
-            }
-        } else {
-            if (mr_navFixed) {
-                mr_navFixed = false;
-                mr_nav.removeClass('fixed');
-            }
-            if (mr_outOfSight) {
-                mr_outOfSight = false;
-                mr_nav.removeClass('outOfSight');
-                mr_totop.addClass('hide');
-                mr_totop.removeClass('show');
-            }
-        }
+      if (mr_navScrolled) {
+          mr_navScrolled = false;
+          mr_nav.removeClass('scrolled');
+      }
 
-        if (mr_navScrolled) {
-            mr_navScrolled = false;
-            mr_nav.removeClass('scrolled');
-        }
-
-    }
+  }
 }
 
 

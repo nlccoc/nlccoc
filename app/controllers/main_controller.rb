@@ -21,6 +21,10 @@ class MainController < ApplicationController
     @mvideos = Mvideo.all
   end
   
+  def youngadults
+    @header_bg='bg-dark'
+  end
+  
   def share
     
   end
