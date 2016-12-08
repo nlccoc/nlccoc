@@ -1,6 +1,6 @@
 //= require jquery2
 //= require jquery_ujs
-//# require turbolinks
+//= require turbolinks
 //= require bootstrap-sprockets
 //= require i18n
 //= require i18n/translations
