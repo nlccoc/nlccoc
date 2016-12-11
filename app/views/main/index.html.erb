@@ -285,6 +285,7 @@
                       <div class="overflow-hidden">
                         <div class="inline-block pull-left col-md-8">
                           <h6 class="uppercase mb8">
+                            <%= event.datetime.strftime("%Y/%m/%d") %> 
                             <%= t('date.day_names')[event.datetime.wday] %> 
                             <%= event.datetime.strftime("%I:%M %p") %> - <%= Time.at(event.datetime.to_time.to_i + 60*event.event_period).strftime("%I:%M %p") %>
                             </h6>
