@@ -1,5 +1,4 @@
 class Event < ActiveRecord::Base
-  belongs_to :event_type
-  belongs_to :event_status
-  belongs_to :event_category
+  has_many :event_categories
+  has_many :categories, through: :event_categories
 end

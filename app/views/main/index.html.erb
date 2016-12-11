@@ -183,7 +183,6 @@
        <%= t('more.about') %>
       <% end %>
       
-      <!--<a class="btn btn-filled mb16 mt16" href="/about"><%= t('more.about') %></a>-->
     </div>
   </section>
   
@@ -271,147 +270,43 @@
           <div class="col-md-8 col-md-offset-2">
             <div class="tabbed-content button-tabs">
               <ul class="tabs forths mb64 mb-xs-24">
-                <li class="active">
-                  <div class="tab-title">
-                    <span>裝備課程</span>
+                <% @categories.each_with_index do |category, idx|%>
+                  <% if idx==0 %>
+                  <li class='active'>
+                  <% else %>
+                  <li>
+                  <% end %>
+                    <div class="tab-title">
+                      <%= t(category.name)%>
+                    </div>
+                    <div class="tab-content text-left">
+                    <div>
+                      <% category.events.each do |event|%>
+                      <div class="overflow-hidden">
+                        <div class="inline-block pull-left col-md-8">
+                          <h6 class="uppercase mb8">
+                            <%= t('date.day_names')[event.datetime.wday] %> 
+                            <%= event.datetime.strftime("%I:%M %p") %> - <%= Time.at(event.datetime.to_time.to_i + 60*event.event_period).strftime("%I:%M %p") %>
+                            </h6>
+                          <h4><%= event.title %></h4>
+                          <p class="mb0">
+                              <%= event.short_desc %>
+                              <a href="#"></a>
+                          </p>
+                        </div>
+                        <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
+                          <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
+                        </div>
+                      </div>
+                      <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
+                      <% end %>
+                    </div>
+                    <!--end of class-->
                   </div>
-                  <div class="tab-content text-left">
-                      <div>
-                          <div class="overflow-hidden">
-                              <div class="inline-block pull-left col-md-8">
-                                  <h6 class="uppercase mb8">09:00am - 09:50am</h6>
-                                  <h4>奠定紮實的信仰基礎</h4>
-                                  <p class="mb0">
-                                      信徒建造裝備課程系列幫助我們認識基督徒的基本信仰，奠定我們的信仰基礎。 本次301課程為12週，由裝備課程事工負責人Jerry Yen弟兄授課。上課時間為8/7起至10/23止，每週日上午9:50~10:50。地點為J教室。歡迎初信徒參與，也歡迎資深基督徒再次審視您的信仰生活！
-                                      <a href="#"></a>
-                                  </p>
-                              </div>
-                              <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
-                                  <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
-                              </div>
-                          </div>
-                          <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
-                      </div>
-                      <!--end of class-->
-                      <div>
-                          <div class="overflow-hidden">
-                              <div class="inline-block pull-left col-md-8">
-                                  <h6 class="uppercase mb8">09:00am - 09:50am</h6>
-                                  <h4>一秒的Yes 一輩子的承諾</h4>
-                                  <p class="mb0">
-                                      全程使用全美最受歡迎的婚姻專家史葛利博士所編寫的教材，加上馬鞍峰教會製作的影片，幽默實用、以聖經真理為基礎。六堂課，找出你的最佳伴侶相處之道！
-                  
-                                      <a href="#"></a>
-                                  </p>
-                              </div>
-                              <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
-                                  <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
-                              </div>
-                          </div>
-                          <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
-                      </div>
-                      <!--end of class-->
-                      <div>
-                          <div class="overflow-hidden">
-                              <div class="inline-block pull-left col-md-8">
-                                  <h6 class="uppercase mb8">9/17 - 9/20</h6>
-                                  <h4>好孩子，就從好父母開始</h4>
-                                  <p class="mb0">
-                                      曾在AM1300電台擔任親子節目的名主持人王祈女士，將前來與社區鄰里分享親子關係與教育。王祈女士為洛杉磯家庭局認證的專業訓練講師，並擁有行為分析顧問執照，且著有多本暢銷書如《高EQ驚人的影響力》《優質下一代的教養關鍵》等。
-                                      <a href="#"></a>
-                                  </p>
-                              </div>
-                              <div class="inline-block pull-right pt48 pt-xs-24 col-md-4">
-                                  <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
-                              </div>
-                          </div>
-                          <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
-                      </div>
-                      <!--end of class-->
-                  </div>
-                  <!--end of tab content-->
-                </li>
-                <li>
-                    <div class="tab-title">
-                        <span>主日資訊</span>
-                    </div>
-                    <div class="tab-content text-left">
-                        <div>
-                            <div class="overflow-hidden">
-                                <div class="inline-block pull-left col-md-8">
-                                    <h6 class="uppercase mb8">8/21 11:00am - 12:30pm</h6>
-                                    <h4>耶穌的第四個神蹟</h4>
-                                    <p class="mb0">
-                                        主講：陳牧師
-                                        <br /> 
-                                        <br />
-                                        <a href="#">地點：爾灣新生命靈糧堂大堂</a>
-                                    </p>
-                                </div>
-                                <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
-                                    <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
-                                </div>
-                            </div>
-                            <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
-                        </div>
-                        <!--end of class-->
-                    </div>
                     <!--end of tab content-->
-                </li>
-                <li>
-                    <div class="tab-title">
-                        <span>教會活動</span>
-                    </div>
-                    <div class="tab-content text-left">
-                        <div>
-                            <div class="overflow-hidden">
-                                <div class="inline-block pull-left col-md-8">
-                                    <h6 class="uppercase mb8">8/21 11:00am - 12:30pm</h6>
-                                    <h4>青少年退修會</h4>
-                                    <p class="mb0">
-                                        XXX
-                                        <br /> 
-                                        <br />
-                                        <a href="#">地點：吃飯的地方</a>
-                                    </p>
-                                </div>
-                                <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
-                                    <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
-                                </div>
-                            </div>
-                            <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
-                        </div>
-                        <!--end of class-->
-                    </div>
-                    <!--end of tab content-->
-                </li>
-                <li>
-                    <div class="tab-title">
-                        <span>小組動態</span>
-                    </div>
-                    <div class="tab-content text-left">
-                  <div>
-                            <div class="overflow-hidden">
-                                <div class="inline-block pull-left col-md-8">
-                                    <h6 class="uppercase mb8">8/21 11:00am - 12:30pm</h6>
-                                    <h4>耶穌的第四個神蹟</h4>
-                                    <p class="mb0">
-                                        主講：陳牧師
-                                        <br /> 
-                                        <br />
-                                        <a href="#">地點：爾灣新生命靈糧堂大堂</a>
-                                    </p>
-                                </div>
-                                <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
-                                    <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
-                                </div>
-                            </div>
-                            <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
-                        </div>
-                        <!--end of class-->
-                    </div>
-                    <!--end of tab content-->
-                </li>
+                  </li>
+                <% end %>
+                
               </ul>
             </div>
             <!--end of button tabs-->

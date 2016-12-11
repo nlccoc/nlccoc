@@ -3,6 +3,7 @@ class MainController < ApplicationController
   
   def index
     @mvideos = Mvideo.all
+    @categories = Category.all
     gon.push({
       :current_lang => I18n.locale
     })
@@ -42,4 +43,5 @@ class MainController < ApplicationController
       :current_lang => I18n.locale
     })
   end
+  
 end

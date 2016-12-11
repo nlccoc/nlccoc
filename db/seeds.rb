@@ -16,21 +16,8 @@ type_list.each do |type, var|
   EventType.create(name: type, variable: var)
 end
 
-event_status = [
-  ["Published", "PUBLISHED"],
-  ["Draft", "DRAFT"]
-]
 
-event_status.each do |name, var|
-  EventStatus.create(name: name, variable: var)
-end
-
-event_category = [
-  [ "Equipping", "EQUIP"],
-  [ "SundayService", "SS"],
-  [ "Activities", "ACTS"],
-  [ "CELLGROUP", "CELL"]
-]
-event_category.each do |name, var|
-  EventCategory.create(name: name, variable: var)
+event_category = ["event.category.equipping", "event.category.sunday_service", "event.category.activities", "event.category.cellgroups"];
+event_category.each do |name|
+  Category.create(name: name)
 end
