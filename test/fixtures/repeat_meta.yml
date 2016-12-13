@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: 1
+  repeat_start: 2016-12-11 16:30:19
+  repeat_interval: 1
+  repeat_year: 1
+  repeat_month: 1
+  repeat_week: 1
+  repeat_day: 1
+  repeat_weekday: 1
+  valid_until: 2016-12-11 16:30:19
+
+two:
+  event_id: 1
+  repeat_start: 2016-12-11 16:30:19
+  repeat_interval: 1
+  repeat_year: 1
+  repeat_month: 1
+  repeat_week: 1
+  repeat_day: 1
+  repeat_weekday: 1
+  valid_until: 2016-12-11 16:30:19

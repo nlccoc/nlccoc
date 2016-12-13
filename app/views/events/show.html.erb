@@ -6,48 +6,48 @@
 </p>
 
 <p>
+  <strong>Short Desc:</strong>
+  <%= @event.short_desc %>
+</p>
+<p>
   <strong>Desc:</strong>
   <%= @event.desc %>
 </p>
 
 <p>
-  <strong>Start time:</strong>
-  <%= @event.start_time %>
+  <strong>Start Date:</strong>
+  <%= @event.datetime.to_date %>
+</p>
+
+<p>
+  <strong>Next Date:</strong>
+  <%= @event.latest_date %>
+</p>
+
+<p>
+  <strong>Start Time:</strong>
+  <%= @event.datetime.strftime("%I:%M%p") %>
 </p>
 
 <p>
   <strong>Interval min:</strong>
-  <%= @event.interval_min %>
+  <%= @event.event_period %>
 </p>
 
 <p>
-  <strong>Date:</strong>
-  <%= @event.date %>
+  <strong>Location:</strong>
+  <%= @event.location %>
 </p>
 
 <p>
-  <strong>Interval day:</strong>
-  <%= @event.interval_day %>
+  <strong>Repeat:</strong>
+  <% if @event.repeat_metum.nil? %>
+    No
+  <% else %>
+    Yes
+  <% end %>
 </p>
 
-<p>
-  <strong>More link:</strong>
-  <%= @event.more_link %>
-</p>
-
-<p>
-  <strong>Event Type:</strong>
-  <%= @event.event_type.name %>
-</p>
-
-<p>
-  <strong>Event Status:</strong>
-  <%= @event.event_status.name unless @event_status.nil? %>
-</p>
-<p>
-  <strong>Event Category:</strong>
-  <%= @event.event_category.name unless @event_category.nil? %>
-</p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

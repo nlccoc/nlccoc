@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210220359) do
+ActiveRecord::Schema.define(version: 20161211163019) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -70,6 +70,20 @@ ActiveRecord::Schema.define(version: 20161210220359) do
     t.text     "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "repeat_meta", force: :cascade do |t|
+    t.integer  "event_id"
+    t.datetime "repeat_start"
+    t.integer  "repeat_interval"
+    t.integer  "repeat_year"
+    t.integer  "repeat_month"
+    t.integer  "repeat_week"
+    t.integer  "repeat_day"
+    t.integer  "repeat_weekday"
+    t.datetime "valid_until"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

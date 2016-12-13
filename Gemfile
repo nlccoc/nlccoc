@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'i18n-js', ">= 3.0.0.rc11"
+gem 'rails-i18n'
 
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'

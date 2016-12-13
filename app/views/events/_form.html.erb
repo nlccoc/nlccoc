@@ -16,40 +16,41 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
+    <%= f.label :short_desc %><br>
+    <%= f.text_area :short_desc %>
+  </div>
+  <div class="field">
     <%= f.label :desc %><br>
     <%= f.text_area :desc %>
   </div>
   <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.time_select :start_time %>
+    <%= f.label :datetime %><br>
+    <%= f.datetime_select :datetime, :order => [:year, :month, :day, :hour, :minute] %>
   </div>
   <div class="field">
-    <%= f.label :interval_min %><br>
-    <%= f.number_field :interval_min %>
+    <%= f.label :event_period %><br>
+    <%= f.number_field :event_period %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.collection_select(:category_ids, Category.all, :id, :translated_name,{ :selected => '1' }, {:multiple => true}) %>
   </div>
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
+    <%= f.label :repeat %>
+    <%= radio_button_tag(:repeat, "true") %>
+    <%= label_tag(:repeat_true, "Yes") %>
+    <%= radio_button_tag(:repeat, "false", true) %>
+    <%= label_tag(:repeat_false, "No") %>
   </div>
   <div class="field">
-    <%= f.label :interval_day %><br>
-    <%= f.number_field :interval_day %>
-  </div>
-  <div class="field">
-    <%= f.label :more_link %><br>
-    <%= f.text_field :more_link %>
-  </div>
-  <div class="field">
-    <%= f.label :event_type %><br>
-    <%= f.collection_select(:event_type_id, EventType.all, :id, :name, :variable => 'Please select type') %>
-  </div>
-  <div class="field">
-    <%= f.label :event_status %><br>
-    <%= f.collection_select(:event_status_id, EventStatus.all, :id, :name, :variable => 'Please select status') %>
-  </div>
-  <div class="field">
-    <%= f.label :event_category %><br>
-    <%= f.collection_select(:event_category_id, EventCategory.all, :id, :name, :variable => 'Please select status') %>
+    <%= f.label :valid_until %><br>
+    <%= date_select :valid_until, :date %>
   </div>
   <div class="actions">
     <%= f.submit %>
