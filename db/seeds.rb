@@ -6,17 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-type_list = [ 
-  ["recursive", "RE"], 
-  ["onetime", "ONET"],
-  ["multiday", "MD"]
-]
-
-type_list.each do |type, var|
-  EventType.create(name: type, variable: var)
-end
-
-
 event_category = ["event.category.equipping", "event.category.sunday_service", "event.category.activities", "event.category.cellgroups"];
 event_category.each do |name|
   Category.create(name: name)
