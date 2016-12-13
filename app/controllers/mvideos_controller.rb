@@ -1,5 +1,5 @@
 class MvideosController < ApplicationController
-  layout false
+  layout "extmain"
   skip_before_action :set_locale
   before_action :set_mvideo, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_mgmt!, except: [:show, :index]
@@ -8,6 +8,8 @@ class MvideosController < ApplicationController
   # GET /mvideos.json
   def index
     @mvideos = Mvideo.all
+    @header_bg='bg-dark'
+    
   end
 
   # GET /mvideos/1

@@ -39,7 +39,7 @@
 
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.collection_select(:category_ids, Category.all, :id, :translated_name,{ :selected => '1' }, {:multiple => true}) %>
+    <%= f.collection_select(:category_ids, Category.all, :id, :translated_name,{ :selected => @event.categories.collect {|r| r.id} }, {:multiple => true}) %>
   </div>
   <div class="field">
     <%= f.label :repeat %>
