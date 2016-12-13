@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   #scope "(:locale)", :locale => /en|zh/ do
   resources :events
   resources :mvideos

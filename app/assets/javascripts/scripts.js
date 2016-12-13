@@ -1488,3 +1488,7 @@ var mr_cookies = {
 \*/
 
 
+function helloWorld() {
+  return "Hello world!";
+}
+

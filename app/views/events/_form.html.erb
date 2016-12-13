@@ -43,14 +43,23 @@
   </div>
   <div class="field">
     <%= f.label :repeat %>
-    <%= radio_button_tag(:repeat, "true") %>
+    <% if @event.repeat_metum.present? %>
+      <%= radio_button_tag(:repeat, "true", true) %>
+    <% else %>
+      <%= radio_button_tag(:repeat, "true") %>
+    <% end %>
+    
     <%= label_tag(:repeat_true, "Yes") %>
-    <%= radio_button_tag(:repeat, "false", true) %>
+    <% if @event.repeat_metum.present? %>
+      <%= radio_button_tag(:repeat, "false") %>
+    <% else %>
+      <%= radio_button_tag(:repeat, "false", true) %>
+    <% end %>
     <%= label_tag(:repeat_false, "No") %>
   </div>
   <div class="field">
     <%= f.label :valid_until %><br>
-    <%= date_select :valid_until, :date %>
+    <%= date_select :valid_until, :date, default: Date.new(@event.repeat_metum.first.valid_until.year, @event.repeat_metum.first.valid_until.month, @event.repeat_metum.first.valid_until.day)%>
   </div>
   <div class="actions">
     <%= f.submit %>
