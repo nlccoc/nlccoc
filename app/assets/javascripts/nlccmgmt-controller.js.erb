@@ -123,7 +123,7 @@ function($scope, categories, eventFactory, $state, $sce){
   $scope.submit = function(func){
     if ($scope.event.desc.length > 1024) {
       toastr.warning('Too long for the description: length: ' + $scope.event.desc.length + ', please revise it under 1024 characters');
-      return;
+    //  return;
     }
     console.log(func);
     console.log("Submit");
