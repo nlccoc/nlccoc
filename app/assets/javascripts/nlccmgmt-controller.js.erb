@@ -1,7 +1,11 @@
-/* global nlccmgmtapp, gon, Layout, $ */
+/* global nlccmgmtapp, gon, Layout, $, I18n, QuickSidebar */
 
 nlccmgmtapp.controller('mgmtCtrl', ['$scope', '$rootScope', 'settings', function($scope, $rootScope, settings){
   console.log('Mgmt Controller');
+  $rootScope.I18n = I18n
+  I18n.defaultLocale = "zh";
+  I18n.locale = "zh";
+//  I18n.currentLocale();
   //console.log(gon.current_mgmt);
   $scope.current_mgmt = gon.current_mgmt;
   $scope.fullHeight = '700px';
@@ -9,7 +13,209 @@ nlccmgmtapp.controller('mgmtCtrl', ['$scope', '$rootScope', 'settings', function
 	$rootScope.settings.layout.pageContentWhite = true;
   $rootScope.settings.layout.pageBodySolid = false;
   $rootScope.settings.layout.pageSidebarClosed = false;
+  console.log(I18n.t('event.category.equipping'));
 }]);
+nlccmgmtapp.controller('eventAllCtrl', ['$scope', 'categoryFactory', '$uibModal', function($scope, categoryFactory, $uibModal){
+  console.log('Event Controller');
+  
+  categoryFactory.getAllCategories().then(function(data){
+    $scope.categories = data;
+    console.log(data);
+  });
+    
+  $scope.getDate = function(d){
+    return new Date(d).toString();
+  }
+  $scope.event = event;
+  
+  $scope.deleteEvent = function(event, category){
+    console.log("DeleteEvent");
+    var modalInstance = $uibModal.open({
+      animation: true,
+      templateUrl: 'mgmts/confirmModel.html',
+      controller: 'modalDeleteEventCtrl',
+      resolve: {
+        event: function () {
+          return event;
+        }
+      }
+    });
+    
+    modalInstance.result.then(function (result) {
+      console.log(result);
+      if(result == 0) {
+        console.log("result: " + result);
+        var idx=0, idx1=0;
+        for (idx1=0; idx1 < $scope.categories.length; idx1++){
+          for(idx=0; idx < $scope.categories[idx1].events.length; idx++){
+            if (event.id == $scope.categories[idx1].events[idx].id){
+              $scope.categories[idx1].events.splice(idx, 1);
+            }
+          }
+        }
+        toastr.success('Remove event \'' + event.title + '\' successfully');
+        return
+      }
+    });
+  }
+  
+}]).controller('eventNewCtrl', ['$scope', 'categories', 'eventFactory', '$state', '$sce', 
+function($scope, categories, eventFactory, $state, $sce){
+  console.log('Event New Controller');
+  $scope.function='new';
+  var d = new Date();
+  d.setHours(9);
+  d.setMinutes(0);
+  $scope.event = {}
+  $scope.event.period = {
+    min: 50
+  }
+  //$('#period-slider').ionRangeSlider();
+  /*$scope.event.datetime = '';
+  $scope.$watch('event.datetime', function(newValue, oldValue) {
+    console.log('Datetime changed.');
+  });*/
+  $scope.event.datetime = moment(d).format('MM/DD/YYYY h:mm a');
+  $scope.event.title = '';
+  $scope.event.short_desc= '';
+  $scope.event.desc = '';
+  $scope.event.location = '';
+  //$scope.$apply($scope.event.datetime);
+  
+  $scope.meta={};
+  $scope.meta.categories = categories
+  
+  //$('.date-picker').datetimepicker();
+  $scope.repeat={};
+  $scope.repeat.valid_until = moment(d).format('MM/DD/YYYY');
+  $scope.repeat.isSelected = false;
+  $scope.repeat.onText = 'Yes';
+  $scope.repeat.offText = 'No';
+  $scope.repeat.isActive = true;
+  $scope.repeat.size = 'normal';
+  $scope.repeat.animate = true;
+  $scope.repeat.radioOff = true;
+  $scope.repeat.handleWidth = "auto";
+  $scope.repeat.labelWidth = "auto";
+  $scope.repeat.inverse = true;
+  $scope.repeat.onColor="success"
+  $scope.repeat.offColor="danger"
+  
+  $scope.meta.categories = categories;
+
+  $scope.$watch('repeat.isSelected', function() {
+    console.log('Selection changed.');
+  });
+  
+
+  $scope.toggle = function() {
+    $scope.isSelected = $scope.isSelected === true ? false : true;
+  };
+
+  $scope.setUndefined = function() {
+    $scope.isSelected = undefined;
+  };
+
+  $scope.toggleActivation = function() {
+    $scope.isActive = !$scope.isActive;
+  }
+  
+  $scope.submit = function(func){
+    if ($scope.event.desc.length > 1024) {
+      toastr.warning('Too long for the description: length: ' + $scope.event.desc.length + ', please revise it under 1024 characters');
+      return;
+    }
+    console.log(func);
+    console.log("Submit");
+    $scope.event.repeat = $scope.repeat;
+    if(func == 'new'){
+      eventFactory.createEvent($scope.event).then(function(data){
+        //$scope.mvideos.push(data);
+        //$scope.hideform();
+        //console.log(data);
+        toastr.success('Create event \'' + $scope.event.title + '\' successfully');
+        $state.go('events-all');
+      });
+    } else if(func == 'edit'){
+      
+    }
+  }
+}]).controller('eventEditCtrl', ['$scope', 'event', 'categories', 'eventFactory', '$state',
+function($scope, event, categories, eventFactory, $state){
+  console.log('Event Edit Controller');
+  $scope.function = 'edit'
+  $scope.meta={};
+  $scope.meta.categories = categories;
+  $scope.getDatetime = function(d){
+    return new Date(d).toString();
+  }
+  $scope.event = event
+  $scope.event.datetime = moment(event.datetime).format('MM/DD/YYYY h:mm a');
+  $scope.event.desc = unescape($scope.event.desc)
+  //console.log(unescape($scope.event.desc));
+  //console.log(event);
+  var cat = [];
+  $scope.event.period = {
+    min: event.event_period
+  }
+  
+  $scope.event.categories.forEach(function(item, index){
+    console.log('push: ' + index);
+    cat.push(index+1);
+  })
+  $scope.event.categories = cat;
+  $scope.repeat={};
+  
+  if($scope.event.repeat_metum.length==0){
+    $scope.repeat.isSelected = false;
+  }else{
+    $scope.repeat.isSelected = true;
+    $scope.repeat.valid_until =  moment($scope.event.repeat_metum.valid_until).format('MM/DD/YYYY');
+  }
+  
+  $scope.repeat.onText = 'Yes';
+  $scope.repeat.offText = 'No';
+  $scope.repeat.isActive = true;
+  $scope.repeat.size = 'normal';
+  $scope.repeat.animate = true;
+  $scope.repeat.radioOff = true;
+  $scope.repeat.handleWidth = "auto";
+  $scope.repeat.labelWidth = "auto";
+  $scope.repeat.inverse = true;
+  $scope.repeat.onColor="success"
+  $scope.repeat.offColor="danger"
+  
+  $scope.meta.categories = categories;
+  
+  $scope.$watch('isSelected', function() {
+    //console.log('Selection changed.');
+  });
+
+
+  $scope.setUndefined = function() {
+    $scope.isSelected = undefined;
+  };
+
+  $scope.toggleActivation = function() {
+    $scope.isActive = !$scope.isActive;
+  }
+  
+  $scope.submit = function(func){
+    console.log(func);
+    $scope.event.repeat = $scope.repeat;
+    if(func == 'new'){
+      
+    } else if(func == 'edit'){
+      eventFactory.updateEvent($scope.event).then(function(data){
+        //$scope.mvideos.push(data);
+        //$scope.hideform();
+        //console.log(data);
+        toastr.success('Create event \'' + $scope.event.title + '\' successfully');
+        $state.go('events-all');
+      });
+    }
+  }
+}]);;
 
 /* Setup Layout Part - Header */
 nlccmgmtapp.controller('headerController', ['$scope', function($scope) {
@@ -126,6 +332,24 @@ function ($scope, $uibModalInstance, mvideoFactory, mvideo) {
   $scope.ok = function () {
     console.log("delete {" + mvideo.id + "}");
     mvideoFactory.deleteMVideo(mvideo.id).then(function(data){
+      console.log("Successfully delete the m-video");
+    });
+    $uibModalInstance.close(0);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+}]);
+
+nlccmgmtapp.controller('modalDeleteEventCtrl', 
+['$scope', '$uibModalInstance', 'eventFactory', 'event', 
+function ($scope, $uibModalInstance, eventFactory, event) {
+
+  $scope.ok = function () {
+    console.log("delete {" + event.id + "}");
+    console.log(event);
+    eventFactory.deleteEvent(event.id).then(function(data){
       console.log("Successfully delete the m-video");
     });
     $uibModalInstance.close(0);

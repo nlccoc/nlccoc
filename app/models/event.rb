@@ -13,4 +13,22 @@ class Event < ActiveRecord::Base
       self.datetime.strftime("%Y/%m/%d")
     end
   end
+  
+  def decode_utf8_b64_desc
+    URI.unescape(CGI::escape(Base64.decode64(self.desc)))
+  end
+  
+  def gsub(input, replace)
+    search = Regexp.new(replace.keys.map{|x| "(?:#{Regexp.quote(x)})"}.join('|'))
+    input.gsub(search, replace)
+  end
+  
+  def decodeURIComponent
+    # decodeURIComponent(encodeURIComponent(symbols)) === symbols
+    # CGI.unescape(CGI.escape(symbols))               === symbols
+    CGI.unescape(gsub(self.desc.to_s,
+        '%20' => '+',    '!' => '%21',  "'" => '%27',  '(' => '%28',  ')' => '%29',  '*' => '%2A',
+        '~'   => '%7E'
+    ))
+  end
 end

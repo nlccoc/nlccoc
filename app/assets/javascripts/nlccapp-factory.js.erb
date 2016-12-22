@@ -83,4 +83,167 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   }
   
   return service;
-}]);;
+}]).factory('categoryFactory', ['$http','$q', function($http, $q){
+  var service = {};
+  var _baseUrl = '/categories';
+  
+  service.getAllCategories = function(){
+    var deferred = $q.defer();
+    var _url = _baseUrl + '.json';
+    $http({
+      method: 'GET',
+      url: _url,
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.error("There is an error");
+    });
+    return deferred.promise;
+  }
+  return service;
+}]).factory('eventFactory', ['$http','$q', function($http, $q){
+  var service = {};
+  var _baseUrl = '/events';
+  
+  service.getAllEvents = function(){
+    var deferred = $q.defer();
+    var _url = _baseUrl + '.json';
+    $http({
+      method: 'GET',
+      url: _url,
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.error("There is an error");
+    });
+    return deferred.promise;
+  }
+  
+  service.getEvent = function(id){
+    var deferred = $q.defer();
+    var _url = _baseUrl + '/' + id + '.json';
+    $http({
+      method: 'GET',
+      url: _url,
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.error("There is an error");
+    });
+    return deferred.promise;
+  }
+  
+  service.createEvent = function(newevent) {
+    var deferred = $q.defer();
+    var _url = _baseUrl + '.json';
+    //console.log(newevent);
+    console.log("Create event");
+    var dt = new moment(newevent.datetime, 'MM/DD/YYYY h:mm a');
+    var vu = new moment(newevent.repeat.valid_until, 'MM/DD/YYYY');
+    //console.log(newevent.categories);
+    newevent.cat = [];
+    newevent.categories.forEach(function(item, index){
+      newevent.cat.push(item.toString());
+    })
+    
+    console.log(newevent.cat);
+    
+    
+    $http({
+      method: 'POST',
+      url: _url,
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
+      params: {
+        "utf8": "✓",
+        "authenticity_token": $('meta[name="csrf-token"]').attr('content'),
+        "event[title]": newevent.title,
+        "event[short_desc]": newevent.short_desc,
+        "event[desc]": escape(newevent.desc),
+        "event[datetime(1i)]": dt.year(),
+        "event[datetime(2i)]": dt.month()+1,
+        "event[datetime(3i)]": dt.date(),
+        "event[datetime(4i)]": dt.hour(),
+        "event[datetime(5i)]": dt.minute(),
+        "event[event_period]": newevent.period.min,
+        "event[category_ids][]": newevent.categories,
+        "event[location]": newevent.location,
+        "repeat": newevent.repeat.isSelected,
+        "valid_until[date(1i)]": vu.year(),
+        "valid_until[date(2i)]": vu.month()+1,
+        "valid_until[date(3i)]": vu.date()
+      }
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      toastr.warning("Create event failed");
+      //deferred.error("There is an error");
+    });
+    return deferred.promise;
+  }
+  
+  service.deleteEvent = function(id) {
+    var _url = _baseUrl + '/' + id + '.json'
+    var deferred = $q.defer();
+    $http({
+      method: 'DELETE',
+      url: _url,
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }  
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.error("There is an error");
+    });
+    return deferred.promise;
+  }
+  
+  service.updateEvent = function(updated_event) {
+    var _url = _baseUrl + '/' + updated_event.id + '.json'
+    var deferred = $q.defer();
+    
+    var dt = new moment(updated_event.datetime, 'MM/DD/YYYY h:mm a');
+    var vu = new moment(updated_event.repeat.valid_until, 'MM/DD/YYYY');
+    console.log(updated_event.categories);
+    updated_event.cat = [];
+    updated_event.categories.forEach(function(item, index){
+      updated_event.cat.push(item.toString());
+    })
+    
+    console.log(updated_event.cat);
+    $http({
+      method: 'PUT',
+      url: _url,
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }, 
+      params: {
+        "utf8": "✓",
+        "authenticity_token": $('meta[name="csrf-token"]').attr('content'),
+        "event[title]": updated_event.title,
+        "event[short_desc]": updated_event.short_desc,
+        "event[desc]": encodeURIComponent(updated_event.desc),
+        "event[datetime(1i)]": dt.year(),
+        "event[datetime(2i)]": dt.month()+1,
+        "event[datetime(3i)]": dt.date(),
+        "event[datetime(4i)]": dt.hour(),
+        "event[datetime(5i)]": dt.minute(),
+        "event[event_period]": updated_event.period.min,
+        "event[category_ids][]": updated_event.categories,
+        "event[location]": updated_event.location,
+        "repeat": updated_event.repeat.isSelected,
+        "valid_until[date(1i)]": vu.year(),
+        "valid_until[date(2i)]": vu.month()+1,
+        "valid_until[date(3i)]": vu.date()
+      }
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.error("There is an error");
+    });
+    return deferred.promise;
+  }
+  return service;
+}]);

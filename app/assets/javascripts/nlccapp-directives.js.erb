@@ -75,4 +75,46 @@ angular.module('nlcc.tools', [])
       }
     }
   }
-}]);
+}]).directive('datetimepicker', function(){
+	return {
+		require: '?ngModel',
+		restrict: 'A',
+		scope: {
+      format: "@"
+		},
+		link: function(scope, element, attrs, ngModel){
+      
+			if(!ngModel) return; // do nothing if no ng-model
+      console.log(ngModel);
+			ngModel.$render = function(){
+				element.val( ngModel.$viewValue || '' );
+			}
+      if (typeof scope.format === "undefined")
+			  if (!attrs.format) {
+			    attrs.format = '';
+			  }
+			  console.log('format: ' + scope.format)
+			  element.datetimepicker({
+			    format: attrs.format
+			  });
+			  
+
+			element.on('dp.change', function(){
+			  console.log('dp.change');
+				scope.$apply(read);
+			});
+			
+			element.on('dp.change', function(){
+			  console.log('dp.update');
+			});
+
+			//read();
+
+			function read() {
+			  console.log('read');
+				var value = element.val();
+				ngModel.$setViewValue(value);
+			}
+		}
+	}
+});

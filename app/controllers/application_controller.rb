@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   
     # A locale change is necessary if no locale cookie is found, or if the locale param has been specified
     def language_change_necessary?
-      return cookies['locale'].nil? || params[:locale]
+      return cookies['locale'].nil? || params[:locale] || :zh
     end
   
     # The new locale is taken from the current_user language setting, it logged_in, or from the http accept language header if not

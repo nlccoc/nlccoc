@@ -8,11 +8,22 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @header_bg='bg-dark'
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @events }
+    end
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    
+    @event = Event.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @event.as_json(:include => [:repeat_metum, :categories])}
+    end
   end
 
   # GET /events/new
@@ -31,7 +42,6 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    #pry 
     @event = Event.new
     event = params[:event]
     @event.title = event[:title]
@@ -56,13 +66,11 @@ class EventsController < ApplicationController
       @event.repeat_metum << @repeat_meta
     end
     
-    
     respond_to do |format|
       
       if @event.save
-        
         format.html { redirect_to events_path, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
+        format.json { render json: @event }
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -73,7 +81,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    @event = Event.find(params[:id])
+    pry
     event = params[:event]
     @event.title = event[:title]
     @event.short_desc = event[:short_desc]
@@ -82,7 +90,8 @@ class EventsController < ApplicationController
     @event.event_period = event[:event_period]
     @event.location = event[:location]
     
-    @event.categories = []
+    @event.categories.delete(@event.id)
+    
     event[:category_ids].each do |c_id|
       category = Category.find_by_id(c_id.to_i)
       @event.categories << category unless category.nil? 
@@ -113,7 +122,6 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     
-    @event=Event.find(params[:id])
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_path, notice: 'Event was successfully destroyed.' }

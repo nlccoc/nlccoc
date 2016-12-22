@@ -435,7 +435,7 @@
           <ul class="menu">
             <li class="has-dropdown">
               <a href="#"><%= t('menu.languages.lang') %></a>
-              <% other_locales = I18n.available_locales.reject!{ |k| k == I18n.locale } %>
+              <% other_locales = I18n.available_locales.reject{ |k| k == I18n.locale } %>
               <ul>
                 <% other_locales.each do |l| %>
                 <li>

@@ -9,7 +9,10 @@ class MvideosController < ApplicationController
   def index
     @mvideos = Mvideo.all
     @header_bg='bg-dark'
-    
+    respond_to do |format|
+      format.html
+      format.json { render json: @mvideos }
+    end
   end
 
   # GET /mvideos/1

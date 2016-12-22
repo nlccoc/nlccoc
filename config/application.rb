@@ -26,6 +26,8 @@ module Workspace
     
     config.middleware.use I18n::JS::Middleware
     
+    
     config.i18n.default_locale = :zh
+    #config.i18n.available_locales = [:en, :zh, :cn]
   end
 end

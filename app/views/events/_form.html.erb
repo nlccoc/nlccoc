@@ -59,7 +59,11 @@
   </div>
   <div class="field">
     <%= f.label :valid_until %><br>
-    <%= date_select :valid_until, :date, default: Date.new(@event.repeat_metum.first.valid_until.year, @event.repeat_metum.first.valid_until.month, @event.repeat_metum.first.valid_until.day)%>
+    <% if @event.repeat_metum.empty? %>
+      <%= date_select :valid_until, :date %>
+    <% else %>
+      <%= date_select :valid_until, :date, default: Date.new(@event.repeat_metum.first.valid_until.year, @event.repeat_metum.first.valid_until.month, @event.repeat_metum.first.valid_until.day)%>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

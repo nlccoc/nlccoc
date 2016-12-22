@@ -25,7 +25,14 @@
     "ng-parallax": "^0.1.8",
     "parallax.js": "^1.4.2",
     "angular-parallax": "^0.0.2",
-    "AngularDevise": "angular-devise#^1.3.0"
+    "AngularDevise": "angular-devise#^1.3.0",
+    "metisMenu": "^2.6.1",
+    "angular-animate": "^1.6.0",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.43",
+    "angular-bootstrap-switch": "^0.5.1",
+    "bootstrap-switch": "^3.3.2",
+    "ion.rangeslider-angularjs": "^1.0.5",
+    "angular-summernote": "^0.8.1"
   },
   "devDependencies": {
     "angular-translate": "^2.12.1"

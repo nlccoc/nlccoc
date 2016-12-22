@@ -1,0 +1,83 @@
+<h1 class="page-title"> Event
+  <small> {{function=='new'? 'New': 'Edit'}}</small> 
+</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    
+    <form>
+      <div class='form-body'>
+        <div class="form-group">  
+          <label>Title</label>
+          <div class="input-icon input-icon-lg">
+            <i class="fa fa-bell-o"></i>
+            <input type="text" class="form-control input" placeholder="Title" ng-model='event.title'></div>
+        </div>
+        <div class="form-group">
+          <label>Short Description</label>
+          <textarea class="form-control" rows="3" ng-model='event.short_desc'></textarea>
+        </div>
+        <div class="form-group">
+          <label>Long Description</label>
+          <summernote ng-model='event.desc' height='300' focus></summernote>
+        </div>
+        <div class="form-group">  
+          <label>Period</label>
+          <ion-range-slider min="0" max="300" from="event.period.min" to="event.period.max" value='event.period.value'></ion-range-slider>
+        </div>
+        <div class="form-group">  
+          <label>Location</label>
+          <div class="input-icon input-icon-lg">
+            <i class="fa fa-bell-o"></i>
+            <input type="text" class="form-control input" placeholder="Location" ng-model='event.location'></div>
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input class="form-control form-control-inline input date-picker" datetimepicker ng-model='event.datetime' size="16" type="text" value="" />
+          <span class="help-block"> Select date </span>
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select multiple class="form-control" ng-model='event.categories' 
+      ng-options=" item.id as I18n.t(item.name) for item in meta.categories"></select>
+        </div>
+        <div class="form-group">
+          <label>Repeat?</label>
+          <input
+            bs-switch
+            ng-model="repeat.isSelected"
+            type="checkbox"
+            switch-active="{{ repeat.isActive }}"
+            switch-on-text="{{ repeat.onText }}"
+            switch-off-text="{{ repeat.offText }}"
+            switch-on-color="{{ repeat.onColor }}"
+            switch-off-color="{{ repeat.offColor }}"
+            switch-animate="{{ repeat.animate }}"
+            switch-size="{{ repeat.size }}"
+            switch-label="{{ repeat.label }}"
+            switch-icon="{{ repeat.icon }}"
+            switch-radio-off="{{ repeat.radioOff }}"
+            switch-label-width="{{ repeat.labelWidth }}"
+            switch-handle-width="{{ repeat.andleWidth }}"
+            switch-wrapper="{{ repeat.wrapper }}"
+            ng-true-value=true
+            ng-false-value=false
+            switch-inverse="{{ !inverse }}">
+        
+        </div>
+        <div class="form-group valid_until_show" ng-show='repeat.isSelected' style='z-inedx:9;'>
+          <label>Valid Until</label>
+          <input class="form-control form-control-inline input date-picker" format='MM/DD/YYYY' datetimepicker ng-model='repeat.valid_until' size="16" type="text" value="" />
+          <span class="help-block"> Select date </span>
+        </div>
+      </div>
+      <div class="form-actions right" style='z-index:9999;'>
+        <button type="button" class="btn default">Cancel</button>
+        <button type="submit" class="btn green" ng-click="submit(function)">Submit</button>
+      </div>
+    </form>
+    {{event}}
+    <br>
+    {{html}}
+  </div>
+</div>

@@ -16,11 +16,48 @@ nlccmgmtapp.config([
       url: '/mgmts/media-photo',templateUrl: 'mgmts/media/photo.html'/*,
       controller: 'mainCtrl'*/
     }).state('events-all', {
-      url: '/mgmts/events-all',templateUrl: 'mgmts/events/all.html'/*,
-      controller: 'mainCtrl'*/
+      url: '/mgmts/events-all',templateUrl: 'mgmts/events/all.html',
+      controller: 'eventAllCtrl'
+    }).state('event.detail', {
+      url: '/mgmts/event/:eventID',templateUrl: 'mgmts/events/event.html',
+      resolve: {
+        // A string value resolves to a service
+        eventResource: 'eventFactory',
+
+        // A function value resolves to the return
+        // value of the function
+        event: ['eventResource', '$stateParams',function(eventResource, $stateParams){
+          return eventResource.getEvent($stateParams.eventID);
+        }]
+      }
+    }).state('event-edit', {
+      url: '/mgmts/events/:eventID/edit',templateUrl: 'mgmts/events/event.edit.html',
+      resolve: {
+        // A string value resolves to a service
+        eventResource: 'eventFactory',
+        catResource: 'categoryFactory',
+        // A function value resolves to the return
+        // value of the function
+        event: ['eventResource', '$stateParams',function(eventResource, $stateParams){
+          return eventResource.getEvent($stateParams.eventID);
+        }],
+        categories: ['catResource',function(catResource){
+          return catResource.getAllCategories();
+        }]
+      },
+      controller: 'eventEditCtrl'
+    }).state('event-new', {
+      url: '/mgmts/events/new',templateUrl: 'mgmts/events/event.edit.html',
+      controller: 'eventNewCtrl',
+      resolve: {
+        catResource: 'categoryFactory',
+        categories: ['catResource',function(catResource){
+          return catResource.getAllCategories();
+        }]
+      }
     }).state('events-category', {
       url: '/mgmts/events-category',templateUrl: 'mgmts/events/category.html'/*,
-      controller: 'mainCtrl'*/
+      controller: 'eventCtrl'*/
     })
     .state('user-profile', {
       url: '/mgmts/user-profile',templateUrl: 'mgmts/profile.html'/*,

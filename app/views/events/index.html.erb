@@ -22,7 +22,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.title %></td>
+        <td><%= event.title %>, <%= event.id %></td>
         <td><%= event.short_desc %></td>
         <td><%= event.datetime.strftime("%Y/%m/%d") %></td>
         <td><%= event.latest_date %></td>
@@ -30,7 +30,7 @@
         <td><%= event.event_period %></td>
         <td><% event.categories.each do |c| %>
               <div><%= t(c.name) %></div> 
-            <% end %>
+          <% end %>
         </td>
         <td><%= link_to 'Goto', event_path(event) %></td>
         <td><%= link_to "Edit", edit_event_path(event) %></td>
@@ -43,3 +43,9 @@
 <br>
 
 <%= link_to 'New Event', new_event_path %>
+<%= I18n.available_locales %>, <%= I18n.locale%>
+<% other_locales = I18n.available_locales.reject{ |k| k == I18n.locale } %>
+
+<%= other_locales %>
+
+<%= (1..30).reject { |n| n % 2 == 0 } %>

@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   resources :events
   resources :mvideos
   resources :libraries
+  resources :categories
   #end
-  
-  #get 'mgmts/index'
+
   get 'mgmts' => 'mgmts#index'
-  
+  get 'mgmt' => 'mgmt#index'
+  get 'mgmt/media/video' => 'mgmt#video'
+  get 'mgmt/media/audio' => 'mgmt#audio'
   
   #get "mgmts/*path" => "mgmts#index"
   #get "mgmts/*path.html" => "mgmts#index"
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
   # devise customized controllers: sessions, registrations
   devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations' }
   
-  scope "(:locale)", :locale => /en|zh|cn/, :except => 'mgmts' do
+  scope "/(:locale)", :locale => /en|zh|cn/, :except => 'mgmts' do
     get 'main/index' => 'main#index'
     
     root 'main#index'
@@ -39,6 +41,9 @@ Rails.application.routes.draw do
   get "/:locale" => 'main#index'
   
   get "/" => "main#index"
+  
+  get "/mgmts/*path" => "mgmts#index"
+  get "/mgmts/*path.html" => "mgmts#index"
   
   # For ui.router
   get "*path" => "main#index"
