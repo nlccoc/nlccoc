@@ -121,10 +121,10 @@ function($scope, categories, eventFactory, $state, $sce){
   }
   
   $scope.submit = function(func){
-    if ($scope.event.desc.length > 1024) {
-      toastr.warning('Too long for the description: length: ' + $scope.event.desc.length + ', please revise it under 1024 characters');
+    //if ($scope.event.desc.length > 1024) {
+    //  toastr.warning('Too long for the description: length: ' + $scope.event.desc.length + ', please revise it under 1024 characters');
     //  return;
-    }
+    //}
     console.log(func);
     console.log("Submit");
     $scope.event.repeat = $scope.repeat;
@@ -135,6 +135,8 @@ function($scope, categories, eventFactory, $state, $sce){
         //console.log(data);
         toastr.success('Create event \'' + $scope.event.title + '\' successfully');
         $state.go('events-all');
+      }).catch(function(data, status) {
+        toastr.warning('Create event failed');
       });
     } else if(func == 'edit'){
       
@@ -212,10 +214,16 @@ function($scope, event, categories, eventFactory, $state){
         //console.log(data);
         toastr.success('Create event \'' + $scope.event.title + '\' successfully');
         $state.go('events-all');
+      }).catch(function(data, status){
+        toastr.warning('Create event failed');
       });
     }
   }
-}]);;
+}]).controller('eventCtrl', ['$scope', 'event',
+function($scope, event){
+  $scope.event = event;
+  $scope.event.desc = unescape(event.desc)
+}]);
 
 /* Setup Layout Part - Header */
 nlccmgmtapp.controller('headerController', ['$scope', function($scope) {

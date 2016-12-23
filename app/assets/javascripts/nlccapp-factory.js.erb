@@ -155,24 +155,27 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
       headers: {
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
       },
-      params: {
+      data: {
         "utf8": "✓",
-        "authenticity_token": $('meta[name="csrf-token"]').attr('content'),
-        "event[title]": newevent.title,
-        "event[short_desc]": newevent.short_desc,
-        "event[desc]": escape(newevent.desc),
-        "event[datetime(1i)]": dt.year(),
-        "event[datetime(2i)]": dt.month()+1,
-        "event[datetime(3i)]": dt.date(),
-        "event[datetime(4i)]": dt.hour(),
-        "event[datetime(5i)]": dt.minute(),
-        "event[event_period]": newevent.period.min,
-        "event[category_ids][]": newevent.categories,
-        "event[location]": newevent.location,
+        "event": {
+          "title": newevent.title,
+          "short_desc": newevent.short_desc,
+          "desc": escape(newevent.desc),
+          "datetime(1i)": dt.year(),
+          "datetime(2i)": dt.month()+1,
+          "datetime(3i)": dt.date(),
+          "datetime(4i)": dt.hour(),
+          "datetime(5i)": dt.minute(),
+          "event_period": newevent.period.min,
+          "category_ids": newevent.categories,
+          "location": newevent.location
+        },
         "repeat": newevent.repeat.isSelected,
-        "valid_until[date(1i)]": vu.year(),
-        "valid_until[date(2i)]": vu.month()+1,
-        "valid_until[date(3i)]": vu.date()
+        "valid_until": {
+          "date(1i)": vu.year(),
+          "date(2i)": vu.month()+1,
+          "date(3i)": vu.date()
+        }
       }
     }).success(function(data){
       deferred.resolve(data);
@@ -219,24 +222,29 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
       headers: {
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
       }, 
-      params: {
+      data: {
         "utf8": "✓",
         "authenticity_token": $('meta[name="csrf-token"]').attr('content'),
-        "event[title]": updated_event.title,
-        "event[short_desc]": updated_event.short_desc,
-        "event[desc]": encodeURIComponent(updated_event.desc),
-        "event[datetime(1i)]": dt.year(),
-        "event[datetime(2i)]": dt.month()+1,
-        "event[datetime(3i)]": dt.date(),
-        "event[datetime(4i)]": dt.hour(),
-        "event[datetime(5i)]": dt.minute(),
-        "event[event_period]": updated_event.period.min,
-        "event[category_ids][]": updated_event.categories,
-        "event[location]": updated_event.location,
+        "event": {
+          "id": updated_event.id,
+          "title": updated_event.title,
+          "short_desc": updated_event.short_desc,
+          "desc": escape(updated_event.desc),
+          "datetime(1i)": dt.year(),
+          "datetime(2i)": dt.month()+1,
+          "datetime(3i)": dt.date(),
+          "datetime(4i)": dt.hour(),
+          "datetime(5i)": dt.minute(),
+          "event_period": updated_event.period.min,
+          "category_ids": updated_event.categories,
+          "location]": updated_event.location
+        },
         "repeat": updated_event.repeat.isSelected,
-        "valid_until[date(1i)]": vu.year(),
-        "valid_until[date(2i)]": vu.month()+1,
-        "valid_until[date(3i)]": vu.date()
+        "valid_until": {
+          "date(1i)": vu.year(),
+          "date(2i)": vu.month()+1,
+          "date(3i)": vu.date()
+        }
       }
     }).success(function(data){
       deferred.resolve(data);

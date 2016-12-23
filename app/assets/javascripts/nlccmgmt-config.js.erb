@@ -18,7 +18,7 @@ nlccmgmtapp.config([
     }).state('events-all', {
       url: '/mgmts/events-all',templateUrl: 'mgmts/events/all.html',
       controller: 'eventAllCtrl'
-    }).state('event.detail', {
+    }).state('event-detail', {
       url: '/mgmts/event/:eventID',templateUrl: 'mgmts/events/event.html',
       resolve: {
         // A string value resolves to a service
@@ -29,7 +29,8 @@ nlccmgmtapp.config([
         event: ['eventResource', '$stateParams',function(eventResource, $stateParams){
           return eventResource.getEvent($stateParams.eventID);
         }]
-      }
+      },
+      controller: 'eventCtrl'
     }).state('event-edit', {
       url: '/mgmts/events/:eventID/edit',templateUrl: 'mgmts/events/event.edit.html',
       resolve: {

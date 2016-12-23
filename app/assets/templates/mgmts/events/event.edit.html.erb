@@ -73,11 +73,9 @@
       </div>
       <div class="form-actions right" style='z-index:9999;'>
         <button type="button" class="btn default">Cancel</button>
-        <button type="submit" class="btn green" ng-click="submit(function)">Submit</button>
+        <button type="submit" class="btn green" ng-click="submit(function)"> {{function=='new'? 'Create': 'Update'}}</button>
       </div>
     </form>
     {{event}}
-    <br>
-    {{html}}
   </div>
 </div>

@@ -1,1 +1,38 @@
-Event
+Event detail
+
+<div class='row'>
+  <div class='col-md-3'>Title</div>
+  <div class='col-md-9'>{{event.title}}</div>
+  <hr />
+</div>
+<div class='row'>
+  <div class='col-md-3'>Short Desc</div>
+  <div class='col-md-9'>{{event.short_desc}}</div>
+  <hr />
+</div>
+<div class='row'>
+  <div class='col-md-3'>Desc</div>
+  <div class='col-md-9'>{{event.desc}}</div>
+  <hr />
+</div>
+<div class='row'>
+  <div class='col-md-3'>Location</div>
+  <div class='col-md-9'>{{event.location}}</div>
+  <hr />
+</div>
+<div class='row'>
+  <div class='col-md-3'>Date/Time</div>
+  <div class='col-md-9'>{{event.datetime}}</div>
+  <hr />
+</div>
+<div class='row'>
+  <div class='col-md-3'>Categories</div>
+  <div class='col-md-9'><div ng-repeat='cat in event.categories'>{{I18n.t(cat.name)}}</div></div>
+  <hr />
+</div>
+<div class='row'>
+  <div class='col-md-3'>Repeat ?</div>
+  <div class='col-md-9'>{{event.repeat_metum.length==0? 'No': 'Yes'}}</div>
+  <hr />
+</div>
+

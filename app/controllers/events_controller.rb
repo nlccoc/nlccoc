@@ -70,7 +70,7 @@ class EventsController < ApplicationController
       
       if @event.save
         format.html { redirect_to events_path, notice: 'Event was successfully created.' }
-        format.json { render json: @event }
+        format.json { render json: @event}
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -81,7 +81,6 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    pry
     event = params[:event]
     @event.title = event[:title]
     @event.short_desc = event[:short_desc]
@@ -90,7 +89,7 @@ class EventsController < ApplicationController
     @event.event_period = event[:event_period]
     @event.location = event[:location]
     
-    @event.categories.delete(@event.id)
+    EventCategory.where(event_id: @event.id).delete_all
     
     event[:category_ids].each do |c_id|
       category = Category.find_by_id(c_id.to_i)
@@ -110,7 +109,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update(@event.as_json)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
+        format.json { render json: @event }
       else
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
