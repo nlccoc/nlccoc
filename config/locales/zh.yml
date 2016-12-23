@@ -42,6 +42,13 @@ zh:
       sunday_service: "主日資訊"
       activities: "教會活動"
       cellgroups: "小組資訊"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "校驗失敗: %{errors}"
+        restrict_dependent_destroy:
+          has_one: 由於 %{record} 需要此記錄，所以無法移除記錄
+          has_many: 由於 %{record} 需要此記錄，所以無法移除記錄
   date:
     day_names: ["週日", "週一", "週二", "週三", "週四", "週五", "週六"]
     abbr_day_names:

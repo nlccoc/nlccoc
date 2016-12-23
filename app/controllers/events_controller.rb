@@ -89,7 +89,8 @@ class EventsController < ApplicationController
     @event.event_period = event[:event_period]
     @event.location = event[:location]
     
-    EventCategory.where(event_id: @event.id).delete_all
+    #EventCategory.where(event_id: @event.id).delete_all
+    @event.categories.clear
     
     event[:category_ids].each do |c_id|
       category = Category.find_by_id(c_id.to_i)
