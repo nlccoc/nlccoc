@@ -19,6 +19,7 @@
 //= require angular-bootstrap-switch/dist/angular-bootstrap-switch
 //= require ion.rangeslider-angularjs/ionic-range-slider
 //= require angular-summernote/dist/angular-summernote
+//= require angularjs-file-upload
 //= require app
 //= require layout
 //= require quick-sidebar

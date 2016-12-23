@@ -8,6 +8,10 @@ class LibrariesController < ApplicationController
   # GET /libraries.json
   def index
     @libraries = Library.all
+    respond_to do |format|
+      format.html { redirect_to @libraries }
+      format.json { render :json => @libraries}
+    end
   end
   
   # GET /libraries/new
@@ -24,7 +28,7 @@ class LibrariesController < ApplicationController
     respond_to do |format|
       if @library.save
         format.html { redirect_to @library, notice: 'Library was successfully created.' }
-        format.json { render :show, status: :created, location: @library }
+        format.json { render :json => {status: "OK"}}
       else
         format.html { render :new }
         format.json { render json: @library.errors, status: :unprocessable_entity }

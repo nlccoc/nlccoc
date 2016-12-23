@@ -254,4 +254,21 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     return deferred.promise;
   }
   return service;
+}]).factory('libraryFactory', ['$http','$q', function($http, $q){
+  var service = {};
+  var _baseUrl = '/libraries';
+  service.getAllLibraries = function(){
+    var deferred = $q.defer();
+    var _url = _baseUrl + '.json';
+    $http({
+      method: 'GET',
+      url: _url,
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.error("There is an error");
+    });
+    return deferred.promise;
+  }
+  return service;
 }]);

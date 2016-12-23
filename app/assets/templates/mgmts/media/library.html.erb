@@ -1,0 +1,42 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+  <ul class="page-breadcrumb">
+    <li>
+      <a ui-sref="dashboard">Home</a>
+      <i class="fa fa-circle"></i>
+    </li>
+    <li>
+      <a ui-sref="fileupload">Library</a>
+    </li>
+  </ul>
+  <div class="page-toolbar">
+    <div class="btn-group pull-right">
+      <a ui-sref='library-upload' class="btn btn-sm btn-default">Upload files</a>
+      
+    </div>
+  </div>
+</div>
+<h3 class="page-title"> Library
+  <small>All</small>
+</h3>
+<!-- END PAGE HEADER-->
+<div class='row'>
+  <div class='col-md-12'>
+    <table id="libraries" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th style="width:25%">Name</th>
+          <th style="width:75%">Path</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='lib in libraries'>
+          <td style="width:25%"> {{lib.name}}</td>
+          <td style="width:75%"> {{lib.attachment.url}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- BEGIN MAIN CONTENT -->
+<!-- END MAIN CONTENT -->

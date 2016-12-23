@@ -30,6 +30,7 @@ gem 'toastr-rails'
 
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
+gem 'angularjs-file-upload-rails', '~> 2.2.0'
 
 group :production do
   gem 'pg'
