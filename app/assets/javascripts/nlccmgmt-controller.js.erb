@@ -413,9 +413,9 @@ function ($scope, $uibModalInstance, libraryFactory, library) {
     $uibModalInstance.dismiss('cancel');
   };
 }]);
-nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', function($scope, FileUploader){
+nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', '$state', '$timeout', function($scope, FileUploader, $state, $timeout){
   $scope.library={};
-  $scope.library.name='aa';
+  $scope.library.name='';
   var uploader = $scope.uploader = new FileUploader(
   {
     headers : {
@@ -458,7 +458,11 @@ nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', function($sc
   };
   uploader.onProgressAll = function(progress)
   {
-      console.info('onProgressAll', progress);
+    $timeout(function(){
+      $state.go('media-library');
+    }, 1000)
+    
+    console.info('onProgressAll', progress);
   };
   uploader.onSuccessItem = function(fileItem, response, status, headers)
   {

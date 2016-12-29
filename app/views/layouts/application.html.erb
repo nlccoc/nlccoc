@@ -22,9 +22,9 @@
   
   <%= content_for :javascript do %>
   
-    <script type="text/javascript" src="<%= asset_path('flexslider.min.js') %>"></script>
-    <script type="text/javascript" src="<%= asset_path('parallax.js') %>"></script>
-    <script type="text/javascript" src="<%= asset_path('scripts.js') %>"></script>
+    <script type="text/javascript" data-cfasync="false" src="<%= asset_path('flexslider.min.js') %>"></script>
+    <script type="text/javascript" data-cfasync="false" src="<%= asset_path('parallax.js') %>"></script>
+    <script type="text/javascript" data-cfasync="false" src="<%= asset_path('scripts.js') %>"></script>
   <% end %>
 </head>
 <body>
