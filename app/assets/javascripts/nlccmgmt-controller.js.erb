@@ -364,11 +364,58 @@ function ($scope, $uibModalInstance, eventFactory, event) {
   };
 }]);
 
-nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', function($scope, libraries){
+nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', '$uibModal', function($scope, libraries, $uibModal){
   console.log('library Controller');
   $scope.libraries = libraries;
+  
+  $scope.deleteLibrary = function(library){
+    console.log("DeleteLibrary");
+    var modalInstance = $uibModal.open({
+      animation: true,
+      templateUrl: 'mgmts/confirmModel.html',
+      controller: 'modalDeleteLibraryCtrl',
+      resolve: {
+        library: function () {
+          return library;
+        }
+      }
+    });
+    
+    modalInstance.result.then(function (result) {
+      console.log(result);
+      if(result == 0) {
+        console.log("result: " + result);
+        var idx=0;
+        for (idx=0; idx < $scope.libraries.length; idx++){
+          if (library.id == $scope.libraries[idx].id){
+            $scope.libraries.splice(idx, 1);
+          }
+        }
+        toastr.success('Remove event \'' + event.title + '\' successfully');
+        return
+      }
+    });
+  }
+}]);
+nlccmgmtapp.controller('modalDeleteLibraryCtrl', ['$scope', '$uibModalInstance', 'libraryFactory', 'library', 
+function ($scope, $uibModalInstance, libraryFactory, library) {
+
+  $scope.ok = function () {
+    console.log("delete {" + library.id + "}");
+    console.log(library);
+    libraryFactory.deleteLibrary(library.id).then(function(data){
+      console.log("Successfully delete the m-video");
+    });
+    $uibModalInstance.close(0);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
 }]);
 nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', function($scope, FileUploader){
+  $scope.library={};
+  $scope.library.name='aa';
   var uploader = $scope.uploader = new FileUploader(
   {
     headers : {
@@ -393,7 +440,8 @@ nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', function($sc
   };
   uploader.onAfterAddingFile = function(fileItem)
   {
-      console.info('onAfterAddingFile', fileItem);
+    console.log($scope.library.name);
+    console.info('onAfterAddingFile', fileItem);
   };
   uploader.onAfterAddingAll = function(addedFileItems)
   {
@@ -401,7 +449,8 @@ nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', function($sc
   };
   uploader.onBeforeUploadItem = function(item)
   {
-      console.info('onBeforeUploadItem', item);
+    item.formData.push({"library[name]": $scope.library.name});
+    console.info('onBeforeUploadItem', item);
   };
   uploader.onProgressItem = function(fileItem, progress)
   {
@@ -433,3 +482,4 @@ nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', function($sc
   };
   console.info('uploader', uploader);
 }]);
+

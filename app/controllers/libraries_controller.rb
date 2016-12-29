@@ -50,6 +50,17 @@ class LibrariesController < ApplicationController
     end
   end
   
+  # DELETE /libraries/1
+  # DELETE /libraries/1.json
+  def destroy
+    
+    @library.destroy
+    respond_to do |format|
+      format.html { redirect_to events_path, notice: 'Event was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_library

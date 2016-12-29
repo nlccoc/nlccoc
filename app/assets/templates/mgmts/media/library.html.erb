@@ -26,13 +26,18 @@
       <thead>
         <tr>
           <th style="width:25%">Name</th>
-          <th style="width:75%">Path</th>
+          <th style="width:75%" col-span='2'>Path</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat='lib in libraries'>
           <td style="width:25%"> {{lib.name}}</td>
-          <td style="width:75%"> {{lib.attachment.url}}</td>
+          <td style="width:65%"> {{lib.attachment.url}}</td>
+          <td style="width:10%"> 
+            <span class="text-muted"> 
+              <a ng-click='deleteLibrary(lib);' href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            </span>
+          </td>
         </tr>
       </tbody>
     </table>

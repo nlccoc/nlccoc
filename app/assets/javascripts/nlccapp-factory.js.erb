@@ -39,7 +39,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     }).success(function(data){
       deferred.resolve(data);
     }).error(function(){
-      deferred.error("There is an error");
+      deferred.reject("There is an error");
     });
     return deferred.promise;
   }
@@ -60,7 +60,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     }).success(function(data){
       deferred.resolve(data);
     }).error(function(){
-      deferred.error("There is an error");
+      deferred.reject("There is an error");
     });
     return deferred.promise;
   }
@@ -77,7 +77,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     }).success(function(data){
       deferred.resolve(data);
     }).error(function(){
-      deferred.error("There is an error");
+      deferred.reject("There is an error");
     });
     return deferred.promise;
   }
@@ -96,7 +96,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     }).success(function(data){
       deferred.resolve(data);
     }).error(function(){
-      deferred.error("There is an error");
+      deferred.reject("There is an error");
     });
     return deferred.promise;
   }
@@ -114,7 +114,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     }).success(function(data){
       deferred.resolve(data);
     }).error(function(){
-      deferred.error("There is an error");
+      deferred.reject("There is an error");
     });
     return deferred.promise;
   }
@@ -128,7 +128,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     }).success(function(data){
       deferred.resolve(data);
     }).error(function(){
-      deferred.error("There is an error");
+      deferred.reject("There is an error");
     });
     return deferred.promise;
   }
@@ -180,8 +180,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     }).success(function(data){
       deferred.resolve(data);
     }).error(function(){
-      toastr.warning("Create event failed");
-      //deferred.error("There is an error");
+      deferred.reject("There is an error");
     });
     return deferred.promise;
   }
@@ -198,7 +197,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     }).success(function(data){
       deferred.resolve(data);
     }).error(function(){
-      deferred.error("There is an error");
+      deferred.reject("There is an error");
     });
     return deferred.promise;
   }
@@ -249,7 +248,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     }).success(function(data){
       deferred.resolve(data);
     }).error(function(){
-      deferred.error("There is an error");
+      deferred.reject("There is an error");
     });
     return deferred.promise;
   }
@@ -266,7 +265,23 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     }).success(function(data){
       deferred.resolve(data);
     }).error(function(){
-      deferred.error("There is an error");
+      deferred.reject("There is an error");
+    });
+    return deferred.promise;
+  }
+  service.deleteLibrary = function(id) {
+    var _url = _baseUrl + '/' + id + '.json'
+    var deferred = $q.defer();
+    $http({
+      method: 'DELETE',
+      url: _url,
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }  
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
     });
     return deferred.promise;
   }
