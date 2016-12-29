@@ -15,11 +15,11 @@
         <div class="module left">
           <ul class="menu">
               <li>
-                <a class="inner-link" href="/about">
+                <%= link_to root_path(:locale => I18n.locale, :anchor => 'whoweare'), { :class => 'inner-link'} do %>
                   <%= t('who') %>
-                </a>
+                <% end %>
                 <ul>
-                  <li><a href='/about'>關於我們</a></li>
+                  <li> <%= link_to about_path(:locale => I18n.locale) do %>關於我們 <% end %></li>
                   <li><a>牧者團隊</a></li>
                   <li><a>聯絡我們</a></li>
                 </ul>
@@ -111,9 +111,9 @@
                   </ul>-->
               </li>
               <li class="">
-                  <a class='inner-link' href="/#connect">
-                      <%= t('rooted') %>
-                  </a>
+                <%= link_to root_path(:locale => I18n.locale, :anchor => 'connect'), { :class => 'inner-link'} do %>
+                  <%= t('rooted') %>
+                <% end %>
                   <ul>
                     <li><%= link_to cellgroups_path(:locale => I18n.locale) do %>細胞小組<% end %></li>
                     <li><%= link_to youngadults_path(:locale => I18n.locale) do %>青年團契<% end %></li>
@@ -188,9 +188,9 @@
                   </ul>-->
               </li>
               <li>
-                <a href="/#events" class='inner-link'>
+                <%= link_to root_path(:locale => I18n.locale, :anchor => 'events'), { :class => 'inner-link'} do %>
                     <%= t('events') %>
-                </a>
+                <% end %>
                 <!--<ul>
                     <li class="has-dropdown">
                         <a href="#">
@@ -276,9 +276,9 @@
                 </ul>-->
               </li>
               <li class="">
-                <a href="/#ministries" class='inner-link'>
+                <%= link_to root_path(:locale => I18n.locale, :anchor => 'ministries'), { :class => 'inner-link'} do %>
                   <%= t('ministries') %>
-                </a>
+                <% end %>
                 <ul>
                   <li><%= link_to '#' do %>敬拜事工<% end %></li>
                   <li><%= link_to '#' do %>裝備事工<% end %></li>
@@ -370,9 +370,9 @@
                   </ul>-->
               </li>
               <li class="">
-                  <a href='/tithe'>
+                  <%= link_to tithe_path(:locale => I18n.locale) do %>
                       <%= t('give') %>
-                  </a>
+                  <% end %>
               </li>
           </ul>
         </div>
