@@ -3,7 +3,7 @@
   <nav class="absolute transparent" data-fixed-at='200px'>
     <div class="nav-bar">
       <div class="module left">
-        <%= link_to root_path do %>
+        <%= link_to root_path(:locale => I18n.locale) do %>
           <img class="logo logo-light" alt="Foundry" src="<%= asset_path('logo-light.png') %>" />
           <img class="logo logo-dark" alt="Foundry" src="<%= asset_path('logo-dark.png') %>" />
         <% end %>
@@ -20,7 +20,7 @@
                   </a>
                   <ul>
                     <li>
-                      <%= link_to about_path do %>
+                      <%= link_to about_path(:locale => I18n.locale) do %>
                         <%= t('menu.about') %>
                       <% end %>
                     </li>
@@ -120,8 +120,8 @@
                   </a>
                   <ul>
                     <li><%= link_to cellgroups_path(:locale => I18n.locale) do %>細胞小組<% end %></li>
-                    <li><%= link_to youngadults_path do %>青年團契<% end %></li>
-                    <li><%= link_to children_path do %>兒童主日<% end %></li>
+                    <li><%= link_to youngadults_path(:locale => I18n.locale) do %>青年團契<% end %></li>
+                    <li><%= link_to children_path(:locale => I18n.locale) do %>兒童主日<% end %></li>
                   </ul>
                   <!--<ul class="mega-menu">
                       <li>
@@ -289,7 +289,6 @@
                   <li><%= link_to '#' do %>禱告事工<% end %></li>
                   <li><%= link_to '#' do %>宣教事工<% end %></li>
                   <li><%= link_to '#' do %>愛鄰 I-Link<% end %></li>
-                  <li><%= link_to '#' do %>全新的你<% end %></li>
                   <li><%= link_to '#' do %>興起發光<% end %></li>
                 </ul>
               </li>
@@ -301,7 +300,7 @@
                 </a>
                 <ul>
                   <li>
-                    <%= link_to videos_path do %>
+                    <%= link_to videos_path(:locale => I18n.locale) do %>
                       影音媒體
                     <% end %>
                   </li>
