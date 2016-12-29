@@ -9,5 +9,3 @@
 //= require owl.carousel/dist/owl.carousel
 //= require jquery-smooth-scroll/jquery.smooth-scroll.js
 //= require jrespond/js/jRespond.js
-//= require jquery 
-//= require jquery_ujs

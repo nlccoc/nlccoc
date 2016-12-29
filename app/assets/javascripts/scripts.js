@@ -1020,9 +1020,6 @@ $(document).on('turbolinks:load', function() {
    $('body').addClass('loaded');
 });
 
-/*$(document).on('page:load', ready); */// Classic Turbolinks
-//$(document).on('turbolinks:load', ready); // Turbolinks 5
-
 $(window).on("load", function() { 
     "use strict";
     // Initialize Masonry
@@ -1031,7 +1028,6 @@ $(window).on("load", function() {
     $('body').addClass('loaded');
 
     mr_firstSectionHeight = $('.main-container section:nth-of-type(1)').outerHeight(true);
-
 
 }); 
 function updateNav() {
