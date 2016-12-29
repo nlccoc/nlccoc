@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  path: MyString
+  desc: MyText
+  length: 1
+  frontpage: false
+  date: 2016-12-29
+
+two:
+  title: MyString
+  path: MyString
+  desc: MyText
+  length: 1
+  frontpage: false
+  date: 2016-12-29
