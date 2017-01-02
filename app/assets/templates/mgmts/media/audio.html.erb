@@ -1,2 +1,59 @@
-Media - Audio
+<!-- BEGIN PAGE BAR -->
+<div class="page-bar">
+  <ul class="page-breadcrumb">
+    <li>
+      <a href="index.html">Home</a>
+      <i class="fa fa-circle"></i>
+    </li>
+    <li>
+      <span>All Audio</span>
+    </li>
+  </ul>
+</div>
+<!-- END PAGE BAR -->
 
+<h1 class="page-title"> All Audio
+  <!--<small>All Events</small>-->
+</h1>
+
+<div class='row'>
+  <div class='col-md-12'>
+    <a class="btn green" ui-sref='event-new'>New Audio</a>
+  </div>
+</div>
+<div class='row'>
+  <div class='col-md-12'>
+    <ul class="nav nav-tabs">
+      <li ng-repeat='cat in categories'>
+        <a href="#tab_{{$index}}" data-toggle="tab"> {{I18n.t(cat.name)}} </a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div ng-repeat='cat in categories' class="tab-pane" ng-class="$index==0?'fade active in':''" id="tab_{{$index}}">
+        <div class="row">
+          <div class="col-md-12">
+            <table id="user" class="table table-bordered table-striped">
+              <tbody>
+                <tr ng-repeat='event in cat.events'>
+                  <td style="width:25%"> <a ui-sref='event-detail({eventID: event.id})'>{{event.title}}</a> </td>
+                  <td style="width:50%"> 
+                    <a href="javascript:;" id="username" data-type="text" data-pk="1" data-original-title="Enter username"> {{getDate(event.datetime)}} </a>
+                  </td>
+                  <td style="width:25%">
+                    <span class="text-muted"> <a ui-sref='event-edit({eventID: event.id})' href="#">
+                      <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    </span> 
+                    <span class="text-muted"> <a ng-click='deleteEvent(event, cat);' href="#">
+                      <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix margin-bottom-20"> </div>
+  </div>
+</div>

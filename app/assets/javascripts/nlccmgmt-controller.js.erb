@@ -391,7 +391,7 @@ nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', '$uibModal', funct
             $scope.libraries.splice(idx, 1);
           }
         }
-        toastr.success('Remove event \'' + event.title + '\' successfully');
+        toastr.success('Remove library \'' + library.name + '\' successfully');
         return
       }
     });
@@ -404,7 +404,7 @@ function ($scope, $uibModalInstance, libraryFactory, library) {
     console.log("delete {" + library.id + "}");
     console.log(library);
     libraryFactory.deleteLibrary(library.id).then(function(data){
-      console.log("Successfully delete the m-video");
+      console.log("Successfully delete the library");
     });
     $uibModalInstance.close(0);
   };
@@ -458,10 +458,6 @@ nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', '$state', '$
   };
   uploader.onProgressAll = function(progress)
   {
-    $timeout(function(){
-      $state.go('media-library');
-    }, 1000)
-    
     console.info('onProgressAll', progress);
   };
   uploader.onSuccessItem = function(fileItem, response, status, headers)
@@ -483,6 +479,9 @@ nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', '$state', '$
   uploader.onCompleteAll = function()
   {
       console.info('onCompleteAll');
+      $timeout(function(){
+      $state.go('media-library');
+    }, 500)
   };
   console.info('uploader', uploader);
 }]);
