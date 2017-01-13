@@ -448,7 +448,7 @@
         </div>
       </div>
       <div class='row text-right'>
-        <a class="btn btn-filled mb16 mt16" href="/videos">更 多 主 日 影 音</a>
+        <%= link_to videos_path(:locale => I18n.locale), class: "image-bg btn btn-filled mb16 mt16" do %> 更 多 主 日 影 音 <% end %>
       </div>
       <div class='row'>
         <h4>最新講道錄音</h4>
@@ -461,7 +461,7 @@
         <% end %>
       </div>
       <div class='row text-right'>
-        <a class="image-bg btn btn-filled mb16 mt16" href="/videos">更 多 講 道 錄 音</a>
+        <%= link_to audio_path(:locale => I18n.locale), class: "image-bg btn btn-filled mb16 mt16" do %> 更 多 講 道 錄 音 <% end %>
       </div>
     </div>
     <!--end of container-->

@@ -291,9 +291,9 @@
               <!--<li class="has-dropdown">-->
               
               <li class="Media">
-                <a href="/videos">
+                <%= link_to root_path(:locale => I18n.locale, :anchor => 'media') do %>
                   <%= t('media') %>
-                </a>
+                <% end %>
                 <ul>
                   <li>
                     <%= link_to videos_path(:locale => I18n.locale) do %>

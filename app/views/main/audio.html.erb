@@ -1,0 +1,66 @@
+<style>
+/* enable absolute positioning */
+.inner-addon {
+  position: relative;
+}
+
+/* style glyph */
+.inner-addon .ti-search {
+  font-size: 20px;
+  position: absolute;
+  padding: 17px;
+  pointer-events: none;
+}
+
+/* align glyph */
+.left-addon .ti-search  { left:  0px;}
+.right-addon .ti-search { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  50px; }
+.right-addon input { padding-right: 50px; }
+
+
+</style>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h4 class="uppercase mb16">影 音</h4>
+        <p class="lead mb64">
+            每週主日錄音
+        </p>
+      </div>
+    </div>
+    <div class='row'>
+      
+      <div class="inner-addon left-addon">
+        <i class="ti-search"></i>
+        <input type="text" placeholder="Search" />
+      </div>
+      
+      
+    </div>
+    <div class='row'>
+      <div class="col-sm-12">
+        <a class="btn btn-icon btn-filled" href="#" style='padding-left:4px;padding-top:2px;'>
+          <i class="ti-layout-grid4-alt"></i>
+        </a>
+        <a class="btn btn-icon btn-filled" href="#" style='padding-left:4px;padding-top:2px;'>
+          <i class="ti-layout-grid2-alt"></i>
+        </a>
+        <a class="btn btn-icon btn-filled" href="#" style='padding:1px 2px;'>
+          <i class="ti-align-justify"></i>
+        </a>
+ 
+      </div>
+    </div>
+    <div class='row list'>
+      <div class="col-sm-4">
+        <ul class="lead" data-bullet="ti-plus">
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get "tithe" => "main#tithe"
     get "cellgroups" => "main#cellgroups"
     get "videos" => "main#videos"
+    get "audio" => "main#audio"
     get "about" => "main#about"
     get "youngadults" => "main#youngadults"
     get "children" => "main#children"

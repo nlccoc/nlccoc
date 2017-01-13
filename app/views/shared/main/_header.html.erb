@@ -374,9 +374,9 @@
                   </ul>-->
               </li>
               <li class="">
-                  <a href='/tithe'>
+                  <%= link_to tithe_path(:locale => I18n.locale) do %>
                       <%= t('give') %>
-                  </a>
+                  <% end %>
               </li>
           </ul>
         </div>

@@ -18,6 +18,9 @@ class MainController < ApplicationController
     @header_bg='bg-dark'
   end
   
+  def audio
+  end
+  
   def videos
     @header_bg='bg-dark'
     @mvideos = Mvideo.all
