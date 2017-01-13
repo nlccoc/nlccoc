@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :mvideos
   resources :libraries
   resources :categories
+  resources :maudios
   #end
 
   get 'mgmts' => 'mgmts#index'

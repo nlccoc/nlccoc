@@ -10,8 +10,17 @@ nlccmgmtapp.config([
       url: '/mgmts/media-video',templateUrl: 'mgmts/media/video.html',
       controller: 'mediaVideoCtrl'
     }).state('media-audio', {
-      url: '/mgmts/media-audio',templateUrl: 'mgmts/media/audio.html'/*,
-      controller: 'mainCtrl'*/
+      url: '/mgmts/media-audio',templateUrl: 'mgmts/media/audio.html',
+      resolve: {
+        // A string value resolves to a service
+        maudioResource: 'maudioFactory',
+        // A function value resolves to the return
+        // value of the function
+        maudios: ['maudioResource',function(maudioResource){
+          return maudioResource.getAllMaudios();
+        }]
+      },
+      controller: 'mediaAudioCtrl'
     }).state('media-photo', {
       url: '/mgmts/media-photo',templateUrl: 'mgmts/media/photo.html'/*,
       controller: 'mainCtrl'*/
@@ -24,8 +33,7 @@ nlccmgmtapp.config([
         }]
       },
       controller: 'libraryCtrl'
-    })
-    .state('library-upload', {
+    }).state('library-upload', {
       url: '/mgmts/library-upload',templateUrl: 'mgmts/media/library.upload.html'/*,
       controller: 'mainCtrl'*/
     }).state('events-all', {
@@ -70,9 +78,28 @@ nlccmgmtapp.config([
         }]
       }
     }).state('events-category', {
-      url: '/mgmts/events-category',templateUrl: 'mgmts/events/category.html'/*,
+      url: '/mgmts/events-category',
+      templateUrl: 'mgmts/events/category.html'/*,
       controller: 'eventCtrl'*/
-    }).state('user-profile', {
+    }).state('audio-new', {
+      url: '/mgmts/audio-new',
+      templateUrl: 'mgmts/media/audio.edit.html',
+      controller: 'audioNewCtrl'
+    }).state('maudio-edit', {
+      url: '/mgmts/maudios/:maudioID/edit',
+      templateUrl: 'mgmts/media/audio.edit.html',
+      resolve: {
+        // A string value resolves to a service
+        maudioResource: 'maudioFactory',
+        // A function value resolves to the return
+        // value of the function
+        maudio: ['maudioResource', '$stateParams',function(maudioResource, $stateParams){
+          return maudioResource.getMaudio($stateParams.maudioID);
+        }]
+      },
+      controller: 'mediaAudioEditCtrl'
+    })
+    .state('user-profile', {
       url: '/mgmts/user-profile',templateUrl: 'mgmts/profile.html'/*,
       controller: 'mainCtrl'*/
     });

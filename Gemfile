@@ -32,6 +32,8 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 gem 'angularjs-file-upload-rails', '~> 2.2.0'
 
+gem 'ruby-mp3info', :require => 'mp3info'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'

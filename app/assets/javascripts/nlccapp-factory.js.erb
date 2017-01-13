@@ -223,7 +223,6 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
       }, 
       data: {
         "utf8": "✓",
-        "authenticity_token": $('meta[name="csrf-token"]').attr('content'),
         "event": {
           "id": updated_event.id,
           "title": updated_event.title,
@@ -270,6 +269,112 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     return deferred.promise;
   }
   service.deleteLibrary = function(id) {
+    var _url = _baseUrl + '/' + id + '.json'
+    var deferred = $q.defer();
+    $http({
+      method: 'DELETE',
+      url: _url,
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }  
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
+    });
+    return deferred.promise;
+  }
+  return service;
+}]).factory('maudioFactory', ['$http','$q', function($http, $q){
+  var service = {};
+  var _baseUrl = '/maudios';
+  
+  service.getAllMaudios = function(){
+    var deferred = $q.defer();
+    var _url = _baseUrl + '.json';
+    $http({
+      method: 'GET',
+      url: _url,
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
+    });
+    return deferred.promise;
+  }
+  
+  service.createMaudio = function(newaudio) {
+    var deferred = $q.defer();
+    var _url = _baseUrl + '.json';
+    $http({
+      method: 'POST',
+      url: _url,
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+        "utf8": "✓",
+        "maudio": {
+          "title": newaudio.title,
+          "path": newaudio.path,
+          "date": newaudio.date,
+          "desc":newaudio.desc,
+          "featured": newaudio.featured.isSelected,
+          "speaker":newaudio.speaker
+        }
+      }
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
+    });
+    return deferred.promise;
+  }
+  
+  service.getMaudio = function(id){
+    var deferred = $q.defer();
+    var _url = _baseUrl + '/' + id + '.json';
+    $http({
+      method: 'GET',
+      url: _url,
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
+    });
+    return deferred.promise;
+  }
+  
+  service.updateMaudio = function(updated_maudio){
+    var _url = _baseUrl + '/' + updated_maudio.id + '.json'
+    var deferred = $q.defer();
+    
+    $http({
+      method: 'PUT',
+      url: _url,
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }, 
+      data: {
+        "utf8": "✓",
+        "maudio": {
+          "title": updated_maudio.title,
+          "path": updated_maudio.path,
+          "date": updated_maudio.date,
+          "desc":updated_maudio.desc,
+          "featured": updated_maudio.featured.isSelected,
+          "speaker":updated_maudio.speaker
+        }
+      }
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
+    });
+    return deferred.promise;
+  }
+  
+  service.deleteMaudio = function(id) {
     var _url = _baseUrl + '/' + id + '.json'
     var deferred = $q.defer();
     $http({

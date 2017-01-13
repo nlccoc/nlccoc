@@ -223,7 +223,7 @@ function($scope, event, categories, eventFactory, $state){
 function($scope, event){
   $scope.event = event;
   $scope.event.desc = unescape(event.desc)
-}]);
+}])
 
 /* Setup Layout Part - Header */
 nlccmgmtapp.controller('headerController', ['$scope', function($scope) {
@@ -331,37 +331,109 @@ function($scope, $timeout, mvideoFactory, $uibModal) {
   });
 }]);
 
-nlccmgmtapp.controller('modalDeleteMvideoCtrl', ['$scope', '$uibModalInstance', 'mvideoFactory', 'mvideo', 
-function ($scope, $uibModalInstance, mvideoFactory, mvideo) {
-
-  $scope.ok = function () {
-    console.log("delete {" + mvideo.id + "}");
-    mvideoFactory.deleteMVideo(mvideo.id).then(function(data){
-      console.log("Successfully delete the m-video");
+nlccmgmtapp.controller('mediaAudioCtrl', ['$scope', '$timeout', 'maudios', '$uibModal',
+function($scope, $timeout, maudios, $uibModal) {
+  console.log("mediaAudioCtrl Controller");
+  $scope.maudios = maudios;
+  
+  $scope.deleteMaudio = function(maudio){
+    console.log("DeleteMaudio");
+    var modalInstance = $uibModal.open({
+      animation: true,
+      templateUrl: 'mgmts/confirmModel.html',
+      controller: 'modalDeleteMaudioCtrl',
+      resolve: {
+        maudio: function () {
+          return maudio;
+        }
+      }
     });
-    $uibModalInstance.close(0);
-  };
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
+    
+    modalInstance.result.then(function (result) {
+      console.log(result);
+      if(result == 0) {
+        console.log("result: " + result);
+        var idx=0;
+        for (idx=0; idx < $scope.maudios.length; idx++){
+          if (maudio.id == $scope.maudios[idx].id){
+            $scope.maudios.splice(idx, 1);
+          }
+        }
+        toastr.success('Remove maudio \'' + maudio.title + '\' successfully');
+        return
+      }
+    });
+  }
+  
+}]);
+nlccmgmtapp.controller('audioNewCtrl', ['$scope', 'maudioFactory', '$state', function($scope, maudioFactory, $state){
+  $scope.function = 'new';
+  $scope.maudio = {};
+  $scope.maudio.title='';
+  $scope.maudio.desc='';
+  $scope.maudio.date='';
+  $scope.maudio.path='';
+  $scope.maudio.speaker='陳振榮牧師';
+  
+  $scope.maudio.featured={};
+  $scope.maudio.featured.isSelected=false;
+  $scope.maudio.featured.onText = 'Yes';
+  $scope.maudio.featured.offText = 'No';
+  $scope.maudio.featured.isActive = true;
+  $scope.maudio.featured.size = 'normal';
+  $scope.maudio.featured.animate = true;
+  $scope.maudio.featured.radioOff = true;
+  $scope.maudio.featured.handleWidth = "auto";
+  $scope.maudio.featured.labelWidth = "auto";
+  $scope.maudio.featured.inverse = true;
+  $scope.maudio.featured.onColor="success"
+  $scope.maudio.featured.offColor="danger"
+  
+  
+  $scope.submit = function(func){
+    if(func=='new'){
+      maudioFactory.createMaudio($scope.maudio).then(function(data){
+        console.log("Success create a maudio");
+        $state.go('media-audio');
+        toastr.success('Success create audio' + $scope.title);
+      });
+    }
+  }
 }]);
 
-nlccmgmtapp.controller('modalDeleteEventCtrl', ['$scope', '$uibModalInstance', 'eventFactory', 'event', 
-function ($scope, $uibModalInstance, eventFactory, event) {
+nlccmgmtapp.controller('mediaAudioEditCtrl', ['$scope', '$timeout', 'maudio', 'maudioFactory', '$state',
+function($scope, $timeout, maudio, maudioFactory, $state) {
+  console.log("mediaAudioCtrl Controller");
+  $scope.maudio = maudio;
+  $scope.function = 'edit';
 
-  $scope.ok = function () {
-    console.log("delete {" + event.id + "}");
-    console.log(event);
-    eventFactory.deleteEvent(event.id).then(function(data){
-      console.log("Successfully delete the m-video");
-    });
-    $uibModalInstance.close(0);
-  };
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
+  /* same naming work around*/
+  $scope.maudio.tfeature = maudio.featured;
+  
+  $scope.maudio.featured={};
+  $scope.maudio.featured.isSelected=$scope.maudio.tfeature;
+  $scope.maudio.featured.onText = 'Yes';
+  $scope.maudio.featured.offText = 'No';
+  $scope.maudio.featured.isActive = true;
+  $scope.maudio.featured.size = 'normal';
+  $scope.maudio.featured.animate = true;
+  $scope.maudio.featured.radioOff = true;
+  $scope.maudio.featured.handleWidth = "auto";
+  $scope.maudio.featured.labelWidth = "auto";
+  $scope.maudio.featured.inverse = true;
+  $scope.maudio.featured.onColor="success";
+  $scope.maudio.featured.offColor="danger";
+  
+  
+  $scope.submit = function(func){
+    if(func=='edit'){
+      maudioFactory.updateMaudio($scope.maudio).then(function(data){
+        $state.go('media-audio');
+        console.log("Success updated a maudio");
+        toastr.success('Success updated audio' + $scope.maudio3.title);
+      });
+    }
+  }
 }]);
 
 nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', '$uibModal', function($scope, libraries, $uibModal){
@@ -397,6 +469,38 @@ nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', '$uibModal', funct
     });
   }
 }]);
+
+nlccmgmtapp.controller('modalDeleteMvideoCtrl', ['$scope', '$uibModalInstance', 'mvideoFactory', 'mvideo', 
+function ($scope, $uibModalInstance, mvideoFactory, mvideo) {
+
+  $scope.ok = function () {
+    console.log("delete {" + mvideo.id + "}");
+    mvideoFactory.deleteMVideo(mvideo.id).then(function(data){
+      console.log("Successfully delete the m-video");
+    });
+    $uibModalInstance.close(0);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+}]);
+nlccmgmtapp.controller('modalDeleteEventCtrl', ['$scope', '$uibModalInstance', 'eventFactory', 'event', 
+function ($scope, $uibModalInstance, eventFactory, event) {
+
+  $scope.ok = function () {
+    console.log("delete {" + event.id + "}");
+    console.log(event);
+    eventFactory.deleteEvent(event.id).then(function(data){
+      console.log("Successfully delete the m-video");
+    });
+    $uibModalInstance.close(0);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+}]);
 nlccmgmtapp.controller('modalDeleteLibraryCtrl', ['$scope', '$uibModalInstance', 'libraryFactory', 'library', 
 function ($scope, $uibModalInstance, libraryFactory, library) {
 
@@ -413,6 +517,21 @@ function ($scope, $uibModalInstance, libraryFactory, library) {
     $uibModalInstance.dismiss('cancel');
   };
 }]);
+nlccmgmtapp.controller('modalDeleteMaudioCtrl',['$scope', '$uibModalInstance', 'maudioFactory', 'maudio', 
+function ($scope, $uibModalInstance, maudioFactory, maudio) {
+  $scope.ok = function () {
+    console.log("delete {" + maudio.id + "}");
+    console.log(maudio);
+    maudioFactory.deleteMaudio(maudio.id).then(function(data){
+      console.log("Successfully delete the maudio");
+    });
+    $uibModalInstance.close(0);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+}])
 nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', '$state', '$timeout', function($scope, FileUploader, $state, $timeout){
   $scope.library={};
   $scope.library.name='';

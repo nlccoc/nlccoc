@@ -1,0 +1,68 @@
+<h1 class="page-title"> Audio
+  <small> {{function=='new'? 'New': 'Edit'}}</small> 
+</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    
+    <form>
+      <div class='form-body'>
+        <div class="form-group">  
+          <label>Title</label>
+          <div class="input-icon input-icon-lg">
+            <i class="fa fa-bell-o"></i>
+            <input type="text" class="form-control input" placeholder="Title" ng-model='maudio.title'></div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" rows="3" ng-model='maudio.desc'></textarea>
+        </div>
+        <div class="form-group">  
+          <label>Path</label>
+          <div class="input-icon input-icon-lg">
+            <i class="fa fa-bell-o"></i>
+            <input type="text" class="form-control input" placeholder="Path" ng-model='maudio.path'></div>
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input class="form-control form-control-inline input date-picker" datetimepicker format='DD/MM/YYYY' ng-model='maudio.date' size="16" type="text" value="" />
+          <span class="help-block"> Select date </span>
+        </div>
+        <div class="form-group">
+          <label>Speaker</label>
+          <input type="text" class="form-control input" placeholder="Speaker" ng-model='maudio.speaker'></div>
+        </div>
+        <div class="form-group">
+          <label>Featured?</label>
+          <input
+            bs-switch
+            ng-model="maudio.featured.isSelected"
+            type="checkbox"
+            switch-active="{{ maudio.featured.isActive }}"
+            switch-on-text="{{ maudio.featured.onText }}"
+            switch-off-text="{{ maudio.featured.offText }}"
+            switch-on-color="{{ maudio.featured.onColor }}"
+            switch-off-color="{{ maudio.featured.offColor }}"
+            switch-animate="{{ repmaudio.featuredeat.animate }}"
+            switch-size="{{ maudio.featured.size }}"
+            switch-label="{{ maudio.featured.label }}"
+            switch-icon="{{ maudio.featured.icon }}"
+            switch-radio-off="{{ maudio.featured.radioOff }}"
+            switch-label-width="{{ maudio.featured.labelWidth }}"
+            switch-handle-width="{{ maudio.featured.andleWidth }}"
+            switch-wrapper="{{ maudio.featured.wrapper }}"
+            ng-true-value=true
+            ng-false-value=false
+            switch-inverse="{{ !inverse }}">
+        
+        </div>
+        <div class="form-actions right" style='z-index:9999;'>
+          <button type="button" class="btn default">Cancel</button>
+          <button type="submit" class="btn green" ng-click="submit(function)"> {{function=='new'? 'Create': 'Update'}}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class='row'>{{maudio}}</div>
