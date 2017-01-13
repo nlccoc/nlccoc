@@ -4,6 +4,7 @@ class MainController < ApplicationController
   def index
     @mvideos = Mvideo.all
     @categories = Category.all
+    @maudios = Maudio.where(featured: true).order(date: :desc).take(2)
     gon.push({
       :current_lang => I18n.locale
     })
