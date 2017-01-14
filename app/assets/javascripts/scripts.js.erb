@@ -12,9 +12,9 @@ var mr_firstSectionHeight,
     mr_isTop = false;
     
 var ready = function() { 
-  
+
   $('a').each(function(e) {
-    console.log($(this).attr('href'));
+    //console.log($(this).attr('href'));
     var href = $(this).attr('href');
     if (href=='' || href=='#') {
       $(this).on('click', function(e){
@@ -22,12 +22,11 @@ var ready = function() {
       })
     }
   });
-    setTimeout(function(){
+  setTimeout(function(){
       $('#owl-carousel-media .entry-image').fitVids();
       initOwlMedia();
     }, 200);
     
-    console.log("ready()");
     initInnerlink();
     
     // Update scroll variable for scrolling functions
@@ -169,8 +168,6 @@ var ready = function() {
     }
     
     $('.offscreen-toggle').click(function(){
-      console.log("click");
-      console.log($('.main-container'));
       $('.main-container').addClass('reveal-nav')
     	$('.main-container').toggleClass('reveal-nav');
     	$('nav').toggleClass('reveal-nav');
@@ -1008,18 +1005,39 @@ var ready = function() {
     }
 
 }
+
+var async_load = function(){
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '<%= asset_path("parallax.js") %>';
+  var x = document.getElementsByTagName('script')[0];
+  x.parentNode.insertBefore(s, x);
+}
 /*
 $(document).ready(function(){
   ready();
 });
 */
-$(document).on('turbolinks:load', function() {
-   console.log('(document).turbolinks:load');
-   ready();
-   setTimeout(initializeMasonry, 300);
-   $('body').addClass('loaded');
-});
 
+$(document).on('ready', function(){
+  console.log("Document ready");
+  //Will only do the first load
+  
+})
+
+$(document).on('turbolinks:load', function() {
+  //Will do on every page load
+  console.log('(document).turbolinks:load');
+  setTimeout(function(){
+    ready();
+    initializeMasonry();
+    
+    $('body').addClass('loaded');
+  }, 300)
+  
+});
+/*
 $(window).on("load", function() { 
     "use strict";
     // Initialize Masonry
@@ -1030,6 +1048,7 @@ $(window).on("load", function() {
     mr_firstSectionHeight = $('.main-container section:nth-of-type(1)').outerHeight(true);
 
 }); 
+*/
 function updateNav() {
   var scrollY = mr_scrollTop;
   mr_totop = $('#gotoTop');

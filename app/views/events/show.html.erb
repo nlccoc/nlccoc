@@ -12,7 +12,7 @@
 <p>
   <strong>Desc:</strong>
   <hr />
-  <%= @event.decodeURIComponent.html_safe %>
+  <span id='demo'><%= @event.desc %></span>
   <hr />
 </p>
 
@@ -51,5 +51,10 @@
 </p>
 
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Edit', edit_event_path(@event, :locale=>I18n.locale) %> |
+<%= link_to 'Back', events_path(:locale => I18n.locale) %>
+
+<script>
+
+console.log($('#demo').html(unescape($('#demo').html())))
+</script>

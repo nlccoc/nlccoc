@@ -18,8 +18,6 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    
-    @event = Event.find(params[:id])
     respond_to do |format|
       format.html
       format.json { render json: @event.as_json(:include => [:repeat_metum, :categories])}
@@ -36,7 +34,6 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
   end
 
   # POST /events

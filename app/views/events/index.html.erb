@@ -32,9 +32,9 @@
               <div><%= t(c.name) %></div> 
           <% end %>
         </td>
-        <td><%= link_to 'Goto', event_path(event) %></td>
-        <td><%= link_to "Edit", edit_event_path(event) %></td>
-        <td><%= link_to 'Delete', event_path(event), data: {:confirm => 'Are you sure?'}, :method => :delete %></td>
+        <td><%= link_to 'Goto', event_path(event, :locale=>I18n.locale) %></td>
+        <td><%= link_to "Edit", edit_event_path(event, :locale=>I18n.locale) %></td>
+        <td><%= link_to 'Delete', event_path(event, :locale=>I18n.locale), data: {:confirm => 'Are you sure?'}, :method => :delete %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,4 +1,4 @@
-//= require jquery
+//= require jquery2
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
@@ -9,3 +9,5 @@
 //= require owl.carousel/dist/owl.carousel
 //= require jquery-smooth-scroll/jquery.smooth-scroll.js
 //= require jrespond/js/jRespond.js
+//= require flexslider.min
+//= require scripts

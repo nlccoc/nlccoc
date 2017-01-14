@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   #scope "(:locale)", :locale => /en|zh/ do
-  resources :events
-  resources :mvideos
-  resources :libraries
-  resources :categories
-  resources :maudios
+  #resources :events
+  #resources :mvideos
+  #resources :libraries
+  #resources :categories
+  #resources :maudios
   #end
 
   get 'mgmts' => 'mgmts#index'
@@ -20,6 +20,12 @@ Rails.application.routes.draw do
   devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations' }
   
   scope "/(:locale)", :locale => /en|zh|cn/, :except => 'mgmts' do
+    resources :events
+    resources :mvideos
+    resources :libraries
+    resources :categories
+    resources :maudios
+    
     get 'main/index' => 'main#index'
     
     root 'main#index'

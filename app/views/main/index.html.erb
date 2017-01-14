@@ -296,7 +296,9 @@
                           </p>
                         </div>
                         <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
-                          <a class="btn btn-fire btn-lg pull-right" href="#">Read More</a>
+                          <%= link_to event_path(event, :locale => I18n.locale), :class => "btn btn-fire btn-lg pull-right", :data => { :no_turbolink => 'true'} do %>
+                            Read More
+                          <% end %>
                         </div>
                       </div>
                       <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
