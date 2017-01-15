@@ -27,30 +27,30 @@ var ready = function() {
       initOwlMedia();
     }, 200);
     
-    initInnerlink();
-    
-    // Update scroll variable for scrolling functions
+  initInnerlink();
+  
+  // Update scroll variable for scrolling functions
 
-    addEventListener('scroll', function() {
-      mr_scrollTop = window.pageYOffset;
-    }, false);
+  addEventListener('scroll', function() {
+    mr_scrollTop = window.pageYOffset;
+  }, false);
 
     // Append .background-image-holder <img>'s as CSS backgrounds
 
+  $('.background-image-holder').each(function() {
+    var imgSrc = $(this).children('img').attr('src');
+    $(this).css('background', 'url("' + imgSrc + '")');
+    $(this).children('img').hide();
+    $(this).css('background-position', 'initial');
+  });
+
+  // Fade in background images
+
+  setTimeout(function() {
     $('.background-image-holder').each(function() {
-        var imgSrc = $(this).children('img').attr('src');
-        $(this).css('background', 'url("' + imgSrc + '")');
-        $(this).children('img').hide();
-        $(this).css('background-position', 'initial');
+      $(this).addClass('fadeIn');
     });
-
-    // Fade in background images
-
-    setTimeout(function() {
-        $('.background-image-holder').each(function() {
-            $(this).addClass('fadeIn');
-        });
-    }, 200);
+  }, 200);
 
     // Initialize Tooltips
 
@@ -59,8 +59,8 @@ var ready = function() {
     // Icon bulleted lists
 
     $('ul[data-bullet]').each(function(){
-        var bullet = $(this).attr('data-bullet');
-        $(this).find('li').prepend('<i class="'+bullet+'"></i>');
+      var bullet = $(this).attr('data-bullet');
+      $(this).find('li').prepend('<i class="'+bullet+'"></i>');
     });
 
     // Progress Bars
@@ -191,7 +191,7 @@ var ready = function() {
     // Populate filters
     
     $('.projects').each(function() {
-
+        console.log(this);
         var filters = "";
 
         $(this).find('.project').each(function() {
