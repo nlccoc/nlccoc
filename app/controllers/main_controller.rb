@@ -5,6 +5,8 @@ class MainController < ApplicationController
     @mvideos = Mvideo.all
     @categories = Category.all
     @maudios = Maudio.where(featured: true).order(date: :desc).take(2)
+    @rolcc_feed = RolccFeed.order(:date).last
+    
     gon.push({
       :current_lang => I18n.locale
     })

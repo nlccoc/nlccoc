@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111064045) do
+ActiveRecord::Schema.define(version: 20170115033223) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -96,6 +96,16 @@ ActiveRecord::Schema.define(version: 20170111064045) do
     t.datetime "valid_until"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "rolcc_feeds", force: :cascade do |t|
+    t.string   "book"
+    t.date     "date"
+    t.time     "time"
+    t.text     "short_script"
+    t.string   "long_script"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
