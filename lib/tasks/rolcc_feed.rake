@@ -36,11 +36,10 @@ task get_rolcc_feeds: :environment do
       page1 = Nokogiri::HTML(open(readmore_link))
       
       long = page1.css('section p.graf--p')
-      
+      @rolcc_feed.long_script = ''
       long[0...-3].each do |ls|
-        @rolcc_feed.long_script = ''
         if @rolcc_feed.long_script == ''
-          @rolcc_feed.long_script = ls.text
+          @rolcc_feed.long_script = "#{ls.text}"
         else
           @rolcc_feed.long_script = "#{@rolcc_feed.long_script}<br><br>#{ls.text}"
         end
@@ -94,16 +93,16 @@ task get_latest_rolcc_feed: :environment do
     
     long = page1.css('section p.graf--p')
     
+    @rolcc_feed.long_script = ''
     long[0...-3].each do |ls|
-      @rolcc_feed.long_script = ''
       if @rolcc_feed.long_script == ''
-        @rolcc_feed.long_script = ls.text
+        @rolcc_feed.long_script = "#{ls.text}"
       else
         @rolcc_feed.long_script = "#{@rolcc_feed.long_script}<br><br>#{ls.text}"
       end
     end
     
-    #puts @rolcc_feed.long_script
+    puts @rolcc_feed.long_script
     
     @rolcc_feed.save!
     puts @rolcc_feed.book

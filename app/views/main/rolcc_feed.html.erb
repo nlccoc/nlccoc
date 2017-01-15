@@ -1,0 +1,36 @@
+<section>
+  <div class="container rolcc">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <ul class="post-meta">
+          <li>
+            <i class="ti-user"></i>
+            <span><!--Written by-->
+              <a href="<%= @rolcc_feed.link %>" target='_blank'>ROLCC 矽谷生命河靈糧堂</a> 撰寫
+            </span>
+          </li>
+          <!--<li>
+            <i class="ti-tag"></i>
+            <span>Tagged as
+              <a href="#">Lifestyle</a>
+            </span>
+          </li>-->
+        </ul>
+        <hr>
+        <h3 class="uppercase mb16">每日靈修 <%= @rolcc_feed.date %></h3>
+        <p class="lead mb64">
+            <%= @rolcc_feed.book %>
+        </p>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="post-snippet mb64">
+          <p>
+            <%= @rolcc_feed.long_script.html_safe %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

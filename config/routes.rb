@@ -13,11 +13,14 @@ Rails.application.routes.draw do
   get 'mgmt/media/video' => 'mgmt#video'
   get 'mgmt/media/audio' => 'mgmt#audio'
   
+  get 'rolcc_feed/:id' => 'main#rolcc_feed', as: :rolcc_feed
+  
   #get "mgmts/*path" => "mgmts#index"
   #get "mgmts/*path.html" => "mgmts#index"
   
   # devise customized controllers: sessions, registrations
   devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations' }
+  
   
   scope "/(:locale)", :locale => /en|zh|cn/, :except => 'mgmts' do
     resources :events

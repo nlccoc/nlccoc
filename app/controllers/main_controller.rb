@@ -50,4 +50,10 @@ class MainController < ApplicationController
     })
   end
   
+  def rolcc_feed
+    @header_bg='bg-dark'
+    @rolcc_feed = RolccFeed.find(params[:id])
+    
+  end
+  
 end
