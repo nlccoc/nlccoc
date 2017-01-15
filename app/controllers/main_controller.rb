@@ -52,7 +52,9 @@ class MainController < ApplicationController
   def rolcc_feed
     @header_bg='bg-dark'
     @rolcc_feed = RolccFeed.find(params[:id])
-    
+  end
+  
+  def pastors
   end
   
 end

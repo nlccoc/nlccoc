@@ -1,59 +1,62 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
-
-<p>
-  <strong>Short Desc:</strong>
-  <%= @event.short_desc %>
-</p>
-<p>
-  <strong>Desc:</strong>
-  <hr />
-  <span id='demo'><%= @event.desc %></span>
-  <hr />
-</p>
-
-<p>
-  <strong>Start Date:</strong>
-  <%= @event.datetime.to_date %>
-</p>
-
-<p>
-  <strong>Next Date:</strong>
-  <%= @event.latest_date %>
-</p>
-
-<p>
-  <strong>Start Time:</strong>
-  <%= @event.datetime.strftime("%I:%M%p") %>
-</p>
-
-<p>
-  <strong>Interval min:</strong>
-  <%= @event.event_period %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @event.location %>
-</p>
-
-<p>
-  <strong>Repeat:</strong>
-  <% if @event.repeat_metum.nil? %>
-    No
-  <% else %>
-    Yes
-  <% end %>
-</p>
-
-
-<%= link_to 'Edit', edit_event_path(@event, :locale=>I18n.locale) %> |
-<%= link_to 'Back', events_path(:locale => I18n.locale) %>
-
+<div class='container'>
+  <div class='col-md-12'>
+    <p id="notice"><%= notice %></p>
+    
+    <p>
+      <strong>Title:</strong>
+      <%= @event.title %>
+    </p>
+    
+    <p>
+      <strong>Short Desc:</strong>
+      <%= @event.short_desc %>
+    </p>
+    <p>
+      <strong>Desc:</strong>
+      <hr />
+      <span id='demo'><%= @event.desc %></span>
+      <hr />
+    </p>
+    
+    <p>
+      <strong>Start Date:</strong>
+      <%= @event.datetime.to_date %>
+    </p>
+    
+    <p>
+      <strong>Next Date:</strong>
+      <%= @event.latest_date %>
+    </p>
+    
+    <p>
+      <strong>Start Time:</strong>
+      <%= @event.datetime.strftime("%I:%M%p") %>
+    </p>
+    
+    <p>
+      <strong>Interval min:</strong>
+      <%= @event.event_period %>
+    </p>
+    
+    <p>
+      <strong>Location:</strong>
+      <%= @event.location %>
+    </p>
+    
+    <p>
+      <strong>Repeat:</strong>
+      <% if @event.repeat_metum.nil? %>
+        No
+      <% else %>
+        Yes
+      <% end %>
+    </p>
+    
+    
+    <%= link_to 'Edit', edit_event_path(@event, :locale=>I18n.locale) %> |
+    <%= link_to 'Back', events_path(:locale => I18n.locale) %>
+  </div>
+</div>
 <script>
 
 console.log($('#demo').html(unescape($('#demo').html())))

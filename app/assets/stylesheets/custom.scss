@@ -314,3 +314,33 @@
 .post-snippet b {
   border: 1px;
 }
+
+.team-title h4 {
+  display: block;
+  margin-bottom: 0;
+  font-size: 19px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.team-title span {
+  display: block;
+  color: $mainColor;
+  font-weight: 400;
+  font-family: "xingothic-tc", "xingothic-sc", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  //font-style: italic;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.team:not(.team-list) .social-icon {
+    display: inline-block;
+    float: none;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.team .team-desc > .social-icon {
+    margin-top: 20px;
+}

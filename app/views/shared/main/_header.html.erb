@@ -24,8 +24,8 @@
                         <%= t('menu.about') %>
                       <% end %>
                     </li>
-                    <li><a>牧者團隊</a></li>
-                    <li><a>聯絡我們</a></li>
+                    <li><%= link_to pastors_path(:locale=> I18n.locale) do %>牧者團隊<% end %></li>
+                    <li><%= link_to contact_path(:locale=> I18n.locale) do %>聯絡我們<% end %></li>
                   </ul>
                   <!--<ul class="mega-menu">
                       <li>
