@@ -47,6 +47,8 @@ Rails.application.routes.draw do
     get "mission" => "main#mission"
     get "pastors" => "main#pastors"
     get "contact" => "main#contact"
+    get "build" => "main#build"
+    get "mission" => "main#mission"
   end
   
   

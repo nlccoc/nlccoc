@@ -57,4 +57,10 @@ class MainController < ApplicationController
   def pastors
   end
   
+  def build
+  end
+  
+  def mission
+  end
+  
 end

@@ -38,7 +38,7 @@
         <div class="col-sm-12 text-right" style='padding-right:15%;'>
           <h2 class="uppercase mb8">建 堂</h2>
           <p class="lead mb40">建 堂 小 標</p>
-          <a class="btn btn-lg btn-white mb0" href="#">奉 獻 建 堂</a>
+          <%= link_to build_path(:locale => I18n.locale), :class => 'btn btn-lg btn-white mb0' do %>奉 獻 建 堂<% end %>
         </div>
       </div>
       <!--end of row-->
@@ -54,7 +54,9 @@
             <div class="col-sm-12 text-left" style='padding-left:15%;'>
                 <h2 class="uppercase mb8">宣 教</h2>
                 <p class="lead mb40">宣 教 小 標</p>
-                <a class="btn btn-lg btn-white mb0" href="#">奉 獻 宣 教</a>
+                <%= link_to mission_path(:locale => I18n.locale), :class => 'btn btn-lg btn-white mb0' do %>
+                奉 獻 宣 教
+                <% end %>
             </div>
         </div>
         <!--end of row-->
