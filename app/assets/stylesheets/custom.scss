@@ -344,3 +344,11 @@
 .team .team-desc > .social-icon {
     margin-top: 20px;
 }
+
+.about section ul li .value {
+  color: $mainColor;
+}
+
+.about ul li i.ti-heart:before {
+  color: $mainColor;
+}
