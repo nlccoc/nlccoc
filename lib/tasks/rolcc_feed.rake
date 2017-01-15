@@ -32,6 +32,7 @@ task get_rolcc_feeds: :environment do
     
     
       readmore_link = a.css('.postArticle-readMore > a').attr('href')
+      @rolcc_feed.link=readmore_link
       page1 = Nokogiri::HTML(open(readmore_link))
       
       long = page1.css('section p.graf--p')
@@ -88,6 +89,7 @@ task get_latest_rolcc_feed: :environment do
   
   
     readmore_link = articles[0].css('.postArticle-readMore > a').attr('href')
+    @rolcc_feed.link=readmore_link
     page1 = Nokogiri::HTML(open(readmore_link))
     
     long = page1.css('section p.graf--p')
