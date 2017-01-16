@@ -63,4 +63,7 @@ class MainController < ApplicationController
   def mission
   end
   
+  def ministries
+  end
+  
 end

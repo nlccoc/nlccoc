@@ -395,7 +395,10 @@
       </div>
       <!--end of row-->
       <div class='row text-center'>
-        <a class="btn btn-filled mb16 mt16" href="/videos">更 多 事 工 資 訊</a>
+        <%= link_to ministries_path(:locale => I18n.locale), :class => 'btn btn-filled mb16 mt16' do %>
+          更 多 事 工 資 訊
+        <% end %>
+
       </div>
     </div>
     <!--end of container-->
