@@ -2,7 +2,7 @@ class MainController < ApplicationController
   layout "extmain", except: [:index]
   
   def index
-    @mvideos = Mvideo.all
+    @mvideos = Mvideo.order(date: :desc).limit(6)
     @categories = Category.all
     @maudios = Maudio.where(featured: true).order(date: :desc).take(2)
     

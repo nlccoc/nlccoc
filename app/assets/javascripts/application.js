@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require justfont
 //= require bootstrap-sprockets
 //= require i18n
 //= require i18n/translations
