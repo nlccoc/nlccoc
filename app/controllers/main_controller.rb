@@ -24,7 +24,7 @@ class MainController < ApplicationController
   
   def videos
     @header_bg='bg-dark'
-    @mvideos = Mvideo.all
+    @mvideos = Mvideo.order(date: :desc)
   end
   
   def youngadults

@@ -735,7 +735,7 @@ footer.bg-dark li,
 .btn {
   font-family: "Raleway", "Helvetica Neue", "xingothic-tc", "xingothic-sc", Helvetica, Arial, sans-serif;
   //border: 2px solid #13181d;
-  border: 2x solid $mainColor;
+  border: 2px solid $mainColor;
   padding: 0 26px;
   height: 40px;
   min-width: 150px;
@@ -745,7 +745,7 @@ footer.bg-dark li,
   text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 0;
-  color: #13181d;
+  color: $mainColor;
   text-align: center;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
@@ -758,7 +758,7 @@ footer.bg-dark li,
   margin-right: 0;
 }
 .btn:hover {
-  background: #13181d;
+  background: $mainColor;
   color: #fff;
 }
 .btn-icon {
@@ -787,7 +787,8 @@ footer.bg-dark li,
   line-height: 29px;
   font-size: 13px;
   min-width: 0;
-  padding: 0 0 0 1px!important;
+  //padding: 0 0 0 1px!important;
+  padding: 0 0 0 1px;
 }
 .btn-sm {
   height: 30px;

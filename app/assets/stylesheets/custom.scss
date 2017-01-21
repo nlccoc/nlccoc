@@ -138,6 +138,16 @@
   color: #999;
 }
 
+.table span {
+  display: block;
+  float:left;
+  //width:100px;
+  padding:.5em;
+}
+
+.table span.title {
+  width: 200px;
+}
 .entry-meta li:before {
   content: '/';
   display: inline-block;
@@ -172,6 +182,7 @@
   margin-left: 50px;
   color: $mainColor !important;
 }
+
 
 //Loader
 
@@ -351,4 +362,19 @@
 
 .about ul li i.ti-heart:before {
   color: $mainColor;
+}
+
+.btn i {
+  margin-right:0px !important;
+}
+
+.btn-circle {
+  border-radius: 100%;
+}
+.btn-thin {
+  border: 1px solid $mainColor;;
+}
+
+section.last {
+  padding-bottom: 0px;
 }

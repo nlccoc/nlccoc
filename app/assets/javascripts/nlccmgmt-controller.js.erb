@@ -276,7 +276,7 @@ function($scope, $timeout, mvideoFactory, $uibModal) {
   }
   
   $scope.createMVideo = function(mvideo){
-    console.log(mvideo)
+    console.log(mvideo);
     mvideoFactory.createMVideo(mvideo).then(function(data){
       $scope.mvideos.push(data);
       $scope.hideform();

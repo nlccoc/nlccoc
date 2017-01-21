@@ -36,8 +36,8 @@ class MvideosController < ApplicationController
 
     respond_to do |format|
       if @mvideo.save
-        format.html { redirect_to @mvideo, notice: 'Mvideo was successfully created.' }
-        format.json { render :show, status: :created, location: @mvideo }
+        format.html { redirect_to @mvideo, notice: 'mvideo was successfully created.' }
+        format.json { render json: @mvideo, status: :created, notice: 'mvideo was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @mvideo.errors, status: :unprocessable_entity }

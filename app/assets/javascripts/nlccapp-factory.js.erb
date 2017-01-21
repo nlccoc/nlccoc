@@ -50,12 +50,17 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     $http({
       method: 'POST',
       url: _url,
-      params: {
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
         "utf8": "✓",
-        "authenticity_token": $('meta[name="csrf-token"]').attr('content'),
-        "mvideo[title]": newvideo.title,
-        "mvideo[path]": newvideo.path,
-        "mvideo[date]": newvideo.date
+        "mvideo": {
+          "title": newvideo.title,
+          "path": newvideo.path,
+          "date": newvideo.date,
+          "desc": newvideo.desc
+        }
       }
     }).success(function(data){
       deferred.resolve(data);
@@ -306,6 +311,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   service.createMaudio = function(newaudio) {
     var deferred = $q.defer();
     var _url = _baseUrl + '.json';
+    console.log(newaudio);
     $http({
       method: 'POST',
       url: _url,
