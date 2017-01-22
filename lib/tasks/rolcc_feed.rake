@@ -60,11 +60,8 @@ task get_latest_rolcc_feed: :environment do
   
   page = Nokogiri::HTML(open("https://devotion.rolcc.net/"))   
   
-  #puts page.css('title')
   articles = page.css('.postArticle')
 
-  
-  
   @rolcc_feed = RolccFeed.new
   @rolcc_feed.book = articles[0].css('h3.graf--leading').text
   dt = DateTime.parse(articles[0].css('time').attr('datetime'))
@@ -102,9 +99,9 @@ task get_latest_rolcc_feed: :environment do
       end
     end
     
-    puts @rolcc_feed.long_script
+    #puts @rolcc_feed.long_script
     
     @rolcc_feed.save!
-    puts @rolcc_feed.book
+    #puts @rolcc_feed.book
   end
 end

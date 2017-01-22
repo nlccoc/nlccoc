@@ -66,4 +66,7 @@ class MainController < ApplicationController
   def ministries
   end
   
+  def rolcc_feeds
+  end
+  
 end
