@@ -523,7 +523,7 @@
             <div class="col-sm-12 text-center" style='padding-top: 30px; z-index:999; color: #fff'>
               <h2 class="uppercase mb8" style='color: #fff; font-weight: 700;'>We Give <span style='font-size: 20px;'><i>because</i></span> God Gave First</h2>
               <p class="lead mb40">Your gift helps further the impact of the ministries of NLCC</p>
-              <%= link_to tithe_path, { :class => 'btn btn-lg mb16'} do %>
+              <%= link_to tithe_path(:locale => I18n.locale), { :class => 'btn btn-lg mb16'} do %>
                 Give Your Tithe
               <% end %>
             </div>
