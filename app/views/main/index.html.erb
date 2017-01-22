@@ -9,9 +9,9 @@
           <div class="row">
             <div class="col-sm-12 text-center">
               <h2 class="mb16 large uppercase banner-title"><%= t('nlcc') %></h2>
-              <h5 class="uppercase mb32">Connect with Us</h5>
+              <h5 class="uppercase mb32"><%= t('connect') %></h5>
               <div class="text-center hidden-xs">
-                <a class="btn btn-white mb32 inner-link" href="#connect"><%= t('connect') %></a>
+                <a class="btn btn-white mb32 inner-link" href="#connect">加入一個適合你的小組</a>
                 <ul class="list-inline social-list mb64">
                   <li>
                     <a href="#">
@@ -56,7 +56,7 @@
         <div class="container v-align-transform">
           <div class="row">
             <div class="col-sm-12 text-center">
-              <h2 class="mb16 large uppercase banner-title">如何幫助孩子聽話及養成好習慣</h2>
+              <h2 class="mb16 large uppercase banner-title">親子講堂：如何幫助孩子聽話及養成好習慣</h2>
               <h5 class="uppercase mb16">1/21 週六 早上 11:20 </h5>
               <p style='font-size:16px;'>新年新學習，國際愛鄰協會再度邀請了大受歡迎的電台親子節目名住持人王祈老師與我們分享 0 ~ 12 歲兒童教養議題</p>
               <p style='font-size:16px;'>報名兩堂 30 元，還送一個愛鄰環保購物袋喔！</p>
@@ -67,6 +67,26 @@
           
           </div>
         </div>
+      </li>
+      <li class="overlay image-bg">
+        <div class="background-image-holder">
+          <img alt="image" class="background-image" src="<%= asset_path('home33.jpg') %>">
+        </div>
+        <div class="container v-align-transform">
+          <div class="row">
+            <div class="col-md-6 col-sm-8">
+              <h1 class="mb16 mb-xs-16 large banner-title">親子講堂：如何幫助孩子獨立負責任</h1>
+              <h6 class="uppercase lead">2/18 週六 早上 11:20</h6>
+              <p class="lead mb40">
+                國際愛鄰協會再次邀請了大受歡迎的電台親子節目名住持人王祈老師與我們分享 0 ~ 12 歲兒童教養議題。
+              </p>
+              <p>報名單堂：一堂15元</p>
+              <%= link_to event_path(:id => 12, :locale => I18n.locale), :class => 'btn btn-white mb32 inner-link' do %>詳細內容<% end %>&nbsp; <a class="btn btn-white mb32 inner-link" href="#">報名參加</a>
+            </div>
+          </div>
+            
+        </div>
+          
       </li>
       <li class="overlay image-bg">
         <div class="background-image-holder">
