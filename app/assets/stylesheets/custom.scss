@@ -383,3 +383,222 @@ section.last {
 .verse_highlight {
   color: $mainColor !important;
 }
+
+
+.entry {
+  position: relative;
+  margin: 0 0 50px;
+  padding: 0 0 50px;
+  border-bottom: 2px solid #F5F5F5;
+}
+/* Blog - Timeline
+-----------------------------------------------------------------*/
+
+.timeline-border {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -71px;
+	width: 0;
+	border-left: 1px dashed #CCC;
+	height: 100%;
+}
+
+.post-timeline { margin-right: -140px !important; }
+
+.post-timeline .entry {
+	width: 500px !important;
+	margin-right: 140px !important;
+}
+
+.entry.entry-date-section {
+	width: 100% !important;
+	margin: 50px -70px 80px;
+	padding: 0;
+	border: 0;
+	text-align: center;
+}
+
+.entry.entry-date-section span {
+	display: inline-block;
+	padding: 10px 15px;
+	background-color: #FFF;
+	border: 2px solid #EEE;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-family: 'Raleway', sans-serif;
+}
+
+.post-timeline .entry-timeline {
+	display: none;
+	position: absolute;
+	border: 2px solid #CCC;
+	background-color: #FFF;
+	padding-top: 0;
+	text-indent: -9999px;
+	top: 40px;
+	left: auto;
+	right: -76px;
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	font-size: 26px;
+	font-weight: bold;
+	color: #AAA;
+	text-align: center;
+	line-height: 1;
+	-webkit-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+
+.post-timeline .entry-timeline div.timeline-divider {
+	position: absolute;
+	top: 4px;
+	left: -58px;
+	width: 50px;
+	height: 0;
+	border-top: 1px dashed #CCC;
+	-webkit-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+
+.post-timeline .alt .entry-timeline {
+	right: auto;
+	left: -77px;
+}
+
+.post-timeline .alt .entry-timeline div.timeline-divider {
+	left: auto;
+	right: -58px;
+}
+
+.post-timeline .entry-timeline span {
+	display: block;
+	margin-top: 3px;
+	font-size: 13px;
+	font-weight: normal;
+}
+
+.post-timeline .entry:hover .entry-timeline,
+.post-timeline .entry:hover .timeline-divider {
+	//border-color: #1ABC9C;
+	//color: #1ABC9C;
+	border-color: $mainColor;
+	color: $mainColor;
+}
+.post-timeline .entry:hover .panel-default {
+  border-color: $mainColor;
+}
+
+
+/* Blog - Timeline - Sidebar
+-----------------------------------------------------------------*/
+
+.postcontent .timeline-border {
+	left: 32px;
+	margin-left: 0;
+}
+
+.postcontent .post-timeline {
+	padding-left: 100px;
+	margin-right: 0 !important;
+}
+
+.postcontent .post-timeline .entry {
+	width: 100% !important;
+	margin-right: 140px !important;
+}
+
+.postcontent .post-timeline .entry-timeline {
+	display: block;
+	border: 3px solid #CCC;
+	background-color: #FFF;
+	padding-top: 10px;
+	text-indent: 0;
+	top: 20px;
+	left: -100px;
+	right: auto;
+	width: 64px;
+	height: 64px;
+	font-size: 24px;
+}
+
+.postcontent .post-timeline .entry-timeline div.timeline-divider {
+	top: 29px;
+	left: 64px;
+	width: 32px;
+}
+
+
+/* Individual Post
+-----------------------------------------------------------------*/
+
+.ipost .entry-image img { border-radius: 0; }
+
+.ipost .entry-title h3,
+.ipost .entry-title h4 {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.ipost .entry-title h4 { font-size: 15px; }
+
+.ipost .entry-title h3 a,
+.ipost .entry-title h4 a { color: #333; }
+
+.ipost .entry-title h3 a:hover,
+.ipost .entry-title h4 a:hover { 
+  //color: #1ABC9C; 
+  color: $mainColor;}
+
+.ipost .entry-meta { margin-right: -10px; }
+
+.ipost .entry-meta li {
+	font-size: 13px;
+	margin-right: 10px;
+}
+
+.ipost .entry-content { margin-top: 20px; }
+
+.ipost .entry-content p { margin-bottom: 0; }
+
+
+.more-link {
+	display: inline-block;
+	border-bottom: 1px solid $mainColor;
+	//border-bottom: 1px solid #1ABC9C;
+	padding: 0 2px;
+	font-family: 'Crete Round', serif;
+	font-style: italic;
+}
+
+.more-link:hover { border-bottom-color: #555; }
+
+#content {
+  position: relative;
+  overflow: hidden;
+  background-color: #FFF;
+}
+
+.content-wrap {
+  position: relative;
+  padding: 0;
+}
+.postcontent, .sidebar {
+    margin-right: 40px;
+}
+.postcontent, .sidebar, .col_full, .col_half, .col_one_third, .col_two_third, .col_three_fourth, .col_one_fourth, .col_one_fifth, .col_two_fifth, .col_three_fifth, .col_four_fifth, .col_one_sixth, .col_five_sixth {
+    display: block;
+    position: relative;
+    margin-right: 4%;
+    margin-bottom: 50px;
+    float: left;
+}
+.postcontent {
+    width: 860px;
+}

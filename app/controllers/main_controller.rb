@@ -67,6 +67,7 @@ class MainController < ApplicationController
   end
   
   def rolcc_feeds
+    @posts = RolccFeed.all.limit(10)
   end
   
 end
