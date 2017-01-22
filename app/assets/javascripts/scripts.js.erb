@@ -191,7 +191,6 @@ var ready = function() {
     // Populate filters
     
     $('.projects').each(function() {
-        console.log(this);
         var filters = "";
 
         $(this).find('.project').each(function() {
@@ -369,20 +368,20 @@ var ready = function() {
     // Prepare embedded video modals
 
     $('iframe[data-provider]').each(function(){
-        var provider = jQuery(this).attr('data-provider');
-        var videoID = jQuery(this).attr('data-video-id');
-        var autoplay = jQuery(this).attr('data-autoplay');
-        var vidURL = '';
+      var provider = $(this).attr('data-provider');
+      var videoID = $(this).attr('data-video-id');
+      var autoplay = $(this).attr('data-autoplay');
+      var vidURL = '';
 
-        if(provider == 'vimeo'){
-            vidURL = "http://player.vimeo.com/video/"+videoID+"?badge=0&title=0&byline=0&title=0&autoplay="+autoplay;
-            $(this).attr('data-src', vidURL);
-        }else if (provider == 'youtube'){
-            vidURL = "https://www.youtube.com/embed/"+videoID+"?showinfo=0&autoplay="+autoplay;
-            $(this).attr('data-src', vidURL);
-        }else{
-            console.log('Only Vimeo and Youtube videos are supported at this time');
-        }
+      if(provider == 'vimeo'){
+        vidURL = "http://player.vimeo.com/video/"+videoID+"?badge=0&title=0&byline=0&title=0&autoplay="+autoplay;
+        $(this).attr('data-src', vidURL);
+      }else if (provider == 'youtube'){
+          vidURL = "https://www.youtube.com/embed/"+videoID+"?showinfo=0&autoplay="+autoplay;
+          $(this).attr('data-src', vidURL);
+      }else{
+          console.log('Only Vimeo and Youtube videos are supported at this time');
+      }
     });
     
     // Multipurpose Modals
@@ -405,11 +404,11 @@ var ready = function() {
     });
     
     $('.modal-container:not([modal-link])').each(function(index) {
-        if(jQuery(this).find('iframe[src]').length){
+        if(jQuery(this).find('iframe[data-src]').length){
         	jQuery(this).find('.foundry_modal').addClass('iframe-modal');
         	var iframe = jQuery(this).find('iframe');
         	iframe.attr('data-src',iframe.attr('src'));
-            iframe.attr('src', '');
+          iframe.attr('src', '');
 
         }
         jQuery(this).find('.btn-modal').attr('modal-link', index);
@@ -423,7 +422,7 @@ var ready = function() {
     $('.btn-modal').unbind('click').click(function(){
     	var linkedModal = jQuery('.foundry_modal[modal-link="' + jQuery(this).attr('modal-link') + '"]'),
             autoplayMsg = "";
-        jQuery('.modal-screen').toggleClass('reveal-modal');
+        $('.modal-screen').toggleClass('reveal-modal');
         if(linkedModal.find('iframe').length){
             if(linkedModal.find('iframe').attr('data-autoplay') === '1'){
                 var autoplayMsg = '&autoplay=1'
@@ -527,9 +526,9 @@ var ready = function() {
     
     jQuery(document).keyup(function(e) {
 		 if (e.keyCode == 27) { // escape key maps to keycode `27`
-            if(jQuery('.foundry_modal').find('iframe').length){
-                jQuery('.foundry_modal').find('iframe').attr('src', '');
-            }
+        if(jQuery('.foundry_modal').find('iframe').length){
+          jQuery('.foundry_modal').find('iframe').attr('src', '');
+        }
 			jQuery('.foundry_modal').removeClass('reveal-modal');
 			jQuery('.modal-screen').removeClass('reveal-modal');
 		}
@@ -570,9 +569,9 @@ var ready = function() {
     // Video Modals
 
     jQuery('.close-iframe').click(function() {
-        jQuery(this).closest('.modal-video').removeClass('reveal-modal');
-        jQuery(this).siblings('iframe').attr('src', '');
-        jQuery(this).siblings('video').get(0).pause();
+      jQuery(this).closest('.modal-video').removeClass('reveal-modal');
+      jQuery(this).siblings('iframe').attr('src', '');
+      jQuery(this).siblings('video').get(0).pause();
     });
 
     // Checkboxes
@@ -1504,7 +1503,10 @@ var mr_cookies = {
 |*|  END COOKIE LIBRARY
 \*/
 
-
-function helloWorld() {
-  return "Hello world!";
+var youtubeID = function(link){
+  var video_id = window.location.search.split('v=')[1];
+  var ampersandPosition = video_id.indexOf('&');
+  if(ampersandPosition != -1) {
+    video_id = video_id.substring(0, ampersandPosition);
+  }
 }

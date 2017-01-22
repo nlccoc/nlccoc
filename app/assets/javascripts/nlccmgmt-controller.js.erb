@@ -1,5 +1,14 @@
 /* global nlccmgmtapp, gon, Layout, $, I18n, QuickSidebar */
 
+var youtubeID = function(link){
+  var video_id = link.split('v=')[1];
+  var ampersandPosition = video_id.indexOf('&');
+  if(ampersandPosition != -1) {
+    video_id = video_id.substring(0, ampersandPosition);
+  }
+  return video_id;
+}
+
 nlccmgmtapp.controller('mgmtCtrl', ['$scope', '$rootScope', 'settings', function($scope, $rootScope, settings){
   console.log('Mgmt Controller');
   $rootScope.I18n = I18n
@@ -277,6 +286,7 @@ function($scope, $timeout, mvideoFactory, $uibModal) {
   
   $scope.createMVideo = function(mvideo){
     console.log(mvideo);
+    mvideo.youtubeID = youtubeID(mvideo.path);
     mvideoFactory.createMVideo(mvideo).then(function(data){
       $scope.mvideos.push(data);
       $scope.hideform();

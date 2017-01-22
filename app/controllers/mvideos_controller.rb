@@ -77,6 +77,6 @@ class MvideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mvideo_params
-      params.require(:mvideo).permit(:title, :date, :path, :desc)
+      params.require(:mvideo).permit(:title, :date, :path, :desc, :youtubeID)
     end
 end

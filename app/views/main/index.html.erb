@@ -421,7 +421,7 @@
             <% @mvideos.each do |video| %>
               <div class='ipost'>
                 <div class="entry-image">
-        					<iframe width="560" height="315" src="<%=video.path%>" frameborder="0" allowfullscreen></iframe>
+        					<iframe width="560" height="315" src="//www.youtube.com/embed/<%=video.youtubeID%>" frameborder="0" allowfullscreen></iframe>
         				</div>
                 <div class="entry-title">
       						<h3><a href="#"><%= video.title %></a></h3>

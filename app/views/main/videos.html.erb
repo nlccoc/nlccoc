@@ -62,10 +62,13 @@
             <span><i class="ti-plus"></i></span>
             <span><%= video.date %></span>
             <span class='title'><%= video.title %></span>
-            <span>
-              <a class="btn btn-sm btn-icon btn-circle btn-thin" style='padding-left: 3px;margin-bottom:0px;'>
+            <span class='modal-container'>
+              <a class="btn btn-sm btn-icon btn-circle btn-thin btn-modal" style='padding-left: 3px;margin-bottom:0px;'>
                 <i class="icon-play"></i>
               </a>
+              <div class="foundry_modal no-bg">
+                <iframe data-provider="youtube" data-video-id="<%= video.youtubeID %>" data-autoplay="1" allowfullscreen="allowfullscreen"></iframe>
+              </div>
             </span>
           </div>
         <% end %>
