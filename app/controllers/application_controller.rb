@@ -23,7 +23,8 @@ class ApplicationController < ActionController::Base
     # The new locale is taken from the current_user language setting, it logged_in, or from the http accept language header if not
     # In both cases, if a locale param has been passed, it takes precedence. Only available locales are accepted
     def the_new_locale
-      new_locale = (params[:locale] || extract_locale_from_accept_language_header)
+      new_locale = (params[:locale] || I18n.default_locale)
+      #new_locale = (params[:locale] || extract_locale_from_accept_language_header)
       ['en', 'zh', 'cn'].include?(new_locale) ? new_locale : I18n.default_locale.to_s
     end
   
