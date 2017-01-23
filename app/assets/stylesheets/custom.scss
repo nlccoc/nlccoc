@@ -380,6 +380,10 @@ section.last {
   min-height:600px;
 }
 
+footer.last {
+  padding-bottom: 0px;
+}
+
 .verse_highlight {
   color: $mainColor !important;
 }
@@ -764,7 +768,7 @@ section.last {
       -ms-transform: translateX(3px) translateY(-50%) scaleY(0);
       -o-transform: translateX(3px) translateY(-50%) scaleY(0);
       transform: translateX(3px) translateY(-50%) scaleY(0);
-      background-color: #FF3F3F; }
+      background-color: #FFFFFF; }
   .quick-nav ul > li span {
     /* navigation item labels */
     color: #ebebeb;
