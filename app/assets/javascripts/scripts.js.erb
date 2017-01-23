@@ -1034,6 +1034,7 @@ $(document).on('turbolinks:load', function() {
     initializeMasonry();
     
     $('body').addClass('loaded');
+    QuickNav.init(); // init metronic core componets
   }, 300)
   
 });
@@ -1510,3 +1511,31 @@ var youtubeID = function(link){
     video_id = video_id.substring(0, ampersandPosition);
   }
 }
+
+var QuickNav = function () {
+
+    return {
+        init: function () {
+          console.log("Init Quick nav");
+          
+           	if( $('.quick-nav').length > 0 ) {
+      				var stretchyNavs = $('.quick-nav');				
+      				stretchyNavs.each(function(){
+      					var stretchyNav = $(this),
+      						stretchyNavTrigger = stretchyNav.find('.quick-nav-trigger');
+      					
+      					stretchyNavTrigger.on('click', function(event){
+      					  console.log('Quick nav clicked');
+      						event.preventDefault();
+      						stretchyNav.toggleClass('nav-is-visible');
+      					});
+      				});
+
+				$(document).on('click', function(event){
+					( !$(event.target).is('.quick-nav-trigger') && !$(event.target).is('.quick-nav-trigger span') ) && stretchyNavs.removeClass('nav-is-visible');
+				});
+			}
+        }
+    };
+}();
+
