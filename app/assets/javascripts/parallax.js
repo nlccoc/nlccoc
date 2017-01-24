@@ -79,14 +79,14 @@ function mr_parallax() {
         G = this;
     $(document).on('turbolinks:load', function() {
         G.documentReady()
+    }).on('custom', function() {
+        G.documentReady()
     }), $(window).on('load', function() {
-        console.log("windows load");
         G.windowLoad()
     }), this.getScrollingState = function() {
         console.log("get scroll state");
         return u > 0 ? !0 : !1
     }, this.documentReady = function(a) {
-        console.log("documentReady");
         return q = Math.max(document.documentElement.clientHeight, window.innerHeight || 0), jQuery("body").hasClass("parallax-2d") && (o = "translate(0,", p = "px)"), /Android|iPad|iPhone|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent || navigator.vendor || window.opera) ? jQuery(".parallax").removeClass("parallax") : l && (G.profileParallaxElements(), G.setupParallax()), i(a) ? void a() : void 0
     }, this.windowLoad = function() {
         q = Math.max(document.documentElement.clientHeight, window.innerHeight || 0), r = b(), window.mr_parallax.profileParallaxElements()

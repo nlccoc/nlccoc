@@ -11,4 +11,5 @@
 //= require jrespond/js/jRespond.js
 //= require flexslider.min
 //# require parallax
+//= require swiper/dist/js/swiper.jquery.js
 //= require scripts

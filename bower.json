@@ -32,7 +32,8 @@
     "angular-bootstrap-switch": "^0.5.1",
     "bootstrap-switch": "^3.3.2",
     "ion.rangeslider-angularjs": "^1.0.5",
-    "angular-summernote": "^0.8.1"
+    "angular-summernote": "^0.8.1",
+    "swiper": "^3.4.1"
   },
   "devDependencies": {
     "angular-translate": "^2.12.1"

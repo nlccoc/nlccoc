@@ -12,10 +12,23 @@ var mr_firstSectionHeight,
     mr_isTop = false;
     
 var ready = function() { 
-  $('#mevent').on('click', function(e){
-    e.preventDefault();
+  
+  $('#tevent').on('click', function(e){
+    $('#mevent').show();
+    $('#tevent').hide();
     $('.moreevent').fadeToggle( "slow", function() {
       // Animation complete.
+      $('body').trigger('custom');
+    });
+  });
+   
+  $('#mevent').on('click', function(e){
+    e.preventDefault();
+    $('#mevent').hide();
+    $('#tevent').show();
+    $('.moreevent').fadeToggle( "slow", function() {
+      // Animation complete.
+      $('body').trigger('custom');
     });
   })
   $('a').each(function(e) {
@@ -29,7 +42,15 @@ var ready = function() {
   });
   setTimeout(function(){
       $('#owl-carousel-media .entry-image').fitVids();
-      initOwlMedia();
+      initOwlMedia();//initialize swiper when document ready  
+      var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 3,
+        paginationClickable: true,
+        spaceBetween: 15,
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev'
+      }); 
     }, 200);
     
   initInnerlink();

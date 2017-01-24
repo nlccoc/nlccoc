@@ -302,60 +302,81 @@
   </section>
   
   <section class='pt0 events' id='events'>
-    <div class="container">
+    <div class="fluid-container">
         <div class="row">
           <div class="col-sm-12 text-center">
-            <h3 class="uppercase fade-1-4">Events & Conferences</h3>
+            <h3 class="uppercase fade-1-4 mb64">Events & Conferences</h3>
           </div>
         </div>
-        <div class="row text-center">
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class='event-img'>
-              <img alt="Pic" src="<%= asset_path('e2.jpg') %>" class='mb0'/>
-              <div class="entry-date">18<span>Jan</span></div>
+        <div class="text-center swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class='event-img'>
+                <img alt="Pic" src="<%= asset_path('e2.jpg') %>" class='mb0'/>
+                <div class="entry-date">18<span>Jan</span></div>
+              </div>
+              <div class='event-title'> 
+                <p>愛鄰: 親子講座</p> 
+                <p>如何幫助孩子聽話及養成好習慣</p>
+              </div>
+              <hr class="divider">
+              <div class='event-desc'>
+                Jan 18th
+              </div>
             </div>
-            <div class='event-title'> 
-              <p>愛鄰: 親子講座</p> 
-              <p>如何幫助孩子聽話及養成好習慣</p>
+            <div class="swiper-slide">
+              <div class='event-img'>
+                <img alt="Pic" src="<%= asset_path('e3.jpg') %>" class='mb0'/>
+                <div class="entry-date">31<span>Jan</span></div>
+              </div>
+              <div class='event-title'> 
+                <p>青年大組</p>
+                <p>青年每月跨組聚會</p>
+              </div>
+              <hr class="divider">
+              <div class='event-desc'>
+                Jan 31th
+              </div>
             </div>
-            <hr class="divider">
-            <div class='event-desc'>
-              Jan 18th
+            <div class="swiper-slide">
+              <div class='event-img'>
+                <img alt="Pic" src="<%= asset_path('e2.jpg') %>" class='mb0'/>
+                <div class="entry-date">21<span>Feb</span></div>
+              </div>
+              <div class='event-title'> 
+                <p>愛鄰: 親子講座(2)</p> 
+                <p>如何幫助孩子獨立負責任</p>  
+              </div>
+              <hr class="divider">
+              <div class='event-desc'>
+                Feb 21th
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class='event-img'>
+                <img alt="Pic" src="<%= asset_path('e3.jpg') %>" class='mb0'/>
+                <div class="entry-date">31<span>Jan</span></div>
+              </div>
+              <div class='event-title'> 
+                <p>青年大組</p>
+                <p>青年每月跨組聚會</p>
+              </div>
+              <hr class="divider">
+              <div class='event-desc'>
+                Jan 31th
+              </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class='event-img'>
-              <img alt="Pic" src="<%= asset_path('e3.jpg') %>" class='mb0'/>
-              <div class="entry-date">31<span>Jan</span></div>
-            </div>
-            <div class='event-title'> 
-              <p>青年大組</p>
-              <p>青年每月跨組聚會</p>
-            </div>
-            <hr class="divider">
-            <div class='event-desc'>
-              Jan 31th
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class='event-img'>
-              <img alt="Pic" src="<%= asset_path('e2.jpg') %>" class='mb0'/>
-              <div class="entry-date">21<span>Feb</span></div>
-            </div>
-            <div class='event-title'> 
-              <p>愛鄰: 親子講座(2)</p> 
-              <p>如何幫助孩子獨立負責任</p>  
-            </div>
-            <hr class="divider">
-            <div class='event-desc'>
-              Feb 21th
-            </div>
-          </div>
+          <!-- Add Arrows -->
+          <div class="swiper-button-next"><span><i class="ti-angle-right" aria-hidden="true"></i></span></div>
+          <div class="swiper-button-prev"><span><i class="ti-angle-left" aria-hidden="true"></i></span></div>
         </div>
+        
         <div class='col-md-12 text-center'>
           <a href='#' class="btn btn-fire btn-lg mt40" id='mevent'>More Event</a>
+          <a href='#' class="btn btn-fire btn-lg mt40" id='tevent' style='display:none;'>Close Panel</a>
         </div>
-        <div class="row frontpage moreevent" style='display: none;'>
+        <div class="row frontpage moreevent mt40" style='display: none;'>
           <div class="col-md-8 col-md-offset-2">
             <div class="tabbed-content button-tabs">
               <ul class="tabs forths mb64 mb-xs-24">
