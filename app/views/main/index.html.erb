@@ -303,13 +303,51 @@
   
   <section class='pt0 events' id='events'>
     <div class="container">
-        <div class="row mb80 mb-xs-40">
-            <div class="col-sm-12 text-center">
-                <h3 class="uppercase fade-1-4 mb0">Events & Conferences</h3>
-            </div>
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <h3 class="uppercase fade-1-4">Events & Conferences</h3>
+          </div>
+          <hr class="divider">
         </div>
-        <!--end of row-->
-        <div class="row frontpage">
+        <div class="row text-center">
+          <div class="col-sm-12">
+            <h3 class="subtitle fade-1-4">Upcoming Events</h3>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class='event-img'>
+              <img alt="Pic" src="<%= asset_path('e2.jpg') %>" class='mb0'/>
+            </div>
+            <div class='event-title'> 愛鄰: 親子講座 </div>
+            <hr class="divider">
+            <div class='event-desc'>
+              Jan 18th
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class='event-img'>
+              <img alt="Pic" src="<%= asset_path('e3.jpg') %>" class='mb0'/>
+            </div>
+            <div class='event-title'> 青年大組 </div>
+            <hr class="divider">
+            <div class='event-desc'>
+              Jan 31th
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class='event-img'>
+              <img alt="Pic" src="<%= asset_path('e4.jpg') %>" class='mb0'/>
+            </div>
+            <div class='event-title'> 愛鄰: 親子講座(2) </div>
+            <hr class="divider">
+            <div class='event-desc'>
+              Feb 21th
+            </div>
+          </div>
+        </div>
+        <div class='col-md-12 text-center'>
+          <a href='#' class="btn btn-fire btn-lg mt40" id='mevent'>More Event</a>
+        </div>
+        <div class="row frontpage moreevent" style='display: none;'>
           <div class="col-md-8 col-md-offset-2">
             <div class="tabbed-content button-tabs">
               <ul class="tabs forths mb64 mb-xs-24">

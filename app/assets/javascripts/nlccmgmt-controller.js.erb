@@ -9,6 +9,11 @@ var youtubeID = function(link){
   return video_id;
 }
 
+var imageUpload = function(files) {
+  console.log('image upload:', files);
+  console.log('image upload\'s editable:', $scope.editable);
+}
+
 nlccmgmtapp.controller('mgmtCtrl', ['$scope', '$rootScope', 'settings', function($scope, $rootScope, settings){
   console.log('Mgmt Controller');
   $rootScope.I18n = I18n
@@ -116,6 +121,11 @@ function($scope, categories, eventFactory, $state, $sce){
     console.log('Selection changed.');
   });
   
+  $scope.imageUpload = function(files) {
+    console.log('image upload:', files);
+    console.log('image upload\'s editable:', $scope.editable);
+    console.log('image upload\'s editor', $scope.editor);
+  }
 
   $scope.toggle = function() {
     $scope.isSelected = $scope.isSelected === true ? false : true;
@@ -202,7 +212,12 @@ function($scope, event, categories, eventFactory, $state){
     //console.log('Selection changed.');
   });
 
-
+  $scope.imageUpload = function(files) {
+    console.log('image upload:', files);
+    console.log('image upload\'s editable:', $scope.editable);
+    console.log('image upload\'s editor', $scope.editor);
+  }
+  
   $scope.setUndefined = function() {
     $scope.isSelected = undefined;
   };

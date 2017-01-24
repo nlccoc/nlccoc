@@ -19,7 +19,8 @@
         </div>
         <div class="form-group">
           <label>Long Description</label>
-          <summernote ng-model='event.desc' height='300' focus></summernote>
+          <progress></progress>
+          <summernote ng-model='event.desc' height='300' on-image-upload="imageUpload(files)" editable="editable" editor="editor" focus></summernote>
         </div>
         <div class="form-group">  
           <label>Period</label>

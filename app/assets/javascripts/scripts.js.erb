@@ -12,7 +12,12 @@ var mr_firstSectionHeight,
     mr_isTop = false;
     
 var ready = function() { 
-
+  $('#mevent').on('click', function(e){
+    e.preventDefault();
+    $('.moreevent').fadeToggle( "slow", function() {
+      // Animation complete.
+    });
+  })
   $('a').each(function(e) {
     //console.log($(this).attr('href'));
     var href = $(this).attr('href');

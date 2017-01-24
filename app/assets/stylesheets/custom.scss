@@ -870,3 +870,33 @@ footer.last {
   line-height: 14px;
   -webkit-font-smoothing: antialiased;
 }
+
+.divider {
+  width: 78px;
+  height: 4px;
+  //background: #6cbede;
+  background: $mainColor;
+  margin: 10px auto 5px!important;
+  outline: 0;
+  border: 0;
+}
+
+.event-title {
+  position: relative!important;
+  left: auto!important;
+  bottom: auto!important;
+  color: #393939!important;
+  text-align: center!important;
+  padding: 20px 0 0 0!important;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  //font-weight: 300;
+  text-transform: uppercase;
+}
+
+.event-desc {
+  font-weight: 500!important;
+  text-transform: uppercase!important;
+  color: #393939!important;
+}
