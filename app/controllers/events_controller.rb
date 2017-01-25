@@ -34,6 +34,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    
   end
 
   # POST /events
@@ -53,7 +54,7 @@ class EventsController < ApplicationController
       @event.categories << category unless category.nil? 
     end
     
-    if params[:repeat] == 'true'
+    if params[:repeat] == true
       @repeat_meta = RepeatMetum.new
       @repeat_meta.repeat_start = @event.datetime
       @repeat_meta.repeat_interval = 604800 # repeat every week
@@ -94,14 +95,14 @@ class EventsController < ApplicationController
       @event.categories << category unless category.nil? 
     end
     
-    if params[:repeat] == 'true'
+    if params[:repeat] == true
       @repeat_meta = RepeatMetum.new
       @repeat_meta.repeat_start = @event.datetime
       @repeat_meta.repeat_interval = 604800 # repeat every week
       valid_until = params[:valid_until]
       
-      @repeat_meta.valid_until = DateTime.new(valid_until['date(1i)'].to_i, valid_until['date(2i)'].to_i, valid_until['date(3i)'].to_i)
       @event.repeat_metum = []
+      @repeat_meta.valid_until = DateTime.new(valid_until['date(1i)'], valid_until['date(2i)'], valid_until['date(3i)'])
       @event.repeat_metum << @repeat_meta
     end
     respond_to do |format|

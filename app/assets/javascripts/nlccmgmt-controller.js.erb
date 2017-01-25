@@ -1,4 +1,4 @@
-/* global nlccmgmtapp, gon, Layout, $, I18n, QuickSidebar */
+/* global nlccmgmtapp, gon, Layout, $, I18n, QuickSidebar, moment, toastr */
 
 var youtubeID = function(link){
   var video_id = link.split('v=')[1];
@@ -7,11 +7,6 @@ var youtubeID = function(link){
     video_id = video_id.substring(0, ampersandPosition);
   }
   return video_id;
-}
-
-var imageUpload = function(files) {
-  console.log('image upload:', files);
-  console.log('image upload\'s editable:', $scope.editable);
 }
 
 nlccmgmtapp.controller('mgmtCtrl', ['$scope', '$rootScope', 'settings', function($scope, $rootScope, settings){
@@ -164,6 +159,7 @@ function($scope, categories, eventFactory, $state, $sce){
 }]).controller('eventEditCtrl', ['$scope', 'event', 'categories', 'eventFactory', '$state',
 function($scope, event, categories, eventFactory, $state){
   console.log('Event Edit Controller');
+  console.log(event)
   $scope.function = 'edit'
   $scope.meta={};
   $scope.meta.categories = categories;
@@ -191,7 +187,8 @@ function($scope, event, categories, eventFactory, $state){
     $scope.repeat.isSelected = false;
   }else{
     $scope.repeat.isSelected = true;
-    $scope.repeat.valid_until =  moment($scope.event.repeat_metum.valid_until).format('MM/DD/YYYY');
+    
+    $scope.repeat.valid_until =  moment.parseZone(event.repeat_metum[0].valid_until).format('L');
   }
   
   $scope.repeat.onText = 'Yes';

@@ -2,15 +2,31 @@ class Event < ActiveRecord::Base
   has_many :event_categories, dependent: :destroy
   has_many :categories, through: :event_categories
   
-  has_many :repeat_metum
+  has_many :repeat_metum, autosave: true
   
+  def latest_date_str
+    self.latest_date.localtime.strftime("%Y/%m/%d")
+  end
   def latest_date
     if self.repeat_metum.exists?
       #[DateTime.now.wday, 'test', self.datetime.wday, -1%7]
       #how many days from now
-      ((self.datetime.wday-DateTime.now.wday)%7).days.from_now.strftime("%Y/%m/%d")
+    
+      if ((self.datetime.wday-DateTime.now.wday)%7).days.from_now > self.repeat_metum[0].valid_until
+        self.datetime
+      else
+        ((self.datetime.wday-DateTime.now.wday)%7).days.from_now
+      end
     else
-      self.datetime.strftime("%Y/%m/%d")
+      self.datetime
+    end
+  end
+  
+  def available?
+    if self.latest_date > Date.today
+      true
+    else
+      false
     end
   end
   
@@ -30,7 +46,5 @@ class Event < ActiveRecord::Base
         '%20' => '+',    '!' => '%21',  "'" => '%27',  '(' => '%28',  ')' => '%29',  '*' => '%2A',
         '~'   => '%7E'
     ))
-
-    
   end
 end

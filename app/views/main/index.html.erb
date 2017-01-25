@@ -310,7 +310,7 @@
         </div>
         <div class="text-center swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-swiper-autoplay="5000">
               <div class='event-img'>
                 <img alt="Pic" src="<%= asset_path('e2.jpg') %>" class='mb0'/>
                 <div class="entry-date">18<span>Jan</span></div>
@@ -324,7 +324,7 @@
                 Jan 18th
               </div>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-swiper-autoplay="5000">
               <div class='event-img'>
                 <img alt="Pic" src="<%= asset_path('e3.jpg') %>" class='mb0'/>
                 <div class="entry-date">31<span>Jan</span></div>
@@ -338,7 +338,7 @@
                 Jan 31th
               </div>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-swiper-autoplay="5000">
               <div class='event-img'>
                 <img alt="Pic" src="<%= asset_path('e2.jpg') %>" class='mb0'/>
                 <div class="entry-date">21<span>Feb</span></div>
@@ -352,7 +352,7 @@
                 Feb 21th
               </div>
             </div>
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-swiper-autoplay="5000">
               <div class='event-img'>
                 <img alt="Pic" src="<%= asset_path('e3.jpg') %>" class='mb0'/>
                 <div class="entry-date">31<span>Jan</span></div>
@@ -391,27 +391,29 @@
                     </div>
                     <div class="tab-content text-left">
                     <div>
-                      <% category.events.each do |event|%>
-                      <div class="overflow-hidden">
-                        <div class="inline-block pull-left col-md-8">
-                          <h6 class="uppercase mb8">
-                            <%= event.latest_date %> 
-                            <%= t('date.abbr_day_names')[event.datetime.wday] %> 
-                            <%= event.datetime.strftime("%I:%M %p") %> - <%= Time.at(event.datetime.to_time.to_i + 60*event.event_period).strftime("%I:%M %p") %>
-                            </h6>
-                          <h4><%= event.title %></h4>
-                          <p class="mb0">
-                              <%= event.short_desc %>
-                              <a href="#"></a>
-                          </p>
-                        </div>
-                        <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
-                          <%= link_to event_path(event, :locale => I18n.locale), :class => "btn btn-fire btn-lg pull-right", :data => { :no_turbolink => 'true'} do %>
-                            Read More
-                          <% end %>
-                        </div>
-                      </div>
-                      <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
+                      <% category.events.each do |event| %>
+                        <% if event.available? %>
+                          <div class="overflow-hidden">
+                            <div class="inline-block pull-left col-md-8">
+                              <h6 class="uppercase mb8">
+                                <%= event.latest_date_str %>
+                                <%= t('date.abbr_day_names')[event.datetime.wday] %> 
+                                <%= event.datetime.strftime("%I:%M %p") %> - <%= Time.at(event.datetime.to_time.to_i + 60*event.event_period).strftime("%I:%M %p") %>
+                                </h6>
+                              <h4><%= event.title %></h4>
+                              <p class="mb0">
+                                  <%= event.short_desc %>
+                                  <a href="#"></a>
+                              </p>
+                            </div>
+                            <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
+                              <%= link_to event_path(event, :locale => I18n.locale), :class => "btn btn-fire btn-lg pull-right", :data => { :no_turbolink => 'true'} do %>
+                                Read More
+                              <% end %>
+                            </div>
+                          </div>
+                          <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
+                        <% end %>
                       <% end %>
                     </div>
                     <!--end of class-->
