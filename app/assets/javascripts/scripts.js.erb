@@ -1062,7 +1062,11 @@ $(document).on('turbolinks:load', function() {
     
     $('body').addClass('loaded');
     QuickNav.init(); // init metronic core componets
+    
   }, 300)
+  setTimeout(function(){
+      $('body').trigger('custom');
+  }, 1000)
   
 });
 /*

@@ -1,5 +1,6 @@
 class MainController < ApplicationController
   layout "extmain", except: [:index]
+  before_action :set_bg_dark, only: [:cellgroups, :videos, :youngadults, :children, :rolcc_feed, :rolcc_feeds, :cellgroups]
   
   def index
     @mvideos = Mvideo.order(date: :desc).limit(6)
@@ -16,23 +17,19 @@ class MainController < ApplicationController
   end
   
   def cellgroups
-    @header_bg='bg-dark'
   end
   
   def audio
   end
   
   def videos
-    @header_bg='bg-dark'
     @mvideos = Mvideo.order(date: :desc)
   end
   
   def youngadults
-    @header_bg='bg-dark'
   end
   
   def children
-    @header_bg='bg-dark'
   end
   
   def share
@@ -50,7 +47,6 @@ class MainController < ApplicationController
   end
   
   def rolcc_feed
-    @header_bg='bg-dark'
     @rolcc_feed = RolccFeed.find(params[:id])
   end
   
@@ -69,5 +65,10 @@ class MainController < ApplicationController
   def rolcc_feeds
     @posts = RolccFeed.all.limit(10)
   end
+  
+  private 
+    def set_bg_dark
+      @header_bg='bg-dark'
+    end
   
 end
