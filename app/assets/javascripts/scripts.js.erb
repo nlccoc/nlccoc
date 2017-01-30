@@ -97,7 +97,9 @@ var ready = function() {
     });
 
     // Navigation
-
+        console.log('######################');
+        console.log($(window).width());
+        console.log($(window).height());
     if (!$('nav').hasClass('fixed') && !$('nav').hasClass('absolute')) {
 
         // Make nav container height of nav
@@ -119,6 +121,11 @@ var ready = function() {
         if ($(window).width() > 768) {
             $('section.fullscreen:nth-of-type(1)').css('height', ($(window).height() - $('nav').outerHeight(true)));
         }
+        
+        console.log('######################');
+        console.log($(window).width());
+        console.log($(window).height());
+        $('section.fullscreen:nth-of-type(1)').css('height', ($(window).height() - $('nav').outerHeight(true)));
 
     } else {
         $('body').addClass('nav-is-overlay');
@@ -1058,15 +1065,16 @@ $(document).on('turbolinks:load', function() {
   
   setTimeout(function(){
     ready();
-    initializeMasonry();
+    
     
     $('body').addClass('loaded');
     QuickNav.init(); // init metronic core componets
     
   }, 300)
   setTimeout(function(){
-      $('body').trigger('custom');
-  }, 1000)
+    initializeMasonry();
+    $('body').trigger('custom');
+  }, 2000)
   
 });
 /*
