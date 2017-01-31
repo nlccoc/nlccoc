@@ -1,6 +1,6 @@
 class MainController < ApplicationController
   layout "extmain", except: [:index]
-  before_action :set_bg_dark, only: [:cellgroups, :videos, :youngadults, :children, :rolcc_feed, :rolcc_feeds, :cellgroups]
+  before_action :set_bg_dark, only: [:cellgroups, :videos, :youngadults, :children, :rolcc_feed, :rolcc_feeds, :cellgroups, :audio]
   
   def index
     @mvideos = Mvideo.order(date: :desc).limit(6)
@@ -20,6 +20,7 @@ class MainController < ApplicationController
   end
   
   def audio
+    @maudios = Maudio.all
   end
   
   def videos
