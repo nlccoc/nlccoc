@@ -68,7 +68,7 @@ class MainController < ApplicationController
   end
   
   def letsencrypt
-    render text: "XMfTdBBd8_dUO1Cr87JZNZKEq8kf7U6OKzLv4wvqZi8.yAL_mUM8LDrd9e6HSxf5-7cOHG_Om01A2aTL68ro4_U"
+    render text: params[:id]+".yAL_mUM8LDrd9e6HSxf5-7cOHG_Om01A2aTL68ro4_U"
   end
   
   private 
