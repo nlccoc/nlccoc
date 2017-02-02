@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   # devise customized controllers: sessions, registrations
   devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations' }
   
+  get '/.well-known/acme-challenge/:id' => 'main#letsencrypt'
   
   scope "/(:locale)", :locale => /en|zh|cn/, :except => 'mgmts' do
     resources :events
