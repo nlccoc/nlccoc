@@ -445,7 +445,7 @@ a:hover {
 }
 a {
   font-weight: 600;
-  color: #13181d;
+  color: $mainColor;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -457,7 +457,8 @@ a {
 }
 .image-bg a:hover,
 .bg-primary a:hover {
-  color: #fff;
+  //color: #fff;
+  color: $mainColor;
   opacity: .9;
 }
 .bg-light a {
@@ -468,7 +469,8 @@ a {
   opacity: 1;
 }
 a:hover {
-  color: #000000;
+  color: $mainColor;
+  opacity: 0.8;
   text-decoration: none;
 }
 .label {
@@ -480,7 +482,7 @@ a:hover {
   letter-spacing: 2px;
   font-weight: 700;
   letter-spacing: 1px;
-  background: #13181d;
+  background: $mainColor;
   border-radius: 0;
   padding: 6px 12px;
   font-size: 10px;
