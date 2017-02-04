@@ -39,7 +39,8 @@ task get_rolcc_feeds: :environment do
       @rolcc_feed.long_script = ''
       long[0...-3].each do |ls|
         if @rolcc_feed.long_script == ''
-          @rolcc_feed.long_script = "<span class='verse'>#{ls.text}</span><hr>"
+          @rolcc_feed.long_script = "<span class='verse'>#{ls.text[1...-1]}</span><hr>"
+          puts @rolcc_feed.long_script
         else
           @rolcc_feed.long_script = "#{@rolcc_feed.long_script}<br><br>#{ls.text}"
         end

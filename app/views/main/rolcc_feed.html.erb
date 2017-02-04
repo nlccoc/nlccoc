@@ -4,6 +4,11 @@
       <div class="col-sm-12 text-center">
         <ul class="post-meta">
           <li>
+            <%= link_to rolcc_feeds_path do %>
+              <i class='ti-arrow-left'></i>
+            <% end %>
+          </li>
+          <li>
             <span class="label"><%= @rolcc_feed.date.strftime("%d") %> <%= @rolcc_feed.date.strftime("%b") %></span>
           </li>
           <li>
@@ -37,3 +42,13 @@
     </div>
   </div>
 </section>
+
+<script>
+  var verse = $('.verse');
+  var text = verse.text();
+  verse.text('');
+  verse.append('<i class="fa fa-quote-left sup"></i> ');
+  verse.append(' '+ text + ' ');
+  verse.append(' <i class="fa fa-quote-right sub"></i>');
+  console.log(verse.text());
+</script>
