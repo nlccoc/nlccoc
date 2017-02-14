@@ -24,11 +24,14 @@ en:
   who: "Who We Are"
   rooted: "Connect"
   connect: "Connect"
-  events: "Events"
+  events: "News Updates"
   ministries: "Ministries"
-  media: "Media"
+  media: "Teaching"
   give: "Give"
   nlcc: "New Life Chistian Center"
+  serviceinfo: "Service Time & Address"
+  irvine: "Irvine"
+  laverne: 'La Verne'
   menu:
     languages:
       lang: "ENGLISH"

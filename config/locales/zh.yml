@@ -24,11 +24,14 @@ zh:
   who: "關於我們"
   rooted: "生根發芽"
   connect: "與我們連結"
-  events: "最新活動"
+  events: "教會活動"
   ministries: "教會事工"
-  media: "影音媒體"
+  media: "訊息教導"
   give: "線上奉獻"
   nlcc: "橙縣 新生命靈糧堂"
+  serviceinfo: "主日時間 & 地點"
+  irvine: "爾灣"
+  laverne: '拉文'
   menu:
     languages:
       lang: "繁體中文"

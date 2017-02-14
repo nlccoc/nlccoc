@@ -1,11 +1,14 @@
 cn:
   who: "关于我们"
   connect: "生根发芽"
-  events: "最新活动"
+  events: "教会活动"
   ministries: "教会事工"
-  media: "影音媒体"
+  media: "讯息教导"
   give: "线上奉献"
   nlcc: "橙县 新生命灵粮堂"
+  serviceinfo: "主日时间 & 地点"
+  irvine: "尔湾"
+  laverne: '拉文'
   menu:
     languages:
       lang: "简体中文"
