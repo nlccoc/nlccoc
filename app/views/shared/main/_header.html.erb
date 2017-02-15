@@ -14,19 +14,7 @@
       <div class="module-group right">
         <div class="module left">
           <ul class="menu">
-              <li>
-                  <a class="inner-link" href="#whoweare">
-                      <%= t('who') %>
-                  </a>
-                  <ul>
-                    <li>
-                      <%= link_to about_path(:locale => I18n.locale) do %>
-                        <%= t('menu.about') %>
-                      <% end %>
-                    </li>
-                    <li><%= link_to pastors_path(:locale=> I18n.locale) do %>牧者團隊<% end %></li>
-                    <li><%= link_to contact_path(:locale=> I18n.locale) do %>聯絡我們<% end %></li>
-                  </ul>
+              
                   <!--<ul class="mega-menu">
                       <li>
                           <ul>
@@ -113,7 +101,7 @@
                           </ul>
                       </li>
                   </ul>-->
-              </li>
+              
               <li class="">
                   <a class='inner-link' href="#connect">
                       <%= t('rooted') %>
@@ -379,7 +367,20 @@
                       <%= t('give') %>
                   <% end %>
               </li>
-          </ul>
+              <li>
+                  <a class="inner-link" href="#whoweare">
+                      <%= t('who') %>
+                  </a>
+                  <ul>
+                    <li>
+                      <%= link_to about_path(:locale => I18n.locale) do %>
+                        <%= t('menu.about') %>
+                      <% end %>
+                    </li>
+                    <li><%= link_to pastors_path(:locale=> I18n.locale) do %>牧者團隊<% end %></li>
+                    <li><%= link_to contact_path(:locale=> I18n.locale) do %>聯絡我們<% end %></li>
+                  </ul>
+              </li>
         </div>
         <!--end of menu module-->
         <!--<div class="module widget-handle search-widget-handle left">
