@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     
     get "share" => "main#share" 
     get 'home' => 'main#home'
-    get "tithe" => "main#tithe"
+    get "give" => "main#tithe"
     get "cellgroups" => "main#cellgroups"
     get "videos" => "main#videos"
     get "audio" => "main#audio"
