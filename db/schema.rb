@@ -22,13 +22,6 @@ ActiveRecord::Schema.define(version: 20170122014056) do
     t.integer "category_id"
   end
 
-  create_table "event_types", force: :cascade do |t|
-    t.string   "name"
-    t.string   "variable"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.text     "desc"
