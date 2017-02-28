@@ -27,7 +27,13 @@
   </script>
 </head>
 <body>
-<%= render 'shared/main/header' %>
+  <% if content_for?(:laverne_navbar) %>
+    <!--To show the La Verne page navbar-->
+    <%= yield(:laverne_navbar) %>
+  <% else %>
+    <!--Use default navbar-->
+    <%= render 'shared/main/header' %>
+  <% end %>
 <div id="loader-wrapper">
   <div id="spinner"></div>
 </div>

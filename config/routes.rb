@@ -54,6 +54,8 @@ Rails.application.routes.draw do
     get "rolcc_feeds" => "main#rolcc_feeds"
   end
   
+  get '/laverne', to: 'laverne#index'
+  
   
   
   get "/:locale" => 'main#index'
