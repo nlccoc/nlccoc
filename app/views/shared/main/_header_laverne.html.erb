@@ -1,0 +1,139 @@
+<div class="nav-container">
+  <a id="top"></a>
+  <nav class="absolute" data-fixed-at='200px'>
+    <div class="nav-bar">
+      <div class="module left">
+        <%= link_to root_path(:locale => I18n.locale) do %>
+          <img class="logo logo-light" alt="Foundry" src="<%= asset_path('logo-light.png') %>" />
+          <img class="logo logo-dark" alt="Foundry" src="<%= asset_path('logo-dark.png') %>" />
+        <% end %>
+      </div>
+      <div class="module widget-handle mobile-toggle right visible-sm visible-xs">
+        <i class="ti-menu"></i>
+      </div>
+      <div class="module-group right">
+    
+        <!--Keep only the location, language and script study-->
+        <div class="module widget-handle cart-widget-handle left">
+          <div class="cart">
+            <i class="ti-location-pin"></i>
+            <!--<span class="label number">2</span>-->
+            <span class="title">Locations</span>
+          </div>
+          <div class="function">
+            <div class="widget">
+              <!--<h6 class="title">Shopping Cart</h6>
+              <hr>-->
+              <ul class="cart-overview">
+                <li>
+                  <a href="#">
+                    <!--<img alt="Product" src="<%= asset_path('shop-widget-1.png') %>" />-->
+                    <div class="description">
+                      <span class="product-title">Irvine</span>
+                      <!--<span class="price number">$39.90</span>-->
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <!--<img alt="Product" src="<%= asset_path('shop-widget-2.png') %>" />-->
+                    <div class="description">
+                      <span class="product-title">La Verne</span>
+                      <!--<span class="price number">$249.50</span>-->
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <!--<hr>
+              <div class="cart-controls">
+                  <a class="btn btn-sm btn-filled" href="#">Checkout</a>
+                  <div class="list-inline pull-right">
+                      <span class="cart-total">Total: </span>
+                      <span class="number">$289.40</span>
+                  </div>
+              </div>-->
+            </div>
+            <!--end of widget-->
+          </div>
+        </div>
+        
+        <!--<div class="module widget-handle language left">-->
+        <!--  <ul class="menu">-->
+        <!--    <li class="has-dropdown">-->
+        <!--      <a href="#"><%= t('menu.languages.lang') %></a>-->
+        <!--      <% other_locales = I18n.available_locales.reject!{ |k| k == I18n.locale } %>-->
+        <!--        <ul>-->
+        <!--          <% other_locales.each do |l| %>-->
+        <!--          <li><a href='/<%=l%>'><%= t('menu.languages.lang', locale: l) %></a></li>-->
+        <!--          <% end %>-->
+        <!--        </ul>-->
+              <!--<a href="#">t('clan')</a>
+        <!--      <ul>-->
+        <!--        <li ng-repeat='(code, lang) in lang_list'>-->
+        <!--          <a href='/{{code}}'>{{lang}}</a>-->
+        <!--        </li>-->
+                <!--<li>
+        <!--          <a href="#">繁體中文</a>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--          <a href="#">简体中文</a>-->
+        <!--        </li>-->
+              <!--</ul>-->
+        <!--    </li>-->
+        <!--  </ul>-->
+        <!--</div>-->
+        
+        <div class="module widget-handle offscreen-toggle right">
+          <i class="ti-book"></i>
+        </div>
+      </div>
+      <!--end of module group-->
+    </div>
+    <div class="offscreen-container bg-dark text-center">
+      <div class="close-nav">
+        <a href="#">
+          <i class="ti-close"></i>
+        </a>
+      </div>
+      <div class="text-center offscreen-menu daily-feed">
+      <!--<div class="v-align-transform text-center">-->
+        <a href="#"><img alt="Logo" class="image-xs mb16 mb-xs-24" src="<%= asset_path('logo-light.png') %>"></a>
+        <!--<ul class="mb-xs-24">
+          <li class="fade-on-hover">
+            <h4 class="uppercase mb8" style='color: #fff'>每 日 靈 修 </h4>
+            <h5><%= @rolcc_feed.date %></h5>
+            </li>
+        </ul>-->
+        <h4 class="uppercase mb0" style='color: #fff'>每 日 靈 修 </h4>
+        <h5 class='mb8'><%= @rolcc_feed.date %></h5>
+        <div class="offscreen-content">
+          <h5 class='title mb8'><%= @rolcc_feed.book %></h5>
+          <p class='mb16'><%= @rolcc_feed.short_script.html_safe%></p>
+          <p class='mb8'><%= link_to rolcc_feed_path(@rolcc_feed), :target => '_blank', :class => 'btn btn-white btn-sm mb32 inner-link' do %> 閱讀更多 <% end %></p>
+          <!--施洗約翰說：「我曾看見聖靈，彷彿鴿子從天降下，住在祂的身上。」這裡講到一件很重要的事──神是看得見的。這位看得見的神，不僅是存在的神，祂更是又真又活的神，可以與我們交通、與我們互動！只是我們需要有一位中保在我們中間。舊約的中保是大祭司，藉著所獻的祭，摩西也是中保，是藉著所傳的神的話。現在有一位中保卻是更寶貴的，祂不用獻祭，祂本身就是祭；也不用告訴我們神的話，祂本身就是神的話。祂就是主耶穌基督，我們透過耶穌這位中保，來認識這位神。
+         --><!--   438 Malvern Road<br>
+            Armadale, VIC 3134<br>
+            (03) 38237 37263<br>
+            hello@foundry.net-->
+        </div>
+        <ul class="list-inline social-list">
+          <li>
+            <a href="#">
+              <i class="ti-twitter-alt"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="ti-dribbble"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="ti-vimeo-alt"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
