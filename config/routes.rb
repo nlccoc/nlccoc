@@ -59,6 +59,8 @@ Rails.application.routes.draw do
     get "mission" => "main#mission"
     get "ministries" => "main#ministries"
     get "rolcc_feeds" => "main#rolcc_feeds"
+    get "teach" => "main#teach"
+    get "sundaysermon" => "main#sundaysermon"
   end
   
   get '/laverne', to: 'laverne#index'
