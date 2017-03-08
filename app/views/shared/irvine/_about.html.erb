@@ -1,0 +1,92 @@
+<section>
+  <div class="container sect-about pt40" id="whoweare">
+      <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 text-center">
+              <h3 class="uppercase mb40 mb-xs-24"><%= t('who') %></h3>
+              <p class="lead mb64">
+                  神呼召我們在北美建立一個與眾不同的教會。我們是一個負有特定使命、帶動復興的小組教會。我們期待成為一個教會的典範。靠著神的恩典，我們必須成為一個
+              </p>
+          </div>
+      </div>
+      <!--end of row-->
+  </div>
+  <!--end of container-->
+</section>
+
+<section class="projects p0 bg-dark who">
+  <!--<ul class="filters floating cast-shadow mb0">
+  </ul>-->
+  <div class="row masonry-loader fixed-center">
+    <div class="col-sm-12 text-center">
+      <!--<div class="spinner"></div>-->
+    </div>
+  </div>
+  <div class="row masonry masonryFlyIn col-md-12" style='margin: 0px;padding: 0px;'>
+    <div class="col-md-3 col-sm-6 col-xs-12 masonry-item project" data-filter="People">
+      <div class="image-tile inner-title hover-reveal text-center">
+        <a href="#">
+          <img alt="Pic" src="<%= asset_path('who2.jpg') %>" />
+          <div class='thumb-title'>
+            <h5 class="uppercase mb0">Passion</h5>
+            <span>充滿熱情的教會</span>
+          </div>
+          <div class="title">
+            <h5 class="uppercase mb0">Passion</h5>
+            <span>充滿熱情的教會</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 masonry-item project" data-filter="Animals">
+      <div class="image-tile inner-title hover-reveal text-center">
+        <a href="#">
+          <img alt="Pic" src="<%= asset_path('who1.jpg') %>" />
+          <div class='thumb-title'>
+            <h5 class="uppercase mb0">Generation to Generation</h5>
+            <span>代代相傳的教會</span>
+          </div>
+          <div class="title">
+            <h5 class="uppercase mb0">Generation to Generation</h5>
+            <span>代代相傳的教會</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 masonry-item project" data-filter="People">
+      <div class="image-tile inner-title hover-reveal text-center">
+        <a href="#">
+          <img alt="Pic" src="<%= asset_path('who5.jpg') %>" />
+          <div class='thumb-title'>
+            <h5 class="uppercase mb0">Compassion</h5>
+            <span>充滿憐憫的教會</span>
+          </div>
+          <div class="title">
+            <h5 class="uppercase mb0">Compassion</h5>
+            <span>充滿憐憫的教會</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12 masonry-item project" data-filter="Objects">
+      <div class="image-tile inner-title hover-reveal text-center">
+        <a href="#">
+          <img alt="Pic" src="<%= asset_path('who6.jpg') %>" />
+          <div class='thumb-title'>
+            <h5 class="uppercase mb0">Mission</h5>
+            <span>注重宣教的教會</span>
+          </div>
+          <div class="title">
+            <h5 class="uppercase mb0">Mission</h5>
+            <span>注重宣教的教會</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class='row text-center' style='background-color:#fff;'>
+    <%= link_to about_path, { :class=>"btn btn-lg btn-filled mb16 mt64"} do %>
+     <%= t('more.about') %>
+    <% end %>
+    
+  </div>
+</section>

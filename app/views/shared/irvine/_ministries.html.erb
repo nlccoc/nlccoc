@@ -1,0 +1,73 @@
+<section class="page-title page-title-4 image-bg overlay parallax" id='ministries'>
+  <div class="background-image-holder">
+    <img alt="Background Image" class="background-image" src="<%= asset_path('mission-cover.jpg') %>" />
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h3 class="uppercase mb0">Ministries</h3>
+      </div>
+    </div>
+    <!--end of row-->
+  </div>
+  <!--end of container-->
+</section>
+
+<section class="portfolio-pullup ministries">
+  <div class="container">
+    <div class="row row-gapless masonry masonryFlyIn text-center col-md-12" style='padding: 0;'>
+      <div class="col-md-3 col-sm-4 col-xs-12 masonry-item project" data-filter="">
+          <div class="image-tile inner-title hover-reveal text-center">
+              <a href="#">
+                  <img alt="Pic" src="<%=asset_path('worship.jpg') %>" />
+                  <div class="title">
+                      <h5 class="uppercase mb0">敬拜事工</h5>
+                      <span>敬拜、讚美</span>
+                  </div>
+              </a>
+          </div>
+      </div>
+      <div class="col-md-3 col-sm-4 col-xs-12 masonry-item project" data-filter="">
+          <div class="image-tile inner-title hover-reveal text-center">
+              <a href="#">
+                  <img alt="Pic" src="<%=asset_path('equipping.jpg') %>" />
+                  <div class="title">
+                      <h5 class="uppercase mb0">裝備事工</h5>
+                      <span>裝備事工</span>
+                  </div>
+              </a>
+          </div>
+      </div>
+      <div class="col-md-3 col-sm-4 col-xs-12 masonry-item project" data-filter="">
+          <div class="image-tile inner-title hover-reveal text-center">
+              <a href="#">
+                  <img alt="Pic" src="<%=asset_path('prayer.jpg') %>" />
+                  <div class="title">
+                      <h5 class="uppercase mb0">禱告事工</h5>
+                      <span>禱告事工</span>
+                  </div>
+              </a>
+          </div>
+      </div>
+      <div class="col-md-3 col-sm-4 col-xs-12 masonry-item project" data-filter="">
+            <div class="image-tile inner-title hover-reveal text-center">
+                <a href="#">
+                    <img alt="Pic" src="<%=asset_path('prayer2.jpg') %>" />
+                    <div class="title">
+                        <h5 class="uppercase mb0">宣教事工</h5>
+                        <span>宣教事工</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--end of row-->
+    <div class='row text-center'>
+      <%= link_to ministries_path(:locale => I18n.locale), :class => 'btn btn-filled btn-lg mb16 mt64' do %>
+        更 多 事 工 資 訊
+      <% end %>
+
+    </div>
+  </div>
+  <!--end of container-->
+</section>

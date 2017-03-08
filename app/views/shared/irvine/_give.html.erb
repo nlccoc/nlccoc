@@ -1,0 +1,19 @@
+<section class="page-title page-title-4 image-bg overlay parallax fp_give_height">
+  <div class="background-image-holder">
+      <img alt="Background Image" class="background-image" src="<%= asset_path('give_bg.jpg') %>" />
+  </div>
+  <div class="container" id='section-give'>
+      <div class="row">
+        <div class="col-sm-12 text-center" style='padding-top: 30px; z-index:999; color: #fff'>
+          <!--<h2 class="uppercase mb8" style='color: #fff; font-weight: 700;'>We Give <span style='font-size: 20px;'><i>because</i></span> God First Gave To</h2>-->
+          <h2 class="uppercase mb8 text-center">我們愛，因為神先愛我們<br>我們給，因為神先給予我們</h2>
+          <p class="lead mb24">Your gift helps further the impact of the ministries of NLCC</p>
+          <%= link_to give_path(:locale => I18n.locale), { :class => 'btn btn-lg mb40 mt40'} do %>
+            Give Your Tithe
+          <% end %>
+        </div>
+      </div>
+      <!--end of row-->
+  </div>
+  <!--end of container-->
+</section>

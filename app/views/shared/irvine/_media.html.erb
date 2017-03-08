@@ -1,0 +1,67 @@
+<section>
+  <div class="container" id='section-media'>
+    <div class="row">
+      <div class="col-sm-12" id='media'>
+        <h3 class="uppercase">Media</h3>
+        <hr />
+      </div>
+    </div>
+    <!--end of row-->
+    <div class="row">
+      <div class="col-sm-12">
+        <div id='owl-carousel-media' class='owl-carousel'>
+          <% @mvideos.each do |video| %>
+            <div class='ipost'>
+              <div class="entry-image">
+      					<iframe width="560" height="315" src="//www.youtube.com/embed/<%=video.youtubeID%>" frameborder="0" allowfullscreen></iframe>
+      				</div>
+              <div class="entry-title">
+    						<h3><a href="#"><%= video.title %></a></h3>
+    					</div>
+    					<ul class="entry-meta clearfix">
+    						<li><i class="icon-calendar3"></i><%= video.date %></li>
+    						<!--<li><a href="blog-single-full.html#comments"><i class="icon-comments"></i> 19</a></li>-->
+    						<li><a href="#"><i class="icon-film"></i></a></li>
+    					</ul>
+    				</div>
+          <% end %>
+          <!--<div class="entry-image">
+  					<iframe width="560" height="315" src="//www.youtube.com/embed/ZKNiQPLZHMQ" frameborder="0" allowfullscreen></iframe>
+  				</div>
+  				<div class="entry-image">
+  					<iframe width="560" height="315" src="//www.youtube.com/embed/Bu9T-tVh42A" frameborder="0" allowfullscreen></iframe>
+  				</div>
+  				<div class="entry-image">
+  					<iframe width="560" height="315" src="//www.youtube.com/embed/smwlJOlGo8g" frameborder="0" allowfullscreen></iframe>
+  				</div>
+  				<div class="entry-image">
+  					<iframe width="560" height="315" src="//www.youtube.com/embed/QBj9o76Y9dg" frameborder="0" allowfullscreen></iframe>
+  				</div>
+  				<div class="entry-image">
+  					<iframe width="560" height="315" src="//www.youtube.com/embed/bJt86fI7138" frameborder="0" allowfullscreen></iframe>
+  				</div>
+  				<div class="entry-image">
+  					<iframe width="560" height="315" src="//www.youtube.com/embed/ZKNiQPLZHMQ" frameborder="0" allowfullscreen></iframe>
+  				</div>-->
+        </div>
+      </div>
+    </div>
+    <div class='row text-right'>
+      <%= link_to videos_path(:locale => I18n.locale), class: "image-bg btn btn-lg btn-filled mb16 mt16" do %> 更 多 主 日 影 音 <% end %>
+    </div>
+    <div class='row'>
+      <h4>最新講道錄音</h4>
+      <% @maudios.each do |m| %>
+      <div class='audio_title mb16'><span><%= m.date %></span> <span><%= m.title %></span></div>
+      <audio controls>
+        <source src="<%= m.path %>" type="audio/mp3">\
+        Your browser does not support the audio element.
+      </audio>
+      <% end %>
+    </div>
+    <div class='row text-right'>
+      <%= link_to audio_path(:locale => I18n.locale), class: "image-bg btn btn-lg btn-filled mb16 mt40" do %> 更 多 講 道 錄 音 <% end %>
+    </div>
+  </div>
+  <!--end of container-->
+</section>
