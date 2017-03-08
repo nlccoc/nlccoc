@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   #scope "(:locale)", :locale => /en|zh/ do
   #resources :events
@@ -21,14 +25,17 @@ Rails.application.routes.draw do
   # devise customized controllers: sessions, registrations
   devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations' }
   
-  get '/.well-known/acme-challenge/:id' => 'main#letsencrypt'
-  
+  #get '/.well-known/acme-challenge/:id' => 'main#letsencrypt'
+
   scope "/(:locale)", :locale => /en|zh|cn/, :except => 'mgmts' do
     resources :events
     resources :mvideos
     resources :libraries
     resources :categories
     resources :maudios
+    
+    match "404", :to => "errors#not_found", :via => :all
+    match "500", :to => "errors#internal_server_error", :via => :all
     
     get 'main/index' => 'main#index'
     
