@@ -1,0 +1,129 @@
+<section class='pt0 events' id='events'>
+  <div class="fluid-container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h3 class="uppercase fade-1-4 mb64">Events & Conferences</h3>
+        </div>
+      </div>
+      <div class="text-center swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" data-swiper-autoplay="5000">
+            <div class='event-img'>
+              <img alt="Pic" src="<%= asset_path('e2.jpg') %>" class='mb0'/>
+              <div class="entry-date">18<span>Jan</span></div>
+            </div>
+            <div class='event-title'> 
+              <p>愛鄰: 親子講座</p> 
+              <p>如何幫助孩子聽話及養成好習慣</p>
+            </div>
+            <hr class="divider">
+            <div class='event-desc'>
+              Jan 18th
+            </div>
+          </div>
+          <div class="swiper-slide" data-swiper-autoplay="5000">
+            <div class='event-img'>
+              <img alt="Pic" src="<%= asset_path('e3.jpg') %>" class='mb0'/>
+              <div class="entry-date">31<span>Jan</span></div>
+            </div>
+            <div class='event-title'> 
+              <p>青年大組</p>
+              <p>青年每月跨組聚會</p>
+            </div>
+            <hr class="divider">
+            <div class='event-desc'>
+              Jan 31th
+            </div>
+          </div>
+          <div class="swiper-slide" data-swiper-autoplay="5000">
+            <div class='event-img'>
+              <img alt="Pic" src="<%= asset_path('e2.jpg') %>" class='mb0'/>
+              <div class="entry-date">21<span>Feb</span></div>
+            </div>
+            <div class='event-title'> 
+              <p>愛鄰: 親子講座(2)</p> 
+              <p>如何幫助孩子獨立負責任</p>  
+            </div>
+            <hr class="divider">
+            <div class='event-desc'>
+              Feb 21th
+            </div>
+          </div>
+          <div class="swiper-slide" data-swiper-autoplay="5000">
+            <div class='event-img'>
+              <img alt="Pic" src="<%= asset_path('e3.jpg') %>" class='mb0'/>
+              <div class="entry-date">31<span>Jan</span></div>
+            </div>
+            <div class='event-title'> 
+              <p>青年大組</p>
+              <p>青年每月跨組聚會</p>
+            </div>
+            <hr class="divider">
+            <div class='event-desc'>
+              Jan 31th
+            </div>
+          </div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"><span><i class="ti-angle-right" aria-hidden="true"></i></span></div>
+        <div class="swiper-button-prev"><span><i class="ti-angle-left" aria-hidden="true"></i></span></div>
+      </div>
+      
+      <div class='col-md-12 text-center'>
+        <a href='#' class="btn btn-fire btn-lg mt40" id='mevent'>More Event</a>
+        <a href='#' class="btn btn-fire btn-lg mt40" id='tevent' style='display:none;'>Close Panel</a>
+      </div>
+      <div class="row frontpage moreevent mt40" style='display: none;'>
+        <div class="col-md-8 col-md-offset-2">
+          <div class="tabbed-content button-tabs">
+            <ul class="tabs forths mb64 mb-xs-24">
+              <% @categories.each_with_index do |category, idx|%>
+                <% if idx==0 %>
+                <li class='active'>
+                <% else %>
+                <li>
+                <% end %>
+                  <div class="tab-title">
+                    <%= t(category.name)%>
+                  </div>
+                  <div class="tab-content text-left">
+                  <div>
+                    <% category.events.each do |event| %>
+                      <% if event.available? %>
+                        <div class="overflow-hidden">
+                          <div class="inline-block pull-left col-md-8">
+                            <h6 class="uppercase mb8">
+                              <%= event.latest_date_str %>
+                              <%= t('date.abbr_day_names')[event.datetime.wday] %> 
+                              <%= event.datetime.strftime("%I:%M %p") %> - <%= Time.at(event.datetime.to_time.to_i + 60*event.event_period).strftime("%I:%M %p") %>
+                              </h6>
+                            <h4><%= event.title %></h4>
+                            <p class="mb0">
+                                <%= event.short_desc %>
+                                <a href="#"></a>
+                            </p>
+                          </div>
+                          <div class="inline-block pull-right pt80 pt-xs-24 col-md-4">
+                            <%= link_to event_path(event, :locale => I18n.locale), :class => "btn btn-fire btn-lg pull-right", :data => { :no_turbolink => 'true'} do %>
+                              Read More
+                            <% end %>
+                          </div>
+                        </div>
+                        <hr class="mt40 mb40 mt-xs-0 mb-xs-24">
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <!--end of class-->
+                </div>
+                  <!--end of tab content-->
+                </li>
+              <% end %>
+              
+            </ul>
+          </div>
+          <!--end of button tabs-->
+        </div>
+      </div>
+  </div>
+  <!--end of container-->
+  </section>

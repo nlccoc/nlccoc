@@ -28,6 +28,7 @@ module Workspace
     
     
     config.i18n.default_locale = :zh
+    config.exceptions_app = self.routes
     #config.i18n.available_locales = [:en, :zh, :cn]
   end
 end
