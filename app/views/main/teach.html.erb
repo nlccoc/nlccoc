@@ -14,16 +14,18 @@
       <div class="container">
           <div class="row">
               <div class="col-sm-6">
+                <%= link_to sundaysermon_path do %>
                   <div class="feature feature-1 boxed">
                       <div class="text-center">
                           <i class="ti-pulse icon"></i>
                           <h4>主日訊息
                               <br class="hidden-sm" /></h4>
                       </div>
-                      <p>
+                      <p style='color: #666;'>
                           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.
                       </p>
                   </div>
+                <% end %>
                   <!--end of feature-->
               </div>
               <div class="col-sm-6">
@@ -40,6 +42,7 @@
                   <!--end of feature-->
               </div>
               <div class="col-sm-6">
+                <%= link_to rolcc_feeds_path do %>
                 <a href='https://finshare-boo0330.c9users.io/rolcc_feeds'>
                   <div class="feature feature-1 boxed">
                       <div class="text-center">
@@ -51,7 +54,7 @@
                           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.
                       </p>
                   </div>
-                </a>
+                <% end %>
                   <!--end of feature-->
               </div>
               <div class="col-sm-6">
