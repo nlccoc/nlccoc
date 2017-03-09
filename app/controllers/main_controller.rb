@@ -69,8 +69,9 @@ class MainController < ApplicationController
   
   def sundaysermon
     #@mvideos = Mvideo.order(date: :desc)
-    
     @mvideos = Mvideo.paginate(:page => params[:page], :per_page => Mvideo.per_page).order(date: :desc)
+    
+    logger.debug(Mvideo.per_page)
   end
   
   private 
