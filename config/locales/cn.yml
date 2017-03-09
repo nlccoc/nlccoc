@@ -12,6 +12,10 @@ cn:
   menu:
     languages:
       lang: "简体中文"
+  will_paginate:
+    previous_label: "<span aria-hidden=\"true\">«</span>"
+    next_label: "<span aria-hidden=\"true\">»</span>"
+    page_gap: "&hellip;"
   activerecord:
     errors:
       messages:
