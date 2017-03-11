@@ -67,8 +67,11 @@ class MainController < ApplicationController
     @posts = RolccFeed.all.limit(10)
   end
   
-  def letsencrypt
-    render text: params[:id]+".yAL_mUM8LDrd9e6HSxf5-7cOHG_Om01A2aTL68ro4_U"
+  def sundaysermon
+    #@mvideos = Mvideo.order(date: :desc)
+    @mvideos = Mvideo.paginate(:page => params[:page], :per_page => Mvideo.per_page).order(date: :desc)
+    
+    logger.debug(Mvideo.per_page)
   end
   
   private 
