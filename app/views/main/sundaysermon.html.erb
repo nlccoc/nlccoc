@@ -5,38 +5,8 @@
         <div id="spinner"></div>
       </div>
     </div>
-    <div class="row masonry masonryFlyIn mb40">
-      <% @mvideos.each do |video| %>
-      <div class="col-sm-4 post-snippet masonry-item">
-        <div class="embed-video-container embed-responsive embed-responsive-16by9 mb0">
-            <iframe class="embed-responsive-item mb0" src="//www.youtube.com/embed/<%=video.youtubeID%>" allowfullscreen="allowfullscreen"></iframe>
-        </div>
-        <!--end of embed video container-->
-        <div class="inner">
-            <a href="#">
-                <h5 class="mb0"><%= video.title %></h5>
-                <span class="inline-block mb16"><%= "#{video.date.strftime("%B")} #{video.date.strftime("%d")}, #{video.date.strftime("%Y")}" %></span>
-            </a>
-            <hr>
-            <p>
-                <%= video.desc %>
-            </p>
-            <a class="btn btn-sm" href="#">Read More</a>
-            <ul class="tags pull-right">
-                <li>
-                    <a class="btn btn-sm btn-icon" href="#">
-                        <i class="ti-twitter-alt"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="btn btn-sm btn-icon" href="#">
-                        <i class="ti-facebook"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-      <% end %>
+    <div class="row masonry masonryFlyIn mb40" id='mvideos'>
+      <%= render @mvideos %>
       <!--end of snippet-->
         <!--<div class="col-sm-4 post-snippet masonry-item">
             <a href="#">
@@ -159,13 +129,18 @@
             </a>
         </div>-->
         <!--end of snippet-->
+    </div>
+    <!--end of row-->
+    <div class="row">
+      <div class="text-center with-button">
+        <%# will_paginate(@mvideos, renderer: BootstrapPagination::Rails) %>
+        <%= will_paginate(@mvideos) %>
       </div>
-      <!--end of row-->
-      <div class="row">
-        <div class="text-center">
-        <%= will_paginate(@mvideos, renderer: BootstrapPagination::Rails) %>
-        </div>
-        
+      <div class="text-center">
+        <% if @mvideos.next_page %>
+        	<%= link_to '#', id: "load_more_mvideos", class: "image-bg btn btn-filled mb16 mt16" do %> 載入更多 <% end %>
+        <% end %>  
+      </div>
     </div>
     <!--end of row-->
   </div>

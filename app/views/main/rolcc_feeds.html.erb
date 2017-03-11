@@ -105,9 +105,9 @@
 							<a href="blog-single-thumbs.html"class="more-link">Read More</a>
 						</div>
 					</div>-->
-
+					<%= render @posts %>
           <% @posts.each do |post| %>
-            <div class="entry clearfix">
+            <!--<div class="entry clearfix">
   						<div class="entry-timeline">
   							<%= post.date.strftime("%-d") %><span><%= post.date.strftime("%b") %></span>
   							<div class="timeline-divider"></div>
@@ -126,11 +126,9 @@
   							<li><a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-google-plus"></i></a></li>
   						</ul>
   						<div class="entry-content">
-							<p></p>
-							
-							
-						</div>
-  					</div>
+								<p></p>
+							</div>
+  					</div>-->
           <% end %>
           <!--
           <div class="entry clearfix">
@@ -238,10 +236,16 @@
 						</div>
 					</div>
           -->
-          <div class='row'>
-            <%= link_to '#', class: "image-bg btn btn-filled mb16 mt16" do %> 載入更多 <% end %>
-          </div>
-				</div><!-- #posts end -->
+          
+			</div><!-- #posts end -->
+				<div class='row pagination-button'>
+        	<div id="with-button">
+        		<%= will_paginate(@posts) %>
+        	</div>
+        	<% if @posts.next_page %>
+          	<%= link_to '#', id: "load_more_posts", class: "image-bg btn btn-filled mb16 mt16" do %> 載入更多 <% end %>
+          <% end %>
+        </div>
 
 			</div><!-- .postcontent end -->
 

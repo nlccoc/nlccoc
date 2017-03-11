@@ -1,0 +1,8 @@
+$('#mvideos').append('<%= j render @mvideos %>');
+<% if @mvideos.next_page %>
+    $('.pagination').replaceWith('<%= j will_paginate @mvideos %>');
+    $('.pagination').hide();
+<% else %>
+    $('.pagination, #load_more_mvideos').remove();
+<% end %>
+initializeMasonry();
