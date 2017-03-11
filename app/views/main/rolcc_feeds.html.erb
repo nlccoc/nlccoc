@@ -243,7 +243,7 @@
         		<%= will_paginate(@posts) %>
         	</div>
         	<% if @posts.next_page %>
-          	<%= link_to '#', id: "load_more_posts", class: "image-bg btn btn-filled mb16 mt16" do %> 載入更多 <% end %>
+          	<%= link_to '#', id: "load_more_posts", class: "image-bg btn btn-filled mb16 mt16" do %> <%= t('loadmore') %> <% end %>
           <% end %>
         </div>
 

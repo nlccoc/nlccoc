@@ -138,7 +138,7 @@
       </div>
       <div class="text-center">
         <% if @mvideos.next_page %>
-        	<%= link_to '#', id: "load_more_mvideos", class: "image-bg btn btn-filled mb16 mt16" do %> 載入更多 <% end %>
+        	<%= link_to '#', id: "load_more_mvideos", class: "image-bg btn btn-filled mb16 mt16" do %> <%= t('loadmore') %> <% end %>
         <% end %>  
       </div>
     </div>

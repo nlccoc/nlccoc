@@ -49,6 +49,8 @@ zh:
     previous_label: "<span aria-hidden=\"true\">«</span>"
     next_label: "<span aria-hidden=\"true\">»</span>"
     page_gap: "&hellip;"
+  loadmore: "載入更多"
+  loading: "載入中 ..."
   activerecord:
     errors:
       messages:

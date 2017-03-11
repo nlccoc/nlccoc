@@ -138,6 +138,13 @@
   color: #999;
 }
 
+.entry-meta li a:hover {
+  color: $mainColor;
+}
+.entry-meta li:hover {
+  color: $mainColor;
+}
+
 .table span {
   display: block;
   float:left;
