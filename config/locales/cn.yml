@@ -16,6 +16,8 @@ cn:
     previous_label: "<span aria-hidden=\"true\">«</span>"
     next_label: "<span aria-hidden=\"true\">»</span>"
     page_gap: "&hellip;"
+  loadmore: "载入更多"
+  loading: "载入中 ..."
   activerecord:
     errors:
       messages:

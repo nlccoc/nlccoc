@@ -1,0 +1,22 @@
+<div class="entry clearfix">
+	<div class="entry-timeline">
+		<%= rolcc_feed.date.strftime("%-d") %><span><%= rolcc_feed.date.strftime("%b") %></span>
+		<div class="timeline-divider"></div>
+	</div>
+	<div class="entry-image">
+		<div class="panel panel-default">
+			<div class="panel-body">
+			  <p><%= rolcc_feed.book %></p>
+				<%= rolcc_feed.short_script.html_safe %>  <%= link_to rolcc_feed_path(rolcc_feed), :class => 'more-link' do %> Read More <% end %>
+			</div>
+		</div>
+	</div>
+	<ul class="entry-meta clearfix">
+		<li><a href="<%= rolcc_feed.link %>"><i class="icon-user"></i> 矽谷生命河靈糧堂</a></li>
+		<li><i class="icon-folder-open"></i> <a href="#">每日靈修</a></li>
+		<li><a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-google-plus"></i></a></li>
+	</ul>
+	<div class="entry-content">
+		<p></p>
+	</div>
+</div>

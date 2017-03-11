@@ -1,0 +1,1 @@
+Rails.application.config.mvideo_per_page = ENV['MVIDEO_PER_PAGE']

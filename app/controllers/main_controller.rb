@@ -64,13 +64,21 @@ class MainController < ApplicationController
   end
   
   def rolcc_feeds
-    @posts = RolccFeed.all.limit(10)
+    @posts = RolccFeed.paginate(page: params[:page], per_page: 5).order(date: :desc)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   def sundaysermon
     #@mvideos = Mvideo.order(date: :desc)
-    
     @mvideos = Mvideo.paginate(:page => params[:page], :per_page => Mvideo.per_page).order(date: :desc)
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   private 

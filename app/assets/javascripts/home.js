@@ -13,3 +13,4 @@
 //# require parallax
 //= require swiper/dist/js/swiper.jquery.js
 //= require scripts
+//= require pagination
