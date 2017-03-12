@@ -63,7 +63,7 @@ Rails.application.routes.draw do
     get "sundaysermon" => "main#sundaysermon"
   end
   
-  get '/laverne', to: 'laverne#index'
+  get '/lv', to: 'laverne#index'
   
   
   

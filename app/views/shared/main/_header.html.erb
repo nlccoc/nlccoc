@@ -318,21 +318,13 @@
               <hr>-->
               <ul class="cart-overview">
                 <li>
-                  <a href="#">
-                    <!--<img alt="Product" src="<%= asset_path('shop-widget-1.png') %>" />-->
-                    <div class="description">
-                      <span class="product-title">Irvine</span>
-                      <!--<span class="price number">$39.90</span>-->
-                    </div>
-                  </a>
+                  <%= link_to root_path do %>
+                      <span>Irvine</span>
+                  <% end %>
                 </li>
                 <li>
-                  <%= link_to laverne_path do %>
-                    <!--<img alt="Product" src="<%= asset_path('shop-widget-2.png') %>" />-->
-                    <div class="description">
-                      <span class="product-title">La Verne</span>
-                      <!--<span class="price number">$249.50</span>-->
-                    </div>
+                  <%= link_to lv_path do %>
+                      <span>La Verne</span>
                   <% end %>
                 </li>
               </ul>
