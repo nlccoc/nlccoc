@@ -138,6 +138,13 @@
   color: #999;
 }
 
+.entry-meta li a:hover {
+  color: $mainColor;
+}
+.entry-meta li:hover {
+  color: $mainColor;
+}
+
 .table span {
   display: block;
   float:left;
@@ -1075,4 +1082,11 @@ footer.last {
 .pagination > .disabled > a:hover,
 .pagination > .disabled > a:focus {
   margin: 0 4px;
+}
+
+.pagination-button {
+  padding-left: 100px;
+}
+#with-button {
+  display:none;
 }
