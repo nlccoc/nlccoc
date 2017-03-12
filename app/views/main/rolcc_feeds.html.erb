@@ -5,7 +5,7 @@
 		<div class="container clearfix">
 		  <div class="row">
         <div class="col-sm-12">
-            <h4 class="uppercase mb64 large" style='padding-left: 100px;'>矽谷生命河每日靈修小品</h4>
+          <h4 class="uppercase mb64 large" style='padding-left: 100px;'>矽谷生命河每日靈修小品</h4>
         </div>
       </div>
 
@@ -261,6 +261,8 @@
           
           <div class="select-option" style='margin-bottom: 12px;'>
             <i class="ti-angle-down"></i>
+            <%= select("achives", "date_month", @category_dates.all.collect {|p| [ "#{t('date.month_names')[p.month]}, #{p.year}", p.string ] }, {include_blank: 'Achives'}) %>
+            
             <select>
                 <option selected value="Default">Archives</option>
                 <option value="Small">February, 2017</option>
@@ -270,12 +272,7 @@
           </div>
           <div class="select-option" style='margin-bottom: 12px;'>
             <i class="ti-angle-down"></i>
-            <select>
-                <option selected value="Default">Books</option>
-                <option value="Small">哥林多前書</option>
-                <option value="Medium">哥林多後書</option>
-                <option value="Larger">羅馬書</option>
-            </select>
+            <%= select("achives", "book", @category_books.all.collect {|p| [ p.name, p.name ] }, {include_blank: 'Books'}) %>
           </div>
         </div>
 			</div><!-- .sidebar end -->
