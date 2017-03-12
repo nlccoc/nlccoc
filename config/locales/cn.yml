@@ -18,6 +18,8 @@ cn:
     page_gap: "&hellip;"
   loadmore: "载入更多"
   loading: "载入中 ..."
+  moreevents: "更 多 活 动 讯 息"
+  eventsandconferences: "最新活动与特会消息"
   activerecord:
     errors:
       messages:

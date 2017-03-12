@@ -10,6 +10,83 @@ var mr_firstSectionHeight,
     mr_floatingProjectSections,
     mr_scrollTop = 0,
     mr_isTop = false;
+
+var responsiveClasses = function(){
+    if( typeof jRespond === 'undefined' ) {
+    	console.log('responsiveClasses: jRespond not Defined.');
+    	return true;
+    }
+    var $body = $('body');
+    var jRes = jRespond([
+    	{
+    		label: 'smallest',
+    		enter: 0,
+    		exit: 479
+    	},{
+    		label: 'handheld',
+    		enter: 480,
+    		exit: 767
+    	},{
+    		label: 'tablet',
+    		enter: 768,
+    		exit: 991
+    	},{
+    		label: 'laptop',
+    		enter: 992,
+    		exit: 1199
+    	},{
+    		label: 'desktop',
+    		enter: 1200,
+    		exit: 10000
+    	}
+    ]);
+    jRes.addFunc([
+    	{
+    		breakpoint: 'desktop',
+    		enter: function() { 
+    			//console.log($body);
+    			$body.addClass('device-lg');
+    			//console.log("Jrespond: desktop: enter");
+    		},
+    		exit: function() { 
+    			$body.removeClass('device-lg'); 
+    			//console.log("Jrespond: desktop: exit");
+    		}
+    	},{
+    		breakpoint: 'laptop',
+    		enter: function() { 
+    			$body.addClass('device-md'); 
+
+    			console.log("Jrespond: laptop: enter");
+    		},
+    		exit: function() { $body.removeClass('device-md'); }
+    	},{
+    		breakpoint: 'tablet',
+    		enter: function() { 
+    			$body.addClass('device-sm'); 
+
+    			console.log("Jrespond: tablet: enter");
+    		},
+    		exit: function() { 
+    		  $body.removeClass('device-sm'); 
+    		}
+    	},{
+    		breakpoint: 'handheld',
+    		enter: function() { 
+    		  $body.addClass('device-xs'); 
+    		},
+    		exit: function() { 
+    		  $body.removeClass('device-xs');
+    		}
+    	},{
+    		breakpoint: 'smallest',
+    		enter: function() { 
+    		  $body.addClass('device-xxs'); 
+    		},
+    		exit: function() { $body.removeClass('device-xxs'); }
+    	}
+    ]);
+  };
     
 var ready = function() { 
   
@@ -1052,6 +1129,7 @@ $(document).ready(function(){
 
 $(document).on('ready', function(){
   console.log("Document ready");
+  responsiveClasses();
   //Will only do the first load
   
 })

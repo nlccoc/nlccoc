@@ -45,6 +45,8 @@ en:
     page_gap: "&hellip;"
   loadmore: "Load More"
   loading: "Loading ..."
+  moreevents: "More Events"
+  eventsandconferences: "Events & Conferences"
   activerecord:
     errors:
       messages:
