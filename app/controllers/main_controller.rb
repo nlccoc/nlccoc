@@ -65,6 +65,8 @@ class MainController < ApplicationController
   
   def rolcc_feeds
     @posts = RolccFeed.paginate(page: params[:page], per_page: 5).order(date: :desc)
+    @category_dates = RolccFeedCategoryDate.all.limit(20)
+    @category_books =RolccFeedCategoryBook.all
     respond_to do |format|
       format.html
       format.js
