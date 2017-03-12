@@ -64,11 +64,23 @@ class MainController < ApplicationController
   end
   
   def rolcc_feeds
-    @posts = RolccFeed.all.limit(10)
+    @posts = RolccFeed.paginate(page: params[:page], per_page: 5).order(date: :desc)
+    @category_dates = RolccFeedCategoryDate.all.limit(20)
+    @category_books =RolccFeedCategoryBook.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
-  def letsencrypt
-    render text: params[:id]+".yAL_mUM8LDrd9e6HSxf5-7cOHG_Om01A2aTL68ro4_U"
+  def sundaysermon
+    #@mvideos = Mvideo.order(date: :desc)
+    @mvideos = Mvideo.paginate(:page => params[:page], :per_page => Mvideo.per_page).order(date: :desc)
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   private 

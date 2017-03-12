@@ -1,0 +1,29 @@
+<div class="col-sm-4 post-snippet masonry-item">
+  <div class="embed-video-container embed-responsive embed-responsive-16by9 mb0">
+      <iframe class="embed-responsive-item mb0" src="//www.youtube.com/embed/<%=mvideo.youtubeID%>" allowfullscreen="allowfullscreen"></iframe>
+  </div>
+  <!--end of embed video container-->
+  <div class="inner">
+      <a href="#">
+          <h5 class="mb0"><%= mvideo.title %></h5>
+          <span class="inline-block mb16"><%= "#{mvideo.date.strftime("%B")} #{mvideo.date.strftime("%d")}, #{mvideo.date.strftime("%Y")}" %></span>
+      </a>
+      <hr>
+      <p>
+          <%= mvideo.desc %>
+      </p>
+      <a class="btn btn-sm" href="#">Read More</a>
+      <ul class="tags pull-right">
+          <li>
+              <a class="btn btn-sm btn-icon" href="#">
+                  <i class="ti-twitter-alt"></i>
+              </a>
+          </li>
+          <li>
+              <a class="btn btn-sm btn-icon" href="#">
+                  <i class="ti-facebook"></i>
+              </a>
+          </li>
+      </ul>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-/* global $ */
+/* global $, I18n, Swiper, jQuery */
 var mr_firstSectionHeight,
     mr_nav,
     mr_fixedAt,
@@ -10,6 +10,83 @@ var mr_firstSectionHeight,
     mr_floatingProjectSections,
     mr_scrollTop = 0,
     mr_isTop = false;
+
+var responsiveClasses = function(){
+    if( typeof jRespond === 'undefined' ) {
+    	console.log('responsiveClasses: jRespond not Defined.');
+    	return true;
+    }
+    var $body = $('body');
+    var jRes = jRespond([
+    	{
+    		label: 'smallest',
+    		enter: 0,
+    		exit: 479
+    	},{
+    		label: 'handheld',
+    		enter: 480,
+    		exit: 767
+    	},{
+    		label: 'tablet',
+    		enter: 768,
+    		exit: 991
+    	},{
+    		label: 'laptop',
+    		enter: 992,
+    		exit: 1199
+    	},{
+    		label: 'desktop',
+    		enter: 1200,
+    		exit: 10000
+    	}
+    ]);
+    jRes.addFunc([
+    	{
+    		breakpoint: 'desktop',
+    		enter: function() { 
+    			//console.log($body);
+    			$body.addClass('device-lg');
+    			//console.log("Jrespond: desktop: enter");
+    		},
+    		exit: function() { 
+    			$body.removeClass('device-lg'); 
+    			//console.log("Jrespond: desktop: exit");
+    		}
+    	},{
+    		breakpoint: 'laptop',
+    		enter: function() { 
+    			$body.addClass('device-md'); 
+
+    			console.log("Jrespond: laptop: enter");
+    		},
+    		exit: function() { $body.removeClass('device-md'); }
+    	},{
+    		breakpoint: 'tablet',
+    		enter: function() { 
+    			$body.addClass('device-sm'); 
+
+    			console.log("Jrespond: tablet: enter");
+    		},
+    		exit: function() { 
+    		  $body.removeClass('device-sm'); 
+    		}
+    	},{
+    		breakpoint: 'handheld',
+    		enter: function() { 
+    		  $body.addClass('device-xs'); 
+    		},
+    		exit: function() { 
+    		  $body.removeClass('device-xs');
+    		}
+    	},{
+    		breakpoint: 'smallest',
+    		enter: function() { 
+    		  $body.addClass('device-xxs'); 
+    		},
+    		exit: function() { $body.removeClass('device-xxs'); }
+    	}
+    ]);
+  };
     
 var ready = function() { 
   
@@ -97,9 +174,6 @@ var ready = function() {
     });
 
     // Navigation
-        console.log('######################');
-        console.log($(window).width());
-        console.log($(window).height());
     if (!$('nav').hasClass('fixed') && !$('nav').hasClass('absolute')) {
 
         // Make nav container height of nav
@@ -263,7 +337,7 @@ var ready = function() {
 
     // Twitter Feed
 /*       $('.tweets-feed').each(function(index) {
-           jQuery(this).attr('id', 'tweets-' + index);
+           $(this).attr('id', 'tweets-' + index);
        }).each(function(index) {
            var element = $('#tweets-' + index);
            var TweetConfig = {
@@ -311,7 +385,7 @@ var ready = function() {
     // Instagram Feed
    /* 
     if($('.instafeed').length){
-    	jQuery.fn.spectragram.accessData = {
+    	$.fn.spectragram.accessData = {
 			accessToken: '1406933036.dc95b96.2ed56eddc62f41cbb22c1573d58625a2',
 			clientID: '87e6d2b8a0ef4c7ab8bc45e80ddd0c6a'
 		};	
@@ -420,41 +494,41 @@ var ready = function() {
     
     // Multipurpose Modals
     
-    jQuery('.foundry_modal[modal-link]').remove();
+    $('.foundry_modal[modal-link]').remove();
 
-    if($('.foundry_modal').length && (!jQuery('.modal-screen').length)){
+    if($('.foundry_modal').length && (!$('.modal-screen').length)){
         // Add a div.modal-screen if there isn't already one there.
-        var modalScreen = jQuery('<div />').addClass('modal-screen').appendTo('body');
+        var modalScreen = $('<div />').addClass('modal-screen').appendTo('body');
 
     }
 
-    jQuery('.foundry_modal').click(function(){
-        jQuery(this).addClass('modal-acknowledged');
+    $('.foundry_modal').click(function(){
+        $(this).addClass('modal-acknowledged');
     });
 
-    jQuery(document).on('wheel mousewheel scroll', '.foundry_modal, .modal-screen', function(evt){
+    $(document).on('wheel mousewheel scroll', '.foundry_modal, .modal-screen', function(evt){
         $(this).get(0).scrollTop += (evt.originalEvent.deltaY); 
         return false;
     });
     
     $('.modal-container:not([modal-link])').each(function(index) {
-        if(jQuery(this).find('iframe[data-src]').length){
-        	jQuery(this).find('.foundry_modal').addClass('iframe-modal');
-        	var iframe = jQuery(this).find('iframe');
+        if($(this).find('iframe[data-src]').length){
+        	$(this).find('.foundry_modal').addClass('iframe-modal');
+        	var iframe = $(this).find('iframe');
         	iframe.attr('data-src',iframe.attr('src'));
           iframe.attr('src', '');
 
         }
-        jQuery(this).find('.btn-modal').attr('modal-link', index);
+        $(this).find('.btn-modal').attr('modal-link', index);
 
         // Only clone and append to body if there isn't already one there
-        if(!jQuery('.foundry_modal[modal-link="'+index+'"]').length){
-            jQuery(this).find('.foundry_modal').clone().appendTo('body').attr('modal-link', index).prepend(jQuery('<i class="ti-close close-modal">'));
+        if(!$('.foundry_modal[modal-link="'+index+'"]').length){
+            $(this).find('.foundry_modal').clone().appendTo('body').attr('modal-link', index).prepend($('<i class="ti-close close-modal">'));
         }
     });
     
     $('.btn-modal').unbind('click').click(function(){
-    	var linkedModal = jQuery('.foundry_modal[modal-link="' + jQuery(this).attr('modal-link') + '"]'),
+    	var linkedModal = $('.foundry_modal[modal-link="' + $(this).attr('modal-link') + '"]'),
             autoplayMsg = "";
         $('.modal-screen').toggleClass('reveal-modal');
         if(linkedModal.find('iframe').length){
@@ -538,8 +612,8 @@ var ready = function() {
         }
     });
     
-    jQuery('.close-modal:not(.modal-strip .close-modal)').unbind('click').click(function(){
-    	var modal = jQuery(this).closest('.foundry_modal');
+    $('.close-modal:not(.modal-strip .close-modal)').unbind('click').click(function(){
+    	var modal = $(this).closest('.foundry_modal');
         modal.toggleClass('reveal-modal');
         if(typeof modal.attr('data-cookie') !== "undefined"){
             mr_cookies.setItem(modal.attr('data-cookie'), "true", Infinity);
@@ -547,34 +621,34 @@ var ready = function() {
     	if(modal.find('iframe').length){
             modal.find('iframe').attr('src', '');
         }
-        jQuery('.modal-screen').removeClass('reveal-modal');
+        $('.modal-screen').removeClass('reveal-modal');
     });
     
-    jQuery('.modal-screen').unbind('click').click(function(){
-        if(jQuery('.foundry_modal.reveal-modal').find('iframe').length){
-            jQuery('.foundry_modal.reveal-modal').find('iframe').attr('src', '');
+    $('.modal-screen').unbind('click').click(function(){
+        if($('.foundry_modal.reveal-modal').find('iframe').length){
+            $('.foundry_modal.reveal-modal').find('iframe').attr('src', '');
         }
-    	jQuery('.foundry_modal.reveal-modal').toggleClass('reveal-modal');
-    	jQuery(this).toggleClass('reveal-modal');
+    	$('.foundry_modal.reveal-modal').toggleClass('reveal-modal');
+    	$(this).toggleClass('reveal-modal');
     });
     
-    jQuery(document).keyup(function(e) {
+    $(document).keyup(function(e) {
 		 if (e.keyCode == 27) { // escape key maps to keycode `27`
-        if(jQuery('.foundry_modal').find('iframe').length){
-          jQuery('.foundry_modal').find('iframe').attr('src', '');
+        if($('.foundry_modal').find('iframe').length){
+          $('.foundry_modal').find('iframe').attr('src', '');
         }
-			jQuery('.foundry_modal').removeClass('reveal-modal');
-			jQuery('.modal-screen').removeClass('reveal-modal');
+			$('.foundry_modal').removeClass('reveal-modal');
+			$('.modal-screen').removeClass('reveal-modal');
 		}
 	});
     
     // Modal Strips
     
-    jQuery('.modal-strip').each(function(){
-    	if(!jQuery(this).find('.close-modal').length){
-    		jQuery(this).append(jQuery('<i class="ti-close close-modal">'));
+    $('.modal-strip').each(function(){
+    	if(!$(this).find('.close-modal').length){
+    		$(this).append($('<i class="ti-close close-modal">'));
     	}
-    	var modal = jQuery(this);
+    	var modal = $(this);
 
         if(typeof modal.attr('data-cookie') != "undefined"){
            
@@ -590,22 +664,22 @@ var ready = function() {
         }
     });
     
-    jQuery('.modal-strip .close-modal').click(function(){
-        var modal = jQuery(this).closest('.modal-strip');
+    $('.modal-strip .close-modal').click(function(){
+        var modal = $(this).closest('.modal-strip');
         if(typeof modal.attr('data-cookie') != "undefined"){
             mr_cookies.setItem(modal.attr('data-cookie'), "true", Infinity);
         }
-    	jQuery(this).closest('.modal-strip').removeClass('reveal-modal');
+    	$(this).closest('.modal-strip').removeClass('reveal-modal');
     	return false;
     });
 
 
     // Video Modals
 
-    jQuery('.close-iframe').click(function() {
-      jQuery(this).closest('.modal-video').removeClass('reveal-modal');
-      jQuery(this).siblings('iframe').attr('src', '');
-      jQuery(this).siblings('video').get(0).pause();
+    $('.close-iframe').click(function() {
+      $(this).closest('.modal-video').removeClass('reveal-modal');
+      $(this).siblings('iframe').attr('src', '');
+      $(this).siblings('video').get(0).pause();
     });
 
     // Checkboxes
@@ -747,7 +821,7 @@ var ready = function() {
 
     $('form.form-email, form.form-newsletter').submit(function(e) {
 
-        // return false so form submits through jQuery rather than reloading page.
+        // return false so form submits through $ rather than reloading page.
         if (e.preventDefault) e.preventDefault();
         else e.returnValue = false;
 
@@ -797,7 +871,7 @@ var ready = function() {
                 // Hide the error if one was shown
                 formError.fadeOut(200);
                 // Create a new loading spinner in the submit button.
-                submitButton.html(jQuery('<div />').addClass('form-loading')).attr('disabled', 'disabled');
+                submitButton.html($('<div />').addClass('form-loading')).attr('disabled', 'disabled');
                 
                 try{
                     $.ajax({
@@ -888,9 +962,9 @@ var ready = function() {
                 formError.fadeOut(200);
                 
                 // Create a new loading spinner in the submit button.
-                submitButton.html(jQuery('<div />').addClass('form-loading')).attr('disabled', 'disabled');
+                submitButton.html($('<div />').addClass('form-loading')).attr('disabled', 'disabled');
 
-                jQuery.ajax({
+                $.ajax({
                     type: "POST",
                     url: "mail/mail.php",
                     data: thisForm.serialize()+"&url="+window.location.href,
@@ -1055,6 +1129,7 @@ $(document).ready(function(){
 
 $(document).on('ready', function(){
   console.log("Document ready");
+  responsiveClasses();
   //Will only do the first load
   
 })
@@ -1074,6 +1149,45 @@ $(document).on('turbolinks:load', function() {
   setTimeout(function(){
     initializeMasonry();
     $('body').trigger('custom');
+    var loading_posts, loading_mvideos;
+
+    if ($('#with-button').size() >= 0) {
+      //$('.pagination').hide();
+      loading_posts = false;
+      $('#load_more_posts').show().click(function() {
+        var $this, more_posts_url;
+        if (!loading_posts) {
+          loading_posts = true;
+          more_posts_url = $('.pagination .next_page').attr('href');
+          $this = $(this);
+          $this.html(I18n.t("loading"));
+          $.getScript(more_posts_url, function() {
+            if ($this) {
+              $this.text(I18n.t("loadmore")).removeClass('disabled');
+            }
+            return loading_posts = false;
+          });
+        }
+      });
+      
+      loading_mvideos = false;
+      $('#load_more_mvideos').show().click(function() {
+        var $this, more_mvideos_url;
+        if (!loading_mvideos) {
+          loading_mvideos = true;
+          more_mvideos_url = $('.pagination .next_page').attr('href');
+          console.log(more_mvideos_url);
+          $this = $(this);
+          $this.html(I18n.t("loading"));
+          $.getScript(more_mvideos_url, function() {
+            if ($this) {
+              $this.text(I18n.t("loadmore")).removeClass('disabled');
+            }
+            return loading_mvideos = false;
+          });
+        }
+      });
+    }
   }, 2000)
   
 });
@@ -1437,12 +1551,12 @@ initializeMaps();
 // Prepare Signup Form - It is used to retrieve form details from an iframe Mail Chimp or Campaign Monitor form.
 
 function prepareSignup(iFrame){
-    var form   = jQuery('<form />'),
-        div    = jQuery('<div />'),
+    var form   = $('<form />'),
+        div    = $('<div />'),
         action;
 
-    jQuery(div).html(iFrame.attr('srcdoc'));
-    action = jQuery(div).find('form').attr('action');
+    $(div).html(iFrame.attr('srcdoc'));
+    action = $(div).find('form').attr('action');
 
 
 
@@ -1464,8 +1578,8 @@ function prepareSignup(iFrame){
     form.attr('action', action);
 
     // Clone form input fields from 
-    jQuery(div).find('input, select, textarea').not('input[type="submit"]').each(function(){
-        jQuery(this).clone().appendTo(form);
+    $(div).find('input, select, textarea').not('input[type="submit"]').each(function(){
+        $(this).clone().appendTo(form);
 
     });
 

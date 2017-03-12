@@ -5,7 +5,7 @@
 		<div class="container clearfix">
 		  <div class="row">
         <div class="col-sm-12">
-            <h4 class="uppercase mb64 large" style='padding-left: 100px;'>矽谷生命河每日靈修小品</h4>
+          <h4 class="uppercase mb64 large" style='padding-left: 100px;'>矽谷生命河每日靈修小品</h4>
         </div>
       </div>
 
@@ -105,9 +105,9 @@
 							<a href="blog-single-thumbs.html"class="more-link">Read More</a>
 						</div>
 					</div>-->
-
+					<%= render @posts %>
           <% @posts.each do |post| %>
-            <div class="entry clearfix">
+            <!--<div class="entry clearfix">
   						<div class="entry-timeline">
   							<%= post.date.strftime("%-d") %><span><%= post.date.strftime("%b") %></span>
   							<div class="timeline-divider"></div>
@@ -126,11 +126,9 @@
   							<li><a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-google-plus"></i></a></li>
   						</ul>
   						<div class="entry-content">
-							<p></p>
-							
-							
-						</div>
-  					</div>
+								<p></p>
+							</div>
+  					</div>-->
           <% end %>
           <!--
           <div class="entry clearfix">
@@ -238,18 +236,45 @@
 						</div>
 					</div>
           -->
-          <div class='row'>
-            <%= link_to '#', class: "image-bg btn btn-filled mb16 mt16" do %> 載入更多 <% end %>
-          </div>
-				</div><!-- #posts end -->
+          
+			</div><!-- #posts end -->
+				<div class='row pagination-button'>
+        	<div id="with-button">
+        		<%= will_paginate(@posts) %>
+        	</div>
+        	<% if @posts.next_page %>
+          	<%= link_to '#', id: "load_more_posts", class: "image-bg btn btn-filled mb16 mt16" do %> <%= t('loadmore') %> <% end %>
+          <% end %>
+        </div>
 
 			</div><!-- .postcontent end -->
 
 			<!-- Sidebar
 			============================================= -->
-			<div class="sidebar nobottommargin col_last clearfix">
-				
-
+			<div class="sidebar nobottommargin col_last clearfix rolcc_feed_sidebar">
+				<div class="widget">
+          <h6 class="title">Search By ...</h6>
+          <hr>
+          <form style='margin-bottom: 12px;'>
+              <input class="mb0" type="text" placeholder="Type Here" />
+          </form>
+          
+          <div class="select-option" style='margin-bottom: 12px;'>
+            <i class="ti-angle-down"></i>
+            <%= select("achives", "date_month", @category_dates.all.collect {|p| [ "#{t('date.month_names')[p.month]}, #{p.year}", p.string ] }, {include_blank: 'Achives'}) %>
+            
+            <select>
+                <option selected value="Default">Archives</option>
+                <option value="Small">February, 2017</option>
+                <option value="Medium">January, 2017</option>
+                <option value="Larger">December, 2016</option>
+            </select>
+          </div>
+          <div class="select-option" style='margin-bottom: 12px;'>
+            <i class="ti-angle-down"></i>
+            <%= select("achives", "book", @category_books.all.collect {|p| [ p.name, p.name ] }, {include_blank: 'Books'}) %>
+          </div>
+        </div>
 			</div><!-- .sidebar end -->
 
 		</div>

@@ -12,6 +12,14 @@ cn:
   menu:
     languages:
       lang: "简体中文"
+  will_paginate:
+    previous_label: "<span aria-hidden=\"true\">«</span>"
+    next_label: "<span aria-hidden=\"true\">»</span>"
+    page_gap: "&hellip;"
+  loadmore: "载入更多"
+  loading: "载入中 ..."
+  moreevents: "更 多 活 动 讯 息"
+  eventsandconferences: "最新活动与特会消息"
   activerecord:
     errors:
       messages:

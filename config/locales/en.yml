@@ -39,6 +39,14 @@ en:
       "About NLCC"
   more:
     about: "More about NLCC"
+  will_paginate:
+    previous_label: "<span aria-hidden=\"true\">«</span>"
+    next_label: "<span aria-hidden=\"true\">»</span>"
+    page_gap: "&hellip;"
+  loadmore: "Load More"
+  loading: "Loading ..."
+  moreevents: "More Events"
+  eventsandconferences: "Events & Conferences"
   activerecord:
     errors:
       messages:

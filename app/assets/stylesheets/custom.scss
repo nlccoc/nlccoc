@@ -138,6 +138,13 @@
   color: #999;
 }
 
+.entry-meta li a:hover {
+  color: $mainColor;
+}
+.entry-meta li:hover {
+  color: $mainColor;
+}
+
 .table span {
   display: block;
   float:left;
@@ -1043,3 +1050,48 @@ footer.last {
   padding: 0 2px;
 }
 
+.pagination a {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  text-align: center;
+  padding-top: 6px;
+  margin: 0 4px;
+  color: #f2784b;
+  font-weight: 400;
+}
+
+.pagination > .active > a, 
+.pagination > .active > a:hover, 
+.pagination > .active > a:focus, 
+.pagination > .active > span, 
+.pagination > .active > span:hover, 
+.pagination > .active > span:focus {
+  z-index: 3;
+  color: #fff;
+  background-color: $mainColor;
+  border-color: $mainColor;
+  cursor: default;
+  margin: 0 4px;
+}
+
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  margin: 0 4px;
+}
+
+.pagination-button {
+  padding-left: 100px;
+}
+#with-button {
+  display:none;
+}
+
+.rolcc_feed_sidebar {
+  width: 20%;
+  margin-right: 0 !important;
+}

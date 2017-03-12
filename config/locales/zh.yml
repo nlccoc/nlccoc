@@ -45,6 +45,14 @@ zh:
       sunday_service: "主日資訊"
       activities: "教會活動"
       cellgroups: "小組資訊"
+  will_paginate:
+    previous_label: "<span aria-hidden=\"true\">«</span>"
+    next_label: "<span aria-hidden=\"true\">»</span>"
+    page_gap: "&hellip;"
+  loadmore: "載入更多"
+  loading: "載入中 ..."
+  moreevents: "更 多 活 動 訊 息"
+  eventsandconferences: "最新活動與特會消息"
   activerecord:
     errors:
       messages:
