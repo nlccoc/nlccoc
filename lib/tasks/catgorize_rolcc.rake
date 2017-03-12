@@ -24,6 +24,4 @@ task categorize_rolcc_feed: :environment do
       @dm.save
     end
   end
-  
-  puts date_month
 end
