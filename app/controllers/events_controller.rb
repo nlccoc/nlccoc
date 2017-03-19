@@ -20,7 +20,7 @@ class EventsController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.json { render json: @event.as_json(:include => [:repeat_metum, :categories])}
+      format.json { render json: @event.as_json(:include => [:repeat_metum, :categories, :featured_info])}
     end
   end
 
@@ -52,6 +52,15 @@ class EventsController < ApplicationController
     event[:category_ids].each do |c_id|
       category = Category.find_by_id(c_id.to_i)
       @event.categories << category unless category.nil? 
+    end
+    
+    
+    if event[:featured][:isSelected] == true
+      featured_info = FeaturedInfo.new
+      featured_info.title=event[:featured][:title]
+      featured_info.subtitle=event[:featured][:subtitle]
+      featured_info.image_path=event[:featured][:image_path]
+      @event.featured_info = featured_info
     end
     
     if params[:repeat] == true
@@ -95,6 +104,14 @@ class EventsController < ApplicationController
       @event.categories << category unless category.nil? 
     end
     
+    if event[:featured][:isSelected] == true
+      featured_info = FeaturedInfo.new
+      featured_info.title=event[:featured][:title]
+      featured_info.subtitle=event[:featured][:subtitle]
+      featured_info.image_path=event[:featured][:image_path]
+      @event.featured_info = featured_info
+    end
+    
     if params[:repeat] == true
       @repeat_meta = RepeatMetum.new
       @repeat_meta.repeat_start = @event.datetime
@@ -135,6 +152,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :short_desc, :desc, :datetime, :event_period, :category, :repeat, :valid_until)
+      params.require(:event).permit(:title, :short_desc, :desc, :datetime, :event_period, :category, :featured, :featured_title, :featured_subtitle, :featured_image_path, :repeat, :valid_until)
     end
 end

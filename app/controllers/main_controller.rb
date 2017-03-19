@@ -6,6 +6,12 @@ class MainController < ApplicationController
     @mvideos = Mvideo.order(date: :desc).limit(6)
     @categories = Category.all
     @maudios = Maudio.where(featured: true).order(date: :desc).take(2)
+    @featured_events = Event.joins(:featured_info)
+    
+    logger.debug("#################")
+    logger.debug(@featured_events.includes(:repeat_metum).inspect)
+    #@featured_events = @featured_events.sort_by &:latest_date
+    
     
     gon.push({
       :current_lang => I18n.locale

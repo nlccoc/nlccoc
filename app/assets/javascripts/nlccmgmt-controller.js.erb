@@ -110,6 +110,21 @@ function($scope, categories, eventFactory, $state, $sce){
   $scope.repeat.onColor="success"
   $scope.repeat.offColor="danger"
   
+  $scope.event.featured={};
+  $scope.event.featured.valid_until = moment(d).format('MM/DD/YYYY');
+  $scope.event.featured.isSelected = false;
+  $scope.event.featured.onText = 'Yes';
+  $scope.event.featured.offText = 'No';
+  $scope.event.featured.isActive = true;
+  $scope.event.featured.size = 'normal';
+  $scope.event.featured.animate = true;
+  $scope.event.featured.radioOff = true;
+  $scope.event.featured.handleWidth = "auto";
+  $scope.event.featured.labelWidth = "auto";
+  $scope.event.featured.inverse = true;
+  $scope.event.featured.onColor="success";
+  $scope.event.featured.offColor="danger";
+  
   $scope.meta.categories = categories;
 
   $scope.$watch('repeat.isSelected', function() {
@@ -177,12 +192,12 @@ function($scope, event, categories, eventFactory, $state){
   }
   
   $scope.event.categories.forEach(function(item, index){
-    console.log('push: ' + index);
-    cat.push(index+1);
+    console.log('push: ' + item.id);
+    cat.push(item.id);
   })
   $scope.event.categories = cat;
+  $scope.event.featured = {}
   $scope.repeat={};
-  
   if($scope.event.repeat_metum.length==0){
     $scope.repeat.isSelected = false;
   }else{
@@ -203,6 +218,15 @@ function($scope, event, categories, eventFactory, $state){
   $scope.repeat.onColor="success"
   $scope.repeat.offColor="danger"
   
+  if ($scope.event.featured_info.length==0){
+    $scope.event.featured.isSelected=false;
+  } else {
+    $scope.event.featured.isSelected=true;
+    $scope.event.featured.title = $scope.event.featured_info.title;
+    $scope.event.featured.subtitle = $scope.event.featured_info.subtitle;
+    $scope.event.featured.image_path = $scope.event.featured_info.image_path;
+  }
+  
   $scope.meta.categories = categories;
   
   $scope.$watch('isSelected', function() {
@@ -214,10 +238,6 @@ function($scope, event, categories, eventFactory, $state){
     console.log('image upload\'s editable:', $scope.editable);
     console.log('image upload\'s editor', $scope.editor);
   }
-  
-  $scope.setUndefined = function() {
-    $scope.isSelected = undefined;
-  };
 
   $scope.toggleActivation = function() {
     $scope.isActive = !$scope.isActive;
