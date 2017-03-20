@@ -14,7 +14,7 @@ nlccmgmtapp.controller('mgmtCtrl', ['$scope', '$rootScope', 'settings', function
   $rootScope.I18n = I18n
   I18n.defaultLocale = "zh";
   I18n.locale = "zh";
-//  I18n.currentLocale();
+  //I18n.currentLocale();
   //console.log(gon.current_mgmt);
   $scope.current_mgmt = gon.current_mgmt;
   $scope.fullHeight = '700px';
@@ -192,7 +192,7 @@ function($scope, event, categories, eventFactory, $state){
   }
   
   $scope.event.categories.forEach(function(item, index){
-    console.log('push: ' + item.id);
+    //console.log('push: ' + item.id);
     cat.push(item.id);
   })
   $scope.event.categories = cat;
@@ -234,9 +234,9 @@ function($scope, event, categories, eventFactory, $state){
   });
 
   $scope.imageUpload = function(files) {
-    console.log('image upload:', files);
-    console.log('image upload\'s editable:', $scope.editable);
-    console.log('image upload\'s editor', $scope.editor);
+    //console.log('image upload:', files);
+   //console.log('image upload\'s editable:', $scope.editable);
+    //console.log('image upload\'s editor', $scope.editor);
   }
 
   $scope.toggleActivation = function() {
@@ -317,7 +317,7 @@ function($scope, $timeout, mvideoFactory, $uibModal) {
   }
   
   $scope.createMVideo = function(mvideo){
-    console.log(mvideo);
+    //console.log(mvideo);
     mvideo.youtubeID = youtubeID(mvideo.path);
     mvideoFactory.createMVideo(mvideo).then(function(data){
       $scope.mvideos.push(data);
@@ -340,7 +340,7 @@ function($scope, $timeout, mvideoFactory, $uibModal) {
     });
     
     modalInstance.result.then(function (result) {
-      console.log(result);
+      //console.log(result);
       if(result == 0) {
         var idx = 0;
         for(idx=0; idx<$scope.mvideos.length; idx++){
@@ -392,9 +392,9 @@ function($scope, $timeout, maudios, $uibModal) {
     });
     
     modalInstance.result.then(function (result) {
-      console.log(result);
+      //console.log(result);
       if(result == 0) {
-        console.log("result: " + result);
+        //console.log("result: " + result);
         var idx=0;
         for (idx=0; idx < $scope.maudios.length; idx++){
           if (maudio.id == $scope.maudios[idx].id){
@@ -496,7 +496,7 @@ nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', '$uibModal', funct
     });
     
     modalInstance.result.then(function (result) {
-      console.log(result);
+      //console.log(result);
       if(result == 0) {
         console.log("result: " + result);
         var idx=0;
@@ -516,7 +516,7 @@ nlccmgmtapp.controller('modalDeleteMvideoCtrl', ['$scope', '$uibModalInstance', 
 function ($scope, $uibModalInstance, mvideoFactory, mvideo) {
 
   $scope.ok = function () {
-    console.log("delete {" + mvideo.id + "}");
+    //console.log("delete {" + mvideo.id + "}");
     mvideoFactory.deleteMVideo(mvideo.id).then(function(data){
       console.log("Successfully delete the m-video");
     });
@@ -531,8 +531,8 @@ nlccmgmtapp.controller('modalDeleteEventCtrl', ['$scope', '$uibModalInstance', '
 function ($scope, $uibModalInstance, eventFactory, event) {
 
   $scope.ok = function () {
-    console.log("delete {" + event.id + "}");
-    console.log(event);
+    //console.log("delete {" + event.id + "}");
+    //console.log(event);
     eventFactory.deleteEvent(event.id).then(function(data){
       console.log("Successfully delete the m-video");
     });
@@ -547,8 +547,8 @@ nlccmgmtapp.controller('modalDeleteLibraryCtrl', ['$scope', '$uibModalInstance',
 function ($scope, $uibModalInstance, libraryFactory, library) {
 
   $scope.ok = function () {
-    console.log("delete {" + library.id + "}");
-    console.log(library);
+    //console.log("delete {" + library.id + "}");
+    //console.log(library);
     libraryFactory.deleteLibrary(library.id).then(function(data){
       console.log("Successfully delete the library");
     });
@@ -562,8 +562,8 @@ function ($scope, $uibModalInstance, libraryFactory, library) {
 nlccmgmtapp.controller('modalDeleteMaudioCtrl',['$scope', '$uibModalInstance', 'maudioFactory', 'maudio', 
 function ($scope, $uibModalInstance, maudioFactory, maudio) {
   $scope.ok = function () {
-    console.log("delete {" + maudio.id + "}");
-    console.log(maudio);
+    //console.log("delete {" + maudio.id + "}");
+    //console.log(maudio);
     maudioFactory.deleteMaudio(maudio.id).then(function(data){
       console.log("Successfully delete the maudio");
     });
@@ -601,7 +601,7 @@ nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', '$state', '$
   };
   uploader.onAfterAddingFile = function(fileItem)
   {
-    console.log($scope.library.name);
+    //console.log($scope.library.name);
     console.info('onAfterAddingFile', fileItem);
   };
   uploader.onAfterAddingAll = function(addedFileItems)

@@ -67,6 +67,10 @@ class MainController < ApplicationController
   end
   
   def ministries
+    redirect_to comingsoon_path
+  end
+  
+  def comingsoon
   end
   
   def rolcc_feeds
