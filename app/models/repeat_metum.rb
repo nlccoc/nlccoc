@@ -1,3 +1,3 @@
 class RepeatMetum < ActiveRecord::Base
-  belongs_to :event, dependent: :destroy
+  belongs_to :event
 end

@@ -174,7 +174,8 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
           "datetime(5i)": dt.minute(),
           "event_period": newevent.period.min,
           "category_ids": newevent.categories,
-          "location": newevent.location
+          "location": newevent.location,
+          "featured": newevent.featured
         },
         "repeat": newevent.repeat.isSelected,
         "valid_until": {
@@ -241,7 +242,8 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
           "datetime(5i)": dt.minute(),
           "event_period": updated_event.period.min,
           "category_ids": updated_event.categories,
-          "location]": updated_event.location
+          "location]": updated_event.location,
+          "featured": updated_event.featured
         },
         "repeat": updated_event.repeat.isSelected,
         "valid_until": {
