@@ -2,12 +2,71 @@
   <div class="container" id='section-media'>
     <div class="row">
       <div class="col-sm-12" id='media'>
-        <h3 class="uppercase">Media</h3>
+        <h3 class="uppercase"><%= t('media')%></h3>
         <hr />
       </div>
     </div>
     <!--end of row-->
-    <div class="row">
+    <div class='row'>
+      <div class="col-sm-6">
+        <%= link_to sundaysermon_path do %>
+          <div class="feature feature-1 bordered">
+            <div class="text-center">
+              <i class="ti-pulse icon"></i>
+              <h5 class="uppercase">主日訊息</h5>
+            </div>
+            <p>
+              
+            </p>
+          </div>
+          <!--end of feature-->
+        <% end %>
+      </div>
+      <div class="col-sm-6">
+        <div class="feature feature-1 bordered">
+          <div class="text-center">
+            <i class="ti-dashboard icon"></i>
+            <h5 class="uppercase">裝備課程</h5>
+          </div>
+          <p>
+            
+          </p>
+        </div>
+        <!--end of feature-->
+      </div>
+      <div class="col-sm-6">
+        <%= link_to rolcc_feeds_path do %>
+          <div class="feature feature-1 bordered">
+            <div class="text-center">
+              <i class="ti-dashboard icon"></i>
+              <h5 class="uppercase">每日靈修</h5>
+            </div>
+            <p>
+              
+            </p>
+          </div>
+          <!--end of feature-->
+        <% end %>
+      </div>
+      <div class="col-sm-6">
+        <div class="feature feature-1 bordered">
+          <div class="text-center">
+            <i class="ti-layers icon"></i>
+            <h5 class="uppercase">靈糧特會</h5>
+          </div>
+          <p>
+            
+          </p>
+        </div>
+        <!--end of feature-->
+      </div>
+    </div>
+    <div class="row text-right">
+      <a class="image-bg btn btn-lg btn-filled mb16 mt16" href="" style='opacity:0;'> temp </a>
+    </div>
+    <hr class="divider">
+    <div class="row" style='padding-top:24px;'>
+      <h4>最新主日錄影</h4>
       <div class="col-sm-12">
         <div id='owl-carousel-media' class='owl-carousel'>
           <% @mvideos.each do |video| %>

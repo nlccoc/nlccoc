@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     
     root 'main#index'
     
+    get "comingsoon" => "main#comingsoon"
     get "share" => "main#share" 
     get 'home' => 'main#home'
     get "give" => "main#tithe"

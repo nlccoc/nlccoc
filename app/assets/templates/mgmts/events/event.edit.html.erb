@@ -42,6 +42,7 @@
           <select multiple class="form-control" ng-model='event.categories' 
       ng-options=" item.id as I18n.t(item.name) for item in meta.categories"></select>
         </div>
+        
         <div class="form-group">
           <label>Repeat?</label>
           <input
@@ -66,12 +67,47 @@
             switch-inverse="{{ !inverse }}">
         
         </div>
-        <div class="form-group valid_until_show" ng-show='repeat.isSelected' style='z-inedx:9;'>
+        
+        <div class="form-group valid_until_show" ng-show='repeat.isSelected' style='z-inedx:9;padding-left:20px;'>
           <label>Valid Until</label>
           <input class="form-control form-control-inline input date-picker" format='MM/DD/YYYY' datetimepicker ng-model='repeat.valid_until' size="16" type="text" value="" />
           <span class="help-block"> Select date </span>
         </div>
+        
+        <div class="form-group">
+          <label>Featured?</label>
+          <input
+            bs-switch
+            ng-model="event.featured.isSelected"
+            type="checkbox"
+            switch-active="{{ event.featured.isActive }}"
+            switch-on-text="{{ event.featured.onText }}"
+            switch-off-text="{{ event.featured.offText }}"
+            switch-on-color="{{ event.featured.onColor }}"
+            switch-off-color="{{ event.featured.offColor }}"
+            switch-animate="{{ event.featured.animate }}"
+            switch-size="{{ event.featured.size }}"
+            switch-label="{{ event.featured.label }}"
+            switch-icon="{{ event.featured.icon }}"
+            switch-radio-off="{{ event.featured.radioOff }}"
+            switch-label-width="{{ event.featured.labelWidth }}"
+            switch-handle-width="{{ event.featured.andleWidth }}"
+            switch-wrapper="{{ event.featured.wrapper }}"
+            ng-true-value=true
+            ng-false-value=false
+            switch-inverse="{{ !inverse }}">
+        
+        </div>
       </div>
+      
+      <div class="form-group valid_until_show" ng-show='event.featured.isSelected' style='z-inedx:9;padding-left:20px;'>
+          <label>Featured Title</label>
+          <input type="text" class="form-control input" placeholder="Title" ng-model='event.featured.title'>
+          <label>Featured Subtitle</label>
+          <input type="text" class="form-control input" placeholder="Subtitle" ng-model='event.featured.subtitle'>
+          <label>Featured Image Path</label>
+          <input type="text" class="form-control input" placeholder="Image Path" ng-model='event.featured.image_path'>
+        </div>
       <div class="form-actions right" style='z-index:9999;'>
         <button type="button" class="btn default">Cancel</button>
         <button type="submit" class="btn green" ng-click="submit(function)"> {{function=='new'? 'Create': 'Update'}}</button>

@@ -22,7 +22,7 @@
 zh:
   hello: "Hello world"
   who: "關於我們"
-  rooted: "生根發芽"
+  rooted: "尋找小組"
   connect: "與我們連結"
   events: "教會活動"
   ministries: "教會事工"
@@ -32,6 +32,7 @@ zh:
   serviceinfo: "主日時間 & 地點"
   irvine: "爾灣"
   laverne: '拉文'
+  contact: '聯絡我們'
   menu:
     languages:
       lang: "繁體中文"
@@ -51,6 +52,8 @@ zh:
     page_gap: "&hellip;"
   loadmore: "載入更多"
   loading: "載入中 ..."
+  moreevents: "更 多 活 動 訊 息"
+  eventsandconferences: "最新活動與特會消息"
   activerecord:
     errors:
       messages:

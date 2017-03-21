@@ -1,6 +1,6 @@
 cn:
   who: "关于我们"
-  connect: "生根发芽"
+  connect: "寻找小组"
   events: "教会活动"
   ministries: "教会事工"
   media: "讯息教导"
@@ -9,6 +9,7 @@ cn:
   serviceinfo: "主日时间 & 地点"
   irvine: "尔湾"
   laverne: '拉文'
+  contact: '联络我们'
   menu:
     languages:
       lang: "简体中文"
@@ -18,6 +19,8 @@ cn:
     page_gap: "&hellip;"
   loadmore: "载入更多"
   loading: "载入中 ..."
+  moreevents: "更 多 活 动 讯 息"
+  eventsandconferences: "最新活动与特会消息"
   activerecord:
     errors:
       messages:

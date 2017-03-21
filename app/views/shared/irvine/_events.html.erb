@@ -2,67 +2,27 @@
   <div class="fluid-container">
       <div class="row">
         <div class="col-sm-12 text-center">
-          <h3 class="uppercase fade-1-4 mb64">Events & Conferences</h3>
+          <h3 class="uppercase fade-1-4 mb64"><%= t('eventsandconferences') %></h3>
         </div>
       </div>
       <div class="text-center swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" data-swiper-autoplay="5000">
+          <% @featured_events.each do |f_event| %>
+            <div class="swiper-slide" data-swiper-autoplay="5000">
             <div class='event-img'>
-              <img alt="Pic" src="<%= asset_path('e2.jpg') %>" class='mb0'/>
-              <div class="entry-date">18<span>Jan</span></div>
+              <img alt="Pic" src="<%= f_event.featured_info.image_path %>" class='mb0'/>
+              <div class="entry-date"><%= f_event.latest_date.strftime("%d")%><span><%= f_event.latest_date.strftime("%b")%></span></div>
             </div>
             <div class='event-title'> 
-              <p>愛鄰: 親子講座</p> 
-              <p>如何幫助孩子聽話及養成好習慣</p>
+              <p><%= f_event.featured_info.title %></p> 
+              <p><%= f_event.featured_info.subtitle%></p>
             </div>
             <hr class="divider">
             <div class='event-desc'>
-              Jan 18th
+              <%= "#{f_event.latest_date.strftime("%b")} #{f_event.latest_date.strftime("%-d").to_i.ordinalize}, #{f_event.latest_date.strftime("%A")} " %>
             </div>
           </div>
-          <div class="swiper-slide" data-swiper-autoplay="5000">
-            <div class='event-img'>
-              <img alt="Pic" src="<%= asset_path('e3.jpg') %>" class='mb0'/>
-              <div class="entry-date">31<span>Jan</span></div>
-            </div>
-            <div class='event-title'> 
-              <p>青年大組</p>
-              <p>青年每月跨組聚會</p>
-            </div>
-            <hr class="divider">
-            <div class='event-desc'>
-              Jan 31th
-            </div>
-          </div>
-          <div class="swiper-slide" data-swiper-autoplay="5000">
-            <div class='event-img'>
-              <img alt="Pic" src="<%= asset_path('e2.jpg') %>" class='mb0'/>
-              <div class="entry-date">21<span>Feb</span></div>
-            </div>
-            <div class='event-title'> 
-              <p>愛鄰: 親子講座(2)</p> 
-              <p>如何幫助孩子獨立負責任</p>  
-            </div>
-            <hr class="divider">
-            <div class='event-desc'>
-              Feb 21th
-            </div>
-          </div>
-          <div class="swiper-slide" data-swiper-autoplay="5000">
-            <div class='event-img'>
-              <img alt="Pic" src="<%= asset_path('e3.jpg') %>" class='mb0'/>
-              <div class="entry-date">31<span>Jan</span></div>
-            </div>
-            <div class='event-title'> 
-              <p>青年大組</p>
-              <p>青年每月跨組聚會</p>
-            </div>
-            <hr class="divider">
-            <div class='event-desc'>
-              Jan 31th
-            </div>
-          </div>
+          <% end%>
         </div>
         <!-- Add Arrows -->
         <div class="swiper-button-next"><span><i class="ti-angle-right" aria-hidden="true"></i></span></div>
@@ -70,7 +30,7 @@
       </div>
       
       <div class='col-md-12 text-center'>
-        <a href='#' class="btn btn-fire btn-lg mt40" id='mevent'>More Event</a>
+        <a href='#' class="btn btn-fire btn-lg mt40" id='mevent'><%= t('moreevents') %></a>
         <a href='#' class="btn btn-fire btn-lg mt40" id='tevent' style='display:none;'>Close Panel</a>
       </div>
       <div class="row frontpage moreevent mt40" style='display: none;'>

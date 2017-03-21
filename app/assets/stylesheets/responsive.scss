@@ -13,6 +13,16 @@
   .tabbed-content {
     min-height: 00px;
   }
+  
+  .postcontent {
+    width: 100%;
+  }
+  .posts {
+    padding-left: 90px;
+  }
+  .rolcc_feed_sidebar {
+    display: none;
+  }
 }
 //device-xxs
 
@@ -38,6 +48,15 @@
   }
   .who .masonry-item .title {
     bottom: 100px;
+  }
+  .postcontent {
+    width: 100%;
+  }
+  .posts {
+    padding-left: 90px;
+  }
+  .rolcc_feed_sidebar {
+    display: none;
   }
 }
 //device-xs
@@ -86,5 +105,14 @@
   
   .owl-carousel-media {
     padding: 0 15px !important;
+  }
+  .postcontent {
+    width: 100%;
+  }
+  .posts {
+    padding-left: 90px;
+  }
+  .rolcc_feed_sidebar {
+    display: none;
   }
 }
