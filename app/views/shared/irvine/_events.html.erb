@@ -8,9 +8,9 @@
       <div class="text-center swiper-container">
         <div class="swiper-wrapper">
           <% @featured_events.each do |f_event| %>
-            <div class="swiper-slide" data-swiper-autoplay="5000">
+          <div class="swiper-slide" data-swiper-autoplay="5000">
             <div class='event-img'>
-              <img alt="Pic" src="<%= f_event.featured_info.image_path %>" class='mb0'/>
+              <%= link_to event_path(:id => f_event.id) do %><img alt="Pic" src="<%= f_event.featured_info.image_path %>" class='mb0'/> <% end %>
               <div class="entry-date"><%= f_event.latest_date.strftime("%d")%><span><%= f_event.latest_date.strftime("%b")%></span></div>
             </div>
             <div class='event-title'> 
@@ -19,7 +19,7 @@
             </div>
             <hr class="divider">
             <div class='event-desc'>
-              <%= "#{f_event.latest_date.strftime("%b")} #{f_event.latest_date.strftime("%-d").to_i.ordinalize}, #{f_event.latest_date.strftime("%A")} " %>
+              <%= "#{f_event.latest_date.strftime("%b")} #{f_event.latest_date.strftime("%-d").to_i.ordinalize}, #{f_event.datetime.strftime("%A %I:%M %p")}" %>
             </div>
           </div>
           <% end%>
