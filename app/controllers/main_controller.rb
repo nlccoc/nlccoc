@@ -8,7 +8,6 @@ class MainController < ApplicationController
     @maudios = Maudio.where(featured: true).order(date: :desc).take(2)
     @featured_events = Event.joins(:featured_info).sort_by(&:latest_date)
     
-    logger.debug("#################")
     #logger.debug(@featured_events.includes(:repeat_metum).inspect)
     #@featured_events = @featured_events.sort_by &:latest_date
     

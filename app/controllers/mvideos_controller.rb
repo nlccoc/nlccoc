@@ -7,7 +7,7 @@ class MvideosController < ApplicationController
   # GET /mvideos
   # GET /mvideos.json
   def index
-    @mvideos = Mvideo.all
+    @mvideos = Mvideo.all.order('date')
     @header_bg='bg-dark'
     respond_to do |format|
       format.html
