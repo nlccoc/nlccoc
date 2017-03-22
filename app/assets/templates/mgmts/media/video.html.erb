@@ -126,9 +126,9 @@
     <input type="text" name="mvideo[path]" id="mvideo_path" maxlength="80" ng-model='newvideo.path'/>
     
     <label for="event-location">Location</label>
-    <select name="mvideo[location]" id="mvideo[location]" ng-model='newvideo.location_id'>
-      <option ng-repeat="option in locations" value="{{option.id}}">{{option.name}}</option>
-    </select>
+    <select name="mvideo[location]" id="mvideo[location]" ng-model='newvideo.locat' ng-options='option.name for option in locations'>
+      
+      </select>
 
     <label for="event-description">Description</label>
     <textarea name="mvideo[desc]" id="eventDescriptionInput" ng-model='newvideo.desc'>Media Description</textarea>

@@ -301,6 +301,7 @@ function($scope, $timeout, mvideoFactory, $uibModal, locations) {
   $scope.newvideo.date='';
   $scope.newvideo.path='';
   $scope.newvideo.desc='';
+  $scope.newvideo.locat=$scope.locations[0];
   $scope.getMonth = function(date) {
     var monthNames = [
       "Jan", "Feb", "Mar",
