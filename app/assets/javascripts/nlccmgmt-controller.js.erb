@@ -68,10 +68,12 @@ nlccmgmtapp.controller('eventAllCtrl', ['$scope', 'categoryFactory', '$uibModal'
     });
   }
   
-}]).controller('eventNewCtrl', ['$scope', 'categories', 'eventFactory', '$state', '$sce', 
-function($scope, categories, eventFactory, $state, $sce){
+}]).controller('eventNewCtrl', ['$scope', 'categories', 'eventFactory', '$state', '$sce', 'locations',
+function($scope, categories, eventFactory, $state, $sce, locations){
   console.log('Event New Controller');
   $scope.function='new';
+  
+  $scope.locations = locations;
   var d = new Date();
   d.setHours(9);
   d.setMinutes(0);
@@ -289,15 +291,17 @@ nlccmgmtapp.controller('quicksidebarController', ['$scope', function($scope) {
   });
 }]);
 
-nlccmgmtapp.controller('mediaVideoCtrl', ['$scope', '$timeout', 'mvideoFactory', '$uibModal', 
-function($scope, $timeout, mvideoFactory, $uibModal) {
+nlccmgmtapp.controller('mediaVideoCtrl', ['$scope', '$timeout', 'mvideoFactory', '$uibModal', 'locations',
+function($scope, $timeout, mvideoFactory, $uibModal, locations) {
   console.log("mediaVideoCtrl Controller");
+  $scope.locations=locations;
   $scope.animationsEnabled = true;
   $scope.newvideo={};
   $scope.newvideo.title='';
   $scope.newvideo.date='';
   $scope.newvideo.path='';
   $scope.newvideo.desc='';
+  $scope.newvideo.locat=$scope.locations[0];
   $scope.getMonth = function(date) {
     var monthNames = [
       "Jan", "Feb", "Mar",

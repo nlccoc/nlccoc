@@ -36,8 +36,6 @@ end
       d = DateTime.new(year, month, 1)
       d += (weekday - d.wday) % 7 + (week-1)*7
     end
-    logger.debug("%%%%%%%%%%%%%%%%%%%%%%%%")
-    logger.debug d
     d
   end
   
@@ -51,10 +49,14 @@ end
       #[DateTime.now.wday, 'test', self.datetime.wday, -1%7]
       #how many days from now
       if self.repeat_metum[0].repeat_interval > 0
-        if ((self.datetime.wday-DateTime.now.wday)%7).days.from_now > self.repeat_metum[0].valid_until
+        if (self.datetime > DateTime.now)
           self.datetime
         else
-          ((self.datetime.wday-DateTime.now.wday)%7).days.from_now
+          if ((self.datetime.wday-DateTime.now.wday)%7).days.from_now > self.repeat_metum[0].valid_until
+            self.datetime
+          else
+            ((self.datetime.wday-DateTime.now.wday)%7).days.from_now
+          end
         end
       elsif !self.repeat_metum[0].repeat_week.nil?
         self.find_date_by_weekday(self.repeat_metum[0].repeat_week, self.repeat_metum[0].repeat_weekday)

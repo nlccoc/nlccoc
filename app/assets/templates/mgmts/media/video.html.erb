@@ -122,9 +122,14 @@
     <input type="text" name="mvideo[title]" id="mvideo_title"  maxlength="80" ng-model='newvideo.title' />
     <label for="event-date">Date</label>
     <input type="text" name='mvideo[date]' id="eventDate" ng-model='newvideo.date'>
-    <label for="event-title">Media Youtube Address (Embedded one)</label>
+    <label for="event-title">Media Youtube Address</label>
     <input type="text" name="mvideo[path]" id="mvideo_path" maxlength="80" ng-model='newvideo.path'/>
     
+    <label for="event-location">Location</label>
+    <select name="mvideo[location]" id="mvideo[location]" ng-model='newvideo.locat' ng-options='option.name for option in locations'>
+      
+      </select>
+
     <label for="event-description">Description</label>
     <textarea name="mvideo[desc]" id="eventDescriptionInput" ng-model='newvideo.desc'>Media Description</textarea>
     <button name="add-event" id="addEvent" ng-click='createMVideo(newvideo)'>Add New Media</button>

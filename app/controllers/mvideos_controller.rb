@@ -7,7 +7,7 @@ class MvideosController < ApplicationController
   # GET /mvideos
   # GET /mvideos.json
   def index
-    @mvideos = Mvideo.all
+    @mvideos = Mvideo.all.order('date DESC')
     @header_bg='bg-dark'
     respond_to do |format|
       format.html
@@ -77,6 +77,6 @@ class MvideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mvideo_params
-      params.require(:mvideo).permit(:title, :date, :path, :desc, :youtubeID)
+      params.require(:mvideo).permit(:title, :date, :path, :desc, :youtubeID, :location_id)
     end
 end

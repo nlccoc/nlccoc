@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317055021) do
+ActiveRecord::Schema.define(version: 20170321235437) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 20170317055021) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "attachment"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "maudios", force: :cascade do |t|
@@ -82,9 +89,10 @@ ActiveRecord::Schema.define(version: 20170317055021) do
     t.date     "date"
     t.string   "path"
     t.text     "desc"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "youtubeID"
+    t.integer  "location_id"
   end
 
   create_table "repeat_meta", force: :cascade do |t|
