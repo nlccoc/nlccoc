@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'mgmt' => 'mgmt#index'
   get 'mgmt/media/video' => 'mgmt#video'
   get 'mgmt/media/audio' => 'mgmt#audio'
+  get 'locations' => 'mgmt#locations'
   
   get 'rolcc_feed/:id' => 'main#rolcc_feed', as: :rolcc_feed
   

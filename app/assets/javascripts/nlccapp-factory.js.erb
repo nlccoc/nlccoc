@@ -60,7 +60,8 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
           "path": newvideo.path,
           "date": newvideo.date,
           "desc": newvideo.desc,
-          "youtubeID": newvideo.youtubeID
+          "youtubeID": newvideo.youtubeID,
+          "location_id": newvideo.location_id
         }
       }
     }).success(function(data){
@@ -96,6 +97,20 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   service.getAllCategories = function(){
     var deferred = $q.defer();
     var _url = _baseUrl + '.json';
+    $http({
+      method: 'GET',
+      url: _url,
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
+    });
+    return deferred.promise;
+  }
+  
+  service.getAllLocations = function(){
+    var deferred = $q.defer();
+    var _url = '/locations.json';
     $http({
       method: 'GET',
       url: _url,

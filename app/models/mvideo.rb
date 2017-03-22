@@ -1,4 +1,5 @@
 class Mvideo < ActiveRecord::Base
+  has_one :location
   if(ENV['MVIDEO_PER_PAGE'].nil?)
     self.per_page=3
   else

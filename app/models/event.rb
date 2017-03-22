@@ -36,8 +36,6 @@ end
       d = DateTime.new(year, month, 1)
       d += (weekday - d.wday) % 7 + (week-1)*7
     end
-    logger.debug("%%%%%%%%%%%%%%%%%%%%%%%%")
-    logger.debug d
     d
   end
   

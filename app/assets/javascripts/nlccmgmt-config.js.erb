@@ -8,7 +8,13 @@ nlccmgmtapp.config([
       controller: 'mainCtrl'*/
     }).state('media-video', {
       url: '/mgmts/media-video',templateUrl: 'mgmts/media/video.html',
-      controller: 'mediaVideoCtrl'
+      controller: 'mediaVideoCtrl',
+      resolve: {
+        catResource: 'categoryFactory',
+        locations: ['catResource',function(catResource){
+          return catResource.getAllLocations();
+        }]
+      }
     }).state('media-audio', {
       url: '/mgmts/media-audio',templateUrl: 'mgmts/media/audio.html',
       resolve: {
@@ -75,6 +81,9 @@ nlccmgmtapp.config([
         catResource: 'categoryFactory',
         categories: ['catResource',function(catResource){
           return catResource.getAllCategories();
+        }],
+        locations: ['catResource',function(catResource){
+          return catResource.getAllLocations();
         }]
       }
     }).state('events-category', {
