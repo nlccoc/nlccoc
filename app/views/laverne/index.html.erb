@@ -177,12 +177,14 @@
             </div>
         </div>
         <div class="row">
-            <h4>NLCC La Verne頻道</h4>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4>NLCC La Verne頻道</h4>
+            </div>
             <% @mvideos_lv.each do |video| %>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                  <div class='ipost'>
                       <div class="entry-image">
-      					    <iframe src="//www.youtube.com/embed/<%=video.youtubeID%>" frameborder="0" allowfullscreen></iframe>
+      					    <iframe class="center-block img-responsive" src="//www.youtube.com/embed/<%=video.youtubeID%>" frameborder="0" allowfullscreen></iframe>
       				  </div>
                       <div class="entry-title">
     						<h3><a href="#"><%= video.title %></a></h3>
