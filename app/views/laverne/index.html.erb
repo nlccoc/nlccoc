@@ -177,12 +177,26 @@
             </div>
         </div>
         <div class="row">
-            <h4>NLCC La Verne頻道</h4>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                 <div class="embed-responsive embed-responsive-16by9">
-		            <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/aaHAG40E7oM" frameborder="0" allowfullscreen></iframe>
-		         </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4>NLCC La Verne頻道</h4>
             </div>
+            <% @mvideos_lv.each do |video| %>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                 <div class='ipost'>
+                      <div class="entry-image">
+      					    <iframe class="center-block img-responsive" src="//www.youtube.com/embed/<%=video.youtubeID%>" frameborder="0" allowfullscreen></iframe>
+      				  </div>
+                      <div class="entry-title">
+    						<h3><a href="#"><%= video.title %></a></h3>
+    				  </div>
+    					<ul class="entry-meta clearfix">
+    						<li><i class="icon-calendar3"></i><%= video.date %></li>
+    						<!--<li><a href="blog-single-full.html#comments"><i class="icon-comments"></i> 19</a></li>-->
+    						<li><a href="#"><i class="icon-film"></i></a></li>
+    					</ul>
+    			</div>
+            </div>
+            <% end %>
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
