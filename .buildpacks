@@ -1,0 +1,3 @@
+heroku/ruby
+https://github.com/jayshreeanand/heroku-buildpack-libsndfile.git
+https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
