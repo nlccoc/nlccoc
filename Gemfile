@@ -17,7 +17,7 @@ gem 'sendgrid-ruby', :require => false
 gem 'seed_dump'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
-#gem 'waveformjson'
+gem 'waveformjson'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
