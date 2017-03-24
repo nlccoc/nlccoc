@@ -58,6 +58,7 @@ class MvideosController < ApplicationController
       end
     end
   end
+  
 
   # DELETE /mvideos/1
   # DELETE /mvideos/1.json
