@@ -2,10 +2,10 @@
       <%= render 'shared/main/header_laverne' %>
 <% end %>
 <div class="main-container">
-    <section class="page-title page-title-1 parallax">
-    <!--<div class="background-image-holder">-->
-    <!--    <img alt="Background Image" class="background-image" src="" />-->
-    <!--</div>-->
+    <section class="page-title page-title-1 image-bg overlay parallax">
+    <div class="background-image-holder">
+        <img alt="Background Image" class="background-image" src="<%= asset_path('lv_cover.jpg') %>" />
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
@@ -57,7 +57,7 @@
                         <!--<p class="lead">Email: <a href="mailto:firstword@gmail.com">firstword@gmail.com</a></p>-->
                         <!--<p class="lead">Facebook:<a href="https://www.facebook.com/NLCCLaVerne/" target="_blank">https://www.facebook.com/NLCCLaVerne/</a></p>-->
                 </div>
-                <ul class='list-inline social-list mb40 list-inline-1'>
+                <ul class='list-inline social-list list-inline-1'>
                   <li>
                     <a href="https://www.facebook.com/NLCCLaVerne/" class="social-icon si-colored si-facebook" target="_blank">
                     	<i class="icon-facebook" style='line-height: 38px;'></i>
@@ -72,6 +72,12 @@
                   </li>
                 </ul>
             </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container sect-about pt40">
+        <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
               <h3 class="uppercase mb40 mb-xs-24">我們的教會</h3>
                 <p class="lead mb40">2012年4月王春光牧師(Pastor John Wang)在退休前，將一群愛主的弟兄姊妹交给陳正榮牧師加入
@@ -157,7 +163,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12 mb-xs-24 p0">
                 <div class="col-sm-5 mb-xs-24">
-                    <img alt="Pic" src="<%= asset_path('team-1.jpg') %>" />
+                    <img alt="Pic" src="<%= asset_path("Pastor_Edwin_Wong_2.jpg") %>"/>
                 </div>
                 <div class="col-sm-7 mb-xs-24">
                     <h5 class="uppercase mb0">黃耀基 牧師</h5>
