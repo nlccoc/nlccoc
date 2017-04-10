@@ -18,6 +18,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @header_bg='transparent'
     respond_to do |format|
       format.html
       format.json { render json: @event.as_json(:include => [:repeat_metum, :categories, :featured_info])}
