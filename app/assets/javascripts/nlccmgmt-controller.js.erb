@@ -212,6 +212,8 @@ function($scope, event, categories, eventFactory, $state){
     $scope.repeat.valid_until =  moment.parseZone(event.repeat_metum[0].valid_until).format('L');
   }
   
+  console.log('pass repeat')
+  
   $scope.repeat.onText = 'Yes';
   $scope.repeat.offText = 'No';
   $scope.repeat.isActive = true;
@@ -233,8 +235,10 @@ function($scope, event, categories, eventFactory, $state){
     $scope.event.featured.image_path = $scope.event.featured_info.image_path;
   }
   
+  console.log('before categories')
   $scope.meta.categories = categories;
   
+  console.log('pass categories');
   $scope.$watch('isSelected', function() {
     //console.log('Selection changed.');
   });
