@@ -176,7 +176,7 @@ function($scope, categories, eventFactory, $state, $sce, locations){
 }]).controller('eventEditCtrl', ['$scope', 'event', 'categories', 'eventFactory', '$state',
 function($scope, event, categories, eventFactory, $state){
   console.log('Event Edit Controller');
-  console.log(event)
+  //console.log(event)
   $scope.function = 'edit'
   $scope.meta={};
   $scope.meta.categories = categories;
@@ -185,20 +185,17 @@ function($scope, event, categories, eventFactory, $state){
   }
   $scope.event = event
   $scope.event.datetime = moment(event.datetime).format('MM/DD/YYYY h:mm a');
-  $scope.event.desc = $scope.event.desc
-  //$scope.event.desc = unescape($scope.event.desc)
+  //$scope.event.desc = $scope.event.desc
+  $scope.event.desc = unescape($scope.event.desc)
   //console.log(unescape($scope.event.desc));
-  console.log('##############################################');
   //console.log(event);
   var cat = [];
   $scope.event.period = {
     min: event.event_period
   }
   
-  console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-  
   $scope.event.categories.forEach(function(item, index){
-    console.log('push: ' + item.id);
+    //console.log('push: ' + item.id);
     cat.push(item.id);
   })
   $scope.event.categories = cat;
@@ -212,7 +209,6 @@ function($scope, event, categories, eventFactory, $state){
     $scope.repeat.valid_until =  moment.parseZone(event.repeat_metum[0].valid_until).format('L');
   }
   
-  console.log('pass repeat')
   
   $scope.repeat.onText = 'Yes';
   $scope.repeat.offText = 'No';
@@ -225,8 +221,8 @@ function($scope, event, categories, eventFactory, $state){
   $scope.repeat.inverse = true;
   $scope.repeat.onColor="success"
   $scope.repeat.offColor="danger"
-  console.log($scope.event.featured_info.length)
-  if ($scope.event.featured_info.length==0){
+
+  if (typeof $scope.event.featured_info == 'undefined' || $scope.event.featured_info.length==0){
     $scope.event.featured.isSelected=false;
   } else {
     $scope.event.featured.isSelected=true;
@@ -237,15 +233,12 @@ function($scope, event, categories, eventFactory, $state){
     $scope.event.featured.subtitle = $scope.event.featured_info.subtitle;
     $scope.event.featured.image_path = $scope.event.featured_info.image_path;
   }
-  
-  console.log('before categories')
+
   $scope.meta.categories = categories;
-  
-  console.log('pass categories');
+
   $scope.$watch('isSelected', function() {
     //console.log('Selection changed.');
   });
-  console.log('##############################333333333333333333333333');
 
   $scope.imageUpload = function(files) {
     //console.log('image upload:', files);
