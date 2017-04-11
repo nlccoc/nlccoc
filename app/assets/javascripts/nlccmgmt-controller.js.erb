@@ -185,16 +185,20 @@ function($scope, event, categories, eventFactory, $state){
   }
   $scope.event = event
   $scope.event.datetime = moment(event.datetime).format('MM/DD/YYYY h:mm a');
-  $scope.event.desc = unescape($scope.event.desc)
+  $scope.event.desc = $scope.event.desc
+  //$scope.event.desc = unescape($scope.event.desc)
   //console.log(unescape($scope.event.desc));
+  console.log('##############################################');
   //console.log(event);
   var cat = [];
   $scope.event.period = {
     min: event.event_period
   }
   
+  console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+  
   $scope.event.categories.forEach(function(item, index){
-    //console.log('push: ' + item.id);
+    console.log('push: ' + item.id);
     cat.push(item.id);
   })
   $scope.event.categories = cat;
@@ -234,6 +238,7 @@ function($scope, event, categories, eventFactory, $state){
   $scope.$watch('isSelected', function() {
     //console.log('Selection changed.');
   });
+  console.log('##############################333333333333333333333333');
 
   $scope.imageUpload = function(files) {
     //console.log('image upload:', files);
