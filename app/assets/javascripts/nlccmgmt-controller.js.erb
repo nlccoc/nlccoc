@@ -225,11 +225,14 @@ function($scope, event, categories, eventFactory, $state){
   $scope.repeat.inverse = true;
   $scope.repeat.onColor="success"
   $scope.repeat.offColor="danger"
-  
+  console.log($scope.event.featured_info.length)
   if ($scope.event.featured_info.length==0){
     $scope.event.featured.isSelected=false;
   } else {
     $scope.event.featured.isSelected=true;
+    console.log($scope.event.featured_info.title);
+    console.log($scope.event.featured_info.subtitle);
+    console.log($scope.event.featured_info.image_path);
     $scope.event.featured.title = $scope.event.featured_info.title;
     $scope.event.featured.subtitle = $scope.event.featured_info.subtitle;
     $scope.event.featured.image_path = $scope.event.featured_info.image_path;
