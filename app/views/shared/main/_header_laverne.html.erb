@@ -1,6 +1,6 @@
 <div class="nav-container">
   <a id="top"></a>
-  <nav class="absolute" data-fixed-at='200px'>
+  <nav class="absolute <%= @header_bg %>" data-fixed-at='200px'>
     <div class="nav-bar">
       <div class="module left">
         <%= link_to root_path(:locale => I18n.locale) do %>
@@ -16,37 +16,16 @@
         <!--Keep only the location, language and script study-->
         <div class="module widget-handle cart-widget-handle left">
           <div class="cart">
-            <i class="ti-location-pin"></i>
+            <span style='color: #fff;'>
+              <%= link_to root_path do %>
+                爾灣牧區
+              <% end %>
+            </span>
+           <!-- <i class="ti-location-pin"></i>-->
             <!--<span class="label number">2</span>-->
-            <span class="title">Locations</span>
+            <!--<span class="title">Locations</span>-->
           </div>
-          <div class="function">
-            <div class="widget">
-              <!--<h6 class="title">Shopping Cart</h6>
-              <hr>-->
-              <ul class="cart-overview">
-                <li>
-                  <%= link_to root_path do %>
-                      <span>Irvine</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to lv_path do %>
-                      <span>La Verne</span>
-                  <% end %>
-                </li>
-              </ul>
-              <!--<hr>
-              <div class="cart-controls">
-                  <a class="btn btn-sm btn-filled" href="#">Checkout</a>
-                  <div class="list-inline pull-right">
-                      <span class="cart-total">Total: </span>
-                      <span class="number">$289.40</span>
-                  </div>
-              </div>-->
-            </div>
-            <!--end of widget-->
-          </div>
+          
         </div>
         
         <!--<div class="module widget-handle language left">-->

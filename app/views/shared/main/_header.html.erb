@@ -76,15 +76,20 @@
         </div>
         <div class="module widget-handle cart-widget-handle left">
           <div class="cart">
-            <i class="ti-location-pin"></i>
+            <span style='color: #fff;'>
+              <%= link_to lv_path do %>
+                拉文牧區
+              <% end %>
+            </span>
+           <!-- <i class="ti-location-pin"></i>-->
             <!--<span class="label number">2</span>-->
-            <span class="title">Locations</span>
+            <!--<span class="title">Locations</span>-->
           </div>
-          <div class="function">
-            <div class="widget">
+          <!--<div class="function">
+            <div class="widget">-->
               <!--<h6 class="title">Shopping Cart</h6>
               <hr>-->
-              <ul class="cart-overview">
+              <!--<ul class="cart-overview">
                 <li>
                   <%= link_to root_path do %>
                       <span>Irvine</span>
@@ -95,7 +100,7 @@
                       <span>La Verne</span>
                   <% end %>
                 </li>
-              </ul>
+              </ul>-->
               <!--<hr>
               <div class="cart-controls">
                   <a class="btn btn-sm btn-filled" href="#">Checkout</a>
@@ -104,9 +109,9 @@
                       <span class="number">$289.40</span>
                   </div>
               </div>-->
-            </div>
+            <!--</div>-->
             <!--end of widget-->
-          </div>
+          <!--</div>-->
         </div>
         <div class="module widget-handle language left">
           <ul class="menu">
