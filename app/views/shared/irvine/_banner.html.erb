@@ -8,7 +8,7 @@
         <div class="row">
           <div class="col-sm-12 text-center">
             <h2 class="mb16 large uppercase banner-title nlcc-title"><%= t('nlcc') %></h2>
-            <h5 class="uppercase mb32 mt64"><%= t('connect') %></h5>
+            <h5 class="uppercase mb32 mt64 nlcc-sub-title"><%= t('connect') %></h5>
             <div class="text-center">
               <a class="btn btn-white btn-lg mb32 mt24 inner-link" href="#connect">加入一個適合你的小組</a><br><br><br><br><br><br>
               
@@ -56,20 +56,22 @@
     </li>
     <li class="overlay image-bg">
       <div class="background-image-holder paraOn">
-        <img alt="image" class="background-image" src="//files.natecheng.me/uploads/library/attachment/60/bg-12345.jpg">
+        <img alt="image" class="background-image" src="//files.natecheng.me/uploads/library/attachment/65/dedication.jpg">
       </div>
       <div class="container v-align-transform" style='height: 387px;'>
         <div class="row">
-          <div class="col-md-10 col-sm-12">
-            <h1 class="mb40 mb-xs-16 large" style='font-weight:300;'>獻堂典禮 Church Dedication</h1>
-            <h3 class="uppercase mb16" style=''>A Celebration of Dream Come True</h3>
-            <p class="lead mb40 large mt24" style='font-style: italic; font-size: 20px;'>
-              橙縣新生命靈糧堂獻堂典禮謹訂於六月三日（週六）上午十點（九點半開始入場）。
+          <div class="col-md-offset-1 col-md-10 text-center">
+            <h1 class="mb40 mb-xs-16 large dedication_title" style='font-weight:300;'>新生命獻堂慶典</h1>
+            <!--<h3 class="uppercase mb16" style=''>A Celebration of Dream Come True</h3>-->
+            <p class="lead mb40 large mt24 dedication_desc" style=''>
+              新生命「歡慶奇蹟」獻堂典禮謹訂於六月三日（週六）上午十點（九點半開始入場）舊朋友、新朋友，您都是我們最珍貴的朋友！
+請預留時間，和我們一起歡慶美好奇蹟的誕生見證這美夢成真的時刻！
             </p>
-            <div class="modal-container mb0">
-                <div class="play-button btn-modal inline large mt-xs-0"></div>
+            <p class='dedication_slogan'>Church Dedication</p>
+            <div class="modal-container dedication_play">
+                <div class="play-button btn-modal inline large mt-xs-0 dedication-play-button"></div>
                 <div class="foundry_modal no-bg">
-                    <iframe data-provider="youtube" data-video-id="wf28mevuBW0" data-autoplay="1" allowfullscreen="allowfullscreen"></iframe>
+                    <iframe data-provider="youtube" data-video-id="1PWnjfORa1o" data-autoplay="1" allowfullscreen="allowfullscreen"></iframe>
                 </div>
             </div>
           </div>
@@ -83,11 +85,11 @@
       <div class="container v-align-transform">
         <div class="row">
           <div class="col-sm-12 text-center">
-            <h2 class="mb16 large uppercase banner-title">親子講堂：如何培養孩子忍受挫折和解決問題的能力</h2>
+            <h2 class="mb16 large uppercase banner-title kids-webinar-title">親子講堂：如何培養孩子忍受挫折和解決問題的能力</h2>
             <h5 class="uppercase mb16">4/15 週六 早上 10:00 - 12:00 </h5>
             <p style='font-size:16px;'>地點: 新生命靈糧堂 ( 新住址! )</p>
-            <p style='font-size:16px;'>1518 Brookhollow Dr. Santa Ana, CA, 92705</p>
-            <div class="text-center hidden-xs">
+            <p style='font-size:16px; margin-bottom:64px'>1518 Brookhollow Dr. Santa Ana, CA, 92705</p>
+            <div class="text-center">
               <%= link_to event_path(:id => 12, :locale => I18n.locale), :class => 'btn btn-white mb32 inner-link' do %>詳細內容<% end %>&nbsp; <a class="btn btn-white mb32 inner-link" href="https://goo.gl/forms/CVYGniBB9VkZNWcU2" target='_blank'>報名參加</a>
             </div>
           </div>
