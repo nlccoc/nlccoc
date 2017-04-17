@@ -11,6 +11,7 @@ class MainController < ApplicationController
     #logger.debug(@featured_events.includes(:repeat_metum).inspect)
     #@featured_events = @featured_events.sort_by &:latest_date
     
+    @contact = Contact.new
     
     gon.push({
       :current_lang => I18n.locale

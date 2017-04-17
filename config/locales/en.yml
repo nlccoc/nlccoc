@@ -48,6 +48,11 @@ en:
   loading: "Loading ..."
   moreevents: "More Events"
   eventsandconferences: "Events & Conferences"
+  contact:
+    yourname: 'Your Name'
+    youremail: 'Your Email'
+    topic: 'Topic'
+    message: 'Message'
   activerecord:
     errors:
       messages:
