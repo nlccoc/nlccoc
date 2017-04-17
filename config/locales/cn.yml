@@ -21,6 +21,11 @@ cn:
   loading: "载入中 ..."
   moreevents: "更 多 活 动 讯 息"
   eventsandconferences: "最新活动与特会消息"
+  contact:
+    yourname: '你的名字'
+    youremail: '你的 Email'
+    topic: '选择主题'
+    message: '你的讯息'
   activerecord:
     errors:
       messages:

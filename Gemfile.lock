@@ -253,6 +253,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    mail_form (1.6.0)
+      actionmailer (>= 3.2, < 5.1)
+      activemodel (>= 3.2, < 5.1)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -332,6 +335,9 @@ GEM
       ruby_http_client (~> 3.0.1)
     simple-line-icons-rails (0.1.2)
       railties (>= 3.2, <= 5.1)
+    simple_form (3.4.0)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     slop (3.6.0)
     spring (2.0.1)
       activesupport (>= 4.2)
@@ -393,6 +399,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
+  mail_form
   mini_magick (~> 4.3)
   pg
   pry
@@ -405,6 +412,7 @@ DEPENDENCIES
   seed_dump
   sendgrid-ruby
   simple-line-icons-rails
+  simple_form
   spring
   sqlite3
   summernote-rails

@@ -40,6 +40,9 @@ gem 'angularjs-file-upload-rails', '~> 2.2.0'
 
 gem 'ruby-mp3info', :require => 'mp3info'
 
+gem 'mail_form'
+gem 'simple_form'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
