@@ -5,6 +5,10 @@ class ErrorsController < ApplicationController
   end
 
   def internal_server_error
-    render(:status => 500)
+    respond_to do |format|
+      format.html { redirect_to events_path, notice: 'Message has been sent out successfully.' }
+      format.json { render(:status => 500)}
+    end
+    
   end
 end
