@@ -34,9 +34,11 @@ class MainController < ApplicationController
   end
   
   def youngadults
+    redirect_to comingsoon_path
   end
   
   def children
+    redirect_to comingsoon_path
   end
   
   def share

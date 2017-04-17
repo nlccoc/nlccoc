@@ -59,6 +59,8 @@ zh:
     youremail: '電子信箱'
     topic: '選擇主題'
     message: '你的訊息'
+  maintaining: '網頁施工中'
+  maintainingmessage: '網頁建構中，敬請期待。。。'
   activerecord:
     errors:
       messages:

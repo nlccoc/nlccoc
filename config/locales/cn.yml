@@ -26,6 +26,8 @@ cn:
     youremail: '你的 Email'
     topic: '选择主题'
     message: '你的讯息'
+  maintaining: '网页施工中'
+  maintainingmessage: '网页建构中，敬请期待。。。'
   activerecord:
     errors:
       messages:

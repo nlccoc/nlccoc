@@ -48,6 +48,8 @@ en:
   loading: "Loading ..."
   moreevents: "More Events"
   eventsandconferences: "Events & Conferences"
+  maintaining: 'Check Back Soon'
+  maintainingmessage: "We'll be launching this page in the coming weeks. Thanks for your interest!"
   contact:
     yourname: 'Your Name'
     youremail: 'Your Email'
