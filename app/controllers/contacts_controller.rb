@@ -16,7 +16,6 @@ class ContactsController < ApplicationController
     @message = { :status => 'ok', :message => 'Message has been sent out successfully.'}
     
     respond_to do |format|
-      
       format.html { redirect_to events_path, notice: 'Message has been sent out successfully.' }
       format.json { render json: @message, status: :ok}
     end
