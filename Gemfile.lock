@@ -333,6 +333,8 @@ GEM
     seed_dump (3.2.4)
       activerecord (>= 4)
       activesupport (>= 4)
+    sendgrid (1.2.4)
+      json
     sendgrid-ruby (4.2.1)
       ruby_http_client (~> 3.0)
       sinatra (~> 1.4.7)
@@ -417,6 +419,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   seed_dump
+  sendgrid
   sendgrid-ruby
   simple-line-icons-rails
   simple_form

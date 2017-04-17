@@ -5,6 +5,16 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(params[:contact])
+    #from = Email.new(email: 'test@example.com')
+    #subject = 'Hello World from the SendGrid Ruby Library!'
+    #to = Email.new(email: 'boo0330@gmail.com')
+    #content = Content.new(type: 'text/plain', value: 'Hello, Email!')
+    #mail = Mail.new(from, subject, to, content)
+    #sg = SendGrid::API.new(api_key: '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')
+    #response = sg.client.mail._('send').post(request_body: mail.to_json)
+    
+    #mail({:to => 'boo0330@gmail.com', :subject => 'Thanks for signing up for our amazing app'}).deliver
+    
     @contact.request = request
     if @contact.deliver
       flash.now[:notice] = 'Thank you for your message. We will contact you soon!'

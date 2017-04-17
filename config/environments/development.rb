@@ -41,15 +41,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'finshare-boo0330.c9users.io', port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: 'smtp.sendgrid.net',
     port: 587,
-    #domain: ENV["GMAIL_DOMAIN"],
-    domain: 'gmail.com',
+    domain: 'finshare-boo0330.c9users.io',
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: 'boo0330@gmail.com',
-    #user_name: ENV["GMAIL_USERNAME"],
-    password: 'soas1979'
+    password: 'Soas19790624'
     #password: ENV["GMAIL_PASSWORD"]
   }
 end
