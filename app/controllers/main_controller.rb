@@ -3,7 +3,7 @@ class MainController < ApplicationController
   before_action :set_bg_dark, only: [:cellgroups, :videos, :youngadults, :children, :rolcc_feed, :rolcc_feeds, :cellgroups, :audio]
   
   def index
-    @mvideos = Mvideo.order(date: :desc).limit(6)
+    @mvideos = Mvideo.where('location_id = 1').order(date: :desc).limit(6)
     @categories = Category.all
     @maudios = Maudio.where(featured: true).order(date: :desc).take(2)
     @featured_events = Event.joins(:featured_info).sort_by(&:latest_date)
