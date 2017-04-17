@@ -3,7 +3,7 @@
   <nav class="absolute transparent" data-fixed-at='200px'>
     <div class="nav-bar">
       <div class="module left">
-        <%= link_to root_path(:locale => I18n.locale) do %>
+        <%= link_to root_path(:locale => I18n.locale), data: { no_turbolink: true } do %>
           <img class="logo logo-light" alt="Foundry" src="<%= asset_path('logo-light.png') %>" />
           <img class="logo logo-dark" alt="Foundry" src="<%= asset_path('logo-dark.png') %>" />
         <% end %>
