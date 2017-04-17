@@ -1211,9 +1211,34 @@ footer.last {
 }
 
 .cart span a {
-  color: #fff;
+  color: #292929;
+  opacity: .5;
 }
 
 .cart span a:visited {
+  color: #292929;
+  opacity: .5;
+}
+
+nav.transparent .cart span a {
   color: #fff;
+}
+
+nav.transparent .cart span a:visited {
+  color: #fff;
+}
+
+nav.fixed .cart span a:visited {
+  color: #292929;
+  opacity: .5;
+}
+nav.fixed .cart span a {
+  color: #292929;
+  opacity: .5;
+}
+
+.wechat-qr {
+  margin-top: 200px;
+  height: 200px;
+  width: 200px;
 }

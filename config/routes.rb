@@ -67,6 +67,8 @@ Rails.application.routes.draw do
     get "sundaysermon" => "main#sundaysermon"
   end
   
+  get '/wechatqrcode' => 'main#wechat_qrcode.html'
+  
   get '/lv', to: 'laverne#index'
   
   
