@@ -12,5 +12,6 @@
 //= require flexslider.min
 //# require parallax
 //= require swiper/dist/js/swiper.jquery.js
+//= require wavesurfer
 //= require scripts
 //= require pagination

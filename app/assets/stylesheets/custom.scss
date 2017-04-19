@@ -50,6 +50,7 @@
 
 .btn-fire {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: transparent;
   border: 2px solid $mainColor;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
@@ -62,6 +63,11 @@
 .btn-fire:hover {
   background: $mainColor;
   color: #fff;
+}
+
+.btn-fire:focus {
+  color: $mainColor;
+  outline: 0px;
 }
 
 //#give .background-image-holder, .page-title-3 .background-image-holder {
@@ -1239,8 +1245,27 @@ nav.fixed .cart span a {
   opacity: .5;
 }
 
+nav.bg-dark .cart span a {
+  color: #fff;
+  opacity: .9;
+}
+
 .wechat-qr {
   margin-top: 200px;
   height: 200px;
   width: 200px;
+}
+
+#playlist .list-group-item:first-child {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+#playlist .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+  background-color: $mainColor;
+  border-color: $mainColor;
+}
+
+.audio-download {
+  float: right;
 }
