@@ -1222,10 +1222,12 @@ footer.last {
 
 nav.transparent .cart span a {
   color: #fff;
+  opacity: 1;
 }
 
 nav.transparent .cart span a:visited {
-  color: #fff;
+  color: #fff !important;
+  opacity: 1 !important;
 }
 
 nav.fixed .cart span a:visited {
