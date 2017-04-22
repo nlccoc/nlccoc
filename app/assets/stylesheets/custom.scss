@@ -1261,11 +1261,28 @@ nav.bg-dark .cart span a {
   border-top-left-radius: 0px;
 }
 
+#playlist .list-group-item {
+  padding: 0px 0px;
+}
+
 #playlist .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
   background-color: $mainColor;
   border-color: $mainColor;
 }
 
+#playlist .list-group-item.active .audio-download a {
+  color: #fff;
+}
+
+
 .audio-download {
+  padding: 10px 30px;
   float: right;
+}
+
+
+.audio-item {
+  width: 90%;
+  display: inline-block; 
+  padding: 10px 15px;
 }
