@@ -1205,9 +1205,7 @@ var initPlayer = function() {
   // The playlist links
   var links = document.querySelectorAll('#playlist li span');
   var currentTrack = 0;
-  
   var changeAudio = function(trackIndex) {
-    
     var title = $(links[trackIndex]).find('span.atitle').html();
     var date = $(links[trackIndex]).find('span.adate').html();
     var path = links[trackIndex].parentNode.getAttribute('audio-path')
@@ -1254,16 +1252,18 @@ var initPlayer = function() {
   setCurrentSong(currentTrack);
 }
 $(document).on('ready', function(){
-  console.log("Document ready");
+  //console.log("Document ready");
   responsiveClasses();
   //Will only do the first load
-  initPlayer();
+  if($('.audio-3241234').length>0){
+    initPlayer();
+  }
   //initWaveplayer();
 })
 
 $(document).on('turbolinks:load', function() {
   //Will do on every page load
-  console.log('(document).turbolinks:load');
+  //console.log('(document).turbolinks:load');
   responsiveClasses();
   setTimeout(function(){
     ready();
@@ -1271,7 +1271,9 @@ $(document).on('turbolinks:load', function() {
     
     $('body').addClass('loaded');
     QuickNav.init(); // init metronic core componets
-    
+    if($('.audio-3241234').length>0){
+      initPlayer();
+    }
   }, 300)
   setTimeout(function(){
     initializeMasonry();
@@ -1796,20 +1798,20 @@ var QuickNav = function () {
 
     return {
         init: function () {
-          console.log("Init Quick nav");
+          //console.log("Init Quick nav");
           
-           	if( $('.quick-nav').length > 0 ) {
-      				var stretchyNavs = $('.quick-nav');				
-      				stretchyNavs.each(function(){
-      					var stretchyNav = $(this),
-      						stretchyNavTrigger = stretchyNav.find('.quick-nav-trigger');
-      					
-      					stretchyNavTrigger.on('click', function(event){
-      					  console.log('Quick nav clicked');
-      						event.preventDefault();
-      						stretchyNav.toggleClass('nav-is-visible');
-      					});
-      				});
+         	if( $('.quick-nav').length > 0 ) {
+    				var stretchyNavs = $('.quick-nav');				
+    				stretchyNavs.each(function(){
+    					var stretchyNav = $(this),
+    						stretchyNavTrigger = stretchyNav.find('.quick-nav-trigger');
+    					
+    					stretchyNavTrigger.on('click', function(event){
+    					  console.log('Quick nav clicked');
+    						event.preventDefault();
+    						stretchyNav.toggleClass('nav-is-visible');
+    					});
+    				});
 
 				$(document).on('click', function(event){
 					( !$(event.target).is('.quick-nav-trigger') && !$(event.target).is('.quick-nav-trigger span') ) && stretchyNavs.removeClass('nav-is-visible');
