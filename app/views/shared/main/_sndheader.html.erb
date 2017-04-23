@@ -52,7 +52,7 @@
                     影音媒體
                   <% end %>
                 </li>
-                <li><a>主日錄音</a></li>
+                <li><%= link_to audio_path(:locale => I18n.locale) do %>主日錄音<% end %></li>
                 <li><%= link_to rolcc_feeds_path(:locale => I18n.locale) do %>每日靈修小品<% end %></li>
               </ul>
             </li>

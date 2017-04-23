@@ -7,7 +7,7 @@ class MaudiosController < ApplicationController
   # GET /Maudios
   # GET /Maudios.json
   def index
-    @Maudios = Maudio.all
+    @Maudios = Maudio.all.orderby('date')
     @header_bg='bg-dark'
     respond_to do |format|
       format.html
