@@ -9,7 +9,7 @@
           <h2 class="mb16">Tithing Is More Than Giving
             <br class="hidden-sm"> </h2>
           <h6 class="uppercase mb32">The Bible says that tithing is a reminder that God is the supplier of everything. It teaches us to always put God first in our lives.</h6>
-          <a class="btn btn-filled btn-white btn-lg mb0" href="#">十 一 奉 獻</a>
+          <button class="btn btn-filled btn-white btn-lg mb0 tithely-give-btn" data-church-id="96410">十 一 奉 獻</button>
         </div>
         <div class="col-sm-4 text-center text-left-xs">
 					<div class="modal-container">
@@ -39,7 +39,7 @@
           <h2 class="uppercase mb8">建 堂</h2>
           <p class="lead mb40" style='font-style: italic;'>我心中愛慕我神的殿，就在預備建造聖殿的材料之外，
 又將我自己積的金銀獻上，建造我神的殿。<span class='verse_highlight'>～代上29:3</span></p>
-          <%= link_to build_path(:locale => I18n.locale), :class => 'btn btn-lg btn-white mb0' do %>奉 獻 建 堂<% end %>
+          <%= link_to build_path(:locale => I18n.locale), :class => 'btn btn-lg btn-white mb0 tithely-give-btn' do %>奉 獻 建 堂<% end %>
         </div>
       </div>
       <!--end of row-->
@@ -81,3 +81,8 @@
     <!--end of container-->
   </section>
 </div>
+
+<script>
+  var config = {};
+  var tw = create_tithely_widget(config);
+</script>

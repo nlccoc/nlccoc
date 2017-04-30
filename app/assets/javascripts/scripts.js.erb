@@ -118,18 +118,19 @@ var ready = function() {
     }
   });
   setTimeout(function(){
-      $('#owl-carousel-media .entry-image').fitVids();
-      initOwlMedia();//initialize swiper when document ready  
-      var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        slidesPerView: 3,
-        paginationClickable: true,
-        spaceBetween: 15,
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        autoplay: true
-      }); 
-    }, 200);
+    
+    $('#owl-carousel-media .entry-image').fitVids();
+    initOwlMedia();//initialize swiper when document ready  
+    var swiper = new Swiper('.swiper-container', {
+      pagination: '.swiper-pagination',
+      slidesPerView: 3,
+      paginationClickable: true,
+      spaceBetween: 15,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      autoplay: true
+    }); 
+  }, 200);
     
   initInnerlink();
   
