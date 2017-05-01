@@ -1,5 +1,6 @@
 cn:
   who: "关于我们"
+  rooted: "寻找小组"
   connect: "寻找小组"
   events: "教会活动"
   ministries: "教会事工"
@@ -21,13 +22,17 @@ cn:
   loading: "载入中 ..."
   moreevents: "更 多 活 动 讯 息"
   eventsandconferences: "最新活动与特会消息"
-  contact:
+  contacts:
     yourname: '你的名字'
     youremail: '你的 Email'
     topic: '选择主题'
     message: '你的讯息'
-  maintaining: '网页施工中'
+  maintaining: '网页准备中'
   maintainingmessage: '网页建构中，敬请期待。。。'
+  givingtitle1: '我们爱，因为神先爱我们'
+  givingtitle2: '我们给，因为神先给予我们'
+  givingsubtitle: '你可以成就不一样的事, 您的奉献将支持教会的各项事工，进而改变人的生命'
+  onlinegiving: '线上奉献'
   activerecord:
     errors:
       messages:

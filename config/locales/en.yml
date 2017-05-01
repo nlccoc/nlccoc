@@ -50,11 +50,17 @@ en:
   eventsandconferences: "Events & Conferences"
   maintaining: 'Check Back Soon'
   maintainingmessage: "We'll be launching this page in the coming weeks. Thanks for your interest!"
-  contact:
+  contacts:
     yourname: 'Your Name'
     youremail: 'Your Email'
     topic: 'Topic'
     message: 'Message'
+  maintaining: 'The website is under construction'
+  maintainingmessage: 'The website is under construction'
+  givingtitle1: 'We love because God first loved us'
+  givingtitle2: 'We give because God first gave'
+  givingsubtitle: 'Your gift helps further the impact of the ministries of NLCC'
+  onlinegiving: 'Online Giving'
   activerecord:
     errors:
       messages:
