@@ -19,9 +19,9 @@
                     <%= t('rooted') %>
                 </a>
                 <ul>
-                  <li><%= link_to cellgroups_path(:locale => I18n.locale) do %>細胞小組<% end %></li>
-                  <li><%= link_to youngadults_path(:locale => I18n.locale) do %>青年團契<% end %></li>
-                  <li><%= link_to children_path(:locale => I18n.locale) do %>兒童主日<% end %></li>
+                  <li><%= link_to cellgroups_path(:locale => I18n.locale) do %><%= I18n.t('cellgroups') %><% end %></li>
+                  <li><%= link_to youngadults_path(:locale => I18n.locale) do %><%= I18n.t('yg') %><% end %></li>
+                  <li><%= link_to children_path(:locale => I18n.locale) do %><%= I18n.t('sundayschool') %><% end %></li>
                 </ul>
             </li>
             <li>
