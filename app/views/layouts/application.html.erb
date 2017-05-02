@@ -48,7 +48,11 @@
   <%= yield %>
   <!-- End of main controller view -->
   
-  <%= render 'shared/main/footer'%>
+  <% if content_for?(:laverne_navbar) %>
+    <%= render 'shared/main/laverne_footer'%>
+  <% else %>
+    <%= render 'shared/main/footer'%>
+  <% end %>
   <%= render 'shared/main/quicknav' %>
 
   <!-- Go To Top button -->

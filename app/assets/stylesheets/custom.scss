@@ -1237,8 +1237,14 @@ nav.transparent .cart span a:visited {
 }
 
 nav.fixed .cart span a:visited {
-  color: #292929;
+  color: #292929 !important;
   opacity: .5;
+}
+
+.device-xs nav.transparent .cart span a:visited, .device-xs nav.transparent .cart span a, 
+.device-xxs nav.transparent .cart span a:visited, .device-xxs nav.transparent .cart span a {
+  line-height:50px;
+  color: #292929 !important;
 }
 nav.fixed .cart span a {
   color: #292929;
