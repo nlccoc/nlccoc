@@ -27,7 +27,7 @@ class MainController < ApplicationController
   end
   
   def audio
-    @maudios = Maudio.all
+    @maudios = Maudio.all.order(date: :desc)
   end
   
   def videos

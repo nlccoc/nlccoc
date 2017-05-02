@@ -60,17 +60,6 @@
         </button>
       </div>-->
     </div>
-    <!--<div class="list-group" id="playlist" style='margin-top:50px;'>
-      <% @maudios.each do |audio| %>
-        <a href="<%= audio.path %>" class="list-group-item">
-            <i class="glyphicon glyphicon-play"></i>
-            <%= audio.title %>
-            <span class="audio-download" class='z-index:999;'><i class='glyphicon glyphicon-download-alt'></i></span>
-            
-        </a>
-      <% end %>
-  
-    </div>-->
     <ul class="list-group" id="playlist" style='margin-top:50px;'>
     <% @maudios.each do |audio| %>
         <li audio-path="<%= audio.path %>" class="list-group-item">
