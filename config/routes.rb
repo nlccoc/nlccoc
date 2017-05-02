@@ -71,6 +71,7 @@ Rails.application.routes.draw do
   get '/wechatqrcode' => 'main#wechat_qrcode.html'
   
   get '/lv', to: 'laverne#index'
+  get '/videos_lv', to: 'laverne#videos'
   
   
   

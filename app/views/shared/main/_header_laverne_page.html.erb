@@ -15,16 +15,24 @@
         <div class="module left">
           <ul class="menu">
             <li>
-              <a href="#time-lv" class="inner-link">聚會時間地點</a>
+                <%= link_to lv_path(:anchor => 'time-lv'), { :class => 'inner-link'} do %>
+                    聚會時間地點
+                <% end %>
             </li>
             <li>
-              <a href="#about-us-lv" class="inner-link">關於我們</a>
+                <%= link_to lv_path(:anchor => 'about-us-lv'), { :class => 'inner-link'} do %>
+                    關於我們
+                <% end %>
             </li>
             <li>
-              <a href="#pastor-lv" class="inner-link">牧者簡介</a>
+                <%= link_to lv_path(:anchor => 'pastor-lv'), { :class => 'inner-link'} do %>
+                    牧者簡介
+                <% end %>
             </li>
             <li>
-              <a href="#videos-lv" class="inner-link">主日訊息錄影</a>
+                <%= link_to lv_path(:anchor => 'videos-lv'), { :class => 'inner-link'} do %>
+                    主日訊息錄影
+                <% end %>
                 <ul>
                   <li>
                     <%= link_to videos_lv_path do %>
