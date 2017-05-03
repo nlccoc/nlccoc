@@ -8,7 +8,7 @@
           <!--<h2 class="uppercase mb8" style='color: #fff; font-weight: 700;'>We Give <span style='font-size: 20px;'><i>because</i></span> God First Gave To</h2>-->
           <h2 class="uppercase mb8 text-center"><%= I18n.t('givingtitle1') %><br><%= I18n.t('givingtitle2') %></h2>
           <p class="lead mb24"><%= I18n.t('givingsubtitle') %></p>
-          <%= link_to give_path(:locale => I18n.locale), { :class => 'btn btn-lg mb40 mt40 tithely-give-btn', 'data-church-id' => '96410'} do %>
+          <%= link_to give_path(:locale => I18n.locale), { :class => 'btn btn-lg mb40 mt40', 'data-church-id' => '96410'} do %>
             <%= I18n.t('onlinegiving') %>
           <% end %>
         </div>

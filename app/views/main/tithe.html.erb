@@ -1,5 +1,5 @@
 <div class="main-container">
-	<section class="pt120 pb120 image-bg overlay parallax fullscreen">
+	<section class="pt120 pb120 image-bg overlay parallax">
     <div class="background-image-holder">
       <img alt="Background" class="background-image" src="<%= asset_path('giveheart.jpg') %>">
     </div>
@@ -31,7 +31,7 @@
     </div>
     </div>
   </section>
-  <!--<section class="image-bg bg-dark parallax overlay pt120 pb120" id='build'>
+  <section class="image-bg bg-dark parallax overlay pt120 pb120" id='build'>
     <div class="background-image-holder">
       <img alt="Background Image" class="background-image" src="<%= asset_path('project-single-6.jpg') %>" />
     </div>
@@ -41,12 +41,13 @@
           <h2 class="uppercase mb8">建 堂</h2>
           <p class="lead mb40" style='font-style: italic;'>我心中愛慕我神的殿，就在預備建造聖殿的材料之外，
 又將我自己積的金銀獻上，建造我神的殿。<span class='verse_highlight'>～代上29:3</span></p>
-          <%= link_to build_path(:locale => I18n.locale), :class => 'btn btn-lg btn-white mb0 tithely-give-btn' do %>奉 獻 建 堂<% end %>
+          <%# link_to build_path(:locale => I18n.locale), :class => 'btn btn-lg btn-white mb0 tithely-give-btn' do %>
+          <a class='btn btn-white btn-lg' href='https://tithe.ly/give_new/www/#/tithely/give-one-time/96410?giving_to=建堂基金' target="_blank">奉 獻 建 堂</a><%# end %>
         </div>
       </div>
     </div>
   </section>
-  <section class="image-bg bg-dark parallax overlay pt120 pb120">
+  <!--<section class="image-bg bg-dark parallax overlay pt120 pb120">
     <div class="background-image-holder">
         <img alt="Background Image" class="background-image" src="<%= asset_path('home13.jpg') %>" />
     </div>
