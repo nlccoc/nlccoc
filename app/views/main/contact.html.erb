@@ -1,33 +1,34 @@
 <div class="main-container">
   <section class="p0 mt56">
     <div class="map-holder pt160 pb160">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3319.4462899342952!2d-117.84484748519257!3d33.69739898070389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dcdea3325b5799%3A0xb973a63872217509!2s1891+Alton+Pkwy%2C+Irvine%2C+CA+92606!5e0!3m2!1sen!2sus!4v1484510686901" frameborder="0" style="border:0" allowfullscreen></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3318.780493021122!2d-117.8509986845574!3d33.71462844289283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dcd94b61ca5bbd%3A0x613f2c6e0eef251d!2s1518+Brookhollow+Dr%2C+Santa+Ana%2C+CA+92705!5e0!3m2!1sen!2sus!4v1493791082744" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
   </section>
   <section class='pt40'>
     <div class="container">
       <div class="row mt8">
         <div class="col-sm-6 col-md-5">
-          <h4 class="uppercase">聯 絡 我 們</h4>
-          <p>
-            This is the church of the living God, the pillar and foundation of truth.
-          <hr>
-          <p>
-            1518 BrookHollow Drive
-            <br> Santa Ana, CA 92705
-          </p>
-          <hr>
-          <p>
-            <strong>E:</strong> info@nlccoc.org
-            <br>
-            <strong>P:</strong> 714.486.3535
-            <br>
-            <strong>F:</strong> 
-            <br>
-          </p>
-        </div>
-        <div class="col-sm-6 col-md-5 col-md-offset-1">
-          <%= simple_form_for @contact, :html => {:class => 'form-email', "data-success": "Thanks for your submission, we will be in touch shortly.", "data-error": "Please fill all fields correctly."} do |f| %>
+        <h4 class="uppercase">聯絡我們</h4>
+        <p>
+          This is the church of the living God, the pillar and foundation of truth.
+        <hr>
+        <p>
+          1518 BrookHollow Drive
+          <br> Santa Ana, CA 92705
+          <br> 
+        </p>
+        <hr>
+        <p>
+          <strong>E:</strong> info@nlccoc.org
+          <br>
+          <strong>P:</strong> <a href='tel:+17144863535'>714.486.3535</a>
+          <br>
+          <strong>F:</strong> 714.486.3538
+          <br>
+        </p>
+      </div>
+      <div class="col-sm-6 col-md-5 col-md-offset-1">
+        <%= simple_form_for @contact, :html => {:class => 'form-email', "data-success": "Thanks for your submission, we will be in touch shortly.", "data-error": "Please fill all fields correctly."} do |f| %>
           <%= f.text_field :name, :class=> 'validate-required', 'placeholder': I18n.t('contacts.yourname') %>
           <%= f.text_field :email, :class=> 'validate-required validate-email', 'placeholder': I18n.t('contacts.youremail') %>
           <%= f.select :topic, options_for_select([[I18n.t('contacts.topic'), I18n.t('contacts.topic')], ['我想知道教會近期活動', '我想知道教會近期活動'], ['我想知道教會主日資訊', '我想知道教會主日資訊'], ['我要接受耶穌基督', '我要接受耶穌基督'], ['我需要代禱', '我需要代禱'], ['我有感動奉獻', '我有感動奉獻'], ['網站問題回報', '網站問題回報'], ['其他', '其他']], selected: @topic), :class => 'required form-control form-control-ext select_topic' %>
@@ -35,7 +36,13 @@
           <%= f.text_area :message, :class=> 'validate-required', 'placeholder': I18n.t('contacts.message'), 'rows': '4'  %>
           <%= f.button :submit, 'Send message'%>
         <% end %>
-        </div>
+        <!--<form class="form-email" data-success="Thanks for your submission, we will be in touch shortly." data-error="Please fill all fields correctly.">
+          <input type="text" class="validate-required" name="name" placeholder="Your Name">
+          <input type="text" class="validate-required validate-email" name="email" placeholder="Email Address">
+          <textarea class="validate-required" name="message" rows="4" placeholder="Message"></textarea>
+          <button type="submit">Send Message</button>
+        </form>-->
+      </div>
       </div>
         
     </div>
