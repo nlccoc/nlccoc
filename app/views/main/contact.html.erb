@@ -34,6 +34,7 @@
           <%= f.select :topic, options_for_select([[I18n.t('contacts.topic'), I18n.t('contacts.topic')], ['我想知道教會近期活動', '我想知道教會近期活動'], ['我想知道教會主日資訊', '我想知道教會主日資訊'], ['我要接受耶穌基督', '我要接受耶穌基督'], ['我需要代禱', '我需要代禱'], ['我有感動奉獻', '我有感動奉獻'], ['網站問題回報', '網站問題回報'], ['其他', '其他']], selected: @topic), :class => 'required form-control form-control-ext select_topic' %>
 
           <%= f.text_area :message, :class=> 'validate-required', 'placeholder': I18n.t('contacts.message'), 'rows': '4'  %>
+          
           <%= f.button :submit, 'Send message'%>
         <% end %>
         <!--<form class="form-email" data-success="Thanks for your submission, we will be in touch shortly." data-error="Please fill all fields correctly.">
