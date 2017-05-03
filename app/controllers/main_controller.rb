@@ -13,6 +13,7 @@ class MainController < ApplicationController
     #@featured_events = @featured_events.sort_by &:latest_date
     
     @contact = Contact.new
+    @topic = '我想知道教會近期活動'
     
     gon.push({
       :current_lang => I18n.locale
@@ -74,6 +75,17 @@ class MainController < ApplicationController
   end
   
   def comingsoon
+  end
+  
+  def contact
+    @contact = Contact.new
+    @topic = params[:topic]
+    
+    if !@topic.nil?
+    else
+      @topic = '我想知道教會近期活動'
+    end
+    
   end
   
   def rolcc_feeds
