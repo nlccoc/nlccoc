@@ -112,10 +112,51 @@ class MainController < ApplicationController
     @header_bg='transparent'
     @events = Event.all
     @obj = {}
+    
     @events.each do |event| 
+      if event.repeat_metum.length != 0 then
+        if event.repeat_metum[0].repeat_interval!=0 then
+        #logger.debug event.repeat_metum.length
+        #logger.debug event.title
+        dt = event.datetime
+        #logger.debug dt.strftime("%m-%d-%Y")
+        #logger.debug event.title
+        #logger.debug 'Valid: '
+        #logger.debug event.repeat_metum[0].valid_until.strftime("%m-%d-%Y")
+          while dt < event.repeat_metum[0].valid_until do
+            #logger.debug dt.strftime("%m-%d-%Y")
+            @obj[dt.strftime("%m-%d-%Y")] = "<a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+            dt = dt+604800
+          end
+        elsif event.repeat_metum[0].repeat_interval ==0 then
+          logger.debug event.title
+          if !event.repeat_metum[0].repeat_week.nil?
+            @date = event.datetime
+            month = @date.strftime("%m").to_i
+            year = @date.strftime("%Y").to_i
+            while @date < event.repeat_metum[0].valid_until do
+              @date = event.find_date_by_weekday_my(event.repeat_metum[0].repeat_week, event.repeat_metum[0].repeat_weekday, month, year)
+              if @date < event.repeat_metum[0].valid_until then
+                logger.debug @date.strftime("%m-%d-%Y")
+                @obj[@date.strftime("%m-%d-%Y")] = "<a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+              end
+              
+              if month >= 12
+                month = 1
+                year = year + 1
+              else
+                month = month + 1
+              end
+            end
+            
+          end
+        end
+      else
+        @obj[event.datetime.strftime("%m-%d-%Y")] = "<a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+        #logger.debug event.latest_date.strftime("%m-%d-%Y") + ': ' + event.title
+      end
       
-      @obj[event.latest_date.strftime("%m-%d-%Y")] = "<a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
-      logger.debug event.latest_date.strftime("%m-%d-%Y")
+      #logger.debug @obj.to_json
     end
     
     @events_array = @obj.to_json

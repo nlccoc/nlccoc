@@ -20,6 +20,26 @@ end
 
 =end
 
+  def find_date_by_weekday_my(week, weekday, month, year)
+   
+    logger.debug year.to_s + ' ' + month.to_s
+    
+    d = DateTime.new(year, month, 1)
+    d += (weekday - d.wday) % 7 + (week-1)*7
+    if d < DateTime.now
+      if month == 12
+        year += 1
+        month = 1
+      else
+        month +=1
+      end
+      
+      d = DateTime.new(year, month, 1)
+      d += (weekday - d.wday) % 7 + (week-1)*7
+    end
+    d
+  end
+  
   def find_date_by_weekday(week, weekday)
     year = DateTime.now.year
     month = DateTime.now.month
