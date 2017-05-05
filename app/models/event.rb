@@ -22,7 +22,7 @@ end
 
   def find_date_by_weekday_my(week, weekday, month, year)
    
-    logger.debug year.to_s + ' ' + month.to_s
+    #logger.debug year.to_s + ' ' + month.to_s
     
     d = DateTime.new(year, month, 1)
     d += (weekday - d.wday) % 7 + (week-1)*7
