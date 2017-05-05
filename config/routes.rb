@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'rolcc_feed/:id' => 'main#rolcc_feed', as: :rolcc_feed
   
   get 'download_sermon' => 'download#sermon'
+  get 'calendar' => 'main#calendar'
   #get "mgmts/*path" => "mgmts#index"
   #get "mgmts/*path.html" => "mgmts#index"
   

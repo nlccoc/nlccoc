@@ -108,6 +108,10 @@ class MainController < ApplicationController
     end
   end
   
+  def calendar
+    @header_bg='transparent'
+  end
+  
   private 
     def set_bg_dark
       @header_bg='bg-dark'
