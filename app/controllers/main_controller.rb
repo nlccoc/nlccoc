@@ -110,6 +110,24 @@ class MainController < ApplicationController
   
   def calendar
     @header_bg='transparent'
+    @events = Event.all
+    @obj = {}
+    @events.each do |event| 
+      
+      @obj[event.latest_date.strftime("%m-%d-%Y")] = "<a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+      logger.debug event.latest_date.strftime("%m-%d-%Y")
+    end
+    
+    @events_array = @obj.to_json
+    #{
+    #  '05-07-2017' => '<a href=\"//finshare-boo0330.c9users.io/events/16\" target=\"_blank\">裝備課程 - 約珥書</a>',
+		#  '06-03-2017' => '<a href=\"//finshare-boo0330.c9users.io/zh/events/17\" target=\"_blank\">新生命獻堂典禮</a>',
+		#  '05-05-2017' => '<a href=\"//finshare-boo0330.c9users.io/zh/events/7\" target=\"_blank\">每個月青年大組</a>',
+		#  '05-09-2017' => '<a href=\"//finshare-boo0330.c9users.io/zh/events/8\" target=\"_blank\">每週禱告會</a>',
+		#  '05-16-2017' => '<a href=\"//finshare-boo0330.c9users.io/zh/events/8\" target=\"_blank\">每週禱告會</a>',
+		#  '05-23-2017' => '<a href=\"//finshare-boo0330.c9users.io/zh/events/8\" target=\"_blank\">每週禱告會</a>',
+		#  '05-30-2017' => '<a href=\"//finshare-boo0330.c9users.io/zh/events/8\" target=\"_blank\">每週禱告會</a>',
+		#  '06-02-2017' => '<a href=\"//finshare-boo0330.c9users.io/zh/events/7\" target=\"_blank\">每個月青年大組</a>'}.to_json
   end
   
   private 
