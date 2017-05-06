@@ -126,9 +126,9 @@ class MainController < ApplicationController
           while dt < event.repeat_metum[0].valid_until do
             #logger.debug dt.strftime("%m-%d-%Y")
             if !@obj[dt.strftime("%m-%d-%Y")].nil? then
-              @obj[dt.strftime("%m-%d-%Y")] = @obj[dt.strftime("%m-%d-%Y")] + "<br><a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+              @obj[dt.strftime("%m-%d-%Y")] = @obj[dt.strftime("%m-%d-%Y")] + "<br><a target='_blank' href='events/"+event.id.to_s+"'>" + event.title + "</a>"
             else
-              @obj[dt.strftime("%m-%d-%Y")] = "<a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+              @obj[dt.strftime("%m-%d-%Y")] = "<a target='_blank' href='events/"+event.id.to_s+"'>" + event.title + "</a>"
             end
             dt = dt+604800
           end
@@ -139,13 +139,15 @@ class MainController < ApplicationController
             month = @date.strftime("%m").to_i
             year = @date.strftime("%Y").to_i
             while @date < event.repeat_metum[0].valid_until do
+              logger.debug 'month = ' + month.to_s + ', year = ' +  year.to_s
               @date = event.find_date_by_weekday_my(event.repeat_metum[0].repeat_week, event.repeat_metum[0].repeat_weekday, month, year)
               if @date < event.repeat_metum[0].valid_until then
-                #logger.debug @date.strftime("%m-%d-%Y")
+                logger.debug event.title
+                logger.debug @date.strftime("%m-%d-%Y")
                 if !@obj[@date.strftime("%m-%d-%Y")].nil? then
-                  @obj[@date.strftime("%m-%d-%Y")] = @obj[@date.strftime("%m-%d-%Y")] + "<br><a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+                  @obj[@date.strftime("%m-%d-%Y")] = @obj[@date.strftime("%m-%d-%Y")] + "<br><a target='_blank' href='events/"+event.id.to_s+"'>" + event.title + "</a>"
                 else
-                  @obj[@date.strftime("%m-%d-%Y")] = "<a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+                  @obj[@date.strftime("%m-%d-%Y")] = "<a target='_blank' href='events/"+event.id.to_s+"'>" + event.title + "</a>"
                 end
               end
               
@@ -155,6 +157,7 @@ class MainController < ApplicationController
               else
                 month = month + 1
               end
+              
             end
             
           end

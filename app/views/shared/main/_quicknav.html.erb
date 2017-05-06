@@ -19,6 +19,14 @@
       <%# end %>
     </li>
     <li>
+      <%# link_to give_path(:locale => I18n.locale), :class => 'active', :target => '_blank' do %>
+        <%= link_to calendar_path(:locale => I18n.locale), :target => '_blank' do %>
+          <span>教會行事曆</span>
+          <i class="icon-calendar"></i>
+        <% end %>
+      <%# end %>
+    </li>
+    <li>
       <%= link_to contact_path(:locale => I18n.locale, :topic => '網站問題回報'), :target => '_blank' do %>
         <span>網站問題回報</span>
         <i class="icon-exclamation"></i>

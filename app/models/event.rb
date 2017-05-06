@@ -25,8 +25,12 @@ end
     #logger.debug year.to_s + ' ' + month.to_s
     
     d = DateTime.new(year, month, 1)
+    
     d += (weekday - d.wday) % 7 + (week-1)*7
+    #logger.debug 'd.wday = ' + d.wday.to_s + ', weekday = ' + weekday.to_s + ', week = ' + week.to_s + ', d = ' + d.to_s
+=begin
     if d < DateTime.now
+      logger.debug "d < now"
       if month == 12
         year += 1
         month = 1
@@ -37,6 +41,7 @@ end
       d = DateTime.new(year, month, 1)
       d += (weekday - d.wday) % 7 + (week-1)*7
     end
+=end
     d
   end
   

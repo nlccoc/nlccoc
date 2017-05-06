@@ -42,7 +42,7 @@ html { height: 100%; }
 
 body {
   font-family: 'Lato', Calibri, Arial, sans-serif;
-  background: #f9f9f9 url(<%= asset_path('bg_calendar.jpg') %>);
+  background: #f9f9f9 url(//files.natecheng.me/uploads/library/attachment/149/calendar.jpg);
   font-weight: 300;
   font-size: 15px;
   color: #333;
@@ -259,13 +259,13 @@ a {
 }
 
 body {
-	background: #cebe29;
-	background: -moz-linear-gradient(-45deg, #cebe29 0%, #9b1f50 33%, #2989d8 71%, #89b4ff 91%);
-	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#cebe29), color-stop(33%,#9b1f50), color-stop(71%,#2989d8), color-stop(91%,#89b4ff));
-	background: -webkit-linear-gradient(-45deg, #cebe29 0%,#9b1f50 33%,#2989d8 71%,#89b4ff 91%);
-	background: -o-linear-gradient(-45deg, #cebe29 0%,#9b1f50 33%,#2989d8 71%,#89b4ff 91%);
-	background: -ms-linear-gradient(-45deg, #cebe29 0%,#9b1f50 33%,#2989d8 71%,#89b4ff 91%);
-	background: linear-gradient(135deg, #cebe29 0%,#9b1f50 33%,#2989d8 71%,#89b4ff 91%);
+	//background: #cebe29;
+	//background: -moz-linear-gradient(-45deg, #cebe29 0%, #9b1f50 33%, #2989d8 71%, #89b4ff 91%);
+	//background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#cebe29), color-stop(33%,#9b1f50), color-stop(71%,#2989d8), color-stop(91%,#89b4ff));
+	//background: -webkit-linear-gradient(-45deg, #cebe29 0%,#9b1f50 33%,#2989d8 71%,#89b4ff 91%);
+	//background: -o-linear-gradient(-45deg, #cebe29 0%,#9b1f50 33%,#2989d8 71%,#89b4ff 91%);
+	//background: -ms-linear-gradient(-45deg, #cebe29 0%,#9b1f50 33%,#2989d8 71%,#89b4ff 91%);
+	//background: linear-gradient(135deg, #cebe29 0%,#9b1f50 33%,#2989d8 71%,#89b4ff 91%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cebe29', endColorstr='#89b4ff',GradientType=1 );
 	-webkit-background-size: 100% 100%;
 	-moz-background-size: 100% 100%;
@@ -433,7 +433,7 @@ body {
 .fc-calendar .fc-row > div > span.fc-date {
 	color: rgba(255,255,255,0.9);
 	text-shadow: none;
-	font-size: 26px;
+	font-size: 22px;
 	font-weight: 300;
 	bottom: auto;
 	right: auto;
@@ -511,8 +511,8 @@ body {
 
 .fc-calendar .fc-row > div > div a,
 .fc-calendar .fc-row > div > div span {
-	color: rgba(255,255,255,0.7);
-	font-size: 16px;
+	color: rgba(255,255,255,1);
+	font-size: 14px;
 	text-transform: uppercase;
 	display: inline-block;
 	padding: 3px 5px;
@@ -627,7 +627,10 @@ body {
   background-color: transparent;
 }
 </style>
-<div class='container' style='margin-top: 40px;'>
+<div class='container fullscreen' style='margin-top: 40px;'>
+  <!--<div class="background-image-holder paraOn">
+    <img alt="image" class="background-image" src="//files.natecheng.me/uploads/library/attachment/149/calendar.jpg">
+  </div>-->
   <div class="custom-calendar-wrap custom-calendar-full">
   	<div class="custom-header clearfix">
   		<h2>Calendar</h2>
