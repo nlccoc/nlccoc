@@ -433,7 +433,7 @@ body {
 .fc-calendar .fc-row > div > span.fc-date {
 	color: rgba(255,255,255,0.9);
 	text-shadow: none;
-	font-size: 22px;
+	font-size: 18px;
 	font-weight: 300;
 	bottom: auto;
 	right: auto;
@@ -628,12 +628,9 @@ body {
 }
 </style>
 <div class='container fullscreen' style='margin-top: 40px;'>
-  <!--<div class="background-image-holder paraOn">
-    <img alt="image" class="background-image" src="//files.natecheng.me/uploads/library/attachment/149/calendar.jpg">
-  </div>-->
   <div class="custom-calendar-wrap custom-calendar-full">
   	<div class="custom-header clearfix">
-  		<h2>Calendar</h2>
+  		<h2><%= I18n.t('calendar') %></h2>
   		<h3 class="custom-month-year">
   			<span id="custom-month" class="custom-month"></span>
   			<span id="custom-year" class="custom-year"></span>
@@ -650,10 +647,6 @@ body {
   </div>
 </div>
 
-
-<div class='row'>
-<%# @events_array.html_safe %>
-</div>
 <script type="text/javascript">	
 
 	var eventss = <%= @events_array.html_safe %>;

@@ -163,7 +163,11 @@ class MainController < ApplicationController
           end
         end
       else
-        @obj[event.datetime.strftime("%m-%d-%Y")] = "<a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+        if !@obj[event.datetime.strftime("%m-%d-%Y")].nil? then
+          @obj[event.datetime.strftime("%m-%d-%Y")] = @obj[event.datetime.strftime("%m-%d-%Y")] + "<br><a target='_blank' href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+        else
+          @obj[event.datetime.strftime("%m-%d-%Y")] = "<a target='_blank' href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+        end
         #logger.debug event.latest_date.strftime("%m-%d-%Y") + ': ' + event.title
       end
       
