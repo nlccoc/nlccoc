@@ -125,7 +125,11 @@ class MainController < ApplicationController
         #logger.debug event.repeat_metum[0].valid_until.strftime("%m-%d-%Y")
           while dt < event.repeat_metum[0].valid_until do
             #logger.debug dt.strftime("%m-%d-%Y")
-            @obj[dt.strftime("%m-%d-%Y")] = "<a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+            if !@obj[dt.strftime("%m-%d-%Y")].nil? then
+              @obj[dt.strftime("%m-%d-%Y")] = @obj[dt.strftime("%m-%d-%Y")] + "<br><a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+            else
+              @obj[dt.strftime("%m-%d-%Y")] = "<a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+            end
             dt = dt+604800
           end
         elsif event.repeat_metum[0].repeat_interval ==0 then
@@ -138,7 +142,11 @@ class MainController < ApplicationController
               @date = event.find_date_by_weekday_my(event.repeat_metum[0].repeat_week, event.repeat_metum[0].repeat_weekday, month, year)
               if @date < event.repeat_metum[0].valid_until then
                 #logger.debug @date.strftime("%m-%d-%Y")
-                @obj[@date.strftime("%m-%d-%Y")] = "<a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+                if !@obj[@date.strftime("%m-%d-%Y")].nil? then
+                  @obj[@date.strftime("%m-%d-%Y")] = @obj[@date.strftime("%m-%d-%Y")] + "<br><a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+                else
+                  @obj[@date.strftime("%m-%d-%Y")] = "<a href='events/"+event.id.to_s+"'>" + event.title + "</a>"
+                end
               end
               
               if month >= 12
