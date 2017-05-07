@@ -38,16 +38,15 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.action_mailer.default_url_options = { host: 'finshare-boo0330.c9users.io', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'finshare-boo0330.c9users.io' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.sendgrid.net',
+    address: 'smtp.gmail.com',
     port: 587,
-    domain: 'finshare-boo0330.c9users.io',
+    domain: 'gmail.com',
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: 'boo0330@gmail.com',
-    password: 'Soas19790624'
-    #password: ENV["GMAIL_PASSWORD"]
+    password: 'soas1979'
   }
 end

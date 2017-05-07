@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   #get "mgmts/*path.html" => "mgmts#index"
   
   # devise customized controllers: sessions, registrations
-  devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations' }
+  devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations', passwords: 'mgmts/passwords' }
   
   #get '/.well-known/acme-challenge/:id' => 'main#letsencrypt'
 

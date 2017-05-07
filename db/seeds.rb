@@ -28,3 +28,6 @@ locations.each do |l|
   Location.create!(id: l[:id], name: l[:name], address: l[:address])
 end
 
+['registered', 'office', 'sound', 'admin'].each do |role|
+  Role.find_or_create_by({name: role})
+end

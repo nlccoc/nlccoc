@@ -1,25 +1,58 @@
-<h2>Change your password</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+<section class="cover fullscreen image-bg overlay">
+  <div class="background-image-holder">
+      <img alt="image" class="background-image" src="<%= asset_path('home5.jpg') %>" />
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="container v-align-transform">
+      <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+              <div class="feature bordered text-center">
+                  <h4 class="uppercase">Change your password</h4>
+                  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+                    <%= devise_error_messages! %>
+                    <%= f.hidden_field :reset_password_token %>
+                  
+                    <div class="field">
+                      <%= f.label :password, "New password" %><br />
+                      <% if @minimum_password_length %>
+                        <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+                      <% end %>
+                      <%= f.password_field :password, autofocus: true, autocomplete: "off", placeholder: "New Password" %>
+                    </div>
+                  
+                    <div class="field">
+                      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm New Password" %>
+                    </div>
+                  
+                    <div class="actions">
+                      <%= f.submit "Change my password" %>
+                    </div>
+                  <% end %>
+                  
+                  <%= render "mgmts/shared/links" %>
+              </div>
+          </div>
+      </div>
+      <div class='row'></div>
+      <!--end of row-->
   </div>
+  <!--end of container-->
+</section>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
+<script>
+  $(document).ready(function(){
+    $('.background-image-holder').each(function() {
+      var imgSrc = $(this).children('img').attr('src');
+      $(this).css('background', 'url("' + imgSrc + '")');
+      $(this).children('img').hide();
+      $(this).css('background-position', 'initial');
+    });
 
-<%= render "mgmts/shared/links" %>
+    // Fade in background images
+
+    setTimeout(function() {
+      $('.background-image-holder').each(function() {
+        $(this).addClass('fadeIn');
+      });
+    }, 200);
+  });
+</script>

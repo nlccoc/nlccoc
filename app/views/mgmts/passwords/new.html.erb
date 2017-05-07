@@ -1,16 +1,49 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<section class="cover fullscreen image-bg overlay">
+  <div class="background-image-holder">
+      <img alt="image" class="background-image" src="<%= asset_path('home5.jpg') %>" />
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="container v-align-transform">
+      <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+              <div class="feature bordered text-center">
+                  <h4 class="uppercase">Forgot your password?</h4>
+                  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                    <%= devise_error_messages! %>
+                  
+                    <div class="field">
+                      <%= f.email_field :email, autofocus: true, placeholder: "Email Address" %>
+                    </div>
+                  
+                    <div class="actions">
+                      <%= f.submit "Send me reset password instructions" %>
+                    </div>
+                  <% end %>
+                  
+                  <%= render "mgmts/shared/links" %>
+              </div>
+          </div>
+      </div>
+      <div class='row'></div>
+      <!--end of row-->
   </div>
-<% end %>
+  <!--end of container-->
+</section>
 
-<%= render "mgmts/shared/links" %>
+<script>
+  $(document).ready(function(){
+    $('.background-image-holder').each(function() {
+      var imgSrc = $(this).children('img').attr('src');
+      $(this).css('background', 'url("' + imgSrc + '")');
+      $(this).children('img').hide();
+      $(this).css('background-position', 'initial');
+    });
+
+    // Fade in background images
+
+    setTimeout(function() {
+      $('.background-image-holder').each(function() {
+        $(this).addClass('fadeIn');
+      });
+    }, 200);
+  });
+</script>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321235437) do
+ActiveRecord::Schema.define(version: 20170507204630) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -79,10 +79,12 @@ ActiveRecord::Schema.define(version: 20170321235437) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "role_id"
   end
 
   add_index "mgmts", ["email"], name: "index_mgmts_on_email", unique: true
   add_index "mgmts", ["reset_password_token"], name: "index_mgmts_on_reset_password_token", unique: true
+  add_index "mgmts", ["role_id"], name: "index_mgmts_on_role_id"
 
   create_table "mvideos", force: :cascade do |t|
     t.string   "title"
@@ -133,6 +135,12 @@ ActiveRecord::Schema.define(version: 20170321235437) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "link"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
