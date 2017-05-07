@@ -648,7 +648,9 @@ body {
 </div>
 
 <script type="text/javascript">	
-
+  var d = new Date()
+  var n = d.getTimezoneOffset();
+  console.log(n);
 	var eventss = <%= @events_array.html_safe %>;
 	$(function() {
 	

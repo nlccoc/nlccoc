@@ -53,6 +53,10 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    browser-timezone-rails (1.0.1)
+      js_cookie_rails
+      jstz-rails3-plus
+      rails (>= 3.1)
     builder (3.2.3)
     byebug (9.0.6)
     carrierwave (0.10.0)
@@ -248,7 +252,11 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    js_cookie_rails (2.1.4)
+      railties (>= 3.1)
     json (1.8.6)
+    jstz-rails3-plus (1.0.5)
+      railties (>= 3.1)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -396,6 +404,7 @@ DEPENDENCIES
   angularjs-file-upload-rails (~> 2.2.0)
   angularjs-rails
   bootstrap-sass (~> 3.3.6)
+  browser-timezone-rails
   byebug
   carrierwave (~> 0.10.0)
   coffee-rails (~> 4.1.0)

@@ -33,6 +33,8 @@ nlccmgmtapp.controller('eventAllCtrl', ['$scope', 'categoryFactory', '$uibModal'
   });
     
   $scope.getDate = function(d){
+    //console.log(d);
+    //console.log(new Date(d).toString());
     return new Date(d).toString();
   }
   $scope.event = event;
@@ -71,6 +73,7 @@ nlccmgmtapp.controller('eventAllCtrl', ['$scope', 'categoryFactory', '$uibModal'
 }]).controller('eventNewCtrl', ['$scope', 'categories', 'eventFactory', '$state', '$sce', 'locations',
 function($scope, categories, eventFactory, $state, $sce, locations){
   console.log('Event New Controller');
+  
   $scope.function='new';
   
   $scope.locations = locations;
@@ -160,6 +163,11 @@ function($scope, categories, eventFactory, $state, $sce, locations){
     console.log("Submit");
     $scope.event.repeat = $scope.repeat;
     if(func == 'new'){
+
+      var d = new Date()
+      var n = d.getTimezoneOffset();
+  
+      $scope.event.datetime = moment(new Date($scope.event.datetime)).add(n, 'm');
       eventFactory.createEvent($scope.event).then(function(data){
         //$scope.mvideos.push(data);
         //$scope.hideform();
@@ -184,7 +192,11 @@ function($scope, event, categories, eventFactory, $state){
     return new Date(d).toString();
   }
   $scope.event = event
+  
+  console.log($scope.event.datetime);
+  console.log($scope.event.datetime);
   $scope.event.datetime = moment(event.datetime).format('MM/DD/YYYY h:mm a');
+  console.log($scope.event.datetime);
   //$scope.event.desc = $scope.event.desc
   $scope.event.desc = unescape($scope.event.desc)
   //console.log(unescape($scope.event.desc));
@@ -226,9 +238,9 @@ function($scope, event, categories, eventFactory, $state){
     $scope.event.featured.isSelected=false;
   } else {
     $scope.event.featured.isSelected=true;
-    console.log($scope.event.featured_info.title);
-    console.log($scope.event.featured_info.subtitle);
-    console.log($scope.event.featured_info.image_path);
+    //console.log($scope.event.featured_info.title);
+    //console.log($scope.event.featured_info.subtitle);
+    //console.log($scope.event.featured_info.image_path);
     $scope.event.featured.title = $scope.event.featured_info.title;
     $scope.event.featured.subtitle = $scope.event.featured_info.subtitle;
     $scope.event.featured.image_path = $scope.event.featured_info.image_path;
@@ -256,6 +268,10 @@ function($scope, event, categories, eventFactory, $state){
     if(func == 'new'){
       
     } else if(func == 'edit'){
+      var d = new Date()
+      var n = d.getTimezoneOffset();
+    
+      $scope.event.datetime = moment(new Date($scope.event.datetime)).add(n, 'm');
       eventFactory.updateEvent($scope.event).then(function(data){
         //$scope.mvideos.push(data);
         //$scope.hideform();
@@ -269,6 +285,13 @@ function($scope, event, categories, eventFactory, $state){
   }
 }]).controller('eventCtrl', ['$scope', 'event',
 function($scope, event){
+  
+  $scope.getDate = function(d){
+    //console.log(d);
+    //console.log(new Date(d).toString());
+    return new Date(d).toString();
+  }
+  
   $scope.event = event;
   $scope.event.desc = unescape(event.desc)
 }])

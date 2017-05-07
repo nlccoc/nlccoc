@@ -70,6 +70,11 @@ end
   end
   def latest_date
     
+    logger.debug "#############################"
+    logger.debug self.title
+    logger.debug Time.zone
+    logger.debug self.datetime
+    #logger.debug self.datetime.in_time_zone(-7)
     if self.repeat_metum.exists?
       #[DateTime.now.wday, 'test', self.datetime.wday, -1%7]
       #how many days from now

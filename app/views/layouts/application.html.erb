@@ -18,6 +18,20 @@
     I18n.locales.no = 'en';
     I18n.currentLocale();
     
+    
+    
+    window.BrowserTZone || (window.BrowserTZone = {});
+    BrowserTZone.setCookie = function() {
+      return Cookies.set("browser.timezone", jstz.determine().name(), {
+        expires: 365,
+        path: '/'
+      });
+    };
+    
+    jQuery(function() {
+      return BrowserTZone.setCookie();
+    });
+    
     <%= render 'shared/main/justfont'%>
     <%= render 'shared/main/googleanalytics' %>
 

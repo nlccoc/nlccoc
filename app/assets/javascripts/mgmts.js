@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require moment/min/moment.min
+//= require moment-timezone/moment-timezone
 //= require eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min
 //= require bootstrap-switch/dist/js/bootstrap-switch
 //= require ion.rangeslider/js/ion.rangeSlider

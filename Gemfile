@@ -45,6 +45,8 @@ gem 'simple_form'
 
 gem 'sendgrid'
 
+gem 'browser-timezone-rails'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'

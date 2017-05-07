@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :set_locale, :get_feed
+  around_filter :set_time_zone
   
   def current_translations
     @translations ||= I18n.backend.send(:translations)
@@ -10,7 +11,21 @@ class ApplicationController < ActionController::Base
   end
   
   private
-   # Before every request, we set the locale, from the specified or detected settings, or from the cookie
+  
+    def set_time_zone
+      logger.debug "set_time_zone"
+      old_time_zone = Time.zone
+      Time.zone = browser_timezone if browser_timezone.present?
+      logger.debug Time.zone
+      yield
+    ensure
+      Time.zone = old_time_zone
+    end
+                                                                                     
+    def browser_timezone
+      cookies["browser.timezone"]
+    end
+    # Before every request, we set the locale, from the specified or detected settings, or from the cookie
     def set_locale
       if language_change_necessary?
         I18n.locale = the_new_locale
