@@ -27,3 +27,4 @@ locations = [
 locations.each do |l|
   Location.create!(id: l[:id], name: l[:name], address: l[:address])
 end
+
