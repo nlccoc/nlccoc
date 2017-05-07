@@ -7,17 +7,22 @@ class MvideosController < ApplicationController
   # GET /mvideos
   # GET /mvideos.json
   def index
-    @mvideos = Mvideo.where(location_id: 1).order(date: :desc)
+    @mvideos = Mvideo.order(date: :desc)
     @header_bg='bg-dark'
     respond_to do |format|
       format.html
-      format.json { render json: @mvideos }
+      format.json { render json: @mvideos.as_json(:include => :location) }
     end
   end
 
   # GET /mvideos/1
   # GET /mvideos/1.json
   def show
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @mvideo.as_json(:include => :location) }
+    end
   end
 
   # GET /mvideos/new
@@ -33,7 +38,7 @@ class MvideosController < ApplicationController
   # POST /mvideos.json
   def create
     @mvideo = Mvideo.new(mvideo_params)
-
+  
     respond_to do |format|
       if @mvideo.save
         format.html { redirect_to @mvideo, notice: 'mvideo was successfully created.' }
@@ -51,7 +56,7 @@ class MvideosController < ApplicationController
     respond_to do |format|
       if @mvideo.update(mvideo_params)
         format.html { redirect_to @mvideo, notice: 'Mvideo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @mvideo }
+        format.json { render json: @mvideo, status: :created, notice: 'mvideo was successfully created.' }
       else
         format.html { render :edit }
         format.json { render json: @mvideo.errors, status: :unprocessable_entity }

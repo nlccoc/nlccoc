@@ -103,64 +103,16 @@
   right: 8px;
 }
 </style>
-<!-- BEGIN PAGE BAR -->
-<div class="page-bar">
-  <ul class="page-breadcrumb">
-    <li>
-      <a href="index.html">Home</a>
-      <i class="fa fa-circle"></i>
-    </li>
-    <li>
-      <span>All Video</span>
-    </li>
-  </ul>
-</div>
-<!-- END PAGE BAR -->
+<h1>Media - Video</h1>
 
-<h1 class="page-title"> All Video
-  <!--<small>All Events</small>-->
-</h1>
-
-<div class='row'>
-  <div class='col-md-12'>
-    <a class="btn green" ui-sref='mvideo-new'>New Video</a>
-  </div>
-</div>
-<div class='row'>
-  <div class='col-md-12'>
-    <table id="maudios" class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th style="width:15%">Title</th>
-          <th style="width:10%" >Date</th>
-          <th style="width:30%" >Address</th>
-          <th style="width:10%" >Location</th>
-          <th style="width:30%">Description</th>
-          <th style="width:15%"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat='video in mvideos'>
-          <td style="width:15%"> {{video.title}}</td>
-          <td style="width:10%"> {{video.date}}</td>
-          <td style="width:30%"> {{video.path}}</td>
-          <td style="width:10%"> {{video.location.name}}</td>
-          <td style="width:30%"> {{video.desc}}</td>
-          <td style="width:15%">
-            <span class="text-muted"> <a  ui-sref='mvideo-edit({mvideoID: video.id})' href="#">
-              <i class="fa fa-pencil" aria-hidden="true"></i></a>
-            </span>  
-            <span class="text-muted"> 
-              <a ng-click='deleteMVideo(video);' href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-<!--
 <div class="video-container">
+  
+  <!--<b class="loading">Saving</b>-->
+  
+  <!--Did it work? 
+  
+  <ng-include src="'stringCondition'"></ng-include>-->
+  
   <div id="newEventHolder" ng-click='showform();'>
     <span><i class="fa fa-plus"></i> Add New Media</span>
   </div>
@@ -192,15 +144,15 @@
         <span id="dateDay">{{getMonth(video.date)}}</span>
       </div>
       <div class="event-details-holder">
-        <h1>{{video.title}}</h1>-->
+        <h1>{{video.title}}</h1>
         <!--<span id="eventDescription"></span>-->
-<!--          <ul id="editTools">
+          <ul id="editTools">
              <li><i class="fa fa-pencil-square-o"></i></li>
              <li><i class="fa fa-bars"></i></li>
              <li><i class="fa fa-times" ng-click='deleteMVideo(video);' id="removeEvent"></i></li>
           </ul>
       </div>
-    </li>-->
+    </li>
     <!--<li id="eventHolder">  
       <div class="event-date-holder">
         <span id="dateNumber">23</span>

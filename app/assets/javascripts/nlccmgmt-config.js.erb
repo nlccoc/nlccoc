@@ -107,6 +107,30 @@ nlccmgmtapp.config([
         }]
       },
       controller: 'mediaAudioEditCtrl'
+    }).state('mvideo-new', {
+      url: '/mgmts/mvideo-new',
+      templateUrl: 'mgmts/media/video.edit.html',
+      controller: 'mvideoNewCtrl',
+      resolve: {
+        catResource: 'categoryFactory',
+        locations: ['catResource',function(catResource){
+          return catResource.getAllLocations();
+        }]
+      }
+    }).state('mvideo-edit', {
+      url: '/mgmts/mvideos/:mvideoID/edit',
+      controller: 'mediaVideoEditCtrl', 
+      templateUrl: 'mgmts/media/video.edit.html',
+      resolve: {
+        catResource: 'categoryFactory',
+        locations: ['catResource',function(catResource){
+          return catResource.getAllLocations();
+        }],
+        mvideoResource: 'mvideoFactory',
+        mvideo: ['mvideoResource', '$stateParams',function(mvideoResource, $stateParams){
+          return mvideoResource.getMvideo($stateParams.mvideoID);
+        }]
+      }
     })
     .state('user-profile', {
       url: '/mgmts/user-profile',templateUrl: 'mgmts/profile.html'/*,

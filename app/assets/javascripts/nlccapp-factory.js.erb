@@ -44,6 +44,20 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     return deferred.promise;
   }
   
+  service.getMvideo = function(id){
+    var deferred = $q.defer();
+    var _url = _baseUrl + '/' + id + '.json';
+    $http({
+      method: 'GET',
+      url: _url,
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
+    });
+    return deferred.promise;
+  }
+  
   service.createMVideo = function(newvideo) {
     var deferred = $q.defer();
     var _url = _baseUrl + '.json';
@@ -62,6 +76,35 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
           "desc": newvideo.desc,
           "youtubeID": newvideo.youtubeID,
           "location_id": newvideo.locat.id
+        }
+      }
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
+    });
+    return deferred.promise;
+  }
+  
+  service.updateMVideo = function(updated_mvideo){
+    var _url = _baseUrl + '/' + updated_mvideo.id + '.json'
+    var deferred = $q.defer();
+    
+    $http({
+      method: 'PUT',
+      url: _url,
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }, 
+      data: {
+        "utf8": "✓",
+        "mvideo": {
+          "title": updated_mvideo.title,
+          "path": updated_mvideo.path,
+          "date": updated_mvideo.date,
+          "desc": updated_mvideo.desc,
+          "youtubeID": updated_mvideo.youtubeID,
+          "location_id": updated_mvideo.locat.id
         }
       }
     }).success(function(data){

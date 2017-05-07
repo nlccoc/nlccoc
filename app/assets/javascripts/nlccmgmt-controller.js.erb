@@ -309,7 +309,6 @@ nlccmgmtapp.controller('sidebarController', ['$scope', function($scope) {
     Layout.initSidebar();
   });
 }]);
-
 nlccmgmtapp.controller('quicksidebarController', ['$scope', function($scope) {
   console.log("quicksidebarController Controller");
   $scope.$on('$includeContentLoaded', function() {
@@ -318,7 +317,6 @@ nlccmgmtapp.controller('quicksidebarController', ['$scope', function($scope) {
     }, 2000)
   });
 }]);
-
 nlccmgmtapp.controller('mediaVideoCtrl', ['$scope', '$timeout', 'mvideoFactory', '$uibModal', 'locations',
 function($scope, $timeout, mvideoFactory, $uibModal, locations) {
   console.log("mediaVideoCtrl Controller");
@@ -404,7 +402,6 @@ function($scope, $timeout, mvideoFactory, $uibModal, locations) {
      }, 0)
   });
 }]);
-
 nlccmgmtapp.controller('mediaAudioCtrl', ['$scope', '$timeout', 'maudios', '$uibModal',
 function($scope, $timeout, maudios, $uibModal) {
   console.log("mediaAudioCtrl Controller");
@@ -474,7 +471,6 @@ nlccmgmtapp.controller('audioNewCtrl', ['$scope', 'maudioFactory', '$state', fun
     }
   }
 }]);
-
 nlccmgmtapp.controller('mediaAudioEditCtrl', ['$scope', '$timeout', 'maudio', 'maudioFactory', '$state',
 function($scope, $timeout, maudio, maudioFactory, $state) {
   console.log("mediaAudioCtrl Controller");
@@ -505,6 +501,62 @@ function($scope, $timeout, maudio, maudioFactory, $state) {
         $state.go('media-audio');
         console.log("Success updated a maudio");
         toastr.success('Success updated audio' + $scope.maudio3.title);
+      });
+    }
+  }
+}]);
+nlccmgmtapp.controller('mvideoNewCtrl', ['$scope', 'mvideoFactory', '$state', 'locations', function($scope, mvideoFactory, $state, locations){
+  console.log("mvideo New Controller");
+  $scope.function = 'new';
+  $scope.locations = locations;
+  $scope.mvideo = {};
+  $scope.mvideo.title='';
+  $scope.mvideo.desc='';
+  $scope.mvideo.date='';
+  $scope.mvideo.path='';
+  $scope.mvideo.locat=$scope.locations[0];
+  $scope.mvideo.speaker='陳正榮 牧師';
+  
+  //console.log(mvideo);
+  /*$scope.mvideo.youtubeID = youtubeID(mvideo.path);
+  mvideoFactory.createMVideo($scope.mvideo).then(function(data){
+    console.log("Success create a Media");
+  });
+    */
+  $scope.submit = function(func){
+    if(func=='new'){
+      $scope.mvideo.youtubeID = youtubeID($scope.mvideo.path);
+      mvideoFactory.createMVideo($scope.mvideo).then(function(data){
+        console.log("Success create a mvideo");
+        $state.go('media-video');
+        toastr.success('Successfully created the video: ' + $scope.mvideo.title);
+      });
+    }
+  }
+}]);
+nlccmgmtapp.controller('mediaVideoEditCtrl', ['$scope', '$timeout', 'mvideo', 'mvideoFactory', '$state', 'locations', 
+function($scope, $timeout, mvideo, mvideoFactory, $state, locations) {
+  console.log("mvideo Edit Controller");
+  $scope.mvideo = mvideo;
+  $scope.function = 'edit';
+  console.log(mvideo);
+  $scope.locations = locations;
+  $scope.mvideo = {};
+  $scope.mvideo.id=mvideo.id;
+  $scope.mvideo.title=mvideo.title;
+  $scope.mvideo.desc=mvideo.desc;
+  $scope.mvideo.date=mvideo.date;
+  $scope.mvideo.path=mvideo.path;
+  $scope.mvideo.locat=$scope.locations[mvideo.location.id-1];
+  $scope.mvideo.speaker='陳正榮 牧師';
+  
+  
+  $scope.submit = function(func){
+    if(func=='edit'){
+      mvideoFactory.updateMVideo($scope.mvideo).then(function(data){
+        $state.go('media-video');
+        console.log("Success updated a video");
+        toastr.success('Success updated video' + $scope.mvideo.title);
       });
     }
   }
@@ -543,7 +595,6 @@ nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', '$uibModal', funct
     });
   }
 }]);
-
 nlccmgmtapp.controller('modalDeleteMvideoCtrl', ['$scope', '$uibModalInstance', 'mvideoFactory', 'mvideo', 
 function ($scope, $uibModalInstance, mvideoFactory, mvideo) {
 
@@ -551,6 +602,7 @@ function ($scope, $uibModalInstance, mvideoFactory, mvideo) {
     //console.log("delete {" + mvideo.id + "}");
     mvideoFactory.deleteMVideo(mvideo.id).then(function(data){
       console.log("Successfully delete the m-video");
+      toastr.success("Successfully delete the video: " + mvideo.title);
     });
     $uibModalInstance.close(0);
   };
@@ -566,6 +618,7 @@ function ($scope, $uibModalInstance, eventFactory, event) {
     //console.log("delete {" + event.id + "}");
     //console.log(event);
     eventFactory.deleteEvent(event.id).then(function(data){
+      
       console.log("Successfully delete the m-video");
     });
     $uibModalInstance.close(0);
