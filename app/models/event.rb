@@ -74,7 +74,7 @@ end
     #logger.debug self.title
     #logger.debug Time.zone
     #logger.debug self.datetime
-    #logger.debug self.datetime.in_time_zone(-7)
+    #logger.debug "#############################"
     if self.repeat_metum.exists?
       #[DateTime.now.wday, 'test', self.datetime.wday, -1%7]
       #how many days from now
@@ -82,10 +82,18 @@ end
         if (self.datetime > DateTime.now)
           self.datetime
         else
-          if ((self.datetime.wday-DateTime.now.wday)%7).days.from_now > self.repeat_metum[0].valid_until
+          if ((self.datetime.wday-DateTime.now.in_time_zone.wday)%7).days.from_now > self.repeat_metum[0].valid_until
             self.datetime
           else
-            dt = ((self.datetime.wday-DateTime.now.wday)%7).days.from_now
+            days = (self.datetime.wday-DateTime.now.in_time_zone.wday)%7
+            
+            ## same day but past the time already
+            if days == 0 && DateTime.now.in_time_zone.hour > self.datetime.hour || 
+              (DateTime.now.in_time_zone.hour == self.datetime.hour && DateTime.now.in_time_zone.min > self.datetime.min) then
+              days = days + 7
+            end
+
+            dt = days.days.from_now
             dt.change({ hour: self.datetime.hour , min: self.datetime.min})
           end
         end
