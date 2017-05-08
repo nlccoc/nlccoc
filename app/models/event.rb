@@ -70,10 +70,10 @@ end
   end
   def latest_date
     
-    logger.debug "#############################"
-    logger.debug self.title
-    logger.debug Time.zone
-    logger.debug self.datetime
+    #logger.debug "#############################"
+    #logger.debug self.title
+    #logger.debug Time.zone
+    #logger.debug self.datetime
     #logger.debug self.datetime.in_time_zone(-7)
     if self.repeat_metum.exists?
       #[DateTime.now.wday, 'test', self.datetime.wday, -1%7]
@@ -85,7 +85,8 @@ end
           if ((self.datetime.wday-DateTime.now.wday)%7).days.from_now > self.repeat_metum[0].valid_until
             self.datetime
           else
-            ((self.datetime.wday-DateTime.now.wday)%7).days.from_now
+            dt = ((self.datetime.wday-DateTime.now.wday)%7).days.from_now
+            dt.change({ hour: self.datetime.hour , min: self.datetime.min})
           end
         end
       elsif !self.repeat_metum[0].repeat_week.nil?
