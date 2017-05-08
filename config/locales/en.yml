@@ -65,6 +65,17 @@ en:
   givingtitle2: 'We give because God first gave'
   givingsubtitle: 'Your gift helps further the impact of the ministries of NLCC'
   onlinegiving: 'Online Giving'
+  dailydevotion: 'Daily Devotion'
+  mediavideo: 'Video Recordings'
+  mediaaudio: 'Audio Recordings'
+  dailydevitions: 'Daily Devotions'
+  pastoralteam: 'Pastoral Team'
+  ministryworship: 'Worshio'
+  ministryequip: 'Equipping'
+  ministryprayer: 'Prayer'
+  ministrymission: 'Mission'
+  irvineministry: 'Irvine'
+  laverneministry: 'La Verne'
   activerecord:
     errors:
       messages:

@@ -37,6 +37,17 @@ cn:
   givingtitle2: '我们给，因为神先给予我们'
   givingsubtitle: '你可以成就不一样的事, 您的奉献将支持教会的各项事工，进而改变人的生命'
   onlinegiving: '线上奉献'
+  dailydevotion: '每日灵修'
+  mediavideo: '主日录影'
+  mediaaudio: '主日录音'
+  dailydevitions: '每日灵修小品'
+  pastoralteam: '牧者团队'
+  ministryworship: '敬拜事工'
+  ministryequip: '装备事工'
+  ministryprayer: '祷告事工'
+  ministrymission: '宣教事工'
+  irvineministry: '尔湾牧区'
+  laverneministry: '拉文牧区'
   activerecord:
     errors:
       messages:

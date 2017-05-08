@@ -34,10 +34,10 @@
                 <%= t('ministries') %>
               </a>
               <ul>
-                <li><%= link_to '#' do %>敬拜事工<% end %></li>
-                <li><%= link_to '#' do %>裝備事工<% end %></li>
-                <li><%= link_to '#' do %>禱告事工<% end %></li>
-                <li><%= link_to '#' do %>宣教事工<% end %></li>
+                <li><%= link_to '#' do %><%= I18n.t('ministryworship') %><% end %></li>
+                <li><%= link_to '#' do %><%= I18n.t('ministryequip') %><% end %></li>
+                <li><%= link_to '#' do %><%= I18n.t('ministryprayer') %><% end %></li>
+                <li><%= link_to '#' do %><%= I18n.t('ministrymission') %><% end %></li>
               </ul>
             </li>
             <!--<li class="has-dropdown">-->
@@ -46,11 +46,9 @@
                   <%= t('media') %>
               </a>
               <ul>
-                <li>
-                  <%= link_to videos_path(:locale => I18n.locale) do %>影音媒 <% end %>
-                </li>
-                <li><%= link_to audio_path(:locale => I18n.locale) do %>主日錄音<% end %></li>
-                <li><%= link_to rolcc_feeds_path(:locale => I18n.locale) do %>每日靈修小品<% end %></li>
+                <li><%= link_to videos_path(:locale => I18n.locale) do %><%= I18n.t('mediavideo') %><% end %></li>
+                <li><%= link_to audio_path(:locale => I18n.locale) do %><%= I18n.t('mediaaudio') %><% end %></li>
+                <li><%= link_to rolcc_feeds_path(:locale => I18n.locale) do %><%= I18n.t('dailydevitions') %><% end %></li>
               </ul>
             </li>
             <li class="">
@@ -64,8 +62,8 @@
                 </a>
                 <ul>
                   <li><%= link_to about_path(:locale => I18n.locale) do %><%= t('menu.about') %><% end %></li>
-                  <li><%= link_to pastors_path(:locale=> I18n.locale) do %>牧者團隊<% end %></li>
-                  <li><%= link_to contact_path(:locale=> I18n.locale) do %>聯絡我們<% end %></li>
+                  <li><%= link_to pastors_path(:locale=> I18n.locale) do %><%= t('pastoralteam') %><% end %></li>
+                  <li><%= link_to contact_path(:locale=> I18n.locale) do %><%= t('contact') %><% end %></li>
                 </ul>
             </li>
           </ul>
@@ -74,7 +72,7 @@
           <div class="cart">
             <span style='color: #fff;'>
               <%= link_to lv_path do %>
-                拉文牧區
+                <%= t('laverneministry') %>
               <% end %>
             </span>
            <!-- <i class="ti-location-pin"></i>-->
@@ -137,25 +135,15 @@
       <div class="text-center offscreen-menu daily-feed">
       <!--<div class="v-align-transform text-center">-->
         <a href="#"><img alt="Logo" class="image-xs mb16 mb-xs-24" src="<%= asset_path('logo-light.png') %>"></a>
-        <!--<ul class="mb-xs-24">
-          <li class="fade-on-hover">
-            <h4 class="uppercase mb8" style='color: #fff'>每 日 靈 修 </h4>
-            <h5><%= @rolcc_feed.date %></h5>
-            </li>
-        </ul>-->
-        <h4 class="uppercase mb0" style='color: #fff'>每 日 靈 修 </h4>
+        <h4 class="uppercase mb0" style='color: #fff'><%= I18n.t('dailydevotion') %></h4>
         <h5 class='mb8'><%= @rolcc_feed.date %></h5>
         <div class="offscreen-content">
           <h5 class='title mb8'><%= @rolcc_feed.book %></h5>
           <p class='mb16'><%= @rolcc_feed.short_script.html_safe%></p>
           <p class='mb8'><%= link_to rolcc_feed_path(@rolcc_feed), :target => '_blank', :class => 'btn btn-white btn-sm mb32 inner-link' do %> 閱讀更多 <% end %></p>
-          <!--施洗約翰說：「我曾看見聖靈，彷彿鴿子從天降下，住在祂的身上。」這裡講到一件很重要的事──神是看得見的。這位看得見的神，不僅是存在的神，祂更是又真又活的神，可以與我們交通、與我們互動！只是我們需要有一位中保在我們中間。舊約的中保是大祭司，藉著所獻的祭，摩西也是中保，是藉著所傳的神的話。現在有一位中保卻是更寶貴的，祂不用獻祭，祂本身就是祭；也不用告訴我們神的話，祂本身就是神的話。祂就是主耶穌基督，我們透過耶穌這位中保，來認識這位神。
-         --><!--   438 Malvern Road<br>
-            Armadale, VIC 3134<br>
-            (03) 38237 37263<br>
-            hello@foundry.net-->
+
         </div>
-        <ul class="list-inline social-list">
+        <!--<ul class="list-inline social-list">
           <li>
             <a href="#">
               <i class="ti-twitter-alt"></i>
@@ -171,7 +159,7 @@
               <i class="ti-vimeo-alt"></i>
             </a>
           </li>
-        </ul>
+        </ul>-->
       </div>
     </div>
   </nav>

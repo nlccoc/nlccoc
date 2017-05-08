@@ -34,10 +34,10 @@
                 <%= t('ministries') %>
               <% end %>
               <ul>
-                <li><%= link_to '#' do %>敬拜事工<% end %></li>
-                <li><%= link_to '#' do %>裝備事工<% end %></li>
-                <li><%= link_to '#' do %>禱告事工<% end %></li>
-                <li><%= link_to '#' do %>宣教事工<% end %></li>
+                <li><%= link_to '#' do %><%= I18n.t('ministryworship') %><% end %></li>
+                <li><%= link_to '#' do %><%= I18n.t('ministryequip') %><% end %></li>
+                <li><%= link_to '#' do %><%= I18n.t('ministryprayer') %><% end %></li>
+                <li><%= link_to '#' do %><%= I18n.t('ministrymission') %><% end %></li>
               </ul>
             </li>
             <!--<li class="has-dropdown">-->
@@ -47,13 +47,9 @@
                 <%= t('media') %>
               <% end %>
               <ul>
-                <li>
-                  <%= link_to videos_path(:locale => I18n.locale) do %>
-                    影音媒體
-                  <% end %>
-                </li>
-                <li><%= link_to audio_path(:locale => I18n.locale) do %>主日錄音<% end %></li>
-                <li><%= link_to rolcc_feeds_path(:locale => I18n.locale) do %>每日靈修小品<% end %></li>
+                <li><%= link_to videos_path(:locale => I18n.locale) do %><%= I18n.t('mediavideo') %><% end %></li>
+                <li><%= link_to audio_path(:locale => I18n.locale) do %><%= I18n.t('mediaaudio') %><% end %></li>
+                <li><%= link_to rolcc_feeds_path(:locale => I18n.locale) do %><%= I18n.t('dailydevitions') %><% end %></li>
               </ul>
             </li>
             <li class="">
@@ -66,9 +62,9 @@
                 <%= t('who') %>
               <% end %>
               <ul>
-                <li><%= link_to about_path(:locale => I18n.locale) do %>關於我們 <% end %></li>
-                <li><%= link_to pastors_path(:locale=> I18n.locale) do %>牧者團隊 <% end %></li>
-                <li><%= link_to contact_path(:locale=> I18n.locale) do %>聯絡我們<% end %></li>
+                <li><%= link_to about_path(:locale => I18n.locale) do %><%= t('menu.about') %><% end %></li>
+                  <li><%= link_to pastors_path(:locale=> I18n.locale) do %><%= t('pastoralteam') %><% end %></li>
+                  <li><%= link_to contact_path(:locale=> I18n.locale) do %><%= t('contact') %><% end %></li>
               </ul>
             </li>
           </ul>
@@ -118,7 +114,7 @@
       <div class="text-center offscreen-menu">
       <!--<div class="v-align-transform text-center">-->
         <a href="#"><img alt="Logo" class="image-xs mb16 mb-xs-24" src="<%= asset_path('logo-light.png') %>"></a>
-        <h4 class="uppercase mb0" style='color: #fff'>每 日 靈 修 </h4>
+        <h4 class="uppercase mb0" style='color: #fff'><%= I18n.t('dailydevotion') %></h4>
         <h5 class='mb8'><%= @rolcc_feed.date %></h5>
         <div class="offscreen-content">
           <h5 class='title mb8'><%= @rolcc_feed.book %></h5>
