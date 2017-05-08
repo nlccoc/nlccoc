@@ -2,7 +2,6 @@ class Mgmts::PasswordsController < Devise::PasswordsController
   layout 'login'
   # GET /resource/password/new
    def new
-     
      super
    end
 
@@ -23,9 +22,14 @@ class Mgmts::PasswordsController < Devise::PasswordsController
 
   # protected
 
-  # def after_resetting_password_path_for(resource)
-  #   super(resource)
-  # end
+  def send_password_reset_success
+    
+  end
+  
+  def after_resetting_password_path_for(resource)
+  #  super(resource)
+    mgmts_path
+  end
 
   # The path used after sending reset password instructions
   # def after_sending_reset_password_instructions_path_for(resource_name)
