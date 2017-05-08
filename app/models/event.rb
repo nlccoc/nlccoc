@@ -58,7 +58,7 @@ end
         month +=1
       end
       
-      d = DateTime.new(year, month, 1)
+      d = DateTime.new(year, month, 1, self.datetime.hour, self.datetime.min)
       d += (weekday - d.wday) % 7 + (week-1)*7
     end
     d
