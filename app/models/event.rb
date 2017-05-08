@@ -24,7 +24,7 @@ end
    
     #logger.debug year.to_s + ' ' + month.to_s
     
-    d = DateTime.new(year, month, 1)
+    d = DateTime.new(year, month, 1, self.datetime.hour, self.datetime.min)
     
     d += (weekday - d.wday) % 7 + (week-1)*7
     #logger.debug 'd.wday = ' + d.wday.to_s + ', weekday = ' + weekday.to_s + ', week = ' + week.to_s + ', d = ' + d.to_s
@@ -48,7 +48,7 @@ end
   def find_date_by_weekday(week, weekday)
     year = DateTime.now.year
     month = DateTime.now.month
-    d = DateTime.new(year, month, 1)
+    d = DateTime.new(year, month, 1, self.datetime.hour, self.datetime.min)
     d += (weekday - d.wday) % 7 + (week-1)*7
     if d < DateTime.now
       if month == 12
