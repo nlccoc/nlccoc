@@ -13,11 +13,11 @@ class ApplicationController < ActionController::Base
   private
   
     def set_time_zone
-      logger.debug "set_time_zone"
+      #logger.debug "set_time_zone"
       old_time_zone = Time.zone
       Time.zone = browser_timezone if browser_timezone.present?
       Time.zone = 'Pacific Time (US & Canada)' if Time.zone == 'UTC'
-      logger.debug Time.zone
+      #logger.debug Time.zone
       yield
     ensure
       Time.zone = old_time_zone

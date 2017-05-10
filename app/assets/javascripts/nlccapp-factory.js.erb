@@ -458,4 +458,22 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     return deferred.promise;
   }
   return service;
+}]).factory('mgmtFactory', ['$http','$q', function($http, $q){
+  var service = {};
+  var _baseUrl = '/mgmts';
+  
+  service.getUnapprovedUsers = function(){
+    var deferred = $q.defer();
+    var _url = _baseUrl + '/unapprovedusers.json';
+    $http({
+      method: 'GET',
+      url: _url,
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
+    });
+    return deferred.promise;
+  };
+  return service;
 }]);

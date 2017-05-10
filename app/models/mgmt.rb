@@ -18,8 +18,18 @@ class Mgmt < ActiveRecord::Base
       false
     end
   end
+  
+  def active_for_authentication?
+    logger.debug "active_for_authentication"
+    super
+  end
+  
+  def inactive_message
+    "User account has been disabled"
+  end
+  
   private
     def set_default_role
-      self.role ||= Role.find_by_name('registered')
+      self.role ||= Role.find_by_name('unapproved')
     end
 end

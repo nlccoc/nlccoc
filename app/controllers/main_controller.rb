@@ -108,6 +108,11 @@ class MainController < ApplicationController
     end
   end
   
+  def calendarEventView
+    redirect_to children_prayer_path
+  end
+    
+  
   def calendar
     @header_bg='transparent'
     @events = Event.all

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'childrens/index'
+
   get 'errors/not_found'
 
   get 'errors/internal_server_error'
@@ -24,10 +26,13 @@ Rails.application.routes.draw do
   get 'calendar' => 'main#calendar'
   #get "mgmts/*path" => "mgmts#index"
   #get "mgmts/*path.html" => "mgmts#index"
-  
+  get "children/prayer" => 'children#prayer'
   # devise customized controllers: sessions, registrations
   devise_for :mgmts, controllers: { sessions: 'mgmts/sessions', registrations: 'mgmts/registrations', passwords: 'mgmts/passwords' }
   
+  get 'mgmts/inactive' => 'mgmts#inactive'
+  get 'mgmts/unapprovedusers' => 'mgmts#unapprovedusers'
+  get 'CalendarEventView' => 'main#calendarEventView'
   #get '/.well-known/acme-challenge/:id' => 'main#letsencrypt'
 
   resources "contacts", only: [:create]

@@ -42,6 +42,10 @@ class Mgmts::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     mgmts_path
   end
+  
+  def after_inactive_sign_up_path_for(resource)
+    mgmts_inactive_path
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])

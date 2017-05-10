@@ -6455,10 +6455,18 @@ Customized Bootstrap Labels
     font-size: 75%; }
 
 /* Labels variants */
-.label-default {
-  background-color: #bac3d0; }
-  .label-default[href]:hover, .label-default[href]:focus {
-    background-color: #9ca8bb; }
+
+.label-unapproved {
+  text-transform: capitalize;
+}
+
+.label-default, .label-unapproved {
+  background-color: #bac3d0;
+}
+  
+.label-default[href]:hover, .label-default[href]:focus, .label-unapproved[href]:hover, .label-unapproved[href]:hover {
+  background-color: #9ca8bb; 
+}
 
 .label-primary {
   background-color: #337ab7; }

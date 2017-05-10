@@ -732,3 +732,7 @@ nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', '$state', '$
   console.info('uploader', uploader);
 }]);
 
+nlccmgmtapp.controller('unapprovedUsersCtrl', ['$scope', 'unapprovedusers', function($scope, unapprovedusers) {
+  console.log("Unapproved Users Ctrl");
+  $scope.unapprovedusers = unapprovedusers;
+}])
