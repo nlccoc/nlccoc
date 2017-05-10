@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'childrens/index'
+  get 'children/index'
 
   get 'errors/not_found'
 

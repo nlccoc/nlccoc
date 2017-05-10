@@ -46,6 +46,8 @@ gem 'simple_form'
 gem 'sendgrid'
 
 gem 'browser-timezone-rails'
+gem 'sitemap_generator'
+
 
 group :production do
   gem 'pg'
