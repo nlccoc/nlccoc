@@ -14,7 +14,16 @@ SitemapGenerator::Sitemap.create do
   add '/lv'
   add '/videos_lv'
   
+  RolccFeed.find_each do |rolccfeed|
+    add rolcc_feed_path(rolccfeed), :lastmod => rolccfeed.updated_at
+  end
+  
+  Event.find_each do |event|
+    add event_path(event, :locale => 'zh'), :priority => 0.5, :changefreq => 'weekly', :lastmod => Time.now
+  end
+  
   group(:sitemaps_path => 'zh/', :filename => :tr_chinese) do
+    
     add '/comingsoon'
     add "comingsoon"
     add "share" 
