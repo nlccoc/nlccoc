@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get 'mgmts/inactive' => 'mgmts#inactive'
   get 'mgmts/unapprovedusers' => 'mgmts#unapprovedusers'
   get 'CalendarEventView' => 'main#calendarEventView'
+  get 'SermonListing' => 'main#sermonListing'
   #get '/.well-known/acme-challenge/:id' => 'main#letsencrypt'
 
   resources "contacts", only: [:create]

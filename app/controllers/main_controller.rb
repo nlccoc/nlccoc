@@ -111,6 +111,10 @@ class MainController < ApplicationController
   def calendarEventView
     redirect_to children_prayer_path
   end
+  
+  def sermonListing
+    redirect_to audio_path
+  end
     
   
   def calendar
