@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get 'mgmts/unapprovedusers' => 'mgmts#unapprovedusers'
   get 'CalendarEventView' => 'main#calendarEventView'
   get 'SermonListing' => 'main#sermonListing'
+  get 'biblesearch' => 'main#biblesearch'
+  post 'biblesearch' => 'main#biblesearchpost'
   #get '/.well-known/acme-challenge/:id' => 'main#letsencrypt'
 
   resources "contacts", only: [:create]

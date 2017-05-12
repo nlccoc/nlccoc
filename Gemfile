@@ -47,6 +47,8 @@ gem 'sendgrid'
 
 gem 'browser-timezone-rails'
 gem 'sitemap_generator'
+gem 'db_text_search', '~> 0.2.1'
+gem 'meta-tags'
 
 
 group :production do

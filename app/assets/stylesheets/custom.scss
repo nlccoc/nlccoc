@@ -281,7 +281,7 @@
       }
   }
   
-#spinner {
+#spinner, #result-spinner {
   position: relative;
   top: 45%;
   left: 47%;
@@ -1307,4 +1307,25 @@ nav.bg-dark .cart span a {
 }
 .children-prayer-row p {
   font-size: 16px;
+}
+
+.book-section {
+}
+
+.book-name {
+  color: $mainColor;
+  font-size:20px;
+  margin-top:20px;
+  border-bottom: 1px solid $mainColor;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.verse-section {
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.verse-number {
+  color: $mainColor;
 }

@@ -11,11 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507204630) do
+ActiveRecord::Schema.define(version: 20170511003636) do
+
+  create_table "annotations", force: :cascade do |t|
+    t.string  "osis",       null: false
+    t.string  "link",       null: false
+    t.text    "content",    null: false
+    t.integer "version_id"
+  end
+
+  add_index "annotations", ["osis", "link"], name: "sqlite_autoindex_annotations_1", unique: true
+  add_index "annotations", ["osis"], name: "annotation_lookup_index"
+  add_index "annotations", ["version_id"], name: "index_annotations_on_version_id"
+
+  create_table "books", primary_key: "number", force: :cascade do |t|
+    t.text    "osis",       null: false
+    t.text    "human",      null: false
+    t.integer "chapters",   null: false
+    t.integer "version_id"
+  end
+
+  add_index "books", ["version_id"], name: "index_books_on_version_id"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
   end
+
+  create_table "chapters", force: :cascade do |t|
+    t.string  "reference_osis",           null: false
+    t.string  "reference_human",          null: false
+    t.text    "content",                  null: false
+    t.string  "previous_reference_osis"
+    t.string  "previous_reference_human"
+    t.string  "next_reference_osis"
+    t.string  "next_reference_human"
+    t.integer "version_id"
+  end
+
+  add_index "chapters", ["reference_osis"], name: "sqlite_autoindex_chapters_1", unique: true
+  add_index "chapters", ["version_id"], name: "index_chapters_on_version_id"
 
   create_table "event_categories", force: :cascade do |t|
     t.integer "event_id"
@@ -65,6 +99,13 @@ ActiveRecord::Schema.define(version: 20170507204630) do
     t.datetime "updated_at", null: false
     t.string   "speaker"
   end
+
+  create_table "metadata", force: :cascade do |t|
+    t.text "name",  null: false
+    t.text "value"
+  end
+
+  add_index "metadata", ["name"], name: "sqlite_autoindex_metadata_1", unique: true
 
   create_table "mgmts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -141,6 +182,18 @@ ActiveRecord::Schema.define(version: 20170507204630) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+# Could not dump table "verses" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
+  create_table "versions", force: :cascade do |t|
+    t.string "fullename",   limit: 64,  null: false
+    t.text   "copright"
+    t.string "contact_url", limit: 128
+    t.string "name",        limit: 15
+    t.string "url",         limit: 128
+    t.string "date",        limit: 10
   end
 
 end

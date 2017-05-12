@@ -17,6 +17,7 @@
 //= require wavesurfer
 //= require js.cookie
 //= require jstz
+//= require jquery.highlight
 //= require browser_timezone_rails/set_time_zone
 //= require scripts
 //= require pagination
