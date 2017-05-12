@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512221531) do
+ActiveRecord::Schema.define(version: 20170512224940) do
 
   create_table "annotations", force: :cascade do |t|
     t.string   "osis"
@@ -195,12 +195,14 @@ ActiveRecord::Schema.define(version: 20170512221531) do
   end
 
   create_table "versions", force: :cascade do |t|
-    t.string "fullename",   limit: 64,  null: false
-    t.text   "copright"
-    t.string "contact_url", limit: 128
-    t.string "name",        limit: 15
-    t.string "url",         limit: 128
-    t.string "date",        limit: 10
+    t.string   "fullename"
+    t.text     "copyright"
+    t.string   "contact_url"
+    t.string   "name"
+    t.string   "url"
+    t.string   "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

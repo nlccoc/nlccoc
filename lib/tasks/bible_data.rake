@@ -23,5 +23,10 @@ namespace :db do
       puts "Seeding #{filename}..."
       load(filename) if File.exist?(filename)
     end
+    task :version => :environment do
+      filename = "db/bible/versions.seeds.rb"
+      puts "Seeding #{filename}..."
+      load(filename) if File.exist?(filename)
+    end
   end
 end
