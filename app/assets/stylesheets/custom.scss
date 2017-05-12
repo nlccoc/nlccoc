@@ -1328,4 +1328,11 @@ nav.bg-dark .cart span a {
 
 .verse-number {
   color: $mainColor;
+  display: inline-block;
+  color: #f2784b;
+  width: 50px;
+}
+
+input[type="text"].error {
+      outline: 1px solid red;
 }

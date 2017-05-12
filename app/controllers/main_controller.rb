@@ -228,33 +228,42 @@ class MainController < ApplicationController
   
   def biblesearchpost
     @keyword = params[:keyword]
+    @version = params[:version]
+    version_id = 1
     book_cnt=0
     @results={}
     @results['keyword']=@keyword
-    
-    @allverses = DbTextSearch::FullText.new(Verse.all.where('version_id = ?', 1), :unformatted).search(@keyword)
-    @results['verse_count'] = @allverses.count
-    @results['results']=[]
-    @allverses.group_by(&:book).each do |book, results|
-      book_cnt = book_cnt+1
-      @book = {}
-      @book['book']={}
-      @book['book']['osis'] = book
-      @book['book']['name'] = Book.where(["osis = ? AND version_id = ?", book, 1]).first.human
-      
-      #@book['book'] = Book.where(["osis = ?", book]).first.human
-      @book['book']['verses']=[]
-      results.each do |result|
-        @verse = Hash.new()
-        
-        #@book['verse'] << {'number': result.verse.to_s.split('.').map{|n| n.to_i}.join(':')}
-        @verse['number'] = result.verse.to_s.split('.').map{|n| n.to_i}.join(':')
-        @verse['unformatted'] = result.unformatted
-        #puts "#{result.verse.to_s.split('.').map{|n| n.to_i}.join(':')} #{result.unformatted}"
-        @book['book']['verses'] << @verse
+    if !@keyword.nil? && !@keyword.empty? then
+
+      if @version == 'cunpts' then
+        version_id = 1
+      elsif @version == 'rcuvts' then
+        version_id = 2
       end
-      @results['results'] << @book
-    end 
+      @allverses = DbTextSearch::FullText.new(Verse.all.where('version_id = ?', version_id), :unformatted).search(@keyword)
+      @results['verse_count'] = @allverses.count
+      @results['results']=[]
+      @allverses.group_by(&:book).each do |book, results|
+        book_cnt = book_cnt+1
+        @book = {}
+        @book['book']={}
+        @book['book']['osis'] = book
+        @book['book']['name'] = Book.where(["osis = ? AND version_id = ?", book, version_id]).first.human
+        
+        #@book['book'] = Book.where(["osis = ?", book]).first.human
+        @book['book']['verses']=[]
+        results.each do |result|
+          @verse = Hash.new()
+          
+          #@book['verse'] << {'number': result.verse.to_s.split('.').map{|n| n.to_i}.join(':')}
+          @verse['number'] = result.verse.to_s.split('.').map{|n| n.to_i}.join(':')
+          @verse['unformatted'] = result.unformatted
+          #puts "#{result.verse.to_s.split('.').map{|n| n.to_i}.join(':')} #{result.unformatted}"
+          @book['book']['verses'] << @verse
+        end
+        @results['results'] << @book
+      end 
+    end
     @results['book_count'] = book_cnt
     respond_to do |format|
       format.html { render :action => 'biblesearch' }

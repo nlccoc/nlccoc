@@ -19,13 +19,35 @@
 </style>
 <section>
   <div class='row'>
-    <div class='col-md-6 col-md-offset-3'>
+    <div class='col-md-6 col-md-offset-3 text-center'>
       <%= form_tag(biblesearch_path, method: "post") do %>
         <% if @keyword.nil? %>
-          <input name='keyword' type="text" placeholder="Type Here" />
+          <input name='keyword' type="text" placeholder="Type Here" style='margin-top:30px;' onfocus="$(this).removeClass('error')"/>
         <% else %>
-          <input name='keyword' id='keyword' value="<%= @keyword %>" type="text" placeholder="Type Here" />
+          <input name='keyword' id='keyword' value="<%= @keyword %>" type="text" placeholder="Type Here" style='margin-top:30px;' onfocus="$(this).removeClass('error')"//>
         <% end %>
+      
+        <span>
+          <div class="radio-option checked">
+              <div class="inner"></div>
+              <input type="radio" name="version" value="cunpts">
+          </div>
+          <span>新標點和合本</span>
+        </span>
+        <span style='margin-left:50px;'>
+          <div class="radio-option">
+              <div class="inner"></div>
+              <input type="radio" name="version" value="rcuvts">
+          </div>
+          <span>和合本修訂版</span>
+        </span>
+        <!--<span>
+          <div class="radio-option">
+              <div class="inner"></div>
+              <input type="radio" name="radio" value="radio1">
+          </div>
+          <span>Maybe</span>
+        </span>-->
         <input type="submit" value="Search" onclick='search_submit()' />
       <% end %>
     </div>
@@ -52,35 +74,49 @@
 <script>
   
   var search_submit = function(e) {
-    console.log("submit");
     event.preventDefault();
-    $('#result-spinner').fadeIn(1000);
+    
     var keyword = $('input[name=keyword]').val();
+    if (keyword == '') {
+      $('input[name=keyword]').addClass('error');
+      $('input[name=keyword]').attr('placeholder', 'Please enter keyword')
+      return;
+    }
+    $('#result-spinner').fadeIn(1000);
+    var version = $('input[name=version]:checked').val();
+    var result_panel = $('.result');
+  	result_panel.css('opacity', 0);
+  	
+  	
     $.ajax({
       url: '<%= biblesearch_path %>'+'.json',
       type: 'POST',
-      data: 'keyword='+ keyword,
+      data: 'keyword='+ keyword + '&version=' + version,
       success: function(data) {
-    	//called when successful
-    	//$('#ajaxphp-results').html(data);
       	var html=''
-      	var result_panel = $('.result');
-      	if(data.verse_count > 0){
+      	
+      	
+      	if(data.verse_count == 0){
+      	  html='對不起，找到 ' + data.verse_count + ' 筆資料';
+      	}
+      	else if(data.verse_count > 0){
+      	  html += '找到 ' + data.verse_count + ' 筆資料';
         	$.each(data.results, function(index, result){
         	  html+='<div class=\'book-section\' id=\'' + result.book.osis + '\'><div class=\'book-name\'>'+ result.book.name + '</div>';
-        	  console.log(result);
+        	  //console.log(result);
         	  $.each(result.book.verses, function(index_verse, verse_result){
         	    html+='<div class=\'verse-section\'><span class=\'verse-number\'>' + verse_result.number + '</span> &nbsp;&nbsp;' + verse_result.unformatted +'</div>'
         	  })
-        	  
-        	  
         	  html += '</div>';
         	})
       	}
-        console.log(html);
+        //console.log(html);
+        
         result_panel.html(html);
+        $('#result-spinner').fadeOut(500);
+        result_panel.css('opacity', 1);
         result_panel.highlight(keyword);
-        $('#result-spinner').fadeOut(1000);
+        
       },
       error: function(e) {
     	//called when there is an error
