@@ -49,7 +49,7 @@ gem 'browser-timezone-rails'
 gem 'sitemap_generator'
 gem 'db_text_search', '~> 0.2.1'
 gem 'meta-tags'
-gem 'sqlite3'
+#gem 'sqlite3'
 
 
 group :production do
