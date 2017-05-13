@@ -240,9 +240,38 @@ class MainController < ApplicationController
       elsif @version == 'rcuvts' then
         version_id = 2
       end
-      @allverses = DbTextSearch::FullText.new(Verse.all.where('version_id = ?', version_id), :unformatted).search(@keyword)
-      @results['verse_count'] = @allverses.count
+      #@allverses = DbTextSearch::FullText.new(Verse.all.where('version_id = ?', version_id), :unformatted).search(@keyword)
+      
+      logger.debug Rails.env
+      db_config = YAML.load_file('config/database.yml')
+      ActiveRecord::Base.establish_connection(db_config[Rails.env])
+      @allverses=ActiveRecord::Base.connection.exec_query('SELECT "verses".* FROM "verses" WHERE (version_id = 1) AND ("verses"."unformatted" COLLATE NOCASE LIKE \'%耶穌%\')')
+      @results['verse_count'] = @allverses.length
       @results['results']=[]
+      
+      @allverses = @allverses.to_hash.map(&:symbolize_keys)
+    
+      
+      @allverses.group_by{|d| d[:book]}.each do |book, results|
+        book_cnt = book_cnt+1
+        @book = {}
+        @book['book']={}
+        @book['book']['osis'] = book
+        @book['book']['name'] = Book.where(["osis = ? AND version_id = ?", book, version_id]).first.human
+        
+        @book['book']['verses']=[]
+        results.each do |result|
+          @verse = Hash.new()
+          
+          #@book['verse'] << {'number': result.verse.to_s.split('.').map{|n| n.to_i}.join(':')}
+          @verse['number'] = result[:verse].to_s.split('.').map{|n| n.to_i}.join(':')
+          @verse['unformatted'] = result[:unformatted]
+          #puts "#{result.verse.to_s.split('.').map{|n| n.to_i}.join(':')} #{result.unformatted}"
+          @book['book']['verses'] << @verse
+        end
+        @results['results'] << @book
+      end
+=begin
       @allverses.group_by(&:book).each do |book, results|
         book_cnt = book_cnt+1
         @book = {}
@@ -261,8 +290,10 @@ class MainController < ApplicationController
           #puts "#{result.verse.to_s.split('.').map{|n| n.to_i}.join(':')} #{result.unformatted}"
           @book['book']['verses'] << @verse
         end
+ 
         @results['results'] << @book
       end 
+=end
     end
     @results['book_count'] = book_cnt
     respond_to do |format|
