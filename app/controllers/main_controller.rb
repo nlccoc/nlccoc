@@ -245,7 +245,7 @@ class MainController < ApplicationController
       logger.debug Rails.env
       db_config = YAML.load_file('config/database.yml')
       ActiveRecord::Base.establish_connection(db_config[Rails.env])
-      @allverses=ActiveRecord::Base.connection.exec_query('SELECT "verses".* FROM "verses" WHERE (version_id = 1) AND ("verses"."unformatted" COLLATE NOCASE LIKE \'%耶穌%\')')
+      @allverses=ActiveRecord::Base.connection.exec_query('SELECT "verses".* FROM "verses" WHERE (version_id = ' + version_id.to_s + ') AND ("verses"."unformatted" COLLATE NOCASE LIKE \'%' + @keyword + '%\')')
       @results['verse_count'] = @allverses.length
       @results['results']=[]
       
