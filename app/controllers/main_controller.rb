@@ -249,7 +249,7 @@ class MainController < ApplicationController
         config['pool'] = ENV['DB_POOL'] || 5
         ActiveRecord::Base.establish_connection(config)
       end
-      @allverses=ActiveRecord::Base.connection.exec_query('SELECT "verses".* FROM "verses" WHERE (version_id = ' + version_id.to_s + ') AND ("verses"."unformatted" COLLATE NOCASE LIKE \'%' + @keyword + '%\')')
+      @allverses=ActiveRecord::Base.connection.exec_query('SELECT "verses".* FROM "verses" WHERE (version_id = ' + version_id.to_s + ') AND ("verses"."unformatted" LIKE \'%' + @keyword + '%\')')
       @results['verse_count'] = @allverses.length
       @results['results']=[]
       
