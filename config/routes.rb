@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get 'SermonListing' => 'main#sermonListing'
   get 'biblesearch' => 'main#biblesearch'
   post 'biblesearch' => 'main#biblesearchpost'
+  get 'bible/:version/:book/:chapter' => 'bible#bchapter'
   #get '/.well-known/acme-challenge/:id' => 'main#letsencrypt'
 
   resources "contacts", only: [:create]

@@ -1336,3 +1336,15 @@ nav.bg-dark .cart span a {
 input[type="text"].error {
       outline: 1px solid red;
 }
+
+.chapter h3 {
+  color: $mainColor;
+}
+
+.chapter p{
+  font-size: 18px;
+  line-height: 30px;
+}
+.chapter p span:hover {
+  color: $mainColor;
+}

@@ -17,27 +17,28 @@
 }
 
 </style>
-<section>
+<section ng-controller='bibleSearchCtrl'>
   <div class='row'>
+    
     <div class='col-md-6 col-md-offset-3 text-center'>
       <%= form_tag(biblesearch_path, method: "post") do %>
         <% if @keyword.nil? %>
-          <input name='keyword' type="text" placeholder="Type Here" style='margin-top:30px;' onfocus="$(this).removeClass('error')"/>
+          <input name='keyword' type="text" ng-model='search.keyword' placeholder="Type Here" style='margin-top:30px;' onfocus="$(this).removeClass('error')"/>
         <% else %>
-          <input name='keyword' id='keyword' value="<%= @keyword %>" type="text" placeholder="Type Here" style='margin-top:30px;' onfocus="$(this).removeClass('error')"//>
+          <input name='keyword' id='keyword' ng-model='search.keyword' type="text" placeholder="Type Here" style='margin-top:30px;' onfocus="$(this).removeClass('error')"//>
         <% end %>
       
         <span>
           <div class="radio-option checked">
               <div class="inner"></div>
-              <input type="radio" name="version" value="cunpts">
+              <input type="radio" ng-model='search.version' name='version' value="cunpts">
           </div>
           <span>新標點和合本</span>
         </span>
         <span style='margin-left:50px;'>
           <div class="radio-option">
               <div class="inner"></div>
-              <input type="radio" name="version" value="rcuvts">
+              <input type="radio" ng-model='search.version' name='version' value="rcuvts">
           </div>
           <span>和合本修訂版</span>
         </span>
@@ -48,7 +49,8 @@
           </div>
           <span>Maybe</span>
         </span>-->
-        <input type="submit" value="Search" onclick='search_submit()' />
+        <input type="submit" value="Search" prevent-submit ng-click='submit($event); ' />
+        
       <% end %>
     </div>
   </div>
@@ -56,10 +58,21 @@
   <div class='row'>
     <div class='col-md-6 col-md-offset-3'>
       <div class='text-center'>
-        <div id="result-spinner"></div>
+        <div id="result-spinner" ng-show='submitting'></div>
       </div>
       <div class='result'>
-        
+        <div ng-if='results.book_count==0'>
+          對不起，找到 {{results.book_count}} 筆資料
+        </div>
+        <div ng-if="results.book_count > 0">
+          找到 {{results.verse_count}} 筆資料
+          <div class='book-section' id='{{results.book.osis}}' ng-repeat='result in results.results'>
+            <div class='book-name'> {{result.book.name}}</div>
+            <div class='verse-section' ng-repeat='verse in result.book.verses'>
+              <span class='verse-number'>{{verse.number}}</span> &nbsp;&nbsp;{{verse.unformatted}}
+            </div>
+          </div>
+        </div>
       </div>
       <% if !@results.nil? then %>
         <% @results.each do |result| %>
@@ -72,7 +85,18 @@
 </section>
 
 <script>
-  
+  nlccapp.directive('preventSubmit', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, elem, attrs) {
+            if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
+                elem.on('click', function(e){
+                  e.preventDefault();
+                });
+            }
+        }
+   };
+  });
   var search_submit = function(e) {
     event.preventDefault();
     
@@ -82,7 +106,7 @@
       $('input[name=keyword]').attr('placeholder', 'Please enter keyword')
       return;
     }
-    $('#result-spinner').fadeIn(1000);
+    //$('#result-spinner').fadeIn(1000);
     var version = $('input[name=version]:checked').val();
     var result_panel = $('.result');
   	result_panel.css('opacity', 0);
@@ -124,6 +148,5 @@
       }
     });
   }
-  
-  $('#result-spinner').fadeOut(400);
+
 </script>

@@ -2,6 +2,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require angular
+//= require angular-animate
 //= require i18n
 //= require i18n/translations
 //= require masonry/dist/masonry.pkgd.js
@@ -20,4 +22,5 @@
 //= require jquery.highlight
 //= require browser_timezone_rails/set_time_zone
 //= require scripts
+//= require nlccapp
 //= require pagination

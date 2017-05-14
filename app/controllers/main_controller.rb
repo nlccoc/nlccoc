@@ -242,14 +242,18 @@ class MainController < ApplicationController
       end
       #@allverses = DbTextSearch::FullText.new(Verse.all.where('version_id = ?', version_id), :unformatted).search(@keyword)
       
-      logger.debug Rails.env
+      #logger.debug @allverses.count
       if defined?(ActiveRecord::Base)
         config = ActiveRecord::Base.configurations[Rails.env] ||
                     Rails.application.config.database_configuration[Rails.env]
         config['pool'] = ENV['DB_POOL'] || 5
         ActiveRecord::Base.establish_connection(config)
       end
-      @allverses=ActiveRecord::Base.connection.exec_query('SELECT "verses".* FROM "verses" WHERE (version_id = ' + version_id.to_s + ') AND ("verses"."unformatted" LIKE \'%' + @keyword + '%\')')
+      if [Rails.env] == 'development' then
+        @allverses=ActiveRecord::Base.connection.exec_query('SELECT "verses".* FROM "verses" WHERE (version_id = ' + version_id.to_s + ') AND ("verses"."unformatted" COLLATE NOCASE LIKE \'%' + @keyword + '%\')')
+      else
+        @allverses=ActiveRecord::Base.connection.exec_query('SELECT "verses".* FROM "verses" WHERE (version_id = ' + version_id.to_s + ') AND ("verses"."unformatted" LIKE \'%' + @keyword + '%\')')
+      end
       @results['verse_count'] = @allverses.length
       @results['results']=[]
       

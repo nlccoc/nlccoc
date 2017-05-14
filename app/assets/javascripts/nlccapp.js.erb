@@ -1,4 +1,45 @@
 /* global angular */
-var nlccapp = angular.module('nlcc',['ui.router', 'templates', 'oc.lazyLoad', 'nlcc.factory', 'nlcc.tools']);
+//var nlccapp = angular.module('nlcc',['ui.router', 'templates', 'oc.lazyLoad', 'nlcc.factory', 'nlcc.tools']);
+var nlccapp = angular.module('nlcc', []);
+//var nlccext = angular.module('nlccext', ['nlcc.tools']);
 
-var nlccext = angular.module('nlccext', ['nlcc.tools']);
+nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($scope, $timeout, $http){
+  console.log('Bible Search Controller');
+  $scope.submitting=false;
+  var _url = '/biblesearch.json';
+  $scope.search = {
+    keyword: '',
+    version: 'cunpts'
+  }
+
+  $scope.result={}
+  $scope.result.book_count=-1;
+  $scope.submit = function(){
+    $scope.submitting = true;
+  var _url='/biblesearch.json'
+    console.log('submit');
+    $http({
+      method: 'POST',
+      url: _url,
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+        "utf8": "✓",
+        "keyword": $scope.search.keyword,
+        "version": $scope.search.version
+      }
+    }).success(function(data){
+      $scope.results=data;
+      //console.log($scope.results)
+      $timeout(function(){
+       // console.log("highlight");
+        $('.result').highlight($scope.search.keyword);
+      },200)
+      $scope.submitting = false;
+    }).error(function(){
+      console.log("There is an error");
+      $scope.submitting = false;
+    });
+  }
+}])

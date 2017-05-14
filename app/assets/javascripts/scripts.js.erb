@@ -722,7 +722,7 @@ var ready = function() {
 
             $(this).addClass('checked');
 
-            $(this).find('input').prop('checked', true);
+            $(this).find('input').prop('checked', true).trigger('click');;
 
         }
 
