@@ -30,3 +30,14 @@ namespace :db do
     end
   end
 end
+
+task createverse1: :environment do
+  filename = "db/bible/verse.1.seeds.rb"
+  puts "Seeding #{filename}..."
+  load(filename) if File.exist?(filename)
+end
+task createverse2: :environment do
+  filename = "db/bible/verse.2.seeds.rb"
+  puts "Seeding #{filename}..."
+  load(filename) if File.exist?(filename)
+end
