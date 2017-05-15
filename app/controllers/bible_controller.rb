@@ -42,7 +42,7 @@ class BibleController < ApplicationController
       version_id = version[@version]
       #@allverses = DbTextSearch::FullText.new(Verse.all.where('version_id = ?', version_id), :unformatted).search(@keyword)
       
-      if version_id == version['kjv'] then
+      if version_id == version['kjv'] || version_id == version['niv'] then
         
         @allverses = DbTextSearch::FullText.new(Verse.all.where('version_id = ?', version_id), :unformatted).search(@keyword)
         @results['verse_count'] = @allverses.count
