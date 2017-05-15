@@ -40,7 +40,7 @@ class MainController < ApplicationController
   end
   
   def children
-    redirect_to comingsoon_path
+    
   end
   
   def share
