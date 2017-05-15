@@ -9,13 +9,14 @@ nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($
   var _url = '/biblesearch.json';
   $scope.search = {
     keyword: '',
-    version: 'cvnt'
+    version: 'cnvt'
   }
 
   $scope.result={}
   $scope.result.book_count=-1;
   $scope.submit = function(){
     $scope.submitting = true;
+    $scope.results={}
     var _url='/bible/search.json'
     console.log('submit');
     $http({

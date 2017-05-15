@@ -28,7 +28,7 @@ class BibleController < ApplicationController
     @version = params[:version]
     version = {}
     
-    version['cvnt'] = 3
+    version['cnvt'] = 3
     version['cunpts'] = 1
     version['rcuvts'] = 2
     version['kjv'] = 7
