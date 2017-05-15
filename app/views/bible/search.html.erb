@@ -16,22 +16,22 @@
   display: block;
 }
 
-.result {
-  margin-top:50px;
-}
-
 .highlight {
     background-color: yellow;
 }
 
 </style>
 <section ng-controller='bibleSearchCtrl'>
-  <div class='row'>
-    
+  <div class="row">
     <div class='col-md-8 col-md-offset-2 text-center'>
-      <%= form_tag(biblesearch_path, method: "post") do %>
+      <h3 class="large" style=''>聖經經文查詢 Beta</h3>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-8 col-md-offset-2 text-center'>
+      <%= form_tag(bible_search_path, method: "post") do %>
         <% if @keyword.nil? %>
-          <input name='keyword' type="text" ng-model='search.keyword' placeholder="Type Here" style='margin-top:30px;' onfocus="$(this).removeClass('error')"/>
+          <input name='keyword' type="text" ng-model='search.keyword' placeholder="輸入關鍵字" style='margin-top:30px;' onfocus="$(this).removeClass('error')"/>
         <% else %>
           <input name='keyword' id='keyword' ng-model='search.keyword' type="text" placeholder="Type Here" style='margin-top:30px;' onfocus="$(this).removeClass('error')"//>
         <% end %>
@@ -42,33 +42,33 @@
           </div>
           <span>新譯本</span>
         </span>
-        <span class='col-md-3'>
+        <span class='col-md-2'>
           <div class="radio-option">
               <div class="inner"></div>
               <input type="radio" ng-model='search.version' name='version' value="cunpts">
           </div>
           <span>新標點和合本</span>
         </span>
-        <span class='col-md-3'>
+        <span class='col-md-2'>
           <div class="radio-option">
               <div class="inner"></div>
               <input type="radio" ng-model='search.version' name='version' value="rcuvts">
           </div>
           <span>和合本修訂版</span>
         </span>
-        <span class='col-md-2'>
+        <span class='col-md-3'>
           <div class="radio-option">
               <div class="inner"></div>
               <input type="radio" ng-model='search.version' name='version' value="kjv">
           </div>
-          <span>KJV</span>
+          <span>KJV (King James Version)</span>
         </span>
-        <span class='col-md-2'>
+        <span class='col-md-3'>
           <div class="radio-option">
               <div class="inner"></div>
               <input type="radio" ng-model='search.version' name='version' value="niv">
           </div>
-          <span>NIV</span>
+          <span>NIV (New Internetional Version)</span>
         </span>
         <!--<span>
           <div class="radio-option">
@@ -77,7 +77,7 @@
           </div>
           <span>Maybe</span>
         </span>-->
-        <input type="submit" value="Search" prevent-submit ng-click='submit($event); ' />
+        <input type="submit" value="搜尋 Search" prevent-submit ng-click='submit($event); ' />
       <% end %>
     </div>
   </div>
@@ -91,13 +91,10 @@
         <div ng-if='results.book_count==0'>
           對不起，找到 {{results.book_count}} 筆資料
         </div>
-        <!--<div class='book-buttons'>
-          <a ng-repeat='result in results.results'  href="#{{result.book.osis}}" class="inner-link btn btn-sm btn-fire book-button" id="book-button">{{result.book.name}}</a>
-        </div>-->
         <div ng-if="results.book_count > 0">
           找到 {{results.verse_count}} 筆資料
           <div class='book-section' id='{{result.book.osis}}' ng-repeat='result in results.results'>
-            <div class='book-name'> {{result.book.name}}</div>
+            <div class='book-name'> {{result.book.name}} <sub>有 {{result.book.verse_count}} 則經文</sub></div>
             <div class='verse-section' ng-repeat='verse in result.book.verses'>
               <span class='verse-number'>{{verse.number}}</span> &nbsp;&nbsp;{{verse.unformatted}}
             </div>
@@ -148,7 +145,7 @@
   	
   	
     $.ajax({
-      url: '<%= biblesearch_path %>'+'.json',
+      url: '<%= bible_search_path %>'+'.json',
       type: 'POST',
       data: 'keyword='+ keyword + '&version=' + version,
       success: function(data) {

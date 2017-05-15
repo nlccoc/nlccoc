@@ -27,6 +27,14 @@
       <%# end %>
     </li>
     <li>
+      <%# link_to give_path(:locale => I18n.locale), :class => 'active', :target => '_blank' do %>
+        <%= link_to bible_search_path(:locale => I18n.locale), :target => '_blank' do %>
+          <span>聖經經文查詢 Beta</span>
+          <i class="icon-note"></i>
+        <% end %>
+      <%# end %>
+    </li>
+    <li>
       <%= link_to contact_path(:locale => I18n.locale, :topic => '網站問題回報'), :target => '_blank' do %>
         <span>網站問題回報</span>
         <i class="icon-exclamation"></i>

@@ -56,16 +56,17 @@ class BibleController < ApplicationController
           
           #@book['book'] = Book.where(["osis = ?", book]).first.human
           @book['book']['verses']=[]
+          verse_count=0
           results.each do |result|
             @verse = Hash.new()
-            
+            verse_count = verse_count+1
             #@book['verse'] << {'number': result.verse.to_s.split('.').map{|n| n.to_i}.join(':')}
             @verse['number'] = result.verse.to_s.split('.').map{|n| n.to_i}.join(':')
             @verse['unformatted'] = result.unformatted
             #puts "#{result.verse.to_s.split('.').map{|n| n.to_i}.join(':')} #{result.unformatted}"
             @book['book']['verses'] << @verse
           end
-   
+          @book['book']['verse_count'] = verse_count
           @results['results'] << @book
         end 
       else
@@ -94,7 +95,9 @@ class BibleController < ApplicationController
           @book['book']['name'] = Book.where(["osis = ? AND version_id = ?", book, version_id]).first.human
           
           @book['book']['verses']=[]
+          verse_count=0
           results.each do |result|
+            verse_count=verse_count+1
             @verse = Hash.new()
             
             #@book['verse'] << {'number': result.verse.to_s.split('.').map{|n| n.to_i}.join(':')}
@@ -103,6 +106,7 @@ class BibleController < ApplicationController
             #puts "#{result.verse.to_s.split('.').map{|n| n.to_i}.join(':')} #{result.unformatted}"
             @book['book']['verses'] << @verse
           end
+          @book['book']['verse_count'] = verse_count
           @results['results'] << @book
         end
       end
@@ -135,5 +139,9 @@ class BibleController < ApplicationController
       format.html { render :action => 'biblesearch' }
       format.json { render :json => @results.to_json }
     end
+  end
+  
+  def onlinebible
+    redirect_to bible_search_path
   end
 end

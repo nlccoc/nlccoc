@@ -16,7 +16,7 @@ nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($
   $scope.result.book_count=-1;
   $scope.submit = function(){
     $scope.submitting = true;
-    var _url='/biblesearch.json'
+    var _url='/bible/search.json'
     console.log('submit');
     $http({
       method: 'POST',

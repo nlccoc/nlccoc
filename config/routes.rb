@@ -34,8 +34,9 @@ Rails.application.routes.draw do
   get 'mgmts/unapprovedusers' => 'mgmts#unapprovedusers'
   get 'CalendarEventView' => 'main#calendarEventView'
   get 'SermonListing' => 'main#sermonListing'
-  get 'biblesearch' => 'bible#search'
-  post 'biblesearch' => 'bible#searchpost'
+  get 'bible/search' => 'bible#search'
+  post 'bible/search' => 'bible#searchpost'
+  get 'OnlineBible.jsp' => 'bible#onlinebible'
   get 'bible/:version/:book/:chapter' => 'bible#bchapter'
   #get '/.well-known/acme-challenge/:id' => 'main#letsencrypt'
 
