@@ -9,7 +9,8 @@ var mr_firstSectionHeight,
     mr_outOfSight = false,
     mr_floatingProjectSections,
     mr_scrollTop = 0,
-    mr_isTop = false;
+    mr_isTop = false,
+    book_buttons;
 
 Date.prototype.stdTimezoneOffset = function() {
     var jan = new Date(this.getFullYear(), 0, 1);
@@ -230,6 +231,7 @@ var ready = function() {
     mr_navOuterHeight = $('body .nav-container nav:first').outerHeight();
     mr_fixedAt = typeof mr_nav.attr('data-fixed-at') !== typeof undefined ? parseInt(mr_nav.attr('data-fixed-at').replace('px', '')) : parseInt($('section:nth-of-type(1)').outerHeight());
     mr_totop = $('#gotoTop');
+    book_buttons = $('.book-buttons')
     mr_scrollTop = window.pageYOffset;
     updateNav();
     window.addEventListener("scroll", updateNav, false);
@@ -1354,10 +1356,12 @@ function updateNav() {
       if (mr_navFixed) {
           mr_navFixed = false;
           mr_nav.removeClass('fixed');
+          book_buttons.removeClass('fixed');
       }
       if (mr_outOfSight) {
           mr_outOfSight = false;
           mr_nav.removeClass('outOfSight');
+          book_buttons.removeClass('outOfSight');
           mr_totop.addClass('hide');
           mr_totop.removeClass('show');
           
@@ -1365,6 +1369,7 @@ function updateNav() {
       if (mr_navScrolled) {
           mr_navScrolled = false;
           mr_nav.removeClass('scrolled');
+          book_buttons.removeClass('scrolled');
       }
       
       if (mr_isTop){
@@ -1380,6 +1385,7 @@ function updateNav() {
       
       mr_navScrolled = true;
       mr_nav.addClass('scrolled');
+      book_buttons.addClass('scrolled');
       mr_totop.addClass('show');
       mr_totop.removeClass('hide');
       if (!mr_outOfSight) {
@@ -1389,6 +1395,7 @@ function updateNav() {
       if (!mr_navFixed) {
         mr_navFixed = true;
         mr_nav.addClass('fixed');
+        book_buttons.addClass('fixed');
       }
       return;
     }
@@ -1397,6 +1404,7 @@ function updateNav() {
          if (!mr_navFixed) {
               mr_nav.addClass('fixed');
               mr_navFixed = true;
+              book_buttons.addClass('fixed');
           }
 
           if (scrollY > mr_navOuterHeight +10) {
@@ -1405,17 +1413,20 @@ function updateNav() {
                   mr_outOfSight = true;
                   mr_totop.addClass('show');
                   mr_totop.removeClass('hide');
+                  book_buttons.addClass('outOfSight');
               }
           } else {
               if (mr_outOfSight) {
                   mr_outOfSight = false;
                   mr_nav.removeClass('outOfSight');
+                  book_buttons.removeClass('outOfSight');
               }
           }
       } else {
           if (mr_navFixed) {
               mr_navFixed = false;
               mr_nav.removeClass('fixed');
+              book_buttons.removeClass('fixed');
           }
           if (mr_outOfSight) {
               mr_outOfSight = false;
@@ -1428,6 +1439,7 @@ function updateNav() {
       if (mr_navScrolled) {
           mr_navScrolled = false;
           mr_nav.removeClass('scrolled');
+          book_buttons.addClass('scrolled');
       }
 
   }
@@ -1512,6 +1524,7 @@ function initInnerlink(){
   
   // Smooth scroll to inner links
 
+  console.log("init inner link");
   $('.inner-link').each(function(){
     var href = $(this).attr('href');
     if(href.charAt(0) !== "#"){

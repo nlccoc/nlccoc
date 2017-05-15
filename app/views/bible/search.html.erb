@@ -1,5 +1,13 @@
 <style>
-  
+.book-buttons.fixed {
+  top: 70px !important;
+}
+
+.btn-fire.on {
+    background: #f2784b !important;
+    color: #fff !important;
+}
+
 #result-spinner {
   margin-top:50px;
   margin-bottom: 380px;
@@ -20,27 +28,47 @@
 <section ng-controller='bibleSearchCtrl'>
   <div class='row'>
     
-    <div class='col-md-6 col-md-offset-3 text-center'>
+    <div class='col-md-8 col-md-offset-2 text-center'>
       <%= form_tag(biblesearch_path, method: "post") do %>
         <% if @keyword.nil? %>
           <input name='keyword' type="text" ng-model='search.keyword' placeholder="Type Here" style='margin-top:30px;' onfocus="$(this).removeClass('error')"/>
         <% else %>
           <input name='keyword' id='keyword' ng-model='search.keyword' type="text" placeholder="Type Here" style='margin-top:30px;' onfocus="$(this).removeClass('error')"//>
         <% end %>
-      
-        <span>
+        <span class='col-md-2'>
           <div class="radio-option checked">
+              <div class="inner"></div>
+              <input type="radio" ng-model='search.version' name="version" value="cnvt">
+          </div>
+          <span>新譯本</span>
+        </span>
+        <span class='col-md-3'>
+          <div class="radio-option">
               <div class="inner"></div>
               <input type="radio" ng-model='search.version' name='version' value="cunpts">
           </div>
           <span>新標點和合本</span>
         </span>
-        <span style='margin-left:50px;'>
+        <span class='col-md-3'>
           <div class="radio-option">
               <div class="inner"></div>
               <input type="radio" ng-model='search.version' name='version' value="rcuvts">
           </div>
           <span>和合本修訂版</span>
+        </span>
+        <span class='col-md-2'>
+          <div class="radio-option">
+              <div class="inner"></div>
+              <input type="radio" ng-model='search.version' name='version' value="kjv">
+          </div>
+          <span>KJV</span>
+        </span>
+        <span class='col-md-2'>
+          <div class="radio-option">
+              <div class="inner"></div>
+              <input type="radio" ng-model='search.version' name='version' value="niv">
+          </div>
+          <span>NIV</span>
         </span>
         <!--<span>
           <div class="radio-option">
@@ -50,23 +78,25 @@
           <span>Maybe</span>
         </span>-->
         <input type="submit" value="Search" prevent-submit ng-click='submit($event); ' />
-        
       <% end %>
     </div>
   </div>
   
   <div class='row'>
-    <div class='col-md-6 col-md-offset-3'>
+    <div class='col-md-6 col-md-offset-2'>
       <div class='text-center'>
         <div id="result-spinner" ng-show='submitting'></div>
       </div>
-      <div class='result'>
+      <div class='books result'>
         <div ng-if='results.book_count==0'>
           對不起，找到 {{results.book_count}} 筆資料
         </div>
+        <!--<div class='book-buttons'>
+          <a ng-repeat='result in results.results'  href="#{{result.book.osis}}" class="inner-link btn btn-sm btn-fire book-button" id="book-button">{{result.book.name}}</a>
+        </div>-->
         <div ng-if="results.book_count > 0">
           找到 {{results.verse_count}} 筆資料
-          <div class='book-section' id='{{results.book.osis}}' ng-repeat='result in results.results'>
+          <div class='book-section' id='{{result.book.osis}}' ng-repeat='result in results.results'>
             <div class='book-name'> {{result.book.name}}</div>
             <div class='verse-section' ng-repeat='verse in result.book.verses'>
               <span class='verse-number'>{{verse.number}}</span> &nbsp;&nbsp;{{verse.unformatted}}
@@ -80,6 +110,11 @@
           <br><br><br>
         <% end %>
       <% end %>
+    </div>
+    <div class='col-md-2'>
+      <div class='book-buttons col-md-2' style='position: fixed;'>
+        <a ng-repeat='result in results.results'  href="#{{result.book.osis}}" class="inner-link btn btn-sm btn-fire book-button" id="book-button">{{result.book.name}}</a>
+      </div>
     </div>
   </div>
 </section>
@@ -141,6 +176,8 @@
         result_panel.css('opacity', 1);
         result_panel.highlight(keyword);
         
+        
+        
       },
       error: function(e) {
     	//called when there is an error
@@ -149,4 +186,5 @@
     });
   }
 
+  
 </script>

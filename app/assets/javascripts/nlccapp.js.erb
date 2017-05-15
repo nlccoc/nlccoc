@@ -9,14 +9,14 @@ nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($
   var _url = '/biblesearch.json';
   $scope.search = {
     keyword: '',
-    version: 'cunpts'
+    version: 'cvnt'
   }
 
   $scope.result={}
   $scope.result.book_count=-1;
   $scope.submit = function(){
     $scope.submitting = true;
-  var _url='/biblesearch.json'
+    var _url='/biblesearch.json'
     console.log('submit');
     $http({
       method: 'POST',
@@ -35,6 +35,49 @@ nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($
       $timeout(function(){
        // console.log("highlight");
         $('.result').highlight($scope.search.keyword);
+        initInnerlink();
+        
+        var $sections = $('.book-section');
+  
+        // The user scrolls
+        $(window).scroll(function(){
+          var currentScroll = $(this).scrollTop();
+    
+          // $currentSection is somewhere to place the section we must be looking at
+          var $currentSection;
+          
+          $sections.each(function(){
+            // divPosition is the position down the page in px of the current section we are testing 
+            
+            var divPosition = $(this).offset().top;
+            
+            // If the divPosition is less the the currentScroll position the div we are testing has moved above the window edge.
+            // the -1 is so that it includes the div 1px before the div leave the top of the window.
+            if( divPosition - 100 < currentScroll ){
+              // We have either read the section or are currently reading the section so we'll call it our current section
+              $currentSection = $(this);
+              //console.log("Current section");
+              console.log($currentSection.attr('id'))
+              
+              // If the next div has also been read or we are currently reading it we will overwrite this value again. This will leave us with the LAST div that passed.
+            }
+          });
+          if(typeof $currentSection != 'undefined') {
+            var id = $currentSection.attr('id');
+         	  $('a').removeClass('on');
+         	  console.log($('#book-button'));
+         	  var button_name = 'a[href="#' + id + '"]';
+         	  console.log(button_name)
+         	  $(button_name).addClass('on');
+         	  
+          }
+          //console.log($currentSection.attr('id'))
+          
+          //var id = $currentSection.attr('id');
+       	 //$('a').removeClass('active');
+       	 //$("[href=#"+id+"]").addClass('active');
+    
+        });
       },200)
       $scope.submitting = false;
     }).error(function(){

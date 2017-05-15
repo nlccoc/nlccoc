@@ -1,1 +1,4 @@
 /db/backup*
+/db/bible/*
+*.pdf
+*.psd

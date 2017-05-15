@@ -226,7 +226,7 @@ class MainController < ApplicationController
     end
   end
   
-  def biblesearchpost
+  def searchpost
     @keyword = params[:keyword]
     @version = params[:version]
     version_id = 1

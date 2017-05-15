@@ -60,7 +60,7 @@
   color: $mainColor;
 }
 
-.btn-fire:hover {
+.btn-fire:hover, .btn-fire.on {
   background: $mainColor;
   color: #fff;
 }
