@@ -28,42 +28,42 @@
     </div>
   </div>
   <div class='row'>
-    <div class='col-md-8 col-md-offset-2 text-center'>
+    <div class='col-md-8 col-md-offset-2'>
       <%= form_tag(bible_search_path, method: "post") do %>
         <% if @keyword.nil? %>
           <input name='keyword' type="text" ng-model='search.keyword' placeholder="輸入關鍵字" style='margin-top:30px;' onfocus="$(this).removeClass('error')"/>
         <% else %>
           <input name='keyword' id='keyword' ng-model='search.keyword' type="text" placeholder="Type Here" style='margin-top:30px;' onfocus="$(this).removeClass('error')"//>
         <% end %>
-        <span class='col-md-2'>
+        <span class='col-md-2 col-sm-9 col-xs-6'>
           <div class="radio-option checked">
               <div class="inner"></div>
               <input type="radio" ng-model='search.version' name="version" value="cnvt">
           </div>
           <span>新譯本</span>
         </span>
-        <span class='col-md-2'>
+        <span class='col-md-2 col-sm-9 col-xs-6'>
           <div class="radio-option">
               <div class="inner"></div>
               <input type="radio" ng-model='search.version' name='version' value="cunpts">
           </div>
           <span>新標點和合本</span>
         </span>
-        <span class='col-md-2'>
+        <span class='col-md-2 col-sm-9 col-xs-6'>
           <div class="radio-option">
               <div class="inner"></div>
               <input type="radio" ng-model='search.version' name='version' value="rcuvts">
           </div>
           <span>和合本修訂版</span>
         </span>
-        <span class='col-md-3'>
+        <span class='col-md-3 col-sm-9 col-xs-12'>
           <div class="radio-option">
               <div class="inner"></div>
               <input type="radio" ng-model='search.version' name='version' value="kjv">
           </div>
           <span>KJV (King James Version)</span>
         </span>
-        <span class='col-md-3'>
+        <span class='col-md-3 col-sm-9 col-xs-12'>
           <div class="radio-option">
               <div class="inner"></div>
               <input type="radio" ng-model='search.version' name='version' value="niv">
@@ -109,6 +109,9 @@
       <% end %>
     </div>
     <div class='col-md-2'>
+      
+    </div>
+    <div class='col-md-2 hidden-xs'>
       <div class='book-buttons col-md-2' style='position: fixed;'>
         <a ng-repeat='result in results.results'  href="#{{result.book.osis}}" class="inner-link btn btn-sm btn-fire book-button" id="book-button">{{result.book.name}}</a>
       </div>
