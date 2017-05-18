@@ -66,9 +66,7 @@ nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($
           if(typeof $currentSection != 'undefined') {
             var id = $currentSection.attr('id');
          	  $('a').removeClass('on');
-         	  console.log($('#book-button'));
          	  var button_name = 'a[href="#' + id + '"]';
-         	  console.log(button_name)
          	  $(button_name).addClass('on');
          	  
           }

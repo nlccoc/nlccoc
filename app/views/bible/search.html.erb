@@ -20,6 +20,28 @@
     background-color: yellow;
 }
 
+.circle-item.on{
+  color: white;
+  background-color: #f2784b;
+}
+
+.circle-item {
+  font-family: 'Roboto', sans-serif;
+  color: #f2784b;
+  margin-top: 3px;
+  font-size: 12px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-radius:30px;
+  padding: 2px;
+  text-align: center;
+  display: block;
+  line-height: 24px;
+  border: 1px solid #f2784b;
+}
+
+
 </style>
 <section ng-controller='bibleSearchCtrl'>
   <div class="row">
@@ -83,7 +105,7 @@
   </div>
   
   <div class='row'>
-    <div class='col-md-6 col-md-offset-2'>
+    <div class='col-md-8 col-md-offset-2'>
       <div class='text-center'>
         <div id="result-spinner" ng-show='submitting'></div>
       </div>
@@ -109,11 +131,11 @@
       <% end %>
     </div>
     <div class='col-md-2'>
-      
-    </div>
-    <div class='col-md-2 hidden-xs'>
-      <div class='book-buttons col-md-2' style='position: fixed;'>
+      <div class='book-buttons col-md-2 hidden-xs hidden-sm' style='position: fixed;'>
         <a ng-repeat='result in results.results'  href="#{{result.book.osis}}" class="inner-link btn btn-sm btn-fire book-button" id="book-button">{{result.book.name}}</a>
+          </div>
+      <div class='book-buttons col-md-2 hidden-md hidden-lg' style='position: fixed; top: 0px; right: 15px;'>
+        <a ng-repeat='result in results.results'  href="#{{result.book.osis}}" class="hidden-md hidden-lg inner-link circle-item" id="book-button">{{result.book.human_abbr}}</a>
       </div>
     </div>
   </div>

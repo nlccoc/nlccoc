@@ -92,8 +92,9 @@ class BibleController < ApplicationController
           @book = {}
           @book['book']={}
           @book['book']['osis'] = book
-          @book['book']['name'] = Book.where(["osis = ? AND version_id = ?", book, version_id]).first.human
-          
+          b = Book.where(["osis = ? AND version_id = ?", book, version_id])
+          @book['book']['name'] = b.first.human
+          @book['book']['human_abbr'] = b.first.human_abbr
           @book['book']['verses']=[]
           verse_count=0
           results.each do |result|

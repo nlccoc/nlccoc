@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512224940) do
+ActiveRecord::Schema.define(version: 20170516034728) do
 
   create_table "annotations", force: :cascade do |t|
     t.string   "osis"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170512224940) do
     t.integer  "version_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "human_abbr"
   end
 
   create_table "categories", force: :cascade do |t|
