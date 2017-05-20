@@ -736,3 +736,16 @@ nlccmgmtapp.controller('unapprovedUsersCtrl', ['$scope', 'unapprovedusers', func
   console.log("Unapproved Users Ctrl");
   $scope.unapprovedusers = unapprovedusers;
 }])
+
+
+nlccmgmtapp.controller('logsCtrl', ['$scope', 'logs', function($scope, logs){
+  console.log("Logs Controller");
+  $scope.logs = logs
+  $scope.logClassed = function(log) {
+    return "log-" + log.logtype.name
+  }
+  $scope.formatDateTime = function(datetime) {
+    var dt = new Date(datetime)
+    return dt.getFullYear() + '/' + (dt.getMonth()+1) + '/' + dt.getDate() + ' ' + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+  }
+}]);

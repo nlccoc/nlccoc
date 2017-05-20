@@ -1,5 +1,6 @@
 class BibleController < ApplicationController
   layout "extmain"
+  include LogsHelper
 
   def bchapter
     @book = params[:book]
@@ -24,8 +25,10 @@ class BibleController < ApplicationController
   end
   
   def searchpost
+    
     @keyword = params[:keyword]
     @version = params[:version]
+    
     version = {}
     
     version['cnvt'] = 3
@@ -40,7 +43,6 @@ class BibleController < ApplicationController
     @results['keyword']=@keyword
     if !@keyword.nil? && !@keyword.empty? then
       version_id = version[@version]
-      #@allverses = DbTextSearch::FullText.new(Verse.all.where('version_id = ?', version_id), :unformatted).search(@keyword)
       
       if version_id == version['kjv'] || version_id == version['niv'] then
         
@@ -135,6 +137,9 @@ class BibleController < ApplicationController
       end 
 =end
     end
+    
+    v = Version.find(version_id)
+    Log.info("Bible searched with keyword [#{@results['keyword']}] on [#{v.fullename}], returned with total [#{@results['verse_count'] }] records")
     @results['book_count'] = book_cnt
     respond_to do |format|
       format.html { render :action => 'biblesearch' }

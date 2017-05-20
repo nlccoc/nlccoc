@@ -41,3 +41,15 @@ Role.delete_all
 roles.each do |role|
   Role.create!(id: role[:id], name: role[:name])
 end
+
+logtype = [
+  {id: 1, name: 'info'},
+  {id: 2, name: 'warning'},
+  {id: 3, name: 'error'},
+  {id: 4, name: 'debug'}]
+
+Logtype.delete_all
+
+logtype.each do |type|
+  Logtype.create!(id: type[:id], name: type[:name])
+end

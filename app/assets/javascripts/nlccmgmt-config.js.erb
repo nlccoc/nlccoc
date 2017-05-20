@@ -144,6 +144,16 @@ nlccmgmtapp.config([
     }).state('user-profile', {
       url: '/mgmts/user-profile',templateUrl: 'mgmts/profile.html'/*,
       controller: 'mainCtrl'*/
+    }).state('logs-all', {
+      url: '/mgmts/logs/all',
+      controller: 'logsCtrl', 
+      templateUrl: 'mgmts/logs/all.html',
+      resolve: {
+        logResource: 'logFactory',
+        logs: ['logResource',function(logResource){
+          return logResource.getAllLogs();
+        }]
+      }
     });
     
     $urlRouterProvider.otherwise('/mgmts/dashboard');

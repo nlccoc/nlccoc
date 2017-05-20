@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   #get '/.well-known/acme-challenge/:id' => 'main#letsencrypt'
 
   resources "contacts", only: [:create]
+  resources "logs"
   
   scope "/(:locale)", :locale => /en|zh|cn/, :except => 'mgmts' do
     resources :events

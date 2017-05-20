@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516034728) do
+ActiveRecord::Schema.define(version: 20170520185921) do
 
   create_table "annotations", force: :cascade do |t|
     t.string   "osis"
@@ -81,6 +81,20 @@ ActiveRecord::Schema.define(version: 20170516034728) do
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "logs", force: :cascade do |t|
+    t.integer  "logtype_id"
+    t.text     "text"
+    t.datetime "datetime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "logtypes", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

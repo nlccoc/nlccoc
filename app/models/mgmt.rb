@@ -20,12 +20,10 @@ class Mgmt < ActiveRecord::Base
   end
   
   def active_for_authentication?
-    logger.debug "active_for_authentication"
     super
   end
   
   def inactive_message
-    "User account has been disabled"
   end
   
   private
