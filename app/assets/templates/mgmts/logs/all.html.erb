@@ -46,7 +46,7 @@
                       </label>
                   </td>
                   <td>{{formatDateTime(log.datetime)}}</td>
-                  <td>{{html_safe(log.text)}}</td>
+                  <td><span ng-bind-html="html_safe(log.text)"></span></td>
                   <td>{{log.logtype.name}}</td>
               </tr>
                 
