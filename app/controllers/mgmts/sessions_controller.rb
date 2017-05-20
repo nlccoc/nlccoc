@@ -15,7 +15,7 @@ class Mgmts::SessionsController < Devise::SessionsController
     sign_in(resource_name, resource)
     yield resource if block_given?
     
-    Log.info("[#{resource.email} (role: #{resource.role.name})] successfully logged in")
+    Log.info("[#{resource.email}] successfully logged in")
     respond_with resource, location: after_sign_in_path_for(resource)
   end
 
