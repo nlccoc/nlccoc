@@ -738,7 +738,7 @@ nlccmgmtapp.controller('unapprovedUsersCtrl', ['$scope', 'unapprovedusers', func
 }])
 
 
-nlccmgmtapp.controller('logsCtrl', ['$scope', 'logs', function($scope, logs){
+nlccmgmtapp.controller('logsCtrl', ['$scope', '$sce', 'logs', function($scope, $sce, logs){
   console.log("Logs Controller");
   $scope.logs = logs
   $scope.logClassed = function(log) {
@@ -748,4 +748,10 @@ nlccmgmtapp.controller('logsCtrl', ['$scope', 'logs', function($scope, logs){
     var dt = new Date(datetime)
     return dt.getFullYear() + '/' + (dt.getMonth()+1) + '/' + dt.getDate() + ' ' + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
   }
+  
+  $scope.html_safe = function(msg) {
+    return $sce.trustAsHtml(msg);
+  }
+  
+
 }]);

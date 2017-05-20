@@ -46,7 +46,7 @@
                       </label>
                   </td>
                   <td>{{formatDateTime(log.datetime)}}</td>
-                  <td>{{log.text}}</td>
+                  <td>{{html_safe(log.text)}}</td>
                   <td>{{log.logtype.name}}</td>
               </tr>
                 

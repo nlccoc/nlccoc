@@ -5,7 +5,7 @@ class LogsController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.json { render json: @logs.as_json(:include => [:logtype => {:only => [:name]}])}
+      format.json { render json: @logs.as_json(:include => [:logtype => {:only => [:name]}]) }
     end
   end
 end

@@ -41,7 +41,7 @@ class MvideosController < ApplicationController
   
     respond_to do |format|
       if @mvideo.save
-        #Log.info("[#{current_user.email}] created a video: [#{@mvideo}]");
+        Log.info("[<span class='logged-email'>#{current_mgmt.email}</span>] created a video: [<span class='log-video-name'>#{@mvideo.title}<span>]")
         format.html { redirect_to @mvideo, notice: 'mvideo was successfully created.' }
         format.json { render json: @mvideo, status: :created, notice: 'mvideo was successfully created.' }
       else
