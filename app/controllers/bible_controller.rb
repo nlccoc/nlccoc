@@ -14,10 +14,8 @@ class BibleController < ApplicationController
       version_id=2
     end
     
-    logger.debug bookname
     @bible = Chapter.where('lower(reference_osis) = ? AND version_id = ?', bookname, version_id)
     
-    logger.debug(@bible.inspect)
     respond_to do |format|
       format.html { render :action => 'bible' }
       format.json { render :json => @bible.to_json }
@@ -139,7 +137,7 @@ class BibleController < ApplicationController
     end
     
     v = Version.find(version_id)
-    Log.info("Bible searched with keyword [#{@results['keyword']}] on [#{v.fullename}], returned with total [#{@results['verse_count'] }] records")
+    Log.info("<span class='client-ip'>#{request.remote_ip}]</span> searched with keyword [#{@results['keyword']}] on [#{v.fullename}], returned with total [#{@results['verse_count'] }] records")
     @results['book_count'] = book_cnt
     respond_to do |format|
       format.html { render :action => 'biblesearch' }
