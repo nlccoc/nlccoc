@@ -1,7 +1,7 @@
 class LogsController < ApplicationController
   before_action :authenticate_mgmt!
   def index
-    @logs = Log.paginate(:page => params[:page] || 1)
+    @logs = Log.paginate(:page => params[:page] || 1).order('datetime DESC')
     
     respond_to do |format|
       format.html
