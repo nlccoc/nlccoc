@@ -155,13 +155,16 @@ nlccmgmtapp.config([
       url: '/mgmts/user-profile',templateUrl: 'mgmts/profile.html'/*,
       controller: 'mainCtrl'*/
     }).state('logs-all', {
-      url: '/mgmts/logs/all',
+      url: '/mgmts/logs/all/:page',
       controller: 'logsCtrl', 
       templateUrl: 'mgmts/logs/all.html',
       resolve: {
         logResource: 'logFactory',
-        logs: ['logResource',function(logResource){
-          return logResource.getAllLogs();
+        logs: ['logResource', '$stateParams',function(logResource, $stateParams){
+          var page = 1;
+          if($stateParams.page != '')
+            page = $stateParams.page
+          return logResource.getAllLogs(page);
         }]
       }
     });

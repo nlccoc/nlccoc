@@ -746,9 +746,21 @@ nlccmgmtapp.controller('userMgmtCtrl', ['$scope', 'user', function($scope, user)
 
 nlccmgmtapp.controller('logsCtrl', ['$scope', '$sce', 'logs', function($scope, $sce, logs){
   console.log("Logs Controller");
-  $scope.logs = logs
+  $scope.logs = logs.logs;
+  $scope.total_pages = logs.total_pages;
+  $scope.current_page = logs.current_page;
+  $scope.is_current_page = function(page) {
+    console.log('is current? ' + page);
+    if(page == $scope.current_page)
+      return true;
+    else
+      return false;
+  }
+  $scope.getNumber = function(num) {
+    return new Array(num);   
+  }
   $scope.logClassed = function(log) {
-    return "log-" + log.logtype.name
+    return "log-" + log.logtype.name;
   }
   $scope.formatDateTime = function(datetime) {
     var dt = new Date(datetime)

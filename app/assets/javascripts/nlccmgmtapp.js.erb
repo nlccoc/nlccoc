@@ -1,3 +1,16 @@
 /* global angular */
 var nlccmgmtapp = angular.module('nlccmgmtapp',['ui.router', 'templates', 'nlcc.tools', 
 'nlcc.factory', 'ui.bootstrap', 'frapontillo.bootstrap-switch', 'ion.rangeslider', 'summernote', 'angularFileUpload']);
+
+nlccmgmtapp.filter('range', function() {
+  return function(input, total, initial) {
+    initial = initial || 0
+    total = parseInt(total);
+
+    for (var i=0; i<total; i++) {
+      input.push(i+initial);
+    }
+
+    return input;
+  };
+});
