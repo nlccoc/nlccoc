@@ -1,4 +1,4 @@
-/* global $ */
+/* global $, location */
 /**
  * 
  * Core script to handle the entire theme and core functions
@@ -68,9 +68,13 @@ var Layout = function () {
   var handleSidebarMenuActiveLink = function(mode, el) {
     
       //var url = location.hash.toLowerCase();    
-
-      var url = location.href.substr(location.href.lastIndexOf('/') + 1);
-      //console.log('url:' +  url);
+      var url =''
+      url = location.href.substr(location.href.lastIndexOf('/') + 1);
+      if(url==''){
+        var start = location.href.lastIndexOf('/', location.href.length - 2) + 1;
+        url = location.href.substr(start, location.href.length-start-1);
+      }
+      
       var menu = $('.page-sidebar-menu');
 
       if (mode === 'click' || mode === 'set') {

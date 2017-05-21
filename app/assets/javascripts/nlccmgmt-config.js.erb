@@ -131,7 +131,7 @@ nlccmgmtapp.config([
           return mvideoResource.getMvideo($stateParams.mvideoID);
         }]
       }
-    }).state('unapproved-users', {
+    }).state('unapproved', {
       url: '/mgmts/users/unapproved',
       controller: 'unapprovedUsersCtrl', 
       templateUrl: 'mgmts/users/unapproved.html',
@@ -155,7 +155,7 @@ nlccmgmtapp.config([
       url: '/mgmts/user-profile',templateUrl: 'mgmts/profile.html'/*,
       controller: 'mainCtrl'*/
     }).state('logs-all', {
-      url: '/mgmts/logs/all/:page',
+      url: '/mgmts/logs-all/:page',
       controller: 'logsCtrl', 
       templateUrl: 'mgmts/logs/all.html',
       resolve: {
