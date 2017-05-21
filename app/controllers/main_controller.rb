@@ -59,6 +59,7 @@ class MainController < ApplicationController
   
   def rolcc_feed
     @rolcc_feed = RolccFeed.find(params[:id])
+    Log.info("Somebody read Rolcc Feed [#{@rolcc_feed.book}][#{@rolcc_feed.date.strftime("%d")} #{@rolcc_feed.date.strftime("%b")}]")
   end
   
   def pastors
