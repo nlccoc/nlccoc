@@ -33,7 +33,7 @@
         <span class="title">Dashboard</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" ng-show='is_admin'>
       <a href='#' class="nav-link nav-toggle">
         <i class="icon-settings"></i>
         <span class="title">Pastor</span>
@@ -47,7 +47,7 @@
         </li>
       </ul>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" ng-show='is_admin'>
         <a href='#' class="nav-link nav-toggle">
             <i class="icon-settings"></i>
             <span class="title">Media</span>
@@ -76,7 +76,7 @@
             </li>
         </ul>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" ng-show='is_admin'>
       <a href="javascript:;" class="nav-link nav-toggle">
         <i class="icon-wrench"></i>
         <span class="title">Events</span>
@@ -93,7 +93,7 @@
           </li>
         </ul>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" ng-show='is_admin'>
       <a href="javascript:;" class="nav-link nav-toggle">
         <i class="icon-user"></i>
         <span class="title">Users</span>
@@ -110,10 +110,10 @@
     <li class="nav-item">
         <a ui-sref='user-profile' href='#' id="sidebar_menu_link_profile">
             <i class="icon-user"></i>
-            <span class="title">User Profile</span>
+            <span class="title">Profile</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" ng-show='is_admin'>
       <a href="javascript:;" class="nav-link nav-toggle">
         <i class="icon-wrench"></i>
         <span class="title">Logs</span>

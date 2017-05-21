@@ -141,6 +141,16 @@ nlccmgmtapp.config([
           return mgmtResource.getUnapprovedUsers();
         }]
       }
+    }).state('user', {
+      url: '/mgmts/user/:id',
+      controller: 'userMgmtCtrl', 
+      templateUrl: 'mgmts/users/user.html',
+      resolve: {
+      mgmtResource: 'mgmtFactory',
+        user: ['mgmtResource', '$stateParams',function(mgmtResource, $stateParams){
+          return mgmtResource.getUser($stateParams.id);
+        }]
+      }
     }).state('user-profile', {
       url: '/mgmts/user-profile',templateUrl: 'mgmts/profile.html'/*,
       controller: 'mainCtrl'*/

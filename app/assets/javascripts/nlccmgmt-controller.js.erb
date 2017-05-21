@@ -15,8 +15,10 @@ nlccmgmtapp.controller('mgmtCtrl', ['$scope', '$rootScope', 'settings', function
   I18n.defaultLocale = "zh";
   I18n.locale = "zh";
   //I18n.currentLocale();
-  //console.log(gon.current_mgmt);
+  console.log(gon);
   $scope.current_mgmt = gon.current_mgmt;
+  $scope.is_admin = gon.is_admin;
+  $scope.is_unapproved = gon.is_unapproved;
   $scope.fullHeight = '700px';
   // set default layout mode
 	$rootScope.settings.layout.pageContentWhite = true;
@@ -737,6 +739,10 @@ nlccmgmtapp.controller('unapprovedUsersCtrl', ['$scope', 'unapprovedusers', func
   $scope.unapprovedusers = unapprovedusers;
 }])
 
+nlccmgmtapp.controller('userMgmtCtrl', ['$scope', 'user', function($scope, user) {
+  console.log("User Mgmt Ctrl");
+  $scope.user = user;
+}]);
 
 nlccmgmtapp.controller('logsCtrl', ['$scope', '$sce', 'logs', function($scope, $sce, logs){
   console.log("Logs Controller");

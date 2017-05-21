@@ -300,11 +300,11 @@
   -moz-transition: all 0.3s ease;
 }
 
-.jf-active .loaded #loader, .jf-active .loader #spinner {
+.jf-active .loaded #loader, .jf-active .loader #spinner, .jf-inactive .loaded #loader, .jf-inactive .loader #spinner {
   opacity: 0;
 }
 
-.jf-active .loaded #loader-wrapper {
+.jf-active .loaded #loader-wrapper, .jf-inactive .loaded #loader-wrapper {
   visibility:hidden;
   opacity:0;
   transition:visibility 0s linear 0.5s,opacity 0.5s linear;

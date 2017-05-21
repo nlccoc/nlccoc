@@ -3,9 +3,24 @@ class MgmtsController < ApplicationController
   layout 'mgmts'
   
   def index
+    gon.push({
+      :current_mgmt => current_mgmt,
+      :loggedin_email => current_mgmt[:email],
+      :is_admin => current_mgmt.is_admin?,
+      :is_unapproved => current_mgmt.is_unapproved?
+    })
   end
   
   def inactive
+  end
+  
+  def users
+    id = params[:id]
+    @user = Mgmt.find(id)
+    
+    respond_to do |format|
+      format.json {render json: @user.as_json(:include => [:role])}
+    end
   end
   
   def unapprovedusers

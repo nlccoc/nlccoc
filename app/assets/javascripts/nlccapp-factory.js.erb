@@ -475,6 +475,21 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     });
     return deferred.promise;
   };
+  
+  service.getUser = function(id){
+    console.log("Get User");
+    var deferred = $q.defer();
+    var _url = _baseUrl + '/users/' + id + '.json';
+    $http({
+      method: 'GET',
+      url: _url,
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
+    });
+    return deferred.promise;
+  };
   return service;
 }]).factory('logFactory', ['$http','$q', function($http, $q){
   var service = {};

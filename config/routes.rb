@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'errors/internal_server_error'
 
+
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   #scope "(:locale)", :locale => /en|zh/ do
   #resources :events
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
   
   get 'mgmts/inactive' => 'mgmts#inactive'
   get 'mgmts/unapprovedusers' => 'mgmts#unapprovedusers'
+  get 'mgmts/users/:id' => 'mgmts#users'
   get 'CalendarEventView' => 'main#calendarEventView'
   get 'SermonListing' => 'main#sermonListing'
   get 'bible/search' => 'bible#search'
