@@ -25,6 +25,7 @@ class MainController < ApplicationController
   end
   
   def cellgroups
+    Log.info("Somebody checked finding cell groups")
   end
   
   def audio
