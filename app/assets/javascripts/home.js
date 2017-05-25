@@ -20,9 +20,7 @@
 //= require js.cookie
 //= require jstz
 //= require jquery.highlight
-//= require jquery_lazyload/jquery.lazyload
 //= require browser_timezone_rails/set_time_zone
 //= require scripts
 //= require nlccapp
 //= require pagination
-//= require social-share-button
