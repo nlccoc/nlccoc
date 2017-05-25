@@ -48,6 +48,13 @@ cn:
   ministrymission: '宣教事工'
   irvineministry: '尔湾牧区'
   laverneministry: '拉文牧区'
+  social_share_button:
+    share_to: 分享到%{name}
+    weibo: 新浪微博
+    twitter: Twitter
+    facebook: Facebook
+    douban: 豆瓣
+    qq: QQ空间
   activerecord:
     errors:
       messages:

@@ -37,12 +37,17 @@
           <p>
             <%= @rolcc_feed.long_script.html_safe %>
           </p>
+          <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+          <div class="addthis_inline_share_toolbox" data-title="<%= '今日靈修: ' + @rolcc_feed.book %>" data-description="<%= @rolcc_feed.share.html_safe %>"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5927381b19f6bff3"></script> 
+<!--<script async src="https://static.addtoany.com/menu/page.js"></script>-->
+<!-- AddToAny END -->
 <script>
   var verse = $('.verse');
   var text = verse.text();
@@ -51,4 +56,6 @@
   verse.append(' '+ text + ' ');
   verse.append(' <i class="fa fa-quote-right sub"></i>');
   console.log(verse.text());
+  
+  
 </script>

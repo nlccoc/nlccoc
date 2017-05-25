@@ -363,6 +363,8 @@ GEM
     sitemap_generator (5.3.1)
       builder (~> 3.0)
     slop (3.6.0)
+    social-share-button (0.10.0)
+      coffee-rails
     spring (2.0.1)
       activesupport (>= 4.2)
     sprockets (3.7.1)
@@ -443,6 +445,7 @@ DEPENDENCIES
   simple-line-icons-rails
   simple_form
   sitemap_generator
+  social-share-button
   spring
   sqlite3
   summernote-rails

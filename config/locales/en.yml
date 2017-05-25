@@ -76,6 +76,13 @@ en:
   ministrymission: 'Mission'
   irvineministry: 'Irvine'
   laverneministry: 'La Verne'
+  social_share_button:
+    share_to: Share to %{name}
+    weibo: Sina Weibo
+    twitter: Twitter
+    facebook: Facebook
+    douban: Douban
+    qq: QQ
   activerecord:
     errors:
       messages:

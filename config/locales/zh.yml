@@ -80,6 +80,13 @@ zh:
   ministrymission: '宣教事工'
   irvineministry: '爾灣牧區'
   laverneministry: '拉文牧區'
+  social_share_button:
+    share_to: 分享到%{name}
+    weibo: 新浪微博
+    twitter: Twitter
+    facebook: Facebook
+    douban: 豆瓣
+    qq: QQ空间
   activerecord:
     errors:
       messages:
