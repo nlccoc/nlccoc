@@ -8,8 +8,8 @@
   <%= render 'shared/irvine/meta_tags'%>
   <%= Gon::Base.render_data %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'home', 'data-turbolinks-track' => true%>
-  <%= javascript_include_tag 'https://tithe.ly/widget/v2/give.js?3'%>
+  <%= javascript_include_tag 'home', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'https://tithe.ly/widget/v2/give.js?3', async: true%>
   <%# javascript_include_tag 'https://www.google.com/recaptcha/api.js', async: true %>
   <%= csrf_meta_tags %>
   
