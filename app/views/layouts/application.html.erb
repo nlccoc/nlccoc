@@ -8,16 +8,14 @@
   <%= render 'shared/irvine/meta_tags'%>
   <%= Gon::Base.render_data %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'home', 'data-turbolinks-track' => true, async: true %>
-  <%= javascript_include_tag 'https://tithe.ly/widget/v2/give.js?3', async: true %>
+  <%= javascript_include_tag 'home', 'data-turbolinks-track' => true%>
+  <%= javascript_include_tag 'https://tithe.ly/widget/v2/give.js?3'%>
   <%# javascript_include_tag 'https://www.google.com/recaptcha/api.js', async: true %>
   <%= csrf_meta_tags %>
   
   <script type="text/javascript">
-    var I18n = {};
     I18n.defaultLocale = "<%= I18n.default_locale %>";
     I18n.locale = "<%= I18n.locale %>";
-    I18n.locales={};
     I18n.locales.no = 'en';
     I18n.currentLocale();
     
