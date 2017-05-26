@@ -97,7 +97,23 @@ var responsiveClasses = function(){
     	}
     ]);
   };
-    
+ 
+
+var initAdthis;
+
+initAdthis = function(){
+  // Remove all global properties set by addthis, otherwise it won't reinitialize
+  for (var i in window) {
+      if (/^addthis/.test(i) || /^_at/.test(i)) {
+          delete window[i];
+      }
+  }
+  window.addthis_share = null;
+
+  // Finally, load addthis
+  $.getScript("//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59276c095bc3805e");
+}
+   
 var ready = function() { 
   
   var today = new Date();
@@ -147,7 +163,6 @@ var ready = function() {
   }, 200);
     
   initInnerlink();
-  
   // Update scroll variable for scrolling functions
 
   addEventListener('scroll', function() {
@@ -1284,8 +1299,7 @@ $(document).on('turbolinks:load', function() {
   responsiveClasses();
   setTimeout(function(){
     ready();
-    
-    
+
     $('body').addClass('loaded');
     QuickNav.init(); // init metronic core componets
     if($('.audio-3241234').length>0){
