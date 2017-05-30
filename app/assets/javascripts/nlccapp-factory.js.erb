@@ -30,9 +30,9 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   var service = {};
   var _baseUrl = '/mvideos';
   
-  service.getAllMvideos = function(){
+  service.getAllMvideos = function(page){
     var deferred = $q.defer();
-    var _url = _baseUrl + '.json';
+    var _url = _baseUrl + '.json?page='+page;
     $http({
       method: 'GET',
       url: _url,
@@ -355,9 +355,9 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   var service = {};
   var _baseUrl = '/maudios';
   
-  service.getAllMaudios = function(){
+  service.getAllMaudios = function(page){
     var deferred = $q.defer();
-    var _url = _baseUrl + '.json';
+    var _url = _baseUrl + '.json?page='+page;
     $http({
       method: 'GET',
       url: _url,

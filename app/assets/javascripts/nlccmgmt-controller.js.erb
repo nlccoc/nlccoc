@@ -319,9 +319,13 @@ nlccmgmtapp.controller('quicksidebarController', ['$scope', function($scope) {
     }, 2000)
   });
 }]);
-nlccmgmtapp.controller('mediaVideoCtrl', ['$scope', '$timeout', 'mvideoFactory', '$uibModal', 'locations',
-function($scope, $timeout, mvideoFactory, $uibModal, locations) {
+nlccmgmtapp.controller('mediaVideoCtrl', ['$scope', '$timeout', 'mvideo', '$uibModal', 'locations',
+function($scope, $timeout, mvideo, $uibModal, locations) {
   console.log("mediaVideoCtrl Controller");
+  $scope.mvideos = mvideo.mvideo;
+  $scope.total_pages = mvideo.total_pages;
+  $scope.current_page = mvideo.current_page;
+  
   $scope.locations=locations;
   $scope.animationsEnabled = true;
   $scope.newvideo={};
@@ -394,20 +398,16 @@ function($scope, $timeout, mvideoFactory, $uibModal, locations) {
     $('#newEventForm').slideUp(400);
   }
   
-  $scope.$on('$viewContentLoaded', function() {
+  /*$scope.$on('$viewContentLoaded', function() {
     console.log("view content loaded");
-    mvideoFactory.getAllMvideos().then(function(data){
-      $scope.mvideos = data;
-      //console.log(data);
-    });
-    $timeout(function(){
-     }, 0)
-  });
+  });*/
 }]);
 nlccmgmtapp.controller('mediaAudioCtrl', ['$scope', '$timeout', 'maudios', '$uibModal',
 function($scope, $timeout, maudios, $uibModal) {
-  console.log("mediaAudioCtrl Controller");
-  $scope.maudios = maudios;
+  //console.log("mediaAudioCtrl Controller");
+  $scope.maudios = maudios.maudios;
+  $scope.total_pages = maudios.total_pages;
+  $scope.current_page = maudios.current_page;
   
   $scope.deleteMaudio = function(maudio){
     console.log("DeleteMaudio");

@@ -7,11 +7,11 @@ class MvideosController < ApplicationController
   # GET /mvideos
   # GET /mvideos.json
   def index
-    @mvideos = Mvideo.order(date: :desc)
+    @mvideos = Mvideo.paginate(:page => params[:page] || 1).order(date: :desc)
     @header_bg='bg-dark'
     respond_to do |format|
       format.html
-      format.json { render json: @mvideos.as_json(:include => :location) }
+      format.json { render json: { :mvideo => @mvideos.as_json(:include => :location), :total_pages => @mvideos.total_pages, :current_page => params[:page]||1 }}
     end
   end
 

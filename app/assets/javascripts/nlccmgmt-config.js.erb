@@ -7,23 +7,33 @@ nlccmgmtapp.config([
       url: '/mgmts/dashboard',templateUrl: 'mgmts/home.html'/*,
       controller: 'mainCtrl'*/
     }).state('media-video', {
-      url: '/mgmts/media-video',templateUrl: 'mgmts/media/video.html',
+      url: '/mgmts/media-video/:page',templateUrl: 'mgmts/media/video.html',
       controller: 'mediaVideoCtrl',
       resolve: {
         catResource: 'categoryFactory',
+        mvideoResource: 'mvideoFactory',
         locations: ['catResource',function(catResource){
           return catResource.getAllLocations();
+        }],
+        mvideo: ['mvideoResource', '$stateParams', function(mvideoResource, $stateParams){
+          var page = 1;
+          if($stateParams.page != '')
+            page = $stateParams.page
+          return mvideoResource.getAllMvideos(page);
         }]
       }
     }).state('media-audio', {
-      url: '/mgmts/media-audio',templateUrl: 'mgmts/media/audio.html',
+      url: '/mgmts/media-audio/:page',templateUrl: 'mgmts/media/audio.html',
       resolve: {
         // A string value resolves to a service
         maudioResource: 'maudioFactory',
         // A function value resolves to the return
         // value of the function
-        maudios: ['maudioResource',function(maudioResource){
-          return maudioResource.getAllMaudios();
+        maudios: ['maudioResource', '$stateParams',function(maudioResource, $stateParams){
+          var page = 1;
+          if($stateParams.page != '')
+            page = $stateParams.page
+          return maudioResource.getAllMaudios(page);
         }]
       },
       controller: 'mediaAudioCtrl'

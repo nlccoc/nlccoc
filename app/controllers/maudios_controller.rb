@@ -7,11 +7,12 @@ class MaudiosController < ApplicationController
   # GET /Maudios
   # GET /Maudios.json
   def index
-    @Maudios = Maudio.all.order(date: :desc)
+    @Maudios = Maudio.paginate(:page => params[:page] || 1).order(date: :desc)
+    
     @header_bg='bg-dark'
     respond_to do |format|
       format.html
-      format.json { render json: @Maudios }
+      format.json { render json: { :maudios=>@Maudios, :total_pages => @Maudios.total_pages, :current_page => params[:page]||1 }}
     end
   end
 
