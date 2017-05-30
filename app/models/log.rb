@@ -2,6 +2,7 @@ class Log < ActiveRecord::Base
   belongs_to :logtype
   self.per_page = 50
   WillPaginate.per_page = 50
+  
   def self.info(msg)
     log = Log.new
     log.logtype_id = 1

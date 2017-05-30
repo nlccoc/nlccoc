@@ -1,3 +1,8 @@
+<style>
+.irvine-media .owl-nav i.icon-angle-left, .irvine-media .owl-nav i.icon-angle-right {
+  line-height: 34px!important;
+}
+</style>
 <section>
   <div class="container" id='section-media'>
     <div class="row">
@@ -72,7 +77,7 @@
     <div class="row" style='padding-top:24px;'>
       <h4>最新主日錄影</h4>
       <div class="col-sm-12">
-        <div id='owl-carousel-media' class='owl-carousel'>
+        <div id='owl-carousel-media' class='irvine-media owl-carousel'>
           <% @mvideos.each do |video| %>
             <div class='ipost'>
               <div class="entry-image">

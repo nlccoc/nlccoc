@@ -7,10 +7,10 @@ class LibrariesController < ApplicationController
   # GET /libraries
   # GET /libraries.json
   def index
-    @libraries = Library.all
+    @libraries = Library.paginate(:page => params[:page] || 1).order('created_at DESC')
     respond_to do |format|
       format.html { redirect_to @libraries }
-      format.json { render :json => @libraries}
+      format.json { render :json => { :libraries => @libraries, :total_pages => @libraries.total_pages, :current_page => params[:page]||1 }}
     end
   end
   

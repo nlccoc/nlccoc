@@ -321,9 +321,9 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
 }]).factory('libraryFactory', ['$http','$q', function($http, $q){
   var service = {};
   var _baseUrl = '/libraries';
-  service.getAllLibraries = function(){
+  service.getAllLibraries = function(page){
     var deferred = $q.defer();
-    var _url = _baseUrl + '.json';
+    var _url = _baseUrl + '.json?page='+page;
     $http({
       method: 'GET',
       url: _url,
@@ -496,7 +496,6 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   var _baseUrl = '/logs';
   
   service.getAllLogs = function(page){
-    console.log("get log - page: " + page);
     var deferred = $q.defer();
     var _url = _baseUrl + '.json?page=' + page;
     $http({

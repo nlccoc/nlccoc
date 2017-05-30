@@ -333,43 +333,37 @@ body.device-touch.device-xxs .portfolio-notitle .portfolio-overlay { display: no
 
 <section>
   <div class="container sect-about pt40" id="videos-lv">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                <h3 class="uppercase mb40 mb-xs-24">講道錄影 / 造就課程</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h4>NLCC La Verne頻道</h4>
-            </div>
-            <% @mvideos_lv.each do |video| %>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                 <div class='ipost'>
-                      <div class="entry-image">
-      					    <iframe class="center-block img-responsive" src="//www.youtube.com/embed/<%=video.youtubeID%>" frameborder="0" allowfullscreen></iframe>
-      				  </div>
-                      <div class="entry-title">
-    						<h3><a href="#"><%= video.title %></a></h3>
-    				  </div>
-    					<ul class="entry-meta clearfix">
-    						<li><i class="icon-calendar3"></i><%= video.date %></li>
-    						<!--<li><a href="blog-single-full.html#comments"><i class="icon-comments"></i> 19</a></li>-->
-    						<li><a href="#"><i class="icon-film"></i></a></li>
-    					</ul>
-    			</div>
-            </div>
-            <% end %>
-        </div>
-        <div class='row text-right'>
-          <a href='https://www.youtube.com/channel/UCJXA3cLq57tk33IVrZdZnww/videos?sort=dd&view=0&shelf_id=0' target='_blank' class='image-bg btn btn-lg btn-filled mb16 mt16'> 更 多 主 日 影 音 </a>
-        </div>
-        <!--<div class="row">-->
-        <!--    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
-        <!--        </br></br></br>-->
-        <!--        <h5>日期:  影片連結   週報下載</h5>-->
-        <!--    </div>-->
-        <!--</div>             -->
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+        <h3 class="uppercase mb40 mb-xs-24">講道錄影 / 造就課程</h3>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h4>NLCC La Verne頻道</h4>
+      </div>
+      <% @mvideos_lv.each do |video| %>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class='ipost'>
+          <div class="entry-image">
+    		    <iframe class="center-block img-responsive" src="//www.youtube.com/embed/<%=video.youtubeID%>" frameborder="0" allowfullscreen></iframe>
+  			  </div>
+          <div class="entry-title">
+  					<h3><a href="#"><%= video.title %></a></h3>
+  			  </div>
+  				<ul class="entry-meta clearfix">
+  					<li><i class="icon-calendar3"></i><%= video.date %></li>
+  					<!--<li><a href="blog-single-full.html#comments"><i class="icon-comments"></i> 19</a></li>-->
+  					<li><a href="#"><i class="icon-film"></i></a></li>
+  				</ul>
+  			</div>
+      </div>
+      <% end %>
+    </div>
+    <div class='row text-right'>
+      <a href='https://www.youtube.com/channel/UCJXA3cLq57tk33IVrZdZnww/videos?sort=dd&view=0&shelf_id=0' target='_blank' class='image-bg btn btn-lg btn-filled mb16 mt16'> 更 多 主 日 影 音 </a>
+    </div>
+  </div>
 </section>
 
 <section>

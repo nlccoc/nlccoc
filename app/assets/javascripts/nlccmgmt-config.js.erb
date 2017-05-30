@@ -31,11 +31,14 @@ nlccmgmtapp.config([
       url: '/mgmts/media-photo',templateUrl: 'mgmts/media/photo.html'/*,
       controller: 'mainCtrl'*/
     }).state('media-library', {
-      url: '/mgmts/media-library',templateUrl: 'mgmts/media/library.html',
+      url: '/mgmts/media-library/:page',templateUrl: 'mgmts/media/library.html',
       resolve: {
         libraryResource: 'libraryFactory',
-        libraries: ['libraryResource', function(libraryResource){
-          return libraryResource.getAllLibraries();
+        libraries: ['libraryResource', '$stateParams', function(libraryResource, $stateParams){
+          var page = 1;
+          if($stateParams.page != '')
+            page = $stateParams.page
+          return libraryResource.getAllLibraries(page);
         }]
       },
       controller: 'libraryCtrl'
