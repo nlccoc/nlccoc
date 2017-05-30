@@ -1,7 +1,11 @@
 class Log < ActiveRecord::Base
   belongs_to :logtype
-  self.per_page = 50
-  WillPaginate.per_page = 50
+  
+  if(ENV['LOG_PER_PAGE'].nil?)
+    self.per_page= 50
+  else
+    self.per_page = ENV['LOG_PER_PAGE'].to_i
+  end
   
   def self.info(msg)
     log = Log.new
