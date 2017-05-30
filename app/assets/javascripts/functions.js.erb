@@ -2,14 +2,318 @@
 
 var $ = jQuery.noConflict();
 
+var $portfolio = $('.portfolio'),
+		$shop = $('.shop'),
+		$gridContainer = $('.grid-container'),
+		$slider = $('#slider'),
+		$sliderParallaxEl = $('.slider-parallax'),
+		swiperSlider = '',
+		$pageTitle = $('#page-title'),
+		$portfolioItems = $('.portfolio-ajax').find('.portfolio-item'),
+		$portfolioDetails = $('#portfolio-ajax-wrap'),
+		$portfolioDetailsContainer = $('#portfolio-ajax-container'),
+		$portfolioAjaxLoader = $('#portfolio-ajax-loader'),
+		prevPostPortId = '',
+		$gridContainer = $('.grid-container'),
+		$portfolioFilter = $('.portfolio-filter,.custom-filter');
+
 var NLCC = NLCC || {};
 
-(function($){
+NLCC.tools = {
+	lightbox: function(){
+		console.log("Initialize lightbox");
+		if( !$().magnificPopup ) {
+			console.log('lightbox: Magnific Popup not Defined.');
+			return true;
+		}
+		
+		var $lightboxGalleryEl = $('[data-lightbox="gallery"]');
+		
+		console.log($lightboxGalleryEl);
+		
+		if( $lightboxGalleryEl.length > 0 ) {
+			$lightboxGalleryEl.each(function() {
+				var element = $(this);
 
-	// USE STRICT
-	"use strict";
-	
-	NLCC.tools = {
-	  
-	}
-});
+				if( element.find('a[data-lightbox="gallery-item"]').parent('.clone').hasClass('clone') ) {
+					element.find('a[data-lightbox="gallery-item"]').parent('.clone').find('a[data-lightbox="gallery-item"]').attr('data-lightbox','');
+				}
+
+				if( element.find('a[data-lightbox="gallery-item"]').parents('.cloned').hasClass('cloned') ) {
+					element.find('a[data-lightbox="gallery-item"]').parents('.cloned').find('a[data-lightbox="gallery-item"]').attr('data-lightbox','');
+				}
+
+				element.magnificPopup({
+					delegate: 'a[data-lightbox="gallery-item"]',
+					type: 'image',
+					closeOnContentClick: true,
+					closeBtnInside: false,
+					fixedContentPos: true,
+					mainClass: 'mfp-no-margins mfp-fade', // class to remove default margin from left and right side
+					image: {
+						verticalFit: true
+					},
+					gallery: {
+						enabled: true,
+						navigateByImgClick: true,
+						preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+					}
+				});
+			});
+		}
+	}	
+}
+NLCC.portfolio = {
+
+		init: function(){
+
+			NLCC.portfolio.ajaxload();
+
+		},
+
+		gridInit: function( $container ){
+
+			if( !$().isotope ) {
+				console.log('gridInit: Isotope not Defined.');
+				return true;
+			}
+
+			if( $container.length < 1 ) { return true; }
+			if( $container.hasClass('customjs') ) { return true; }
+
+			$container.each( function(){
+				var element = $(this),
+					elementTransition = element.attr('data-transition'),
+					elementLayoutMode = element.attr('data-layout'),
+					elementStagger = element.attr('data-stagger');
+
+				if( !elementTransition ) { elementTransition = '0.65s'; }
+				if( !elementLayoutMode ) { elementLayoutMode = 'masonry'; }
+				if( !elementStagger ) { elementStagger = 0; }
+
+				setTimeout( function(){
+					if( element.hasClass('portfolio') ){
+						element.isotope({
+							layoutMode: elementLayoutMode,
+							transitionDuration: elementTransition,
+							stagger: Number( elementStagger ),
+							masonry: {
+								columnWidth: element.find('.portfolio-item:not(.wide)')[0]
+							}
+						});
+					} else {
+						element.isotope({
+							layoutMode: elementLayoutMode,
+							transitionDuration: elementTransition
+						});
+					}
+				}, 300);
+			});
+		},
+
+		filterInit: function(){
+
+			if( !$().isotope ) {
+				console.log('filterInit: Isotope not Defined.');
+				return true;
+			}
+
+			if( $portfolioFilter.length < 1 ) { return true; }
+			if( $portfolioFilter.hasClass('customjs') ) { return true; }
+
+			$portfolioFilter.each( function(){
+				var element = $(this),
+					elementContainer = element.attr('data-container'),
+					elementActiveClass = element.attr('data-active-class'),
+					elementDefaultFilter = element.attr('data-default');
+
+				if( !elementActiveClass ) { elementActiveClass = 'activeFilter'; }
+
+				element.find('a').click(function(){
+					element.find('li').removeClass( elementActiveClass );
+					$(this).parent('li').addClass( elementActiveClass );
+					var selector = $(this).attr('data-filter');
+					$(elementContainer).isotope({ filter: selector });
+					return false;
+				});
+
+				if( elementDefaultFilter ) {
+					element.find('li').removeClass( elementActiveClass );
+					element.find('[data-filter="'+ elementDefaultFilter +'"]').parent('li').addClass( elementActiveClass );
+					$(elementContainer).isotope({ filter: elementDefaultFilter });
+				}
+			});
+		},
+
+		shuffleInit: function(){
+
+			if( !$().isotope ) {
+				console.log('shuffleInit: Isotope not Defined.');
+				return true;
+			}
+
+			if( $('.portfolio-shuffle').length < 1 ) { return true; }
+
+			$('.portfolio-shuffle').click(function(){
+				var element = $(this),
+					elementContainer = element.attr('data-container');
+
+				$(elementContainer).isotope('shuffle');
+			});
+		},
+
+		portfolioDescMargin: function(){
+			var $portfolioOverlayEl = $('.portfolio-overlay');
+			if( $portfolioOverlayEl.length > 0 ){
+				$portfolioOverlayEl.each(function() {
+					var element = $(this);
+					if( element.find('.portfolio-desc').length > 0 ) {
+						var portfolioOverlayHeight = element.outerHeight();
+						var portfolioOverlayDescHeight = element.find('.portfolio-desc').outerHeight();
+						if( element.find('a.left-icon').length > 0 || element.find('a.right-icon').length > 0 || element.find('a.center-icon').length > 0 ) {
+							var portfolioOverlayIconHeight = 40 + 20;
+						} else {
+							var portfolioOverlayIconHeight = 0;
+						}
+						var portfolioOverlayMiddleAlign = ( portfolioOverlayHeight - portfolioOverlayDescHeight - portfolioOverlayIconHeight ) / 2
+						element.find('.portfolio-desc').css({ 'margin-top': portfolioOverlayMiddleAlign });
+					}
+				});
+			}
+		},
+
+		arrange: function(){
+			if( $portfolio.length > 0 ) {
+				$portfolio.each( function(){
+					var element = $(this);
+					NLCC.initialize.setFullColumnWidth( element );
+				});
+			}
+		},
+
+		ajaxload: function(){
+			$('.portfolio-ajax .portfolio-item a.center-icon').click( function(e) {
+				var portPostId = $(this).parents('.portfolio-item').attr('id');
+				if( !$(this).parents('.portfolio-item').hasClass('portfolio-active') ) {
+					NLCC.portfolio.loadItem(portPostId, prevPostPortId);
+				}
+				e.preventDefault();
+			});
+		},
+
+		newNextPrev: function( portPostId ){
+			var portNext = NLCC.portfolio.getNextItem(portPostId);
+			var portPrev = NLCC.portfolio.getPrevItem(portPostId);
+			$('#next-portfolio').attr('data-id', portNext);
+			$('#prev-portfolio').attr('data-id', portPrev);
+		},
+
+		loadItem: function( portPostId, prevPostPortId, getIt ){
+			if(!getIt) { getIt = false; }
+			var portNext = NLCC.portfolio.getNextItem(portPostId);
+			var portPrev = NLCC.portfolio.getPrevItem(portPostId);
+			if(getIt == false) {
+				NLCC.portfolio.closeItem();
+				$portfolioAjaxLoader.fadeIn();
+				var portfolioDataLoader = $('#' + portPostId).attr('data-loader');
+				$portfolioDetailsContainer.load(portfolioDataLoader, { portid: portPostId, portnext: portNext, portprev: portPrev },
+				function(){
+					NLCC.portfolio.initializeAjax(portPostId);
+					NLCC.portfolio.openItem();
+					$portfolioItems.removeClass('portfolio-active');
+					$('#' + portPostId).addClass('portfolio-active');
+				});
+			}
+		},
+
+		closeItem: function(){
+			if( $portfolioDetails && $portfolioDetails.height() > 32 ) {
+				$portfolioAjaxLoader.fadeIn();
+				$portfolioDetails.find('#portfolio-ajax-single').fadeOut('600', function(){
+					$(this).remove();
+				});
+				$portfolioDetails.removeClass('portfolio-ajax-opened');
+			}
+		},
+
+		openItem: function(){
+			var noOfImages = $portfolioDetails.find('img').length;
+			var noLoaded = 0;
+
+			if( noOfImages > 0 ) {
+				$portfolioDetails.find('img').on('load', function(){
+					noLoaded++;
+					var topOffsetScroll = NLCC.initialize.topScrollOffset();
+					if(noOfImages === noLoaded) {
+						$portfolioDetailsContainer.css({ 'display': 'block' });
+						$portfolioDetails.addClass('portfolio-ajax-opened');
+						$portfolioAjaxLoader.fadeOut();
+						var t=setTimeout(function(){
+							NLCC.widget.loadFlexSlider();
+							NLCC.initialize.lightbox();
+							NLCC.initialize.resizeVideos();
+							NLCC.widget.masonryThumbs();
+							$('html,body').stop(true).animate({
+								'scrollTop': $portfolioDetails.offset().top - topOffsetScroll
+							}, 900, 'easeOutQuad');
+						},500);
+					}
+				});
+			} else {
+				var topOffsetScroll = NLCC.initialize.topScrollOffset();
+				$portfolioDetailsContainer.css({ 'display': 'block' });
+				$portfolioDetails.addClass('portfolio-ajax-opened');
+				$portfolioAjaxLoader.fadeOut();
+				var t=setTimeout(function(){
+					NLCC.widget.loadFlexSlider();
+					NLCC.initialize.lightbox();
+					NLCC.initialize.resizeVideos();
+					NLCC.widget.masonryThumbs();
+					$('html,body').stop(true).animate({
+						'scrollTop': $portfolioDetails.offset().top - topOffsetScroll
+					}, 900, 'easeOutQuad');
+				},500);
+			}
+		},
+
+		getNextItem: function( portPostId ){
+			var portNext = '';
+			var hasNext = $('#' + portPostId).next();
+			if(hasNext.length != 0) {
+				portNext = hasNext.attr('id');
+			}
+			return portNext;
+		},
+
+		getPrevItem: function( portPostId ){
+			var portPrev = '';
+			var hasPrev = $('#' + portPostId).prev();
+			if(hasPrev.length != 0) {
+				portPrev = hasPrev.attr('id');
+			}
+			return portPrev;
+		},
+
+		initializeAjax: function( portPostId ){
+			prevPostPortId = $('#' + portPostId);
+
+			$('#next-portfolio, #prev-portfolio').click( function() {
+				var portPostId = $(this).attr('data-id');
+				$portfolioItems.removeClass('portfolio-active');
+				$('#' + portPostId).addClass('portfolio-active');
+				NLCC.portfolio.loadItem(portPostId,prevPostPortId);
+				return false;
+			});
+
+			$('#close-portfolio').click( function() {
+				$portfolioDetailsContainer.fadeOut('600', function(){
+					$portfolioDetails.find('#portfolio-ajax-single').remove();
+				});
+				$portfolioDetails.removeClass('portfolio-ajax-opened');
+				$portfolioItems.removeClass('portfolio-active');
+				return false;
+			});
+		}
+
+	};
+

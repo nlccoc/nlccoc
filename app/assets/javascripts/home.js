@@ -21,6 +21,8 @@
 //= require jstz
 //= require jquery.highlight
 //= require browser_timezone_rails/set_time_zone
+//= require magnific-popup
+//= require functions
 //= require scripts
 //= require nlccapp
 //= require pagination
