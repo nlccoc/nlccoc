@@ -101,6 +101,7 @@ end
         self.find_date_by_weekday(self.repeat_metum[0].repeat_week, self.repeat_metum[0].repeat_weekday)
       end
     else
+      
       self.datetime
     end
   end

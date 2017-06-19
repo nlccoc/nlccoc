@@ -8,20 +8,22 @@
       <div class="text-center swiper-container">
         <div class="swiper-wrapper">
           <% @featured_events.each do |f_event| %>
-          <div class="swiper-slide" data-swiper-autoplay="5000">
-            <div class='event-img'>
-              <%= link_to event_path(:id => f_event.id) do %><img alt="Pic" src="<%= f_event.featured_info.image_path %>" class='mb0'/> <% end %>
-              <div class="entry-date"><%= f_event.latest_date.strftime("%d")%><span><%= f_event.latest_date.strftime("%b")%></span></div>
-            </div>
-            <div class='event-title'> 
-              <p><%= f_event.featured_info.title %></p> 
-              <p><%= f_event.featured_info.subtitle%></p>
-            </div>
-            <hr class="divider">
-            <div class='event-desc'>
-              <%= "#{f_event.latest_date.strftime("%b")} #{f_event.latest_date.strftime("%-d").to_i.ordinalize}, #{f_event.latest_date.strftime("%A %I:%M %p")}" %>
-            </div>
-          </div>
+            <% if f_event.available? %>
+              <div class="swiper-slide" data-swiper-autoplay="5000">
+                <div class='event-img'>
+                  <%= link_to event_path(:id => f_event.id) do %><img alt="Pic" src="<%= f_event.featured_info.image_path %>" class='mb0'/> <% end %>
+                  <div class="entry-date"><%= f_event.latest_date.strftime("%d")%><span><%= f_event.latest_date.strftime("%b")%></span></div>
+                </div>
+                <div class='event-title'> 
+                  <p><%= f_event.featured_info.title %></p> 
+                  <p><%= f_event.featured_info.subtitle%></p>
+                </div>
+                <hr class="divider">
+                <div class='event-desc'>
+                  <%= "#{f_event.latest_date.strftime("%b")} #{f_event.latest_date.strftime("%-d").to_i.ordinalize}, #{f_event.latest_date.strftime("%A %I:%M %p")}" %>
+                </div>
+              </div>
+            <% end %>
           <% end%>
         </div>
         <!-- Add Arrows -->

@@ -112,7 +112,6 @@ class EventsController < ApplicationController
       featured_info.image_path=event[:featured][:image_path]
       @event.featured_info = featured_info
     end
-    
     if params[:repeat] == true
       @repeat_meta = RepeatMetum.new
       @repeat_meta.repeat_start = @event.datetime
@@ -122,7 +121,10 @@ class EventsController < ApplicationController
       @event.repeat_metum = []
       @repeat_meta.valid_until = DateTime.new(valid_until['date(1i)'], valid_until['date(2i)'], valid_until['date(3i)'])
       @event.repeat_metum << @repeat_meta
+    else
+      @event.repeat_metum.clear
     end
+    
     respond_to do |format|
       if @event.update(@event.as_json)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
