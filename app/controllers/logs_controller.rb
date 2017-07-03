@@ -1,7 +1,12 @@
 class LogsController < ApplicationController
   before_action :authenticate_mgmt!
   def index
-    @logs = Log.paginate(:page => params[:page] || 1).order('datetime DESC')
+    @exclude = 'read Rolcc Feed'
+    @logs = Log.where.not('text LIKE ?', '%'+@exclude+'%').paginate(:page => params[:page] || 1).order('datetime DESC')
+    #@logs = Log.where.not('text LIKE ?', '%successfully logged in%').paginate(:page => params[:page] || 1).order('datetime DESC')
+    @exclude = 'read Rolcc Feed'
+    
+    
     
     respond_to do |format|
       format.html
