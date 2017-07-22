@@ -34,7 +34,11 @@
       <div class='col-md-12 text-center'>
         <a href='#' class="btn btn-fire btn-lg mt40" id='mevent'><%= t('moreevents') %></a>
         <a href='#' class="btn btn-fire btn-lg mt40" id='tevent' style='display:none;'>Close Panel</a>
+        <%= link_to calendar_path(:locale => I18n.locale), :class => "btn btn-fire btn-lg mt40", :target => '_blank' do %>
+          教會行事曆
+        <% end %>
       </div>
+      
       <div class="row frontpage moreevent mt40" style='display: none;'>
         <div class="col-md-8 col-md-offset-2">
           <div class="tabbed-content button-tabs">
