@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   post 'bible/search' => 'bible#searchpost'
   get 'OnlineBible.jsp' => 'bible#onlinebible'
   get 'bible/:version/:book/:chapter' => 'bible#bchapter'
+  get 'pastor/share' => 'main#pastorshare'
   #get '/.well-known/acme-challenge/:id' => 'main#letsencrypt'
 
   resources "contacts", only: [:create]

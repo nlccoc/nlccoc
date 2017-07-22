@@ -312,6 +312,9 @@ class MainController < ApplicationController
     end
   end
   
+  def pastorshare
+  end
+  
   private 
     def set_bg_dark
       @header_bg='bg-dark'
