@@ -71,6 +71,9 @@ namespace :feed do
   
     @rolcc_feed = RolccFeed.new
     @rolcc_feed.book = articles[0].css('h3.graf--leading').text
+    
+    puts '================Book===================='
+    puts articles[0].css('h3.graf--leading').text
     book = @rolcc_feed.book.split(' ', 0)[0]
     #Save to category-book if category book not exist
     
@@ -122,7 +125,9 @@ namespace :feed do
       end
       
       #puts @rolcc_feed.long_script
-      
+      puts '================Prayer=================='
+      puts page1.css('section p.graf-after--h4').text
+      @rolcc_feed.prayer = page1.css('section p.graf-after--h4').text
       @rolcc_feed.save!
       #puts @rolcc_feed.book
       

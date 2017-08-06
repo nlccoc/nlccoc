@@ -1,3 +1,8 @@
+<style>
+.prayer {
+  font-style: italic;
+}
+</style>
 <section>
   <div class="container rolcc">
     <div class="row">
@@ -31,12 +36,22 @@
         </p>
       </div>
     </div>
+
     <div class='row'>
       <div class="col-sm-8 col-sm-offset-2">
         <div class="post-snippet mb64">
           <p>
             <%= @rolcc_feed.long_script.html_safe %>
           </p>
+          <% unless @rolcc_feed.prayer.nil? %>
+          <hr>
+          <p class='lead'>
+            與劉彤牧師同心禱告
+          </p>
+          <p>
+            <span class='prayer'><i class="fa fa-quote-left sup"></i> <%= @rolcc_feed.prayer %> <i class="fa fa-quote-right sub"></i></span>
+          </p>
+          <% end %>
           <!-- Go to www.addthis.com/dashboard to customize your tools --> 
           <div class="addthis_inline_share_toolbox" data-title="<%= '今日靈修: ' + @rolcc_feed.book %>" data-description="<%= @rolcc_feed.share.html_safe %>"></div>
         </div>
@@ -65,6 +80,7 @@
   verse.append('<i class="fa fa-quote-left sup"></i> ');
   verse.append(' '+ text + ' ');
   verse.append(' <i class="fa fa-quote-right sub"></i>');
-  console.log(verse.text());
+  
+  //console.log(verse.text());
   
 </script>

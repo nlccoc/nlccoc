@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520185921) do
+ActiveRecord::Schema.define(version: 20170806214045) do
 
   create_table "annotations", force: :cascade do |t|
     t.string   "osis"
@@ -111,6 +111,13 @@ ActiveRecord::Schema.define(version: 20170520185921) do
     t.string   "speaker"
   end
 
+  create_table "metadata", force: :cascade do |t|
+    t.text "name",  null: false
+    t.text "value"
+  end
+
+  add_index "metadata", ["name"], name: "sqlite_autoindex_metadata_1", unique: true
+
   create_table "mgmts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -180,12 +187,20 @@ ActiveRecord::Schema.define(version: 20170520185921) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "link"
+    t.string   "prayer"
   end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "verse_tables", force: :cascade do |t|
+    t.string  "book"
+    t.string  "verse"
+    t.text    "unformatted"
+    t.integer "version_id"
   end
 
   create_table "verses", force: :cascade do |t|
