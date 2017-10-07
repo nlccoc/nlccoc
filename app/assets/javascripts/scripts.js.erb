@@ -1298,6 +1298,14 @@ $(document).on('turbolinks:load', function() {
   //console.log('(document).turbolinks:load');
   responsiveClasses();
   setTimeout(function(){
+    var html = $('html');
+    if(html.attr('class').includes("jf-loading")){
+      // console.log("loading over 3 seconds");
+      // Force display
+      $('html').addClass('jf-tooslow');
+    }
+  }, 3000);
+  setTimeout(function(){
     ready();
 
     $('body').addClass('loaded');
