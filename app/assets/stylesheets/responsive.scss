@@ -1,3 +1,30 @@
+//device-lg
+
+.device-lg {
+  .youth-title {
+      max-width: 95%;
+      position: absolute;
+      top: -380px;
+    }
+    .youth-figure {
+      max-width: 60%;
+      position:absolute;
+      top: -120px;
+    }
+    .youth-present {
+      position:absolute;
+      right: -50px;
+      top: -370px;
+      max-width: 45%;
+    }
+    .youth-info {
+      position:absolute;
+      right: -50px;
+      top: -50px;
+      max-width: 50%;
+    }
+}
+
 //device-md
 
 .device-md {
@@ -23,6 +50,57 @@
   .rolcc_feed_sidebar {
     display: none;
   }
+  
+  .youth-title {
+      max-width: 95%;
+      position: absolute;
+      top: -380px;
+    }
+    .youth-figure {
+      max-width: 60%;
+      position:absolute;
+      top: -120px;
+    }
+    .youth-present {
+      position:absolute;
+      right: 0px;
+      top: -370px;
+      max-width: 45%;
+    }
+    .youth-info {
+      position:absolute;
+      right: 0px;
+      top: -50px;
+      max-width: 50%;
+    }
+}
+
+//device-sm 
+
+.device-sm {
+  .youth-title {
+    max-width: 95%;
+    position: absolute;
+    top: -320px;
+  }
+  .youth-figure {
+    max-width: 60%;
+    position:absolute;
+    top: -130px;
+  }
+  .youth-present {
+    position:absolute;
+    right: 20px;
+    top: -320px;
+    max-width: 45%;
+  }
+  .youth-info {
+    position:absolute;
+    right: 20px;
+    top: -50px;
+    max-width: 45%;
+  }
+  
 }
 //device-xxs
 
@@ -68,10 +146,36 @@
   .kids-webinar-title{
     font-size:24px;
   }
+  
+  .youth-title {
+    max-width: 95%;
+    position: absolute;
+    top: 0px;
+  }
+  .youth-figure {
+    max-width: 60%;
+    position:absolute;
+    top: 80px;
+  }
+  .youth-present {
+    position:absolute;
+    right: 20px;
+    top: 0px;
+    max-width: 45%;
+  }
+  .youth-info {
+    position:absolute;
+    right: 20px;
+    top: 120px;
+    max-width: 45%;
+  }
 }
 //device-xs
 
 .device-xs {
+  .nlcc-title {
+    font-size: 46px;
+  }
   .col-xs-12 {
     width: 50%;
   }
@@ -124,5 +228,30 @@
   }
   .rolcc_feed_sidebar {
     display: none;
+  }
+  
+  .youth-title {
+    max-width: 80%;
+    position: absolute;
+    top: -50px;
+    left: 30px;
+  }
+  .youth-figure {
+    max-width: 50%;
+    position:absolute;
+    top: 50px;
+    left: 30px;
+  }
+  .youth-present {
+    position:absolute;
+    right: 30px;
+    top: -50px;
+    max-width: 45%;
+  }
+  .youth-info {
+    position:absolute;
+    right: 50px;
+    top: 70px;
+    max-width: 40%;
   }
 }

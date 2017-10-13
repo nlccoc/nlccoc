@@ -508,5 +508,32 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     });
     return deferred.promise;
   }
+  return service;
+}]).factory('userFactory', ['$http','$q', function($http, $q){
+  var service = {};
+  var _baseUrl = '/mgmts';
+  
+  service.approveUser = function(id) {
+    console.log('Approve User!');
+    var deferred = $q.defer();
+    var _url = _baseUrl + '/approveuser.json';
+    $http({
+      method: 'POST',
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
+      url: _url,
+      data: {
+        "user": {
+          "id": id
+        }
+      }
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
+    });
+    return deferred.promise;
+  }
   return service
 }]);

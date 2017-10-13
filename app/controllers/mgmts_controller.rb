@@ -32,4 +32,17 @@ class MgmtsController < ApplicationController
     end
   end
   
+  def approveuser 
+    @params = params.require(:user).permit(:id)
+
+    @user = Mgmt.find(@params[:id])
+    
+    role = Role.find_by(name: 'office')
+    @user.role = role
+    @user.save
+    respond_to do |format|
+      format.json { render :json => @user, :include => :role}
+    end
+  end
+  
 end

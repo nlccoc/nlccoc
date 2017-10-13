@@ -1,4 +1,13 @@
 <!-- BEGIN PAGE HEADER-->
+<script type="text/ng-template" id="confirmApproval.html">
+	<p>Are you sure you want to approve this user?</p>
+	<ul class="cd-buttons">
+		<li><a href="#0" ng-click="ok()">Yes</a></li>
+		<li><a href="#0" ng-click="cancel()">No</a></li>
+	</ul>
+
+</script>
+
 <div class="page-bar">
   <ul class="page-breadcrumb">
     <li>
@@ -50,7 +59,7 @@
                   <td></td>
                   <td class="center"></td>
                   <td>
-                      <span class="label label-sm label-{{user.role.name}}">{{user.role.name}} </span>
+                      <span class="label label-sm label-{{user.role.name}}">{{user.role.name}} </span> <span ng-click='approveUser(user)'>approve</span>
                   </td>
               </tr>
                 

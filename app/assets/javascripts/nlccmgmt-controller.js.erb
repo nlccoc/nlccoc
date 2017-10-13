@@ -735,10 +735,57 @@ nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', '$state', '$
   console.info('uploader', uploader);
 }]);
 
-nlccmgmtapp.controller('unapprovedUsersCtrl', ['$scope', 'unapprovedusers', function($scope, unapprovedusers) {
+nlccmgmtapp.controller('unapprovedUsersCtrl', ['$scope', 'unapprovedusers', '$uibModal', function($scope, unapprovedusers, $uibModal) {
   console.log("Unapproved Users Ctrl");
   $scope.unapprovedusers = unapprovedusers;
-}])
+  $scope.animationsEnabled = true;
+  $scope.approveUser = function(user){
+    
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'confirmApproval.html',
+      controller: 'userApproveCtrl',//,
+      resolve: {
+        user: function(){
+          return user;
+        }
+      }
+    });
+    
+    modalInstance.result.then(function (result) {
+      //console.log(result);
+      if(result == 0) {
+        var idx = 0;
+        //for(idx=0; idx<$scope.mvideos.length; idx++){
+        //  if (mvideo.id == $scope.mvideos[idx].id){
+        //    $scope.mvideos.splice(idx, 1);
+        //    return;
+        //  }
+        //}
+      }
+    });
+  
+  }
+  
+}]);
+
+nlccmgmtapp.controller('userApproveCtrl', ['$scope', '$uibModalInstance','user', 'userFactory', '$state', 
+function ($scope, $uibModalInstance, user, userFactory, $state) {
+  
+  $scope.ok = function () {
+    console.log("Approve User " + user.id);
+    userFactory.approveUser(user.id).then(function(data){
+      toastr.success('User Approved');
+      $state.go('unapproved');
+    });
+    
+    $uibModalInstance.close(0);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+}]);
 
 nlccmgmtapp.controller('userMgmtCtrl', ['$scope', 'user', function($scope, user) {
   console.log("User Mgmt Ctrl");
