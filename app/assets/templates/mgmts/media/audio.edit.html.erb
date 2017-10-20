@@ -19,9 +19,13 @@
         </div>
         <div class="form-group">  
           <label>Path</label>
-          <div class="input-icon input-icon-lg">
+          <div class="input-group input-icon input-icon-lg">
             <i class="fa fa-bell-o"></i>
-            <input type="text" class="form-control input" placeholder="Path" ng-model='maudio.path'></div>
+            <input type="text" class="form-control input" placeholder="Path" ng-model='maudio.path'>
+            <span class="input-group-btn">
+              <button type="button" class="btn green" ng-click='browse()'> <i class="fa fa-arrow-left fa-fw"></i>  Browse</button>  
+            </span>
+          </div>
         </div>
         <div class="form-group">
           <label>Date</label>

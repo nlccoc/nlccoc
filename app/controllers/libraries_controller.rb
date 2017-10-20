@@ -26,7 +26,7 @@ class LibrariesController < ApplicationController
     @library = Library.new(library_params)
 
     respond_to do |format|
-      if @library.save
+      if @library.save!
         format.html { redirect_to @library, notice: 'Library was successfully created.' }
         format.json { render :json => {status: "OK"}}
       else

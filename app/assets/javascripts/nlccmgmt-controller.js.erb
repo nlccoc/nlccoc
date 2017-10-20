@@ -439,7 +439,7 @@ function($scope, $timeout, maudios, $uibModal) {
   }
   
 }]);
-nlccmgmtapp.controller('audioNewCtrl', ['$scope', 'maudioFactory', '$state', function($scope, maudioFactory, $state){
+nlccmgmtapp.controller('audioNewCtrl', ['$scope', 'maudioFactory', '$state', '$uibModal', function($scope, maudioFactory, $state, $uibModal){
   $scope.function = 'new';
   $scope.maudio = {};
   $scope.maudio.title='';
@@ -472,9 +472,25 @@ nlccmgmtapp.controller('audioNewCtrl', ['$scope', 'maudioFactory', '$state', fun
       });
     }
   }
+  
+  $scope.animationsEnabled=true;
+  $scope.browse = function() {
+    console.log('browse');
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'mgmts/browselibrary.html',
+      controller: 'modalBrowseLibraryCtrl'
+    });
+    
+    modalInstance.result.then(function (result) {
+      //console.log(result);
+      if(result == 0) {
+      }
+    });
+  }
 }]);
-nlccmgmtapp.controller('mediaAudioEditCtrl', ['$scope', '$timeout', 'maudio', 'maudioFactory', '$state',
-function($scope, $timeout, maudio, maudioFactory, $state) {
+nlccmgmtapp.controller('mediaAudioEditCtrl', ['$scope', '$timeout', 'maudio', 'maudioFactory', '$state', '$uibModal',
+function($scope, $timeout, maudio, maudioFactory, $state, $uibModal) {
   console.log("mediaAudioCtrl Controller");
   $scope.maudio = maudio;
   $scope.function = 'edit';
@@ -506,7 +522,37 @@ function($scope, $timeout, maudio, maudioFactory, $state) {
       });
     }
   }
+  
+  $scope.animationsEnabled = true;
+  $scope.browse = function() {
+    console.log('browse');
+    /*var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'browselibrary.html',
+      controller: 'modalBrowseLibraryCtrl'
+    });
+    
+    modalInstance.result.then(function (result) {
+      //console.log(result);
+      if(result == 0) {
+      }
+    });*/
+  }
 }]);
+nlccmgmtapp.controller('modalBrowseLibraryCtrl', ['$scope', '$uibModalInstance',
+function ($scope, $uibModalInstance) {
+  
+  $scope.ok = function () {
+
+    $uibModalInstance.close(0);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+}]);
+nlccmgmtapp.controll
+
 nlccmgmtapp.controller('mvideoNewCtrl', ['$scope', 'mvideoFactory', '$state', 'locations', function($scope, mvideoFactory, $state, locations){
   console.log("mvideo New Controller");
   $scope.function = 'new';
@@ -557,13 +603,11 @@ function($scope, $timeout, mvideo, mvideoFactory, $state, locations) {
     if(func=='edit'){
       mvideoFactory.updateMVideo($scope.mvideo).then(function(data){
         $state.go('media-video');
-        console.log("Success updated a video");
         toastr.success('Success updated video' + $scope.mvideo.title);
       });
     }
   }
 }]);
-
 nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', '$uibModal', function($scope, libraries, $uibModal){
   console.log('library Controller');
   $scope.libraries = libraries.libraries;
@@ -638,7 +682,7 @@ function ($scope, $uibModalInstance, libraryFactory, library) {
     //console.log("delete {" + library.id + "}");
     //console.log(library);
     libraryFactory.deleteLibrary(library.id).then(function(data){
-      console.log("Successfully delete the library");
+      //console.log("Successfully delete the library");
     });
     $uibModalInstance.close(0);
   };
@@ -734,7 +778,6 @@ nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', '$state', '$
   };
   console.info('uploader', uploader);
 }]);
-
 nlccmgmtapp.controller('unapprovedUsersCtrl', ['$scope', 'unapprovedusers', '$uibModal', function($scope, unapprovedusers, $uibModal) {
   console.log("Unapproved Users Ctrl");
   $scope.unapprovedusers = unapprovedusers;
@@ -744,9 +787,9 @@ nlccmgmtapp.controller('unapprovedUsersCtrl', ['$scope', 'unapprovedusers', '$ui
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       templateUrl: 'confirmApproval.html',
-      controller: 'userApproveCtrl',//,
+      controller: 'userApproveCtrl', 
       resolve: {
-        user: function(){
+        user: function () {
           return user;
         }
       }
@@ -754,44 +797,35 @@ nlccmgmtapp.controller('unapprovedUsersCtrl', ['$scope', 'unapprovedusers', '$ui
     
     modalInstance.result.then(function (result) {
       //console.log(result);
-      if(result == 0) {
-        var idx = 0;
-        //for(idx=0; idx<$scope.mvideos.length; idx++){
-        //  if (mvideo.id == $scope.mvideos[idx].id){
-        //    $scope.mvideos.splice(idx, 1);
-        //    return;
-        //  }
-        //}
-      }
     });
   
   }
   
 }]);
-
-nlccmgmtapp.controller('userApproveCtrl', ['$scope', '$uibModalInstance','user', 'userFactory', '$state', 
-function ($scope, $uibModalInstance, user, userFactory, $state) {
+nlccmgmtapp.controller('userApproveCtrl', ['$scope', '$uibModalInstance', '$state', '$timeout', 'mgmtFactory', 'user',
+function ($scope, $uibModalInstance, $state, $timeout, mgmtFactory, user) {
   
   $scope.ok = function () {
-    console.log("Approve User " + user.id);
-    userFactory.approveUser(user.id).then(function(data){
-      toastr.success('User Approved');
-      $state.go('unapproved');
+    
+    mgmtFactory.approveUser(user.id).then(function(data){
+      toastr.success("Successfully approved user: " + user.email);
+      $timeout(function(){
+        $state.go('unapproved', {}, { reload: true });
+      },200);
     });
     
     $uibModalInstance.close(0);
+    
   };
 
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
 }]);
-
 nlccmgmtapp.controller('userMgmtCtrl', ['$scope', 'user', function($scope, user) {
   console.log("User Mgmt Ctrl");
   $scope.user = user;
 }]);
-
 nlccmgmtapp.controller('logsCtrl', ['$scope', '$sce', 'logs', function($scope, $sce, logs){
   console.log("Logs Controller");
   $scope.logs = logs.logs;
