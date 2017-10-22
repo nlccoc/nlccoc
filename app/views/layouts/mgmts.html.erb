@@ -11,6 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'mgmts', media: 'all' %>
   <%= javascript_include_tag 'mgmts' %>
+  <%= yield(:aws) %>
   <%= csrf_meta_tags %>
 </head>
 <body ng-controller="mgmtCtrl" class="page-header-fixed page-sidebar-closed-hide-logo page-on-load" ng-class="{'page-content-white': settings.layout.pageContentWhite,'page-container-bg-solid': settings.layout.pageBodySolid, 'page-sidebar-closed': settings.layout.pageSidebarClosed}">
