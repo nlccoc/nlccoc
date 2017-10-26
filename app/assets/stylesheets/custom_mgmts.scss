@@ -424,7 +424,7 @@ p {
 .modal-content {
   position: relative;
   width: 90%;
-  max-width: 400px;
+  //max-width: 400px;
   margin: 14em auto;
   background: #FFF;
   border: none;
@@ -445,6 +445,10 @@ p {
   -webkit-transition-duration: 0.3s;
   -moz-transition-duration: 0.3s;
   transition-duration: 0.3s;
+}
+
+.modal-confirm {
+  max-width: 400px; 
 }
 .modal-content p {
   padding: 3em 1em;

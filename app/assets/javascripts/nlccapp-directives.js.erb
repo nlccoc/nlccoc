@@ -116,4 +116,23 @@ angular.module('nlcc.tools', [])
 			}
 		}
 	}
-});
+}).directive('libraryList', ['$compile', function($compile){
+  return {
+    restrict: 'E',
+    templateUrl: 'mgmts/libraryitem.html',
+    replace: true,
+    link: function(scope, elem, attrs) {
+      console.log(elem);
+      //console.log(attrs.src);
+      scope.fileexist(attrs.src).then(function(response){
+        console.log(attrs.src + ' :fulfilled');
+        var myEle = '<img width=\'100px\' src=\'' + attrs.src + '\' >';
+        elem.html('');
+        elem.append(myEle);
+        $compile(myEle)(scope);
+      }, function(response){
+        console.log(attrs.src + ' :rejected');
+      })
+    }
+  }
+}]);

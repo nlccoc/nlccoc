@@ -1,7 +1,28 @@
 /* global nlccmgmtapp */
-nlccmgmtapp.run(["$rootScope", "$state", function($rootScope, $state) {
+nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $state, $http, $q) {
   console.log("nlcc mgmt run");
   $rootScope.$state = $state; // state to be accessed from view
   console.log("nlcc mgmt run1");
+  
+  $rootScope.fileexist = function(url) {
+    console.log("Check file exist: " + url);
+    var deferred = $q.defer();
+    if(url==''){
+      deferred.reject();
+      return deferred.promise;
+    }
+    return $http.get(url)
+            .then(function (response) {
+                // promise is fulfilled
+                deferred.resolve(response.data);
+                // promise is returned
+                return deferred.promise;
+            }, function (response) {
+                // the following line rejects the promise 
+                deferred.reject(response);
+                // promise is returned
+                return deferred.promise;
+            });
+  }
   //$rootScope.$settings = settings; // state to be accessed from view
 }]);
