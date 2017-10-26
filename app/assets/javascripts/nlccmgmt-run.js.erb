@@ -15,7 +15,6 @@ nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $st
     var req = {
       method: 'get',
       url: url,
-      withCredentials: true,
       headers: {
        'Content-Type': 'application/json; charset=utf-8'
       }
@@ -27,6 +26,7 @@ nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $st
                 // promise is returned
                 return deferred.promise;
             }, function (response) {
+              console.log(response);
                 // the following line rejects the promise 
                 deferred.reject(response);
                 // promise is returned
