@@ -2,7 +2,14 @@
 nlccmgmtapp.config([
  '$stateProvider', 
  '$urlRouterProvider', 
- '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider){
+ '$locationProvider', '$sceDelegateProvider', function($stateProvider, $urlRouterProvider, $locationProvider, $sceDelegateProvider){
+    $sceDelegateProvider.resourceUrlWhitelist([
+      // Allow same origin resource loads.
+      'self',
+      // Allow loading from our assets domain. **.
+      'https://files.natecheng.me/**'
+    ]);
+   
     $stateProvider.state('dashboard', {
       url: '/mgmts/dashboard',templateUrl: 'mgmts/home.html'/*,
       controller: 'mainCtrl'*/
