@@ -130,7 +130,7 @@ angular.module('nlcc.tools', [])
       //console.log(attrs.src);
       scope.fileexist(attrs.src).then(function(response){
         console.log(attrs.src + ' :fulfilled');
-        var myEle = '<img width=\'100px\' src=\'' + scope.trustSrc(attrs.src) + '\' >';
+        var myEle = '<img width=\'100px\' src=\'' + attrs.src + '\' >';
         elem.html('');
         elem.append(myEle);
         $compile(myEle)(scope);

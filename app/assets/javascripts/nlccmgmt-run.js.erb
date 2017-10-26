@@ -11,7 +11,16 @@ nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $st
       deferred.reject();
       return deferred.promise;
     }
-    return $http.get(url)
+    
+    var req = {
+      method: 'get',
+      url: url,
+      withCredentials: true,
+      headers: {
+       'Content-Type': 'application/json; charset=utf-8'
+      }
+    }
+    return $http(req)
             .then(function (response) {
                 // promise is fulfilled
                 deferred.resolve(response.data);
