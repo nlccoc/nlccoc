@@ -544,6 +544,8 @@ function($scope, $timeout, maudio, maudioFactory, $state, $uibModal) {
 nlccmgmtapp.controller('modalBrowseLibraryCtrl', ['$scope', '$uibModalInstance', 'libraryFactory',
 function ($scope, $uibModalInstance, libraryFactory) {
   $scope.libraries = [];
+  
+  
   libraryFactory.getAllLibraries(1).then(function(data){
     $scope.libraries=data.libraries;
     //console.log( $scope.libraries);

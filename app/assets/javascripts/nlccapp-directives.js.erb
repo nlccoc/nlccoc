@@ -116,17 +116,21 @@ angular.module('nlcc.tools', [])
 			}
 		}
 	}
-}).directive('libraryList', ['$compile', function($compile){
+}).directive('libraryList', ['$compile', '$sce', function($compile, $sce){
   return {
     restrict: 'E',
     templateUrl: 'mgmts/libraryitem.html',
     replace: true,
     link: function(scope, elem, attrs) {
-      console.log(elem);
+      
+      scope.trustSrc = function(src) {
+        console.log('trust');
+        return $sce.trustAsResourceUrl(src);
+      }
       //console.log(attrs.src);
       scope.fileexist(attrs.src).then(function(response){
         console.log(attrs.src + ' :fulfilled');
-        var myEle = '<img width=\'100px\' src=\'' + attrs.src + '\' >';
+        var myEle = '<img width=\'100px\' src=\'' + scope.trustSrc(attrs.src) + '\' >';
         elem.html('');
         elem.append(myEle);
         $compile(myEle)(scope);
