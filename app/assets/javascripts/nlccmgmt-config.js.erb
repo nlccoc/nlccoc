@@ -13,6 +13,7 @@ nlccmgmtapp.config([
     ]);
     
     $httpProvider.defaults.useXDomain = true;
+    $httpProvider.interceptors.push('responseObserver');
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     $stateProvider.state('dashboard', {
       url: '/mgmts/dashboard',templateUrl: 'mgmts/home.html'/*,

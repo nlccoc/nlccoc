@@ -22,12 +22,10 @@ nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $st
     return $http(req)
             .then(function (response, status, headers, config) {
                 // promise is fulfilled
-                console.log(headers);
                 deferred.resolve(response.data);
                 // promise is returned
                 return deferred.promise;
             }, function (response, status, headers, config) {
-              console.log(headers);
                 // the following line rejects the promise 
                 deferred.reject(response);
                 // promise is returned

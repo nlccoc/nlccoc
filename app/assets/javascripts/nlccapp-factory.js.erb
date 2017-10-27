@@ -573,4 +573,19 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     return deferred.promise;
   }
   return service
+}]).factory('responseObserver', ['$q', function($q){
+  return {
+    'responseError': function(errorResponse) {
+        switch (errorResponse.status) {
+        case 403:
+            //$window.location = './403.html';
+            console.log('--> 403');
+            break;
+        case 500:
+            //$window.location = './500.html';
+            break;
+        }
+        return $q.reject(errorResponse);
+    }
+  };
 }]);
