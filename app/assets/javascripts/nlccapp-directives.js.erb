@@ -128,7 +128,7 @@ angular.module('nlcc.tools', [])
         return $sce.trustAsResourceUrl(src);
       }
       //console.log(attrs.src);
-      scope.fileexist(attrs.src).then(function(response){
+      /*scope.fileexist(attrs.src).then(function(response){
         console.log(attrs.src + ' :fulfilled');
         var myEle = '<img width=\'100px\' src=\'' + attrs.src + '\' >';
         elem.html('');
@@ -137,6 +137,7 @@ angular.module('nlcc.tools', [])
       }, function(response){
         console.log(attrs.src + ' :rejected');
       })
+      */
     }
   }
 }]);

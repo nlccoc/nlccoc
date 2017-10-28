@@ -36,10 +36,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'i18n-js', ">= 3.0.0.rc11"
 gem 'toastr-rails'
+gem 'aws-sdk', '~> 3'
 
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 gem 'angularjs-file-upload-rails', '~> 2.2.0'
+gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'ruby-mp3info', :require => 'mp3info'
 

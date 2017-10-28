@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   get 'OnlineBible.jsp' => 'bible#onlinebible'
   get 'bible/:version/:book/:chapter' => 'bible#bchapter'
   get 'pastor/share' => 'main#pastorshare'
+  
+  get 'utils/aws/isexist' => 'utils/aws#isexist'
   #get '/.well-known/acme-challenge/:id' => 'main#letsencrypt'
 
   resources "contacts", only: [:create]

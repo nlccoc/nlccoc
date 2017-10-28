@@ -8,9 +8,10 @@ class LibrariesController < ApplicationController
   # GET /libraries.json
   def index
     @libraries = Library.paginate(:page => params[:page] || 1).order('created_at DESC')
+    
     respond_to do |format|
       format.html { redirect_to @libraries }
-      format.json { render :json => { :libraries => @libraries, :total_pages => @libraries.total_pages, :current_page => params[:page]||1 }}
+      format.json { render :json => { :libraries => @libraries.as_json(:includes => { :attachment => { :only => [:url]}}), serializer: LibrarySerializer, :total_pages => @libraries.total_pages, :current_page => params[:page]||1 }}
     end
   end
   
