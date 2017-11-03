@@ -135,7 +135,7 @@ angular.module('nlcc.tools', [])
         console.log(response);
         if(response.exist){
           console.log(url + ' :fulfilled');
-          var myEle = '<img width=\'100px\' src=\'//files.natecheng.me/' + url + '\' >';
+          var myEle = '<img width=\'150px\' src=\'//files.natecheng.me/' + url + '\' >';
           elem.html('');
           elem.append(myEle);
           $compile(myEle)(scope);
