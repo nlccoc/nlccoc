@@ -131,7 +131,7 @@ angular.module('nlcc.tools', [])
       
       //console.log(attrs.src);
       scope.fileexist(url).then(function(response){
-        //console.log(response);
+        console.log(response);
         if(response.exist){
           console.log(url + ' :fulfilled');
           var myEle = '<img width=\'100px\' src=\'' + url + '\' >';
