@@ -4,7 +4,7 @@ class Utils::AwsController < ApplicationController
     url = params[:url]
     exist = false
 
-    if exist == true then  
+    unless url.to_s.strip.empty? then  
     
       Aws.config.update({
         region: 'us-west-1',

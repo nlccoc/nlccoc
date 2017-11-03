@@ -139,10 +139,10 @@ angular.module('nlcc.tools', [])
           elem.append(myEle);
           $compile(myEle)(scope);
         } else {
-          console.log(attrs.src + ' :rejected');
+          console.log(url + ' :rejected');
         }
       }, function(response){
-        console.log(attrs.src + ' :rejected');
+        console.log(url + ' :rejected');
       })
       
     }
