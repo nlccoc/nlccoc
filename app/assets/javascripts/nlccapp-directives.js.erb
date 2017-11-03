@@ -126,12 +126,15 @@ angular.module('nlcc.tools', [])
       scope.trustSrc = function(src) {
         return $sce.trustAsResourceUrl(src);
       }
+      
+      var url = attrs.src.replace('//files.natecheng.me/','');
+      
       //console.log(attrs.src);
-      scope.fileexist(attrs.src).then(function(response){
-        console.log(response);
+      scope.fileexist(url).then(function(response){
+        //console.log(response);
         if(response.exist){
-          console.log(attrs.src + ' :fulfilled');
-          var myEle = '<img width=\'100px\' src=\'' + attrs.src + '\' >';
+          console.log(url + ' :fulfilled');
+          var myEle = '<img width=\'100px\' src=\'' + url + '\' >';
           elem.html('');
           elem.append(myEle);
           $compile(myEle)(scope);
