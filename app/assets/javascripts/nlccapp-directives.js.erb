@@ -127,6 +127,7 @@ angular.module('nlcc.tools', [])
         return $sce.trustAsResourceUrl(src);
       }
       
+      //var url = str.replace('//files.natecheng.me/','');
       var url = attrs.src.replace('//files.natecheng.me/','');
       
       //console.log(attrs.src);
@@ -134,7 +135,7 @@ angular.module('nlcc.tools', [])
         console.log(response);
         if(response.exist){
           console.log(url + ' :fulfilled');
-          var myEle = '<img width=\'100px\' src=\'' + url + '\' >';
+          var myEle = '<img width=\'100px\' src=\'/' + url + '\' >';
           elem.html('');
           elem.append(myEle);
           $compile(myEle)(scope);
