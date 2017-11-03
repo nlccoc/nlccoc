@@ -1,3 +1,3 @@
 class LibrarySerializer < ActiveModel::Serializer
-  attributes :path
+  attributes :attachment
 end

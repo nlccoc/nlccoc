@@ -2,15 +2,29 @@
 nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $state, $http, $q) {
   console.log("nlcc mgmt run");
   $rootScope.$state = $state; // state to be accessed from view
-  console.log("nlcc mgmt run1");
   
   $rootScope.fileexist = function(url) {
     console.log("Check file exist: " + url);
+    
     var deferred = $q.defer();
-    if(url==''){
+    
+    
+
+    /*if(url==''){
       deferred.reject();
       return deferred.promise;
-    }
+    }*/
+    
+    $http({
+      method: 'GET',
+      url: "/utils/aws/isexist.json?url=" + url
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
+    });
+    
+    return deferred.promise;
   }
   //$rootScope.$settings = settings; // state to be accessed from view
 }]);

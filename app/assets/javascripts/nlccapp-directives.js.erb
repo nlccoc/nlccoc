@@ -124,20 +124,24 @@ angular.module('nlcc.tools', [])
     link: function(scope, elem, attrs) {
       
       scope.trustSrc = function(src) {
-        console.log('trust');
         return $sce.trustAsResourceUrl(src);
       }
       //console.log(attrs.src);
-      /*scope.fileexist(attrs.src).then(function(response){
-        console.log(attrs.src + ' :fulfilled');
-        var myEle = '<img width=\'100px\' src=\'' + attrs.src + '\' >';
-        elem.html('');
-        elem.append(myEle);
-        $compile(myEle)(scope);
+      scope.fileexist(attrs.src).then(function(response){
+        console.log(response);
+        if(response.exist){
+          console.log(attrs.src + ' :fulfilled');
+          var myEle = '<img width=\'100px\' src=\'' + attrs.src + '\' >';
+          elem.html('');
+          elem.append(myEle);
+          $compile(myEle)(scope);
+        } else {
+          console.log(attrs.src + ' :rejected');
+        }
       }, function(response){
         console.log(attrs.src + ' :rejected');
       })
-      */
+      
     }
   }
 }]);
