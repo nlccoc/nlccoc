@@ -8,12 +8,12 @@ class Utils::AwsController < ApplicationController
     
       Aws.config.update({
         region: 'us-west-1',
-        credentials: Aws::Credentials.new('AKIAJRB7EV7SMGYWYNMA', 'Avo37PttnB7fZn0tPCOee6qlylVT9yeUMYUYYkG1'),
+        credentials: Aws::Credentials.new(ENV['S3_ACCESS_KEY'], ENV['S3_SECRET_KEY'])
       })
       
       #s3 = Aws::S3::Client.new
      
-      bucket = Aws::S3::Bucket.new('files.natecheng.me')
+      bucket = Aws::S3::Bucket.new(ENV['S3_BUCKET'])
       #resp = s3.list_buckets
       #resp.buckets.map(&:name)
       
