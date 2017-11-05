@@ -26,5 +26,13 @@ nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $st
     
     return deferred.promise;
   }
+  $rootScope.filetype = function(filename) {
+    console.log(filename.split('.').pop());
+  }
+  
+  $rootScope.current_mgmt = gon.current_mgmt;
+  $rootScope.is_admin = gon.is_admin;
+  $rootScope.env = gon.env
+  $rootScope.is_unapproved = gon.is_unapproved;
   //$rootScope.$settings = settings; // state to be accessed from view
 }]);

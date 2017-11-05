@@ -1,51 +1,9 @@
-<style>
-  
-.load-wrapp {
-  float: left;
-  width: 150px;
-  height: 150px;
-  margin: 0 10px 10px 0;
-  padding: 60px 20px 20px;
-  border-radius: 5px;
-  text-align: center;
-  background-color: #d8d8d8;
-}
 
-.load-wrapp p {
-    padding: 0 0 20px;
-}
-p {
-    margin: 0;
-    padding: 10px 0;
-    color: #777;
-}
 
-@keyframes loadingD {
-    0 {transform: rotate(0deg);}
-    50% {transform: rotate(180deg);}
-    100% {transform: rotate(360deg);}
-}
+<ul class='libraries-content'>
+  <library-list ng-repeat='library in libraries' src='{{library.attachment.thumb.url}}' title='{{library.name}}'></library-list>
+</ul>
 
-.load-4 .ring-1 {
-  animation: loadingD 1.5s .3s cubic-bezier(.17,.37,.43,.67) infinite;
-  
-}
-
-.ring-1 {
-    width: 10px;
-    height: 10px;
-    margin: 0 auto;
-    padding: 10px;
-    border: 7px dashed #4b9cdb;
-    border-radius: 100% !important;
-}
-</style>
-<div style='display: inline-block'>
-<p>Browse Libraries</p>
-<div>
-	<library-list ng-repeat='library in libraries' src='{{library.attachment.thumb.url}}'></library-list>
-</div>
-</div>
 <!--<ul class="cd-buttons">
 	<li><a href="#0" ng-click="ok()">Yes</a></li>
 	<li><a href="#0" ng-click="cancel()">No</a></li>

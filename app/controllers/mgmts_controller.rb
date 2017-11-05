@@ -3,11 +3,16 @@ class MgmtsController < ApplicationController
   layout 'mgmts'
   
   def index
+    env = 'development'
+    if Rails.env.production?
+      env = 'production'
+    end
     gon.push({
       :current_mgmt => current_mgmt,
       :loggedin_email => current_mgmt[:email],
       :is_admin => current_mgmt.is_admin?,
-      :is_unapproved => current_mgmt.is_unapproved?
+      :is_unapproved => current_mgmt.is_unapproved?,
+      :env => env
     })
   end
   

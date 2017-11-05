@@ -2,9 +2,14 @@ class MgmtController < ApplicationController
   before_action :authenticate_mgmt!
   layout 'mgmt'
   def index
+    env = 'development'
+    if Rails.env.production?
+      env = 'production'
+    end
     gon.push({
       :current_mgmt => current_mgmt,
-      :user_role => "admin"
+      :user_role => "admin",
+      :env => env
     })
   end
   

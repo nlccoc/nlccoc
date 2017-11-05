@@ -127,23 +127,32 @@ angular.module('nlcc.tools', [])
         return $sce.trustAsResourceUrl(src);
       }
       
-      //var url = str.replace('//files.natecheng.me/','');
       var url = attrs.src.replace('//files.natecheng.me/','');
       
       //console.log(attrs.src);
       scope.fileexist(url).then(function(response){
-        console.log(response);
+        //console.log(response);
+        var myEle = ''
         if(response.exist){
-          console.log(url + ' :fulfilled');
-          var myEle = '<img width=\'150px\' src=\'//files.natecheng.me/' + url + '\' >';
+          //console.log(url + ' :fulfilled');
+          
+          
+          if (scope.env == 'production')
+            myEle = '<a class=\'item-thumb\' href=\'#\'><img height=\'150px\' width=\'150px\' src=\'//files.natecheng.me/' + url + '\' ></a><div class=\'item-text\'>' + attrs.title + '</div>';
+          else
+            myEle = '<a class=\'item-thumb\' href=\'#\'><img height=\'150px\' width=\'150px\' src=\'' + url + '\' ></a><div class=\'item-text\'>' + attrs.title + '</div>';
           elem.html('');
           elem.append(myEle);
           $compile(myEle)(scope);
         } else {
-          console.log(url + ' :rejected');
+          myEle = '<a class=\'item-music\' href=\'#\'><i class=\'fa fa-music fa-3x\'></i></a><div class=\'item-text\'>' + attrs.title + '</div>'
+          //console.log(url + ' :rejected');
+          elem.html('');
+          elem.append(myEle);
+          $compile(myEle)(scope);
         }
       }, function(response){
-        console.log(url + ' :rejected');
+        //console.log(url + ' :rejected');
       })
       
     }

@@ -15,11 +15,12 @@ nlccmgmtapp.controller('mgmtCtrl', ['$scope', '$rootScope', 'settings', function
   I18n.defaultLocale = "zh";
   I18n.locale = "zh";
   //I18n.currentLocale();
-  console.log(gon);
-  $scope.current_mgmt = gon.current_mgmt;
-  $scope.is_admin = gon.is_admin;
-  $scope.is_unapproved = gon.is_unapproved;
-  $scope.fullHeight = '700px';
+  //console.log(gon);
+  //$scope.current_mgmt = gon.current_mgmt;
+  //$scope.is_admin = gon.is_admin;
+  //$scope.env = gon.env
+  //$scope.is_unapproved = gon.is_unapproved;
+  //$scope.fullHeight = '700px';
   // set default layout mode
 	$rootScope.settings.layout.pageContentWhite = true;
   $rootScope.settings.layout.pageBodySolid = false;
@@ -632,7 +633,7 @@ nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', '$uibModal', funct
   $scope.total_pages = libraries.total_pages;
   $scope.current_page = libraries.current_page;
   $scope.deleteLibrary = function(library){
-    console.log("DeleteLibrary");
+    //console.log("DeleteLibrary");
     var modalInstance = $uibModal.open({
       animation: true,
       templateUrl: 'mgmts/confirmModel.html',

@@ -3,26 +3,27 @@ class Utils::AwsController < ApplicationController
   def isexist
     url = params[:url]
     exist = false
-
-    unless url.to_s.strip.empty? then  
     
-      Aws.config.update({
-        region: 'us-west-1',
-        credentials: Aws::Credentials.new(ENV['S3_ACCESS_KEY'], ENV['S3_SECRET_KEY'])
-      })
+    if Rails.env.production?
+      unless url.to_s.strip.empty? then  
+        Aws.config.update({
+          region: 'us-west-1',
+          credentials: Aws::Credentials.new(ENV['S3_ACCESS_KEY'], ENV['S3_SECRET_KEY'])
+        })
+        
+       
+        bucket = Aws::S3::Bucket.new(ENV['S3_BUCKET'])
+  
+        object = bucket.object(url)
+        exist = object.exists?
+      end
+    else
       
-      #s3 = Aws::S3::Client.new
-     
-      bucket = Aws::S3::Bucket.new(ENV['S3_BUCKET'])
-      #resp = s3.list_buckets
-      #resp.buckets.map(&:name)
       
-      #bucket = s3.buckets['files.natecheng.me']
-      
-      #puts bucket.inspect
-      object = bucket.object(url)
-      #puts object.inspect
-      exist = object.exists?
+      unless url.to_s.strip.empty? then  
+        path = "#{Rails.root}/public#{url}"
+        exist = File.exist?(path)
+      end
     end
     
     respond_to do |format|
