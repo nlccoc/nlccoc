@@ -138,14 +138,18 @@ angular.module('nlcc.tools', [])
           
           
           if (scope.env == 'production')
-            myEle = '<a class=\'item-thumb\' href=\'#\'><img height=\'150px\' width=\'150px\' src=\'//files.natecheng.me/' + url + '\' ></a><div class=\'item-text\'>' + attrs.title + '</div>';
+            myEle = '<a class=\'item-thumb\' href=\'#\'><img height=\'150px\' width=\'150px\' src=\'//files.natecheng.me/' + url + '\' ></a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>';
           else
-            myEle = '<a class=\'item-thumb\' href=\'#\'><img height=\'150px\' width=\'150px\' src=\'' + url + '\' ></a><div class=\'item-text\'>' + attrs.title + '</div>';
+            myEle = '<a class=\'item-thumb\' href=\'#\'><img height=\'150px\' width=\'150px\' src=\'' + url + '\' ></a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>';
           elem.html('');
           elem.append(myEle);
           $compile(myEle)(scope);
         } else {
-          myEle = '<a class=\'item-music\' href=\'#\'><i class=\'fa fa-music fa-3x\'></i></a><div class=\'item-text\'>' + attrs.title + '</div>'
+          
+          if(scope.isMusic(attrs.src))
+            myEle = '<a class=\'item-music\' href=\'#\'><i class=\'fa fa-music fa-3x\'></i></a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
+          else 
+            myEle = '<a class=\'item-music\' href=\'#\'><i class=\'fa fa-question fa-3x\'></i></a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
           //console.log(url + ' :rejected');
           elem.html('');
           elem.append(myEle);

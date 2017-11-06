@@ -1,3 +1,8 @@
+String.prototype.trunc = String.prototype.trunc ||
+  function(n){
+    console.log('trunc');
+      return (this.length > n) ? this.substr(0, n-1) + '&hellip;' : this;
+  };
 /* global nlccmgmtapp */
 nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $state, $http, $q) {
   console.log("nlcc mgmt run");
@@ -26,8 +31,18 @@ nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $st
     
     return deferred.promise;
   }
+  
   $rootScope.filetype = function(filename) {
-    console.log(filename.split('.').pop());
+    return filename.split('.').pop();
+  }
+  
+  $rootScope.isMusic = function(filename) {
+    var ftype = $rootScope.filetype(filename)
+    
+    if( ftype=='mp3' || ftype == 'wav')
+      return true;
+    else
+      return false;
   }
   
   $rootScope.current_mgmt = gon.current_mgmt;
