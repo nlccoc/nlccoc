@@ -11,6 +11,7 @@ class MgmtsController < ApplicationController
       :current_mgmt => current_mgmt,
       :loggedin_email => current_mgmt[:email],
       :is_admin => current_mgmt.is_admin?,
+      :is_media => current_mgmt.is_media?,
       :is_unapproved => current_mgmt.is_unapproved?,
       :env => env
     })

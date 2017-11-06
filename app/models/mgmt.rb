@@ -12,11 +12,15 @@ class Mgmt < ActiveRecord::Base
   # before_validation :set_default_role 
 
   def is_admin?
-    self.role.name=='admin' ? true: false
+    self.role.name =='admin' ? true : false
   end
   
   def is_office?
-    self.role.name=='office' ? true: false
+    self.role.name =='office' ? true : false
+  end
+  
+  def is_media?
+    self.role.name == 'sound' ? true : false
   end
   
   def is_unapproved?
