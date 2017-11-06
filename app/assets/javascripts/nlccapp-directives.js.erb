@@ -148,6 +148,8 @@ angular.module('nlcc.tools', [])
           
           if(scope.isMusic(attrs.src))
             myEle = '<a class=\'item-music\' href=\'#\'><i class=\'fa fa-music fa-3x\'></i></a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
+          else if(scope.isPhoto(attrs.src))
+            myEle = '<a class=\'item-music\' href=\'#\'><i class=\'fa fa-picture-o fa-3x\'></i></a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
           else 
             myEle = '<a class=\'item-music\' href=\'#\'><i class=\'fa fa-question fa-3x\'></i></a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
           //console.log(url + ' :rejected');
