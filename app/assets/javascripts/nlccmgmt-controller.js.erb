@@ -526,18 +526,16 @@ function($scope, $timeout, maudio, maudioFactory, $state, $uibModal) {
   
   $scope.animationsEnabled = true;
   $scope.browse = function() {
-    console.log('browse');
-    /*var modalInstance = $uibModal.open({
+    var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
-      templateUrl: 'browselibrary.html',
+      size: 'lg',
+      templateUrl: 'mgmts/browselibrary.html',
       controller: 'modalBrowseLibraryCtrl'
     });
     
-    modalInstance.result.then(function (result) {
-      //console.log(result);
-      if(result == 0) {
-      }
-    });*/
+    modalInstance.result.then(function (path) {
+      $scope.maudio.path = path;
+    });
   }
 }]);
 nlccmgmtapp.controller('modalBrowseLibraryCtrl', ['$scope', '$uibModalInstance', 'libraryFactory',
