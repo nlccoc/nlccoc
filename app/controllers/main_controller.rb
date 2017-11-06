@@ -25,7 +25,7 @@ class MainController < ApplicationController
   end
   
   def cellgroups
-    Log.info("<span class='client-ip'>[#{request.remote_ip}]</span> checked finding cell groups")
+    #Log.info("<span class='client-ip'>[#{request.remote_ip}]</span> checked finding cell groups")
   end
   
   def audio
@@ -60,7 +60,7 @@ class MainController < ApplicationController
   
   def rolcc_feed
     @rolcc_feed = RolccFeed.find(params[:id])
-    Log.info("<span class='client-ip'>[#{request.remote_ip}]</span> read Rolcc Feed <span class='feed-book'>[#{@rolcc_feed.book}]</span><span class='feed-date'>[#{@rolcc_feed.date.strftime("%d")} #{@rolcc_feed.date.strftime("%b")}]</span>")
+    #Log.info("<span class='client-ip'>[#{request.remote_ip}]</span> read Rolcc Feed <span class='feed-book'>[#{@rolcc_feed.book}]</span><span class='feed-date'>[#{@rolcc_feed.date.strftime("%d")} #{@rolcc_feed.date.strftime("%b")}]</span>")
   end
   
   def pastors
