@@ -1,10 +1,10 @@
 
 
 <ul class='libraries-content'>
-  <library-list ng-repeat='library in libraries' src='{{library.attachment.thumb.url}}' title='{{library.name}}'></library-list>
+  <library-list ng-repeat='library in libraries' src='{{library.attachment.url}}' thumb-src='{{library.attachment.thumb.url}}' title='{{library.name}}'></library-list>
 </ul>
 
-<!--<ul class="cd-buttons">
+<ul class="cd-buttons">
 	<li><a href="#0" ng-click="ok()">Yes</a></li>
 	<li><a href="#0" ng-click="cancel()">No</a></li>
-</ul>-->
+</ul>

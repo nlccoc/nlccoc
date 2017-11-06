@@ -1,19 +1,16 @@
 String.prototype.trunc = String.prototype.trunc ||
   function(n){
-    console.log('trunc');
-      return (this.length > n) ? this.substr(0, n-1) + '&hellip;' : this;
+    return (this.length > n) ? this.substr(0, n-1) + '&hellip;' : this;
   };
 /* global nlccmgmtapp */
 nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $state, $http, $q) {
-  console.log("nlcc mgmt run");
+  //console.log("nlcc mgmt run");
   $rootScope.$state = $state; // state to be accessed from view
   
   $rootScope.fileexist = function(url) {
-    console.log("Check file exist: " + url);
+    //console.log("Check file exist: " + url);
     
     var deferred = $q.defer();
-    
-    
 
     /*if(url==''){
       deferred.reject();

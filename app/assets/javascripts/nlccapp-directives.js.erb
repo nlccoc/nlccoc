@@ -127,38 +127,39 @@ angular.module('nlcc.tools', [])
         return $sce.trustAsResourceUrl(src);
       }
       
+      var turl = attrs.thumbSrc.replace('//files.natecheng.me/','');
       var url = attrs.src.replace('//files.natecheng.me/','');
-      
+      //console.log('src');
       //console.log(attrs.src);
-      scope.fileexist(url).then(function(response){
+      scope.fileexist(turl).then(function(response){
         //console.log(response);
         var myEle = ''
         if(response.exist){
-          //console.log(url + ' :fulfilled');
+          //console.log(turl + ' :fulfilled');
           
           
           if (scope.env == 'production')
             myEle = '<a class=\'item-thumb\' href=\'#\'> \
                 <div class="image-tile hover-tile outer-title text-center"> \
-                  <img src=\'//files.natecheng.me/' + url + '\' > \
+                  <img src=\'//files.natecheng.me/' + turl + '\' > \
                   <div class="hover-state"> \
-                    <span><i class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+                    <span><i ng-click="addLibrary(\'' + url + '\')" class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
     		          </div> \
   		          </div> \
               </a> \
               <div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>';
-          else
+          else {
             myEle = '<a class=\'item-thumb\' href=\'#\'> \
                 <div class="image-tile hover-tile outer-title text-center"> \
-                  <img src=\'' + url + '\' > \
+                  <img src=\'' + turl + '\' > \
                   <div class="hover-state">\
-                    <span><i class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+                    <span><i ng-click="addLibrary(\'' + url + '\')" class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
     		          </div> \
   		          </div> \
               </a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>';
+            }
           elem.html('');
-          elem.append(myEle);
-          $compile(myEle)(scope);
+          elem.append($compile(myEle)(scope));
         } else {
           
           if(scope.isMusic(attrs.src))
@@ -166,7 +167,7 @@ angular.module('nlcc.tools', [])
                       <div class="image-tile hover-tile outer-title text-center"> \
         		            <span><i class=\'fa fa-music fa-3x\'></i></span>\
         		            <div class="hover-state">\
-                          <span><i class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+                          <span><i ng-click="addLibrary(\'' + url + '\')" class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
           		          </div> \
       		            </div> \
     		            </a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
@@ -175,7 +176,7 @@ angular.module('nlcc.tools', [])
                         <div class="image-tile hover-tile outer-title text-center"> \
                           <span><i class=\'fa fa-picture-o fa-3x\'></i></span> \
                           <div class="hover-state">\
-                            <span><i class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+                            <span><i ng-click="addLibrary(\'' + url + '\')" class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
             		          </div> \
             		        </div> \
                       </a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
@@ -184,17 +185,16 @@ angular.module('nlcc.tools', [])
                       <div class="image-tile hover-tile outer-title text-center"> \
         		            <span><i class=\'fa fa-question fa-3x\'></i></span> \
       		              <div class="hover-state">\
-                          <span><i class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+                          <span><i ng-click="addLibrary(\'' + url + '\')" class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
           		          </div> \
           		        </div> \
     		            </a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
-          //console.log(url + ' :rejected');
+          //console.log(turl + ' :rejected');
           elem.html('');
-          elem.append(myEle);
-          $compile(myEle)(scope);
+          elem.append($compile(myEle)(scope));
         }
       }, function(response){
-        //console.log(url + ' :rejected');
+        //console.log(turl);
       })
       
     }

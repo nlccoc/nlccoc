@@ -474,10 +474,9 @@ nlccmgmtapp.controller('audioNewCtrl', ['$scope', 'maudioFactory', '$state', '$u
       });
     }
   }
-  
+  $scope.selectedItem={}
   $scope.animationsEnabled=true;
   $scope.browse = function() {
-    console.log('browse');
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       size: 'lg',
@@ -485,10 +484,8 @@ nlccmgmtapp.controller('audioNewCtrl', ['$scope', 'maudioFactory', '$state', '$u
       controller: 'modalBrowseLibraryCtrl'
     });
     
-    modalInstance.result.then(function (result) {
-      //console.log(result);
-      if(result == 0) {
-      }
+    modalInstance.result.then(function (path) {
+      $scope.maudio.path = path;
     });
   }
   
@@ -546,12 +543,17 @@ function($scope, $timeout, maudio, maudioFactory, $state, $uibModal) {
 nlccmgmtapp.controller('modalBrowseLibraryCtrl', ['$scope', '$uibModalInstance', 'libraryFactory',
 function ($scope, $uibModalInstance, libraryFactory) {
   $scope.libraries = [];
-  
+
   
   libraryFactory.getAllLibraries(1).then(function(data){
     $scope.libraries=data.libraries;
     //console.log( $scope.libraries);
   });
+  
+  
+  $scope.addLibrary = function(path){
+    $uibModalInstance.close(path);
+  }
   
   $scope.ok = function () {
 
@@ -621,7 +623,6 @@ function($scope, $timeout, mvideo, mvideoFactory, $state, locations) {
 nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', '$uibModal', function($scope, libraries, $uibModal){
   console.log('library Controller');
   $scope.libraries = libraries.libraries;
-  
   console.log($scope.libraries)
 
   var idx=0;
@@ -638,6 +639,7 @@ nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', '$uibModal', funct
       animation: true,
       templateUrl: 'mgmts/confirmModel.html',
       controller: 'modalDeleteLibraryCtrl',
+      
       resolve: {
         library: function () {
           return library;
