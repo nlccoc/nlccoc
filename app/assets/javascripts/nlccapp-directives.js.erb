@@ -138,20 +138,56 @@ angular.module('nlcc.tools', [])
           
           
           if (scope.env == 'production')
-            myEle = '<a class=\'item-thumb\' href=\'#\'><img height=\'150px\' width=\'150px\' src=\'//files.natecheng.me/' + url + '\' ></a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>';
+            myEle = '<a class=\'item-thumb\' href=\'#\'> \
+                <div class="image-tile hover-tile outer-title text-center"> \
+                  <img src=\'//files.natecheng.me/' + url + '\' > \
+                  <div class="hover-state"> \
+                    <span><i class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+    		          </div> \
+  		          </div> \
+              </a> \
+              <div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>';
           else
-            myEle = '<a class=\'item-thumb\' href=\'#\'><img height=\'150px\' width=\'150px\' src=\'' + url + '\' ></a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>';
+            myEle = '<a class=\'item-thumb\' href=\'#\'> \
+                <div class="image-tile hover-tile outer-title text-center"> \
+                  <img src=\'' + url + '\' > \
+                  <div class="hover-state">\
+                    <span><i class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+    		          </div> \
+  		          </div> \
+              </a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>';
           elem.html('');
           elem.append(myEle);
           $compile(myEle)(scope);
         } else {
           
           if(scope.isMusic(attrs.src))
-            myEle = '<a class=\'item-music\' href=\'#\'><i class=\'fa fa-music fa-3x\'></i></a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
+            myEle = '<a class=\'item-music\' href=\'#\'>\
+                      <div class="image-tile hover-tile outer-title text-center"> \
+        		            <span><i class=\'fa fa-music fa-3x\'></i></span>\
+        		            <div class="hover-state">\
+                          <span><i class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+          		          </div> \
+      		            </div> \
+    		            </a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
           else if(scope.isPhoto(attrs.src))
-            myEle = '<a class=\'item-music\' href=\'#\'><i class=\'fa fa-picture-o fa-3x\'></i></a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
+            myEle = '<a class=\'item-music\' href=\'#\'> \
+                        <div class="image-tile hover-tile outer-title text-center"> \
+                          <span><i class=\'fa fa-picture-o fa-3x\'></i></span> \
+                          <div class="hover-state">\
+                            <span><i class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+            		          </div> \
+            		        </div> \
+                      </a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
           else 
-            myEle = '<a class=\'item-music\' href=\'#\'><i class=\'fa fa-question fa-3x\'></i></a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
+            myEle = '<a class=\'item-music\' href=\'#\'> \
+                      <div class="image-tile hover-tile outer-title text-center"> \
+        		            <span><i class=\'fa fa-question fa-3x\'></i></span> \
+      		              <div class="hover-state">\
+                          <span><i class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+          		          </div> \
+          		        </div> \
+    		            </a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
           //console.log(url + ' :rejected');
           elem.html('');
           elem.append(myEle);
