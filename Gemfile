@@ -20,7 +20,7 @@ gem 'will_paginate-bootstrap'
 gem 'activerecord-reset-pk-sequence'
 gem 'social-share-button'
 gem 'magnific-popup-rails'
-
+gem "wysiwyg-rails"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

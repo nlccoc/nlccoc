@@ -676,6 +676,8 @@ GEM
       nokogiri (>= 1.5.11, < 2.0.0)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
+    font-awesome-sass (4.7.0)
+      sass (>= 3.2)
     formatador (0.2.5)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
@@ -861,6 +863,9 @@ GEM
     will_paginate (3.1.6)
     will_paginate-bootstrap (1.0.1)
       will_paginate (>= 3.0.3)
+    wysiwyg-rails (2.7.1)
+      font-awesome-sass (~> 4.4, >= 4.4.0)
+      railties (>= 3.2, < 6.0)
     xml-simple (1.1.5)
 
 PLATFORMS
@@ -918,6 +923,7 @@ DEPENDENCIES
   whenever (~> 0.9.4)
   will_paginate (~> 3.1.0)
   will_paginate-bootstrap
+  wysiwyg-rails
 
 BUNDLED WITH
    1.13.6

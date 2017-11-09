@@ -1,7 +1,12 @@
 /* global angular */
 var nlccmgmtapp = angular.module('nlccmgmtapp',['ui.router', 'templates', 'nlcc.tools', 
-'nlcc.factory', 'ui.bootstrap', 'frapontillo.bootstrap-switch', 'ion.rangeslider', 'summernote', 'angularFileUpload']);
+'nlcc.factory', 'ui.bootstrap', 'frapontillo.bootstrap-switch', 'ion.rangeslider', 'summernote', 'angularFileUpload', 'froala']);
 
+nlccmgmtapp.value('froalaConfig', {
+	toolbarInline: false,
+	placeholderText: 'Enter Text Here'
+});
+	
 nlccmgmtapp.filter('range', function() {
   return function(input, total, initial) {
     initial = initial || 0

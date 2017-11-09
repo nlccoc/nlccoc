@@ -27,6 +27,25 @@ nlccmgmtapp.controller('mgmtCtrl', ['$scope', '$rootScope', 'settings', function
   $rootScope.settings.layout.pageSidebarClosed = false;
   console.log(I18n.t('event.category.equipping'));
 }]);
+nlccmgmtapp.controller('listScriptCtrl', ['$scope', function($scope){
+  console.log("List Script Ctrl");
+}]);
+nlccmgmtapp.controller('addScriptCtrl', ['$scope', function($scope){
+  console.log("Add Script Ctrl");
+  
+  $scope.myHtml = ""
+	$scope.froalaOptions = {
+		//toolbarButtons: ["bold", "italic", "underline", "|", "align", "formatOL", "formatUL"],
+		fontFamily: {
+      "Roboto,sans-serif": 'Roboto',
+      "Oswald,sans-serif": 'Oswald',
+      "Montserrat,sans-serif": 'Montserrat',
+      "'Open Sans Condensed',sans-serif": 'Open Sans Condensed'
+    },
+    fontFamilySelection: true
+	}
+	
+}]);
 nlccmgmtapp.controller('eventAllCtrl', ['$scope', 'categoryFactory', '$uibModal', function($scope, categoryFactory, $uibModal){
   console.log('Event Controller');
   
