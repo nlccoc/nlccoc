@@ -2,7 +2,7 @@ String.prototype.trunc = String.prototype.trunc ||
   function(n){
     return (this.length > n) ? this.substr(0, n-1) + '&hellip;' : this;
   };
-/* global nlccmgmtapp */
+/* global nlccmgmtapp, gon */
 nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $state, $http, $q) {
   //console.log("nlcc mgmt run");
   $rootScope.$state = $state; // state to be accessed from view
@@ -11,11 +11,6 @@ nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $st
     //console.log("Check file exist: " + url);
     
     var deferred = $q.defer();
-
-    /*if(url==''){
-      deferred.reject();
-      return deferred.promise;
-    }*/
     
     $http({
       method: 'GET',

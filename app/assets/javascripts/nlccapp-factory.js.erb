@@ -476,6 +476,20 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     return deferred.promise;
   };
   
+  service.getApprovedUsers = function(){
+    var deferred = $q.defer();
+    var _url = _baseUrl + '/approvedusers.json';
+    $http({
+      method: 'GET',
+      url: _url,
+    }).success(function(data){
+      deferred.resolve(data);
+    }).error(function(){
+      deferred.reject("There is an error");
+    });
+    return deferred.promise;
+  };
+  
   service.getAllUsers = function(){
     var deferred = $q.defer();
     var _url = _baseUrl + '/allusers.json';

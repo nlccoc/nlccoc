@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   
   get 'mgmts/inactive' => 'mgmts#inactive'
   get 'mgmts/unapprovedusers' => 'mgmts#unapprovedusers'
+  get 'mgmts/approvedusers' => 'mgmts#approvedusers'
   post 'mgmts/approveuser' => 'mgmts#approveuser'
   get 'mgmts/users/:id' => 'mgmts#users'
   get 'CalendarEventView' => 'main#calendarEventView'

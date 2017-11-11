@@ -173,6 +173,16 @@ nlccmgmtapp.config([
           return mgmtResource.getUnapprovedUsers();
         }]
       }
+    }).state('approved', {
+      url: '/mgmts/approved_users',
+      controller: 'approvedUsersCtrl', 
+      templateUrl: 'mgmts/users/approved.html',
+      resolve: {
+        mgmtResource: 'mgmtFactory',
+        approvedusers: ['mgmtResource',function(mgmtResource){
+          return mgmtResource.getApprovedUsers();
+        }]
+      }
     }).state('user', {
       url: '/mgmts/user/:id',
       controller: 'userMgmtCtrl', 

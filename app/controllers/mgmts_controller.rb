@@ -25,6 +25,7 @@ class MgmtsController < ApplicationController
     @user = Mgmt.find(id)
     
     respond_to do |format|
+      format.html { not_found }
       format.json {render json: @user.as_json(:include => [:role])}
     end
   end
@@ -33,8 +34,16 @@ class MgmtsController < ApplicationController
     
     @unapprovedusers = Mgmt.joins(:role).where(:roles => {:name => 'unapproved'})
     respond_to do |format|
-      format.html { redirect_to @unapprovedusers }
+      format.html { not_found }
       format.json { render :json => @unapprovedusers, :include => :role}
+    end
+  end
+  
+  def approvedusers
+    @approvedusers = Mgmt.joins(:role).where.not(:roles => {:name => 'unapproved'})
+    respond_to do |format|
+      format.html { not_found }
+      format.json { render :json => @approvedusers, :include => :role}
     end
   end
   
@@ -47,6 +56,7 @@ class MgmtsController < ApplicationController
     @user.role = role
     @user.save
     respond_to do |format|
+      format.html { not_found }
       format.json { render :json => @user, :include => :role}
     end
   end

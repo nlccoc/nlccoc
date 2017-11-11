@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     @translations[I18n.locale].with_indifferent_access
   end
   
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+  
   private
   
     def set_time_zone

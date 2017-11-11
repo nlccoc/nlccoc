@@ -842,6 +842,11 @@ nlccmgmtapp.controller('unapprovedUsersCtrl', ['$scope', 'unapprovedusers', '$ui
   }
   
 }]);
+nlccmgmtapp.controller('approvedUsersCtrl', ['$scope', 'approvedusers', '$uibModal', function($scope, approvedusers, $uibModal) {
+  console.log("Approved Users Ctrl");
+  $scope.approvedusers = approvedusers;
+  console.log(approvedusers);
+}]);
 nlccmgmtapp.controller('userApproveCtrl', ['$scope', '$uibModalInstance', '$state', '$timeout', 'mgmtFactory', 'user',
 function ($scope, $uibModalInstance, $state, $timeout, mgmtFactory, user) {
   
