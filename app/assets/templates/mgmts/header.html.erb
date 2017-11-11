@@ -351,7 +351,7 @@
       <li class="dropdown dropdown-user">
           <a href="#" class="dropdown-toggle" dropdown-menu-hover data-toggle="dropdown" data-close-others="true">
               <img alt="" class="img-circle" src="<%= asset_path('avatar3_small.jpg') %>" />
-              <span class="username username-hide-on-mobile"> {{current_mgmt.email}} </span>
+              <span class="username username-hide-on-mobile"> {{current_mgmt.first_name != null && current_mgmt.last_name != null ? current_mgmt.first_name + ' ' + current_mgmt.last_name: current_mgmt.email}} </span>
               <i class="fa fa-angle-down"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-default">

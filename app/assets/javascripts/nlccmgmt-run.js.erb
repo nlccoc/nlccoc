@@ -7,6 +7,8 @@ nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $st
   //console.log("nlcc mgmt run");
   $rootScope.$state = $state; // state to be accessed from view
   
+  console.log(gon.current_mgmt);
+  console.log(gon.current_mgmt.first_name);
   $rootScope.fileexist = function(url) {
     //console.log("Check file exist: " + url);
     

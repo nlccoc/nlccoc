@@ -46,8 +46,8 @@
                       </label>
                   </td>
                   <td> <a ui-sref='user({id: user.id})' href="#"> {{user.email}}</td>
-                  <td></td>
-                  <td class="center"></td>
+                  <td>{{user.first_name}}</td>
+                  <td class="center">{{user.last_name}}</td>
                   <td>
                       <span class="label label-sm label-{{user.role.name}}">{{user.role.name}} </span>
                   </td>
