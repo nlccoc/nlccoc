@@ -88,14 +88,15 @@ angular.module('nlcc.tools', [])
 			ngModel.$render = function(){
 				element.val( ngModel.$viewValue || '' );
 			}
-      if (typeof scope.format === "undefined")
+			
+      if (typeof scope.format === "undefined"){
 			  if (!attrs.format) {
 			    attrs.format = '';
 			  }
-			  //console.log('format: ' + scope.format)
-			  element.datetimepicker({
-			    format: attrs.format
-			  });
+      }
+		  element.datetimepicker({
+		    format: attrs.format
+		  });
 			  
 
 			element.on('dp.change', function(){

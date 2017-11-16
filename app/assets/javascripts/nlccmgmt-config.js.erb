@@ -20,11 +20,17 @@ nlccmgmtapp.config([
       url: '/mgmts/dashboard',templateUrl: 'mgmts/home.html'/*,
       controller: 'mainCtrl'*/
     }).state('list-scriptures', {
-      url: '/mgmts/list-scriptures',templateUrl: 'mgmts/pastors/list_scriptures.html',
+      url: '/mgmts/blog/list-scriptures', templateUrl: 'mgmts/blog/posts.html',
       controller: 'listScriptCtrl'
     }).state('add-scripture', {
-      url: '/mgmts/add-scripture',templateUrl: 'mgmts/pastors/add_scripture.html',
+      url: '/mgmts/blog/add-scripture', templateUrl: 'mgmts/blog/new_post.html',
       controller: 'addScriptCtrl'
+    }).state('categories', {
+      url: '/mgmts/blog/categories', templateUrl: 'mgmts/blog/categories.html'/*,
+      controller: 'blogCategoriesCtrl'*/
+    }).state('tags', {
+      url: '/mgmts/blog/tags',templateUrl: 'mgmts/blog/tags.html',
+      controller: 'blogTagsCtrl'
     }).state('media-video', {
       url: '/mgmts/media-video/:page',templateUrl: 'mgmts/media/video.html',
       controller: 'mediaVideoCtrl',

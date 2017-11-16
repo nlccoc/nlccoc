@@ -66,7 +66,7 @@ var Layout = function () {
 
   // Handle sidebar menu links
   var handleSidebarMenuActiveLink = function(mode, el) {
-    
+
       //var url = location.hash.toLowerCase();    
       var url =''
       url = location.href.substr(location.href.lastIndexOf('/') + 1);
@@ -80,18 +80,20 @@ var Layout = function () {
       if (mode === 'click' || mode === 'set') {
           el = $(el);
       } else if (mode === 'match') {
-        
         menu.find("li > a").each(function() {
           
           var path = $(this).attr("ui-sref");
-         /* if(typeof path != 'undefined'){
+         /*if(typeof path != 'undefined'){
             path = path.toLowerCase();
+            console.log("################");
             console.log(path);
             console.log(url.substr(0, path.length));
+            console.log("################");
           }*/
+          //console.log(url.substr(0, path.length));
+          
           if (typeof path != 'undefined' && path.length > 1 && url.substr(0, path.length) == path) {
-            //console.log('match');
-            //console.log(path);
+
             el = $(this);
             return; 
           }
@@ -571,7 +573,7 @@ var Layout = function () {
       },
 
       initSidebar: function() {
-        console.log("initSidebar");
+        
           //layout handlers
           handleFixedSidebar(); // handles fixed sidebar menu
           handleSidebarMenu(); // handles main menu

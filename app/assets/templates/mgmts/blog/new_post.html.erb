@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-12">
+    <form>
+      <div class='form-body'>
+        <div class="form-group">  
+          <label>Title</label>
+          <div class="input-icon input-icon-lg">
+            <i class="fa fa-bell-o"></i>
+            <input type="text" class="form-control input" placeholder="Title" ng-model='post.title'></div>
+        </div>
+        <div class='form-body'>
+          <textarea froala="froalaOptions" ng-model="myHtml"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input class="form-control form-control-inline input date-picker" datetimepicker format='MM/DD/YYYY' ng-model='post.date' size="16" type="text" value="" />
+          <span class="help-block"> Select date </span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
