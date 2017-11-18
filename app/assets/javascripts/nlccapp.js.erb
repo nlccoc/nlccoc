@@ -84,4 +84,16 @@ nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($
       $scope.submitting = false;
     });
   }
-}])
+}]);
+
+nlccapp.controller('weeklynewspaperCtrl', ['$scope', function($scope){
+  console.log("Weeklynewspaper Controller");
+  $scope.items = [];
+  for (var i = 0; i < 24 ; i++)
+  {
+		$scope.items.push({
+			fileName: 	"File name " + (i + 1) + " ",
+      description:"PDF " +       (i + 1) + "'s description."
+		  });
+  }
+}]);

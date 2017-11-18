@@ -36,7 +36,8 @@
     "swiper": "^3.4.1",
     "moment-timezone": "^0.5.13",
     "froala-wysiwyg-editor": "^2.7.1",
-    "angular-froala": "^2.7.0"
+    "angular-froala": "^2.7.0",
+    "angular-material": "^1.1.5"
   },
   "devDependencies": {
     "angular-translate": "^2.12.1"

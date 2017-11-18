@@ -63,7 +63,7 @@ Rails.application.routes.draw do
     get 'main/index' => 'main#index'
     
     root 'main#index'
-    
+    get "weeklynewspaper" => "main#weeklynewspaper"
     get "comingsoon" => "main#comingsoon"
     get "share" => "main#share" 
     get 'home' => 'main#home'

@@ -1,6 +1,6 @@
 class MainController < ApplicationController
   layout "extmain", except: [:index]
-  before_action :set_bg_dark, only: [:cellgroups, :videos, :youngadults, :children, :rolcc_feed, :rolcc_feeds, :cellgroups, :audio]
+  before_action :set_bg_dark, only: [:cellgroups, :videos, :youngadults, :children, :rolcc_feed, :rolcc_feeds, :cellgroups, :audio, :weeklynewspaper]
   skip_before_filter :verify_authenticity_token, :only => [:audio]
   
   def index
@@ -195,6 +195,9 @@ class MainController < ApplicationController
 		#  '05-23-2017' => '<a href=\"//finshare-boo0330.c9users.io/zh/events/8\" target=\"_blank\">每週禱告會</a>',
 		#  '05-30-2017' => '<a href=\"//finshare-boo0330.c9users.io/zh/events/8\" target=\"_blank\">每週禱告會</a>',
 		#  '06-02-2017' => '<a href=\"//finshare-boo0330.c9users.io/zh/events/7\" target=\"_blank\">每個月青年大組</a>'}.to_json
+  end
+  
+  def weeklynewspaper
   end
   
   def biblesearch

@@ -1,0 +1,42 @@
+<style>
+  md-content{
+    margin: auto;
+  }
+  md-list {
+    padding: 0px;
+  }
+  md-list-item {
+    position: relative;
+    padding: 0px 30% !important;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
+  i.fa {
+    line-height: 48px !important;
+  }
+  .download-pdf-icon {
+    color:   #C00;
+    padding: 0;
+    margin:  10px 20px 0 0;
+  }
+</style>
+
+<section class='last' ng-controller='weeklynewspaperCtrl' style='padding-top:55px;'>
+  <md-content>
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="item in items">
+        <i class="fa fa-file-pdf-o fa-3x download-pdf-icon"></i>
+        <div class="md-list-item-text">
+          <h3>{{item.fileName}}</h3>
+          <p>
+            {{item.description}}
+          </p>
+        </div>
+        <md-divider inset=""></md-divider>
+      </md-list-item>
+
+    </md-list>
+
+  </md-content>
+</section>
