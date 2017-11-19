@@ -25,7 +25,6 @@ class LibrariesController < ApplicationController
   # POST /libraries.json
   def create
     @library = Library.new(library_params)
-
     respond_to do |format|
       if @library.save!
         format.html { redirect_to @library, notice: 'Library was successfully created.' }

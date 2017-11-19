@@ -10,18 +10,13 @@ nlccmgmtapp.run(["$rootScope", "$state", "$http", "$q", function($rootScope, $st
   $rootScope.fileexist = function(url) {
     //console.log("Check file exist: " + url);
     
-    var deferred = $q.defer();
-    
-    $http({
+    return $http({
       method: 'GET',
       url: "/utils/aws/isexist.json?url=" + url
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data
+    }, function(){
     });
-    
-    return deferred.promise;
   }
   
   $rootScope.filetype = function(filename) {

@@ -14,7 +14,8 @@
 //= require angular
 //= require angular-animate
 //= require angular-resource
-//= require angular-ui-router
+//# require angular-ui-router-0.2.18
+//= require angular-ui-router/release/angular-ui-router.min
 //= require angular-rails-templates
 //= require angular-bootstrap/ui-bootstrap-tpls
 //= require angular-bootstrap-switch/dist/angular-bootstrap-switch

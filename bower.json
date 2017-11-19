@@ -37,7 +37,11 @@
     "moment-timezone": "^0.5.13",
     "froala-wysiwyg-editor": "^2.7.1",
     "angular-froala": "^2.7.0",
-    "angular-material": "^1.1.5"
+    "angular-material": "^1.1.5",
+    "angular-pdfjs-viewer": "^0.8.1",
+    "angular-pdfjs": "^0.0.7",
+    "angular-pdf": "^2.0.0",
+    "angular-ui-router": "0.4.2"
   },
   "devDependencies": {
     "angular-translate": "^2.12.1"

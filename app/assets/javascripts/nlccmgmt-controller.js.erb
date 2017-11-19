@@ -59,13 +59,10 @@ nlccmgmtapp.controller('addScriptCtrl', ['$scope', function($scope){
 	$scope.post.date = moment(d).format('MM/DD/YYYY');
 	
 }]);
-nlccmgmtapp.controller('eventAllCtrl', ['$scope', 'categoryFactory', '$uibModal', function($scope, categoryFactory, $uibModal){
+nlccmgmtapp.controller('eventAllCtrl', ['$scope', 'categories', '$uibModal', function($scope, categories, $uibModal){
   console.log('Event Controller');
-  
-  categoryFactory.getAllCategories().then(function(data){
-    $scope.categories = data;
-    console.log(data);
-  });
+  $scope.categories = categories;
+
     
   $scope.getDate = function(d){
     //console.log(d);
@@ -219,10 +216,11 @@ function($scope, categories, eventFactory, $state, $sce, locations){
 }]).controller('eventEditCtrl', ['$scope', 'event', 'categories', 'eventFactory', '$state',
 function($scope, event, categories, eventFactory, $state){
   console.log('Event Edit Controller');
-  //console.log(event)
+  console.log(event);
   $scope.function = 'edit'
   $scope.meta={};
   $scope.meta.categories = categories;
+  console.log(categories);
   $scope.getDatetime = function(d){
     return new Date(d).toString();
   }
@@ -318,9 +316,8 @@ function($scope, event, categories, eventFactory, $state){
       });
     }
   }
-}]).controller('eventCtrl', ['$scope', 'event',
-function($scope, event){
-  
+}]).controller('eventCtrl', ['$scope', 'event', function($scope, event){
+  console.log(event)
   $scope.getDate = function(d){
     //console.log(d);
     //console.log(new Date(d).toString());
@@ -352,13 +349,14 @@ nlccmgmtapp.controller('quicksidebarController', ['$scope', function($scope) {
     }, 2000)
   });
 }]);
+//nlccmgmtapp.controller('mediaVideoCtrl', ['$scope', '$timeout', '$uibModal',
+//function($scope, $timeout, $uibModal) {
 nlccmgmtapp.controller('mediaVideoCtrl', ['$scope', '$timeout', 'mvideo', '$uibModal', 'locations',
 function($scope, $timeout, mvideo, $uibModal, locations) {
-  console.log("mediaVideoCtrl Controller");
+
   $scope.mvideos = mvideo.mvideo;
   $scope.total_pages = mvideo.total_pages;
   $scope.current_page = mvideo.current_page;
-  
   $scope.locations=locations;
   $scope.animationsEnabled = true;
   $scope.newvideo={};
@@ -437,10 +435,11 @@ function($scope, $timeout, mvideo, $uibModal, locations) {
 }]);
 nlccmgmtapp.controller('mediaAudioCtrl', ['$scope', '$timeout', 'maudios', '$uibModal',
 function($scope, $timeout, maudios, $uibModal) {
-  //console.log("mediaAudioCtrl Controller");
+  console.log("mediaAudioCtrl Controller");
+  console.log(maudios);
   $scope.maudios = maudios.maudios;
-  $scope.total_pages = maudios.total_pages;
-  $scope.current_page = maudios.current_page;
+  $scope.total_pages =$scope.maudios.total_pages;
+  $scope.current_page = $scope.maudios.current_page;
   
   $scope.deleteMaudio = function(maudio){
     console.log("DeleteMaudio");
@@ -528,9 +527,8 @@ function($scope, $timeout, maudio, maudioFactory, $state, $uibModal) {
   console.log("mediaAudioCtrl Controller");
   $scope.maudio = maudio;
   $scope.function = 'edit';
-
   /* same naming work around*/
-  $scope.maudio.tfeature = maudio.featured;
+  $scope.maudio.tfeature = $scope.maudio.featured;
   
   $scope.maudio.featured={};
   $scope.maudio.featured.isSelected=$scope.maudio.tfeature;
@@ -552,7 +550,7 @@ function($scope, $timeout, maudio, maudioFactory, $state, $uibModal) {
       maudioFactory.updateMaudio($scope.maudio).then(function(data){
         $state.go('media-audio');
         console.log("Success updated a maudio");
-        toastr.success('Success updated audio' + $scope.maudio3.title);
+        toastr.success('Success updated audio' + $scope.maudio.title);
       });
     }
   }
@@ -596,7 +594,6 @@ function ($scope, $uibModalInstance, libraryFactory) {
     $uibModalInstance.dismiss('cancel');
   };
 }]);
-
 nlccmgmtapp.controller('mvideoNewCtrl', ['$scope', 'mvideoFactory', '$state', 'locations', function($scope, mvideoFactory, $state, locations){
   console.log("mvideo New Controller");
   $scope.function = 'new';
@@ -606,15 +603,9 @@ nlccmgmtapp.controller('mvideoNewCtrl', ['$scope', 'mvideoFactory', '$state', 'l
   $scope.mvideo.desc='';
   $scope.mvideo.date='';
   $scope.mvideo.path='';
-  $scope.mvideo.locat=$scope.locations[0];
+  //$scope.mvideo.locat=$scope.locations[0];
   $scope.mvideo.speaker='陳正榮 牧師';
   
-  //console.log(mvideo);
-  /*$scope.mvideo.youtubeID = youtubeID(mvideo.path);
-  mvideoFactory.createMVideo($scope.mvideo).then(function(data){
-    console.log("Success create a Media");
-  });
-    */
   $scope.submit = function(func){
     if(func=='new'){
       $scope.mvideo.youtubeID = youtubeID($scope.mvideo.path);
@@ -629,9 +620,7 @@ nlccmgmtapp.controller('mvideoNewCtrl', ['$scope', 'mvideoFactory', '$state', 'l
 nlccmgmtapp.controller('mediaVideoEditCtrl', ['$scope', '$timeout', 'mvideo', 'mvideoFactory', '$state', 'locations', 
 function($scope, $timeout, mvideo, mvideoFactory, $state, locations) {
   console.log("mvideo Edit Controller");
-  $scope.mvideo = mvideo;
   $scope.function = 'edit';
-  console.log(mvideo);
   $scope.locations = locations;
   $scope.mvideo = {};
   $scope.mvideo.id=mvideo.id;
@@ -655,7 +644,7 @@ function($scope, $timeout, mvideo, mvideoFactory, $state, locations) {
 nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', '$uibModal', function($scope, libraries, $uibModal){
   console.log('library Controller');
   $scope.libraries = libraries.libraries;
-  console.log($scope.libraries)
+
 
   var idx=0;
   for (idx=0; idx < $scope.libraries.length; idx++){
@@ -762,12 +751,13 @@ function ($scope, $uibModalInstance, maudioFactory, maudio) {
 nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', '$state', '$timeout', function($scope, FileUploader, $state, $timeout){
   $scope.library={};
   $scope.library.name='';
+  console.log('upload');
   var uploader = $scope.uploader = new FileUploader(
   {
     headers : {
       'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
     },
-    url: '/libraries',
+    url: '/libraries.json',
     alias: 'library[attachment]'
   });
   // FILTERS
@@ -800,11 +790,11 @@ nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', '$state', '$
   };
   uploader.onProgressItem = function(fileItem, progress)
   {
-      console.info('onProgressItem', fileItem, progress);
+      //console.info('onProgressItem', fileItem, progress);
   };
   uploader.onProgressAll = function(progress)
   {
-    console.info('onProgressAll', progress);
+    //console.info('onProgressAll', progress);
   };
   uploader.onSuccessItem = function(fileItem, response, status, headers)
   {

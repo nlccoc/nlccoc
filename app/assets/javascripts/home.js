@@ -4,8 +4,6 @@
 //= require bootstrap-sprockets
 //= require angular
 //= require angular-animate
-//= require angular-aria
-//= require angular-messages
 //= require angular-material/angular-material.min
 //= require i18n
 //= require i18n/translations

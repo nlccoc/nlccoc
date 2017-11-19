@@ -1,0 +1,11 @@
+<%= javascript_include_tag 'pdfviewer.js' %>
+<%= stylesheet_link_tag    'pdfviewer', media: 'all', 'data-turbolinks-track' => true %>
+<style>
+</style>
+
+<section class='last' style='padding-top:55px;'>
+<div class="wrapper" ng-controller="pdfviewerCtrl">
+  <h1>{{pdfName}}</h1>
+  <ng-pdf template-url="partials/viewer.html" scale="page-fit" page=13></ng-pdf>
+</div>
+</section>

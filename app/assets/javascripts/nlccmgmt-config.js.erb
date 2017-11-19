@@ -82,7 +82,13 @@ nlccmgmtapp.config([
       controller: 'mainCtrl'*/
     }).state('events-all', {
       url: '/mgmts/events-all',templateUrl: 'mgmts/events/all.html',
-      controller: 'eventAllCtrl'
+      controller: 'eventAllCtrl',
+      resolve: {
+        catResource: 'categoryFactory',
+        categories: ['catResource',function(catResource){
+          return catResource.getAllCategories();
+        }]
+      }
     }).state('event-detail', {
       url: '/mgmts/event/:eventID',templateUrl: 'mgmts/events/event.html',
       resolve: {
@@ -153,7 +159,7 @@ nlccmgmtapp.config([
         catResource: 'categoryFactory',
         locations: ['catResource',function(catResource){
           return catResource.getAllLocations();
-        }]
+        }],
       }
     }).state('mvideo-edit', {
       url: '/mgmts/mvideos/:mvideoID/edit',
@@ -161,11 +167,12 @@ nlccmgmtapp.config([
       templateUrl: 'mgmts/media/video.edit.html',
       resolve: {
         catResource: 'categoryFactory',
+        mvideoResource: 'mvideoFactory',
         locations: ['catResource',function(catResource){
           return catResource.getAllLocations();
         }],
-        mvideoResource: 'mvideoFactory',
-        mvideo: ['mvideoResource', '$stateParams',function(mvideoResource, $stateParams){
+        mvideo: ['mvideoResource', '$stateParams', function(mvideoResource, $stateParams){
+
           return mvideoResource.getMvideo($stateParams.mvideoID);
         }]
       }

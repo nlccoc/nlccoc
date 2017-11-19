@@ -3,6 +3,15 @@
 var nlccapp = angular.module('nlcc', []);
 //var nlccext = angular.module('nlccext', ['nlcc.tools']);
 
+nlccapp.config(['$sceDelegateProvider', function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist([
+    // Allow same origin resource loads.
+    'self',
+    // Allow loading from our assets domain.  Notice the difference between * and **.
+    'https://files.natecheng.me/**'
+  ]);
+}]);
+  
 nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($scope, $timeout, $http){
   console.log('Bible Search Controller');
   $scope.submitting=false;
@@ -18,7 +27,6 @@ nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($
     $scope.submitting = true;
     $scope.results={}
     var _url='/bible/search.json'
-    console.log('submit');
     $http({
       method: 'POST',
       url: _url,
@@ -30,7 +38,7 @@ nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($
         "keyword": $scope.search.keyword,
         "version": $scope.search.version
       }
-    }).success(function(data){
+    }).then(function(data){
       $scope.results=data;
       //console.log($scope.results)
       $timeout(function(){
@@ -79,7 +87,7 @@ nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($
         });
       },200)
       $scope.submitting = false;
-    }).error(function(){
+    }, function(){
       console.log("There is an error");
       $scope.submitting = false;
     });
@@ -96,4 +104,40 @@ nlccapp.controller('weeklynewspaperCtrl', ['$scope', function($scope){
       description:"PDF " +       (i + 1) + "'s description."
 		  });
   }
+}]);
+
+nlccapp.controller('pdfviewerCtrl', ['$scope', '$sce', function($scope, $sce){
+  console.log("PDFviewer Controller");
+  $sce.getTrustedResourceUrl('https://files.natecheng.me/uploads/library/attachment/311/to-our-god-A.pdf');
+  $scope.pdfName = 'Relativity: The Special and General Theory by Albert Einstein';
+  $scope.pdfUrl = 'pdf/relativity.pdf';
+  $scope.pdfPassword = 'test';
+  $scope.scroll = 0;
+  $scope.loading = 'loading';
+
+  $scope.getNavStyle = function(scroll) {
+    if(scroll > 100) return 'pdf-controls fixed';
+    else return 'pdf-controls';
+  }
+
+  $scope.onError = function(error) {
+    console.log(error);
+  }
+
+  $scope.onLoad = function() {
+    $scope.loading = '';
+  }
+
+  $scope.onProgress = function (progressData) {
+    console.log(progressData);
+  };
+
+  $scope.onPassword = function (updatePasswordFn, passwordResponse) {
+    if (passwordResponse === PDFJS.PasswordResponses.NEED_PASSWORD) {
+        updatePasswordFn($scope.pdfPassword);
+    } else if (passwordResponse === PDFJS.PasswordResponses.INCORRECT_PASSWORD) {
+        console.log('Incorrect password')
+    }
+  };
+
 }]);

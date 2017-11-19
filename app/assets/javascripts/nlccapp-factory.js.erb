@@ -31,37 +31,33 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   var _baseUrl = '/mvideos';
   
   service.getAllMvideos = function(page){
-    var deferred = $q.defer();
     var _url = _baseUrl + '.json?page='+page;
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
+      //Error
     });
-    return deferred.promise;
   }
   
   service.getMvideo = function(id){
-    var deferred = $q.defer();
     var _url = _baseUrl + '/' + id + '.json';
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
+      
     });
-    return deferred.promise;
   }
   
   service.createMVideo = function(newvideo) {
-    var deferred = $q.defer();
+    
     var _url = _baseUrl + '.json';
-    $http({
+    return $http({
       method: 'POST',
       url: _url,
       headers: {
@@ -78,19 +74,17 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
           "location_id": newvideo.locat.id
         }
       }
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
+      
     });
-    return deferred.promise;
   }
   
   service.updateMVideo = function(updated_mvideo){
     var _url = _baseUrl + '/' + updated_mvideo.id + '.json'
-    var deferred = $q.defer();
-    
-    $http({
+
+    return $http({
       method: 'PUT',
       url: _url,
       headers: {
@@ -107,29 +101,26 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
           "location_id": updated_mvideo.locat.id
         }
       }
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      response.data;
+    }, function(){
     });
-    return deferred.promise;
   }
   
   service.deleteMVideo = function(id) {
     var _url = _baseUrl + '/' + id + '.json'
-    var deferred = $q.defer();
-    $http({
+
+    return $http({
       method: 'DELETE',
       url: _url,
       headers: {
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
       }  
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
+      
     });
-    return deferred.promise;
   }
   
   return service;
@@ -138,31 +129,26 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   var _baseUrl = '/categories';
   
   service.getAllCategories = function(){
-    var deferred = $q.defer();
     var _url = _baseUrl + '.json';
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
+      
     });
-    return deferred.promise;
   }
   
   service.getAllLocations = function(){
-    var deferred = $q.defer();
     var _url = '/locations.json';
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
   }
   return service;
 }]).factory('eventFactory', ['$http','$q', function($http, $q){
@@ -170,35 +156,28 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   var _baseUrl = '/events';
   
   service.getAllEvents = function(){
-    var deferred = $q.defer();
     var _url = _baseUrl + '.json';
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
   }
   
   service.getEvent = function(id){
-    var deferred = $q.defer();
     var _url = _baseUrl + '/' + id + '.json';
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
   }
   
   service.createEvent = function(newevent) {
-    var deferred = $q.defer();
     var _url = _baseUrl + '.json';
     //console.log(newevent);
     console.log("Create event");
@@ -213,7 +192,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     console.log(newevent.cat);
     
     
-    $http({
+    return $http({
       method: 'POST',
       url: _url,
       headers: {
@@ -242,35 +221,28 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
           "date(3i)": vu.date()
         }
       }
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
   }
   
   service.deleteEvent = function(id) {
     var _url = _baseUrl + '/' + id + '.json'
-    var deferred = $q.defer();
-    $http({
+    return $http({
       method: 'DELETE',
       url: _url,
       headers: {
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
       }  
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
   }
   
   service.updateEvent = function(updated_event) {
     var _url = _baseUrl + '/' + updated_event.id + '.json'
-    var deferred = $q.defer();
-    
     var dt = new moment(updated_event.datetime, 'MM/DD/YYYY h:mm a');
     var vu = new moment(updated_event.repeat.valid_until, 'MM/DD/YYYY');
     console.log(updated_event.categories);
@@ -280,7 +252,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     })
     
     console.log(updated_event.cat);
-    $http({
+    return $http({
       method: 'PUT',
       url: _url,
       headers: {
@@ -310,45 +282,39 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
           "date(3i)": vu.date()
         }
       }
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
   }
   return service;
 }]).factory('libraryFactory', ['$http','$q', function($http, $q){
   var service = {};
   var _baseUrl = '/libraries';
   service.getAllLibraries = function(page){
-    var deferred = $q.defer();
     var _url = _baseUrl + '.json?page='+page;
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
+      
     });
-    return deferred.promise;
   }
   service.deleteLibrary = function(id) {
     var _url = _baseUrl + '/' + id + '.json'
-    var deferred = $q.defer();
-    $http({
+    
+    return $http({
       method: 'DELETE',
       url: _url,
       headers: {
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
       }  
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
   }
   return service;
 }]).factory('maudioFactory', ['$http','$q', function($http, $q){
@@ -356,24 +322,20 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   var _baseUrl = '/maudios';
   
   service.getAllMaudios = function(page){
-    var deferred = $q.defer();
     var _url = _baseUrl + '.json?page='+page;
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
+      
     });
-    return deferred.promise;
   }
   
   service.createMaudio = function(newaudio) {
-    var deferred = $q.defer();
     var _url = _baseUrl + '.json';
-    console.log(newaudio);
-    $http({
+    return $http({
       method: 'POST',
       url: _url,
       headers: {
@@ -390,33 +352,29 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
           "speaker":newaudio.speaker
         }
       }
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
+
   }
   
   service.getMaudio = function(id){
-    var deferred = $q.defer();
     var _url = _baseUrl + '/' + id + '.json';
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
+      
     });
-    return deferred.promise;
   }
   
   service.updateMaudio = function(updated_maudio){
     var _url = _baseUrl + '/' + updated_maudio.id + '.json'
-    var deferred = $q.defer();
     
-    $http({
+    return $http({
       method: 'PUT',
       url: _url,
       headers: {
@@ -433,29 +391,26 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
           "speaker":updated_maudio.speaker
         }
       }
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
+    
     });
-    return deferred.promise;
   }
   
   service.deleteMaudio = function(id) {
     var _url = _baseUrl + '/' + id + '.json'
-    var deferred = $q.defer();
-    $http({
+    return $http({
       method: 'DELETE',
       url: _url,
       headers: {
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
       }  
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
+      
     });
-    return deferred.promise;
   }
   return service;
 }]).factory('mgmtFactory', ['$http','$q', function($http, $q){
@@ -463,67 +418,58 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   var _baseUrl = '/mgmts';
   
   service.getUnapprovedUsers = function(){
-    var deferred = $q.defer();
     var _url = _baseUrl + '/unapprovedusers.json';
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data
+    }, function(){
     });
-    return deferred.promise;
   };
   
   service.getApprovedUsers = function(){
-    var deferred = $q.defer();
+    
     var _url = _baseUrl + '/approvedusers.json';
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
   };
   
   service.getAllUsers = function(){
-    var deferred = $q.defer();
+    
     var _url = _baseUrl + '/allusers.json';
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
   };
   
   service.getUser = function(id){
     //console.log("Get User");
-    var deferred = $q.defer();
+    
     var _url = _baseUrl + '/users/' + id + '.json';
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
   };
   
   service.approveUser = function(id) {
     console.log('Approve User!');
-    var deferred = $q.defer();
+    
     var _url = _baseUrl + '/approveuser.json';
-    $http({
+    return $http({
       method: 'POST',
       headers: {
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -534,12 +480,10 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
           "id": id
         }
       }
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
   }
   return service;
 }]).factory('logFactory', ['$http','$q', function($http, $q){
@@ -547,17 +491,15 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   var _baseUrl = '/logs';
   
   service.getAllLogs = function(page){
-    var deferred = $q.defer();
+    
     var _url = _baseUrl + '.json?page=' + page;
-    $http({
+    return $http({
       method: 'GET',
       url: _url,
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
   }
   return service;
 }]).factory('userFactory', ['$http','$q', function($http, $q){
@@ -566,9 +508,8 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   
   service.approveUser = function(id) {
     console.log('Approve User!');
-    var deferred = $q.defer();
     var _url = _baseUrl + '/approveuser.json';
-    $http({
+    return $http({
       method: 'POST',
       headers: {
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
@@ -579,12 +520,10 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
           "id": id
         }
       }
-    }).success(function(data){
-      deferred.resolve(data);
-    }).error(function(){
-      deferred.reject("There is an error");
+    }).then(function(response){
+      return response.data;
+    }, function(){
     });
-    return deferred.promise;
   }
   return service
 }]).factory('responseObserver', ['$q', function($q){

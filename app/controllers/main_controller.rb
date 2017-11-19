@@ -1,6 +1,6 @@
 class MainController < ApplicationController
   layout "extmain", except: [:index]
-  before_action :set_bg_dark, only: [:cellgroups, :videos, :youngadults, :children, :rolcc_feed, :rolcc_feeds, :cellgroups, :audio, :weeklynewspaper]
+  before_action :set_bg_dark, only: [:cellgroups, :videos, :youngadults, :children, :rolcc_feed, :rolcc_feeds, :cellgroups, :audio, :weeklynewspaper, :pdfviewer]
   skip_before_filter :verify_authenticity_token, :only => [:audio]
   
   def index
@@ -98,6 +98,9 @@ class MainController < ApplicationController
       format.html
       format.js
     end
+  end
+  
+  def pdfviewer
   end
   
   def sundaysermon

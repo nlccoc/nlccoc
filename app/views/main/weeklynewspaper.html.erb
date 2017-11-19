@@ -7,10 +7,15 @@
   }
   md-list-item {
     position: relative;
-    padding: 0px 30% !important;
+    padding: 0px 43% !important;
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 auto;
     flex: 1 1 auto;
+  }
+  md-list-item > span {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
   }
   i.fa {
     line-height: 48px !important;
@@ -25,7 +30,7 @@
 <section class='last' ng-controller='weeklynewspaperCtrl' style='padding-top:55px;'>
   <md-content>
     <md-list>
-      <md-list-item class="md-3-line" ng-repeat="item in items">
+      <md-list-item class="md-3-line text-center" ng-repeat="item in items">
         <i class="fa fa-file-pdf-o fa-3x download-pdf-icon"></i>
         <div class="md-list-item-text">
           <h3>{{item.fileName}}</h3>
@@ -33,9 +38,10 @@
             {{item.description}}
           </p>
         </div>
+
         <md-divider inset=""></md-divider>
       </md-list-item>
-
+      
     </md-list>
 
   </md-content>
