@@ -2,9 +2,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require angular
-//= require angular-animate
-
+//= require angular/angular.min
+//= require angular-animate/angular-animate.min
 //= require i18n
 //= require i18n/translations
 //= require masonry/dist/masonry.pkgd.js
