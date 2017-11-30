@@ -8,7 +8,7 @@ nlccapp.config(['$sceDelegateProvider', function($sceDelegateProvider) {
     // Allow same origin resource loads.
     'self',
     // Allow loading from our assets domain.  Notice the difference between * and **.
-    'https://files.natecheng.me/**'
+    'https://files.nlccoc.org/**'
   ]);
 }]);
   
@@ -108,7 +108,7 @@ nlccapp.controller('weeklynewspaperCtrl', ['$scope', function($scope){
 
 nlccapp.controller('pdfviewerCtrl', ['$scope', '$sce', function($scope, $sce){
   console.log("PDFviewer Controller");
-  $sce.getTrustedResourceUrl('https://files.natecheng.me/uploads/library/attachment/311/to-our-god-A.pdf');
+  $sce.getTrustedResourceUrl('https://files.nlccoc.org/uploads/library/attachment/311/to-our-god-A.pdf');
   $scope.pdfName = 'Relativity: The Special and General Theory by Albert Einstein';
   $scope.pdfUrl = 'pdf/relativity.pdf';
   $scope.pdfPassword = 'test';

@@ -128,8 +128,8 @@ angular.module('nlcc.tools', [])
         return $sce.trustAsResourceUrl(src);
       }
       
-      var turl = attrs.thumbSrc.replace('//files.natecheng.me/','');
-      var url = attrs.src.replace('//files.natecheng.me/','');
+      var turl = attrs.thumbSrc.replace('//files.nlccoc.org/','');
+      var url = attrs.src.replace('//files.nlccoc.org/','');
       //console.log('src');
       //console.log(attrs.src);
       scope.fileexist(turl).then(function(response){
@@ -142,9 +142,9 @@ angular.module('nlcc.tools', [])
           if (scope.env == 'production')
             myEle = '<a class=\'item-thumb\' href=\'#\'> \
                 <div class="image-tile hover-tile outer-title text-center"> \
-                  <img src=\'//files.natecheng.me/' + turl + '\' > \
+                  <img src=\'//files.nlccoc.org/' + turl + '\' > \
                   <div class="hover-state"> \
-                    <span><i ng-click="addLibrary(\'//files.natecheng.me/' + url + '\')" class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+                    <span><i ng-click="addLibrary(\'//files.nlccoc.org/' + url + '\')" class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
     		          </div> \
   		          </div> \
               </a> \
@@ -168,7 +168,7 @@ angular.module('nlcc.tools', [])
                       <div class="image-tile hover-tile outer-title text-center"> \
         		            <span><i class=\'fa fa-music fa-3x\'></i></span>\
         		            <div class="hover-state">\
-                          <span><i ng-click="addLibrary(\'//files.natecheng.me/' + url + '\')" class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+                          <span><i ng-click="addLibrary(\'//files.nlccoc.org/' + url + '\')" class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
           		          </div> \
       		            </div> \
     		            </a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
@@ -177,7 +177,7 @@ angular.module('nlcc.tools', [])
                         <div class="image-tile hover-tile outer-title text-center"> \
                           <span><i class=\'fa fa-picture-o fa-3x\'></i></span> \
                           <div class="hover-state">\
-                            <span><i ng-click="addLibrary(\'//files.natecheng.me/' + url + '\')" class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+                            <span><i ng-click="addLibrary(\'//files.nlccoc.org/' + url + '\')" class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
             		          </div> \
             		        </div> \
                       </a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
@@ -186,7 +186,7 @@ angular.module('nlcc.tools', [])
                       <div class="image-tile hover-tile outer-title text-center"> \
         		            <span><i class=\'fa fa-question fa-3x\'></i></span> \
       		              <div class="hover-state">\
-                          <span><i ng-click="addLibrary(\'//files.natecheng.me/' + url + '\')" class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
+                          <span><i ng-click="addLibrary(\'//files.nlccoc.org/' + url + '\')" class="fa fa-plus fa-2x" aria-hidden="true"></i></span> \
           		          </div> \
           		        </div> \
     		            </a><div class=\'item-text\'>' + attrs.title.trunc(13) + '</div>'
