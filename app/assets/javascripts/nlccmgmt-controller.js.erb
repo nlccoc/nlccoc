@@ -501,7 +501,7 @@ nlccmgmtapp.controller('audioNewCtrl', ['$scope', 'maudioFactory', '$state', '$u
       maudioFactory.createMaudio($scope.maudio).then(function(data){
         console.log("Success create a maudio");
         $state.go('media-audio');
-        toastr.success('Success create audio' + $scope.title);
+        toastr.success('Success create audio' + $scope.maudio.title);
       });
     }
   }
@@ -615,6 +615,50 @@ nlccmgmtapp.controller('mvideoNewCtrl', ['$scope', 'mvideoFactory', '$state', 'l
         toastr.success('Successfully created the video: ' + $scope.mvideo.title);
       });
     }
+  }
+}]);
+
+nlccmgmtapp.controller('newsletterCtrl', ['$scope', '$state', 'newsletters', function($scope, $state, newsletters){
+  console.log("Newsletter Controller");
+  console.log(newsletters);
+  $scope.newsletters = newsletters.newsletters;
+  
+  $scope.formatDate = function(datetime) {
+    console.log(datetime);
+    return moment(datetime).format("MM/DD/YYYY");
+  }
+}]);
+nlccmgmtapp.controller('newsletterNewCtrl', ['$scope', '$state', '$uibModal', 'newsletterFactory', function($scope, $state, $uibModal, newsletterFactory){
+  console.log("Newsletter New Controller");
+  $scope.function = 'new';
+  $scope.newsletter = {};
+  $scope.newsletter.title='';
+  $scope.newsletter.date='';
+  $scope.newsletter.path='';
+  
+  $scope.submit = function(func){
+    console.log("submit");
+    if(func=='new'){
+      newsletterFactory.createNewsletter($scope.newsletter).then(function(data){
+        console.log("Success create a newsletter");
+        $state.go('media-newsletter');
+        toastr.success('Success create newsletter' + $scope.newsletter.title);
+      });
+    }
+  }
+  
+  $scope.browse = function() {
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      size: 'lg',
+      templateUrl: 'mgmts/browselibrary.html',
+      controller: 'modalBrowseLibraryCtrl'
+    });
+    
+    modalInstance.result.then(function (path) {
+      $scope.newsletter.path = path;
+      toastr.info('Successfully inserted path: ' + path + ' to the field.');
+    });
   }
 }]);
 nlccmgmtapp.controller('mediaVideoEditCtrl', ['$scope', '$timeout', 'mvideo', 'mvideoFactory', '$state', 'locations', 

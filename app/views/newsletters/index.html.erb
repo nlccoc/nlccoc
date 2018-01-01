@@ -1,0 +1,68 @@
+<style>
+/* enable absolute positioning */
+.inner-addon {
+  position: relative;
+}
+
+/* style glyph */
+.inner-addon .ti-search {
+  font-size: 20px;
+  position: absolute;
+  padding: 17px;
+  pointer-events: none;
+}
+
+.list-group-item {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.audio-item {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/* align glyph */
+.left-addon .ti-search  { left:  0px;}
+.right-addon .ti-search { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  50px; }
+.right-addon input { padding-right: 50px; }
+
+.newsletter-table,  .newsletter-table tr, .newsletter-table tr td {
+  border: 1px solid #ddd;
+}
+
+.newsletter-table tr td {
+  line-height: 58px !important;
+  padding: 0px 50px;
+  font-size: 24px;
+}
+.newsletter-table tr td a i{
+  margin-top: 30px;
+}
+</style>
+<section class='audio-3241234'>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h4 class="uppercase mb16">週 報 下 載</h4>
+        <p class="lead mb64">
+            每週週報
+        </p>
+      </div>
+    </div>
+    <table class='newsletter-table'>
+      
+      <% @newsletters.each do |newsletter| %>
+        <tr>
+          <td class='' width="5%"><%= newsletter.date.strftime("%F") %></td><!-- | 
+              <span class='atitle'><%= newsletter.title %> </span>-->
+          <td width="20%"><a href='<%=newsletter.path%>' target='_blank' download><i class='fa fa-file-pdf-o fa-2x' aria-hidden="true"></i></a></td>
+            <!--<span class="badge">0:21</span>-->
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</section>

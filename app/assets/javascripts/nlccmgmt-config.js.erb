@@ -77,6 +77,21 @@ nlccmgmtapp.config([
         }]
       },
       controller: 'libraryCtrl'
+    }).state('media-newsletter', {
+      url: '/mgmts/media-newsletter',templateUrl: 'mgmts/media/weeklynews.html',
+      resolve: {
+        newsletterResource: 'newsletterFactory',
+        newsletters: ['newsletterResource', '$stateParams', function(newsletterResource, $stateParams){
+          var page = 1;
+          if($stateParams.page != '')
+            page = $stateParams.page
+          return newsletterResource.getAllNewsletters();
+        }]
+      },
+      controller: 'newsletterCtrl'
+    }).state('media-newsletter-new', {
+      url: '/mgmts/media-newsletter/new',templateUrl: 'mgmts/media/weeklynews.edit.html',
+      controller: 'newsletterNewCtrl'
     }).state('library-upload', {
       url: '/mgmts/library-upload',templateUrl: 'mgmts/media/library.upload.html'/*,
       controller: 'mainCtrl'*/

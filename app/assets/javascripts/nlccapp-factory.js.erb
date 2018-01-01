@@ -151,7 +151,46 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     });
   }
   return service;
-}]).factory('eventFactory', ['$http','$q', function($http, $q){
+}]).factory('newsletterFactory',['$http','$q', function($http, $q){
+  var service = {};
+  var _baseUrl = '/newsletters';
+  
+  service.getAllNewsletters = function() {
+    var _url = _baseUrl + '.json';
+    return $http({
+      method: 'GET',
+      url: _url,
+    }).then(function(response){
+      return response.data;
+    }, function(){
+    });
+  }
+  
+  service.createNewsletter = function(newsletter) {
+    var _url = _baseUrl + '.json';
+    return $http({
+      method: 'POST',
+      url: _url,
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+        "utf8": "✓",
+        "maudio": {
+          "title": newsletter.title,
+          "path": newsletter.path,
+          "date": newsletter.date
+        }
+      }
+    }).then(function(response){
+      return response.data;
+    }, function(){
+    });
+
+  }
+  return service;
+}])
+.factory('eventFactory', ['$http','$q', function($http, $q){
   var service = {};
   var _baseUrl = '/events';
   

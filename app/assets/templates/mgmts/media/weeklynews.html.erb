@@ -1,0 +1,56 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a ui-sref="dashboard">Media</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="fileupload">Weekly Newsletter</a>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+      <div class="btn-group pull-right">
+        <a ui-sref='library-upload' class="btn btn-sm btn-default">Upload files</a>
+        
+      </div>
+    </div>
+</div>
+<h3 class="page-title"> Newsletter
+    <small>Newsletter</small>
+</h3>
+<div class='row'>
+  <div class='col-md-12'>
+    <a class="btn green" ui-sref='media-newsletter-new'>Create Weekly Newsletter</a></a>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-md-12'>
+<!--    <div class="pagination p1" ng-show='total_pages > 1'>
+      <ul>
+        <a href="#" ng-show='current_page != 1' ><li><</li></a>
+        <a href='#' ui-sref='media-audio({page: i})' ng-class="{'is-active': i==current_page}" ng-repeat="i in []| range: total_pages:1">{{i}}</a>
+        <a href="#" ng-show='current_page != total_pages' ><li>></li></a>
+      </ul>
+    </div>-->
+    <table id="maudios" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th style="width:10%">Date</th>
+          <th style="width:30%" >Title</th>
+          <th style="width:60%" >Path</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='newsletter in newsletters'>
+          <td style="width:10%">{{formatDate(newsletter.date)}}</td>
+          <td style="width:30%" >{{newsletter.title}}</td>
+          <td style="width:60%" >{{newsletter.path}}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- END PAGE HEADER-->

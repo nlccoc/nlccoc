@@ -1235,52 +1235,56 @@ var download = function (url){
 var initPlayer = function() {
   // The playlist links
   var links = document.querySelectorAll('#playlist li span');
-  var currentTrack = 0;
-  var changeAudio = function(trackIndex) {
-    var title = $(links[trackIndex]).find('span.atitle').html();
-    var date = $(links[trackIndex]).find('span.adate').html();
-    var path = links[trackIndex].parentNode.getAttribute('audio-path')
-    var audio = document.getElementById("sermon_audio");
-    audio.pause();
-    
-    $('#title').html(title);
-    $('#date').html(date);
-    
-    audio.src = path;
-    audio.load();
-    // Give the timeout enough time to avoid the race conflict.
-    var waitTime = 150;
-    
-    setTimeout(function () {      
-      // Resume play if the element if is paused.
-      if (audio.paused) {
-        
-        audio.play();
-      }
-    }, waitTime);
-  }
-    
-  // Load a track by index and highlight the corresponding link
-  var setCurrentSong = function (index) {
-    links[currentTrack].parentNode.classList.remove('active');
-    currentTrack = index;
-    links[currentTrack].parentNode.classList.add('active');
-    changeAudio(index);
-  };
   
-  
-  // Load the track on click
-  Array.prototype.forEach.call(links, function (link, index) {
-    link.addEventListener('click', function (e) {
-      $('#audio-loading').show();
-      $('#playPause').hide();
-      //e.preventDefault();
-      setCurrentSong(index);
+  if (links.length > 0) {
+    var currentTrack = 0;
+    var changeAudio = function(trackIndex) {
+      var title = $(links[trackIndex]).find('span.atitle').html();
+      var date = $(links[trackIndex]).find('span.adate').html();
+      var path = links[trackIndex].parentNode.getAttribute('audio-path')
+      var audio = document.getElementById("sermon_audio");
+      audio.pause();
+      
+      $('#title').html(title);
+      $('#date').html(date);
+      
+      audio.src = path;
+      audio.load();
+      // Give the timeout enough time to avoid the race conflict.
+      var waitTime = 150;
+      
+      setTimeout(function () {      
+        // Resume play if the element if is paused.
+        if (audio.paused) {
+          
+          audio.play();
+        }
+      }, waitTime);
+    }
+      
+    // Load a track by index and highlight the corresponding link
+    var setCurrentSong = function (index) {
+      links[currentTrack].parentNode.classList.remove('active');
+      currentTrack = index;
+      links[currentTrack].parentNode.classList.add('active');
+      changeAudio(index);
+    };
+    
+    
+    // Load the track on click
+    Array.prototype.forEach.call(links, function (link, index) {
+      link.addEventListener('click', function (e) {
+        $('#audio-loading').show();
+        $('#playPause').hide();
+        //e.preventDefault();
+        setCurrentSong(index);
+      });
     });
-  });
+    // Load the first track
+    setCurrentSong(currentTrack);
+  }
   
-  // Load the first track
-  setCurrentSong(currentTrack);
+  
 }
 $(document).on('ready', function(){
   //console.log("Document ready");

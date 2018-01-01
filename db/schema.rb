@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111195412) do
+ActiveRecord::Schema.define(version: 20171231235454) do
 
   create_table "annotations", force: :cascade do |t|
     t.string   "osis"
@@ -149,6 +149,15 @@ ActiveRecord::Schema.define(version: 20171111195412) do
     t.datetime "updated_at",  null: false
     t.string   "youtubeID"
     t.integer  "location_id"
+  end
+
+  create_table "newsletters", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "date"
+    t.string   "path"
+    t.integer  "location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "repeat_meta", force: :cascade do |t|
