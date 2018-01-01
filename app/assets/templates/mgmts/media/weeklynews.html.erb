@@ -38,16 +38,24 @@
       <thead>
         <tr>
           <th style="width:10%">Date</th>
-          <th style="width:30%" >Title</th>
+          <th style="width:20%" >Title</th>
           <th style="width:60%" >Path</th>
+          <th style="width:10%" ></th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat='newsletter in newsletters'>
           <td style="width:10%">{{formatDate(newsletter.date)}}</td>
-          <td style="width:30%" >{{newsletter.title}}</td>
+          <td style="width:20%" >{{newsletter.title}}</td>
           <td style="width:60%" >{{newsletter.path}}</td>
-          
+          <td style="width:10%">
+            <span class="text-muted"> <a ui-sref='newsletter-edit({newsletterID: newsletter.id})' href="#">
+              <i class="fa fa-pencil" aria-hidden="true"></i></a>
+            </span>  
+            <span class="text-muted"> 
+              <a ng-click='deleteNewsletter(newsletter);' href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            </span>
+          </td>
         </tr>
       </tbody>
     </table>

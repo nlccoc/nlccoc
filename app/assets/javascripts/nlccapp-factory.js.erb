@@ -186,7 +186,58 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
       return response.data;
     }, function(){
     });
+  }
+  
+  service.getNewsletter = function(id){
+    var _url = _baseUrl + '/' + id + '.json';
+    return $http({
+      method: 'GET',
+      url: _url,
+    }).then(function(response){
+      return response.data;
+    }, function(){
+      
+    });
+  }
+  
+  service.updateNewsletter = function(updated_newsletter){
+    console.log(updated_newsletter)
+    var _url = _baseUrl + '/' + updated_newsletter.id + '.json'
+    
+    return $http({
+      method: 'PUT',
+      url: _url,
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }, 
+      data: {
+        "utf8": "✓",
+        "newsletter": {
+          "title": updated_newsletter.title,
+          "path": updated_newsletter.path,
+          "date": updated_newsletter.date
+        }
+      }
+    }).then(function(response){
+      return response.data;
+    }, function(){
+    
+    });
+  }
+  service.deleteNewsletter = function(id) {
+    var _url = _baseUrl + '/' + id + '.json'
 
+    return $http({
+      method: 'DELETE',
+      url: _url,
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }  
+    }).then(function(response){
+      return response.data;
+    }, function(){
+      
+    });
   }
   return service;
 }])
@@ -219,7 +270,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   service.createEvent = function(newevent) {
     var _url = _baseUrl + '.json';
     //console.log(newevent);
-    console.log("Create event");
+    //console.log("Create event");
     var dt = new moment(newevent.datetime, 'MM/DD/YYYY h:mm a');
     var vu = new moment(newevent.repeat.valid_until, 'MM/DD/YYYY');
     //console.log(newevent.categories);
@@ -228,7 +279,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
       newevent.cat.push(item.toString());
     })
     
-    console.log(newevent.cat);
+    //console.log(newevent.cat);
     
     
     return $http({
@@ -284,13 +335,13 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
     var _url = _baseUrl + '/' + updated_event.id + '.json'
     var dt = new moment(updated_event.datetime, 'MM/DD/YYYY h:mm a');
     var vu = new moment(updated_event.repeat.valid_until, 'MM/DD/YYYY');
-    console.log(updated_event.categories);
+    //console.log(updated_event.categories);
     updated_event.cat = [];
     updated_event.categories.forEach(function(item, index){
       updated_event.cat.push(item.toString());
     })
     
-    console.log(updated_event.cat);
+    //console.log(updated_event.cat);
     return $http({
       method: 'PUT',
       url: _url,
@@ -505,7 +556,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   };
   
   service.approveUser = function(id) {
-    console.log('Approve User!');
+    //console.log('Approve User!');
     
     var _url = _baseUrl + '/approveuser.json';
     return $http({
@@ -546,7 +597,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
   var _baseUrl = '/mgmts';
   
   service.approveUser = function(id) {
-    console.log('Approve User!');
+    //console.log('Approve User!');
     var _url = _baseUrl + '/approveuser.json';
     return $http({
       method: 'POST',
@@ -571,7 +622,7 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
         switch (errorResponse.status) {
         case 403:
             //$window.location = './403.html';
-            console.log('--> 403');
+            //console.log('--> 403');
             break;
         case 500:
             //$window.location = './500.html';

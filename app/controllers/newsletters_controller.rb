@@ -46,11 +46,11 @@ class NewslettersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /Maudios/1
-  # PATCH/PUT /Maudios/1.json
+  # PATCH/PUT /newsletter/1
+  # PATCH/PUT /newsletter/1.json
   def update
     respond_to do |format|
-      if @newsletter.update(maudio_params)
+      if @newsletter.update(newsletter_params)
         format.json { render json: @newsletter, status: :ok }
       else
         format.json { render json: @newsletter.errors, status: :unprocessable_entity }
@@ -58,8 +58,8 @@ class NewslettersController < ApplicationController
     end
   end
 
-  # DELETE /Maudios/1
-  # DELETE /Maudios/1.json
+  # DELETE /newsletter/1
+  # DELETE /newsletter/1.json
   def destroy
     @newsletter.destroy
     respond_to do |format|
@@ -75,7 +75,7 @@ class NewslettersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def newsletter_params
-      params.require(:maudio).permit(:title, :date, :path, :location_id)
+      params.require(:newsletter).permit(:title, :date, :path, :location_id)
     end
     
 end

@@ -92,6 +92,19 @@ nlccmgmtapp.config([
     }).state('media-newsletter-new', {
       url: '/mgmts/media-newsletter/new',templateUrl: 'mgmts/media/weeklynews.edit.html',
       controller: 'newsletterNewCtrl'
+    }).state('newsletter-edit', {
+      url: '/mgmts/newsletters/:newsletterID/edit',
+      templateUrl: 'mgmts/media/weeklynews.edit.html',
+      resolve: {
+        // A string value resolves to a service
+        newsletterResource: 'newsletterFactory',
+        // A function value resolves to the return
+        // value of the function
+        newsletter: ['newsletterResource', '$stateParams',function(newsletterResource, $stateParams){
+          return newsletterResource.getNewsletter($stateParams.newsletterID);
+        }]
+      },
+      controller: 'newsletterEditCtrl'
     }).state('library-upload', {
       url: '/mgmts/library-upload',templateUrl: 'mgmts/media/library.upload.html'/*,
       controller: 'mainCtrl'*/

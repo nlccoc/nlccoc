@@ -10,7 +10,7 @@ var youtubeID = function(link){
 }
 
 nlccmgmtapp.controller('mgmtCtrl', ['$scope', '$rootScope', 'settings', function($scope, $rootScope, settings){
-  console.log('Mgmt Controller');
+  //console.log('Mgmt Controller');
   $rootScope.I18n = I18n
   I18n.defaultLocale = "zh";
   I18n.locale = "zh";
@@ -25,19 +25,19 @@ nlccmgmtapp.controller('mgmtCtrl', ['$scope', '$rootScope', 'settings', function
 	$rootScope.settings.layout.pageContentWhite = true;
   $rootScope.settings.layout.pageBodySolid = false;
   $rootScope.settings.layout.pageSidebarClosed = false;
-  console.log(I18n.t('event.category.equipping'));
+  //console.log(I18n.t('event.category.equipping'));
 }]);
 nlccmgmtapp.controller('blogTagsCtrl', ['$scope', function($scope){
-  console.log("blogTagsCtrl");
+  //console.log("blogTagsCtrl");
 }]);
 nlccmgmtapp.controller('blogCategoriesCtrl', ['$scope', function($scope){
-  console.log("blogCategoriesCtrl");
+  //console.log("blogCategoriesCtrl");
 }]);
 nlccmgmtapp.controller('listScriptCtrl', ['$scope', function($scope){
-  console.log("List Script Ctrl");
+  //console.log("List Script Ctrl");
 }]);
 nlccmgmtapp.controller('addScriptCtrl', ['$scope', function($scope){
-  console.log("Add Script Ctrl");
+  //console.log("Add Script Ctrl");
   
   $scope.myHtml = ""
 	$scope.froalaOptions = {
@@ -60,7 +60,7 @@ nlccmgmtapp.controller('addScriptCtrl', ['$scope', function($scope){
 	
 }]);
 nlccmgmtapp.controller('eventAllCtrl', ['$scope', 'categories', '$uibModal', function($scope, categories, $uibModal){
-  console.log('Event Controller');
+  //console.log('Event Controller');
   $scope.categories = categories;
 
     
@@ -72,7 +72,7 @@ nlccmgmtapp.controller('eventAllCtrl', ['$scope', 'categories', '$uibModal', fun
   $scope.event = event;
   
   $scope.deleteEvent = function(event, category){
-    console.log("DeleteEvent");
+    //console.log("DeleteEvent");
     var modalInstance = $uibModal.open({
       animation: true,
       templateUrl: 'mgmts/confirmModel.html',
@@ -85,9 +85,9 @@ nlccmgmtapp.controller('eventAllCtrl', ['$scope', 'categories', '$uibModal', fun
     });
     
     modalInstance.result.then(function (result) {
-      console.log(result);
+      //console.log(result);
       if(result == 0) {
-        console.log("result: " + result);
+        //console.log("result: " + result);
         var idx=0, idx1=0;
         for (idx1=0; idx1 < $scope.categories.length; idx1++){
           for(idx=0; idx < $scope.categories[idx1].events.length; idx++){
@@ -104,7 +104,7 @@ nlccmgmtapp.controller('eventAllCtrl', ['$scope', 'categories', '$uibModal', fun
   
 }]).controller('eventNewCtrl', ['$scope', 'categories', 'eventFactory', '$state', '$sce', 'locations',
 function($scope, categories, eventFactory, $state, $sce, locations){
-  console.log('Event New Controller');
+  //onsole.log('Event New Controller');
   
   $scope.function='new';
   
@@ -165,13 +165,13 @@ function($scope, categories, eventFactory, $state, $sce, locations){
   $scope.meta.categories = categories;
 
   $scope.$watch('repeat.isSelected', function() {
-    console.log('Selection changed.');
+    //console.log('Selection changed.');
   });
   
   $scope.imageUpload = function(files) {
-    console.log('image upload:', files);
-    console.log('image upload\'s editable:', $scope.editable);
-    console.log('image upload\'s editor', $scope.editor);
+    //console.log('image upload:', files);
+    //console.log('image upload\'s editable:', $scope.editable);
+    //console.log('image upload\'s editor', $scope.editor);
   }
 
   $scope.toggle = function() {
@@ -191,8 +191,8 @@ function($scope, categories, eventFactory, $state, $sce, locations){
     //  toastr.warning('Too long for the description: length: ' + $scope.event.desc.length + ', please revise it under 1024 characters');
     //  return;
     //}
-    console.log(func);
-    console.log("Submit");
+    //console.log(func);
+    //console.log("Submit");
     $scope.event.repeat = $scope.repeat;
     if(func == 'new'){
 
@@ -215,21 +215,21 @@ function($scope, categories, eventFactory, $state, $sce, locations){
   }
 }]).controller('eventEditCtrl', ['$scope', 'event', 'categories', 'eventFactory', '$state',
 function($scope, event, categories, eventFactory, $state){
-  console.log('Event Edit Controller');
-  console.log(event);
+  //console.log('Event Edit Controller');
+  //console.log(event);
   $scope.function = 'edit'
   $scope.meta={};
   $scope.meta.categories = categories;
-  console.log(categories);
+  //console.log(categories);
   $scope.getDatetime = function(d){
     return new Date(d).toString();
   }
   $scope.event = event
   
-  console.log($scope.event.datetime);
-  console.log($scope.event.datetime);
+  //console.log($scope.event.datetime);
+  //console.log($scope.event.datetime);
   $scope.event.datetime = moment(event.datetime).format('MM/DD/YYYY h:mm a');
-  console.log($scope.event.datetime);
+  //console.log($scope.event.datetime);
   //$scope.event.desc = $scope.event.desc
   $scope.event.desc = unescape($scope.event.desc)
   //console.log(unescape($scope.event.desc));
@@ -296,7 +296,7 @@ function($scope, event, categories, eventFactory, $state){
   }
   
   $scope.submit = function(func){
-    console.log(func);
+    
     $scope.event.repeat = $scope.repeat;
     if(func == 'new'){
       
@@ -317,7 +317,7 @@ function($scope, event, categories, eventFactory, $state){
     }
   }
 }]).controller('eventCtrl', ['$scope', 'event', function($scope, event){
-  console.log(event)
+  //console.log(event)
   $scope.getDate = function(d){
     //console.log(d);
     //console.log(new Date(d).toString());
@@ -330,19 +330,19 @@ function($scope, event, categories, eventFactory, $state){
 
 /* Setup Layout Part - Header */
 nlccmgmtapp.controller('headerController', ['$scope', function($scope) {
-  console.log("Header Controller")
+  //console.log("Header Controller")
   $scope.$on('$includeContentLoaded', function() {
     Layout.initHeader(); // init header
   });
 }]);
 nlccmgmtapp.controller('sidebarController', ['$scope', function($scope) {
-  console.log("Siderbar Controller");
+  //console.log("Siderbar Controller");
   $scope.$on('$includeContentLoaded', function() {
     Layout.initSidebar();
   });
 }]);
 nlccmgmtapp.controller('quicksidebarController', ['$scope', function($scope) {
-  console.log("quicksidebarController Controller");
+  //console.log("quicksidebarController Controller");
   $scope.$on('$includeContentLoaded', function() {
     setTimeout(function(){
       QuickSidebar.init(); // init quick sidebar        
@@ -394,7 +394,7 @@ function($scope, $timeout, mvideo, $uibModal, locations) {
   }*/
   
   $scope.deleteMVideo = function(mvideo){
-    console.log("DeleteMVideo");
+    //console.log("DeleteMVideo");
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       templateUrl: 'myModalContent.html',
@@ -617,8 +617,7 @@ nlccmgmtapp.controller('mvideoNewCtrl', ['$scope', 'mvideoFactory', '$state', 'l
     }
   }
 }]);
-
-nlccmgmtapp.controller('newsletterCtrl', ['$scope', '$state', 'newsletters', function($scope, $state, newsletters){
+nlccmgmtapp.controller('newsletterCtrl', ['$scope', '$state', 'newsletters', '$uibModal', function($scope, $state, newsletters, $uibModal){
   console.log("Newsletter Controller");
   console.log(newsletters);
   $scope.newsletters = newsletters.newsletters;
@@ -626,6 +625,36 @@ nlccmgmtapp.controller('newsletterCtrl', ['$scope', '$state', 'newsletters', fun
   $scope.formatDate = function(datetime) {
     console.log(datetime);
     return moment(datetime).format("MM/DD/YYYY");
+  }
+  
+  $scope.deleteNewsletter = function(newsletter){
+    console.log("DeleteNewsletter");
+    var modalInstance = $uibModal.open({
+      animation: true,
+      templateUrl: 'mgmts/confirmModel.html',
+      controller: 'modalDeleteNewsletterCtrl',
+      size: 'confirm',
+      resolve: {
+        newsletter: function () {
+          return newsletter;
+        }
+      }
+    });
+    
+    modalInstance.result.then(function (result) {
+      //console.log(result);
+      if(result == 0) {
+        //console.log("result: " + result);
+        var idx=0;
+        for (idx=0; idx < $scope.newsletters.length; idx++){
+          if (newsletter.id == $scope.newsletters[idx].id){
+            $scope.newsletters.splice(idx, 1);
+          }
+        }
+        toastr.success('Remove newsletter \'' + newsletter.title + '\' successfully');
+        return
+      }
+    });
   }
 }]);
 nlccmgmtapp.controller('newsletterNewCtrl', ['$scope', '$state', '$uibModal', 'newsletterFactory', function($scope, $state, $uibModal, newsletterFactory){
@@ -661,9 +690,43 @@ nlccmgmtapp.controller('newsletterNewCtrl', ['$scope', '$state', '$uibModal', 'n
     });
   }
 }]);
+nlccmgmtapp.controller('newsletterEditCtrl', ['$scope', '$timeout', 'newsletter', 'newsletterFactory', '$state', '$uibModal',
+function($scope, $timeout, newsletter, newsletterFactory, $state, $uibModal) {
+  //console.log("newsletter Edit Controller");
+  $scope.function = 'edit';
+  $scope.newsletter = {};
+  $scope.newsletter.id = newsletter.id;
+  $scope.newsletter.title=newsletter.title;
+  $scope.newsletter.date=moment(newsletter.date).format("MM/DD/YYYY");
+  $scope.newsletter.path=newsletter.path;
+  
+  $scope.browse = function() {
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      size: 'lg',
+      templateUrl: 'mgmts/browselibrary.html',
+      controller: 'modalBrowseLibraryCtrl'
+    });
+    
+    modalInstance.result.then(function (path) {
+      $scope.newsletter.path = path;
+      toastr.info('Successfully inserted path: ' + path + ' to the field.');
+    });
+  }
+  
+  $scope.submit = function(func){
+    if(func=='edit'){
+      newsletterFactory.updateNewsletter($scope.newsletter).then(function(data){
+        $state.go('media-newsletter');
+        toastr.success('Success updated newsletter' + $scope.newsletter.title);
+      });
+    }
+  }
+}]);
+
 nlccmgmtapp.controller('mediaVideoEditCtrl', ['$scope', '$timeout', 'mvideo', 'mvideoFactory', '$state', 'locations', 
 function($scope, $timeout, mvideo, mvideoFactory, $state, locations) {
-  console.log("mvideo Edit Controller");
+  //console.log("mvideo Edit Controller");
   $scope.function = 'edit';
   $scope.locations = locations;
   $scope.mvideo = {};
@@ -686,7 +749,7 @@ function($scope, $timeout, mvideo, mvideoFactory, $state, locations) {
   }
 }]);
 nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', '$uibModal', function($scope, libraries, $uibModal){
-  console.log('library Controller');
+  //console.log('library Controller');
   $scope.libraries = libraries.libraries;
 
 
@@ -715,7 +778,7 @@ nlccmgmtapp.controller('libraryCtrl', ['$scope', 'libraries', '$uibModal', funct
     modalInstance.result.then(function (result) {
       //console.log(result);
       if(result == 0) {
-        console.log("result: " + result);
+        //console.log("result: " + result);
         var idx=0;
         for (idx=0; idx < $scope.libraries.length; idx++){
           if (library.id == $scope.libraries[idx].id){
@@ -734,7 +797,7 @@ function ($scope, $uibModalInstance, mvideoFactory, mvideo) {
   $scope.ok = function () {
     //console.log("delete {" + mvideo.id + "}");
     mvideoFactory.deleteMVideo(mvideo.id).then(function(data){
-      console.log("Successfully delete the m-video");
+      //console.log("Successfully delete the m-video");
       toastr.success("Successfully delete the video: " + mvideo.title);
     });
     $uibModalInstance.close(0);
@@ -783,7 +846,7 @@ function ($scope, $uibModalInstance, maudioFactory, maudio) {
     //console.log("delete {" + maudio.id + "}");
     //console.log(maudio);
     maudioFactory.deleteMaudio(maudio.id).then(function(data){
-      console.log("Successfully delete the maudio");
+      //console.log("Successfully delete the maudio");
     });
     $uibModalInstance.close(0);
   };
@@ -791,11 +854,26 @@ function ($scope, $uibModalInstance, maudioFactory, maudio) {
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
-}])
+}]);
+nlccmgmtapp.controller('modalDeleteNewsletterCtrl',['$scope', '$uibModalInstance', 'newsletterFactory', 'newsletter', 
+function ($scope, $uibModalInstance, newsletterFactory, newsletter) {
+  $scope.ok = function () {
+    //console.log("delete {" + maudio.id + "}");
+    //console.log(maudio);
+    newsletterFactory.deleteNewsletter(newsletter.id).then(function(data){
+      //console.log("Successfully delete the newsletter");
+    });
+    $uibModalInstance.close(0);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+}]);
 nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', '$state', '$timeout', function($scope, FileUploader, $state, $timeout){
   $scope.library={};
   $scope.library.name='';
-  console.log('upload');
+  //console.log('upload');
   var uploader = $scope.uploader = new FileUploader(
   {
     headers : {
@@ -866,7 +944,7 @@ nlccmgmtapp.controller('FileUploadCtrl', ['$scope', 'FileUploader', '$state', '$
   console.info('uploader', uploader);
 }]);
 nlccmgmtapp.controller('unapprovedUsersCtrl', ['$scope', 'unapprovedusers', '$uibModal', function($scope, unapprovedusers, $uibModal) {
-  console.log("Unapproved Users Ctrl");
+  //console.log("Unapproved Users Ctrl");
   $scope.unapprovedusers = unapprovedusers;
   $scope.animationsEnabled = true;
   $scope.approveUser = function(user){
@@ -890,9 +968,9 @@ nlccmgmtapp.controller('unapprovedUsersCtrl', ['$scope', 'unapprovedusers', '$ui
   
 }]);
 nlccmgmtapp.controller('approvedUsersCtrl', ['$scope', 'approvedusers', '$uibModal', function($scope, approvedusers, $uibModal) {
-  console.log("Approved Users Ctrl");
+  //console.log("Approved Users Ctrl");
   $scope.approvedusers = approvedusers;
-  console.log(approvedusers);
+  //console.log(approvedusers);
 }]);
 nlccmgmtapp.controller('userApproveCtrl', ['$scope', '$uibModalInstance', '$state', '$timeout', 'mgmtFactory', 'user',
 function ($scope, $uibModalInstance, $state, $timeout, mgmtFactory, user) {
@@ -915,16 +993,16 @@ function ($scope, $uibModalInstance, $state, $timeout, mgmtFactory, user) {
   };
 }]);
 nlccmgmtapp.controller('userMgmtCtrl', ['$scope', 'user', function($scope, user) {
-  console.log("User Mgmt Ctrl");
+  //console.log("User Mgmt Ctrl");
   $scope.user = user;
 }]);
 nlccmgmtapp.controller('logsCtrl', ['$scope', '$sce', 'logs', function($scope, $sce, logs){
-  console.log("Logs Controller");
+  //console.log("Logs Controller");
   $scope.logs = logs.logs;
   $scope.total_pages = logs.total_pages;
   $scope.current_page = logs.current_page;
   $scope.is_current_page = function(page) {
-    console.log('is current? ' + page);
+    //console.log('is current? ' + page);
     if(page == $scope.current_page)
       return true;
     else
