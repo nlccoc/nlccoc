@@ -179,7 +179,8 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
         "maudio": {
           "title": newsletter.title,
           "path": newsletter.path,
-          "date": newsletter.date
+          "date": newsletter.date,
+          "location_id": 1
         }
       }
     }).then(function(response){
@@ -215,7 +216,8 @@ factoryModule.factory('settings', ['$rootScope', function($rootScope) {
         "newsletter": {
           "title": updated_newsletter.title,
           "path": updated_newsletter.path,
-          "date": updated_newsletter.date
+          "date": updated_newsletter.date,
+          "location_id": 1
         }
       }
     }).then(function(response){
