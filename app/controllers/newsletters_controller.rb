@@ -39,7 +39,7 @@ class NewslettersController < ApplicationController
     @newsletter = Newsletter.new(newsletter_params)
     respond_to do |format|
       if @newsletter.save
-        format.json { render json: @newsletter, status: :created, notice: 'maudio was successfully created.' }
+        format.json { render json: @newsletter, status: :created, notice: 'newsletter was successfully created.' }
       else
         format.json { render json: @newsletter.errors, status: :unprocessable_entity }
       end
@@ -75,7 +75,7 @@ class NewslettersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def newsletter_params
-      params.require(:newsletter).permit(:title, :date, :path, :location_id)
+      params.require(:newsletter).permit(:title, :date, :path)
     end
     
 end
