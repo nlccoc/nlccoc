@@ -7,7 +7,7 @@ class NewslettersController < ApplicationController
   # GET /newsletters
   # GET /newsletters.json
   def index
-    @newsletters = Newsletter.all
+    @newsletters = Newsletter.all.order('date DESC')
     
     @header_bg='bg-dark'
     respond_to do |format|

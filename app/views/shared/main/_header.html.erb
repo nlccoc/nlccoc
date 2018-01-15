@@ -46,6 +46,7 @@
                   <%= t('media') %>
               </a>
               <ul>
+                <li><%= link_to newsletters_path(:locale => I18n.locale) do %>週報下載<% end %></li>
                 <li><%= link_to videos_path(:locale => I18n.locale) do %><%= I18n.t('mediavideo') %><% end %></li>
                 <li><%= link_to audio_path(:locale => I18n.locale) do %><%= I18n.t('mediaaudio') %><% end %></li>
                 <li><%= link_to rolcc_feeds_path(:locale => I18n.locale) do %><%= I18n.t('dailydevitions') %><% end %></li>

@@ -19,6 +19,13 @@
       <%# end %>
     </li>
     <li>
+      <%= link_to newsletters_path(:locale => I18n.locale), :target => '_blank' do %>
+        <span>週報下載</span>
+        <i class="icon-docs"></i>
+      <% end %>
+    </li>
+    <li>
+      
       <%# link_to give_path(:locale => I18n.locale), :class => 'active', :target => '_blank' do %>
         <%= link_to calendar_path(:locale => I18n.locale), :target => '_blank' do %>
           <span>教會行事曆</span>
