@@ -1167,6 +1167,7 @@ footer.last {
         transform: translateY(20px);
     }
 }
+
 #owl-main-text {
 	height: 182px;
 	margin-bottom: 0px;
@@ -1209,6 +1210,16 @@ footer.last {
 
 .nlcc-title {
  font-size: 56px; 
+}
+
+.gls-title {
+  font-weight: 900 !important;
+  letter-spacing: 2px !important; 
+}
+
+.gls-sub-title {
+  font-weight: 300 !important;
+  letter-spacing: 2px !important; 
 }
 
 .description span {
