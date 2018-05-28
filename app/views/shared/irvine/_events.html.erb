@@ -61,8 +61,8 @@
                             <h6 class="uppercase mb8">
                               <%= event.latest_date_str %>
                               <%= t('date.abbr_day_names')[event.datetime.wday] %> 
-                              <%= event.datetime.strftime("%I:%M %p") %> - <%= Time.at(event.datetime.to_time.to_i + 60*event.event_period).strftime("%I:%M %p") %>
-                              </h6>
+                              <%= event.datetime.strftime("%I:%M %p") %> - <%= (event.datetime+ 60*event.event_period).strftime("%I:%M %p") %>
+                            </h6>
                             <h4><%= event.title %></h4>
                             <p class="mb0">
                                 <%= event.short_desc %>
