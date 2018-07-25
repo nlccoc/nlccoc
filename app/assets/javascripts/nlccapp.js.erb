@@ -93,6 +93,24 @@ nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($
   }
 }]);
 
+nlccapp.controller('newslettersCtrl', ['$scope', '$timeout', '$http', function($scope, $timeout, $http){
+  console.log('Newsletters Controller');
+  $scope.newsletters = [];
+  $http({
+      method: 'GET',
+      url: '/newsletters.json',
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }
+    }).then(function(data){
+      $scope.newsletters = data.data.newsletters;
+      for ( var i=0; i < $scope.newsletters.length; i++) {
+        $scope.newsletters[i].date = moment($scope.newsletters[i].date).format('YYYY-MM-DD');
+      }
+    });
+    
+}]);
+
 nlccapp.controller('weeklynewspaperCtrl', ['$scope', function($scope){
   console.log("Weeklynewspaper Controller");
   $scope.items = [];

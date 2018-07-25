@@ -1,6 +1,6 @@
 class NewslettersController < ApplicationController
   layout "extmain"
-  skip_before_action :set_locale
+  # skip_before_action :set_locale
   before_action :set_newsletter, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_mgmt!, except: [:show, :index]
   
@@ -8,7 +8,7 @@ class NewslettersController < ApplicationController
   # GET /newsletters.json
   def index
     @newsletters = Newsletter.all.order('date DESC')
-    
+  
     @header_bg='bg-dark'
     respond_to do |format|
       format.html
