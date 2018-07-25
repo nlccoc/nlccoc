@@ -39,8 +39,7 @@ nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($
         "version": $scope.search.version
       }
     }).then(function(data){
-      $scope.results=data;
-      //console.log($scope.results)
+      $scope.results=data.data;
       $timeout(function(){
        // console.log("highlight");
         $('.result').highlight($scope.search.keyword);
@@ -66,7 +65,7 @@ nlccapp.controller('bibleSearchCtrl', ['$scope', '$timeout', '$http', function($
               // We have either read the section or are currently reading the section so we'll call it our current section
               $currentSection = $(this);
               //console.log("Current section");
-              console.log($currentSection.attr('id'))
+              // console.log($currentSection.attr('id'))
               
               // If the next div has also been read or we are currently reading it we will overwrite this value again. This will leave us with the LAST div that passed.
             }

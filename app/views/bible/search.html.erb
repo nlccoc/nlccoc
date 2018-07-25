@@ -20,16 +20,27 @@
     background-color: yellow;
 }
 
-.circle-item.on{
+.circle-item.active{
+  font-family: 'Roboto', sans-serif;
   color: white;
+  margin-top: 3px;
+  font-size: 12px;
+  width: 30px;
+  height: 30px;
   background-color: #f2784b;
+  border-radius:30px;
+  padding: 2px;
+  text-align: center;
+  display: block;
+  line-height: 24px;
+  border: 1px solid #f2784b;
 }
 
 .circle-item {
   font-family: 'Roboto', sans-serif;
   color: #f2784b;
   margin-top: 3px;
-  font-size: 12px;
+  font-size: 10px;
   width: 30px;
   height: 30px;
   background-color: transparent;
@@ -37,7 +48,7 @@
   padding: 2px;
   text-align: center;
   display: block;
-  line-height: 24px;
+  line-height: 30px;
   border: 1px solid #f2784b;
 }
 
@@ -134,7 +145,7 @@
       <div class='book-buttons col-md-2 hidden-xs hidden-sm' style='position: fixed;'>
         <a ng-repeat='result in results.results'  href="#{{result.book.osis}}" class="inner-link btn btn-sm btn-fire book-button" id="book-button">{{result.book.name}}</a>
           </div>
-      <div class='book-buttons col-md-2 hidden-md hidden-lg' style='position: fixed; top: 0px; right: 15px;'>
+      <div class='book-buttons col-md-2 hidden-md hidden-lg' style='position: absolute;'>
         <a ng-repeat='result in results.results'  href="#{{result.book.osis}}" class="hidden-md hidden-lg inner-link circle-item" id="book-button">{{result.book.human_abbr}}</a>
       </div>
     </div>

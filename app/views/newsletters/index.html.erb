@@ -53,5 +53,16 @@
         </p>
       </div>
     </div>
+    <table class='newsletter-table'>
+      
+      <% @newsletters.each do |newsletter| %>
+        <tr>
+          <td class='' width="5%"><%= newsletter.date.strftime("%F") %></td><!-- | 
+              <span class='atitle'><%= newsletter.title %> </span>-->
+          <td width="20%"><a href='<%=newsletter.path%>' target='_blank' download><i class='fa fa-file-pdf-o fa-2x' aria-hidden="true"></i></a></td>
+            <!--<span class="badge">0:21</span>-->
+        </tr>
+      <% end %>
+    </table>
   </div>
 </section>
