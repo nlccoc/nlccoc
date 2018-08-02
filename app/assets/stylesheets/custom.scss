@@ -1586,3 +1586,28 @@ input[type="text"].error {
   font-size: 8px;
   color: $mainColor;
 }
+
+.heidi-title {
+  margin-top: -40px;
+}
+
+.heidi-banner {
+  top: 30%;
+}
+
+.heidi-mission {
+  margin-top: -100px;
+}
+.heidi-text {
+  height: 50px;
+  font-size: 20px;
+  line-height: 32px;
+  border: solid;
+  padding: 30px 70px;
+  display: inline-table;
+  margin-top: -130px; 
+}
+
+.heidi-text p ul li {
+      font-size: 12px
+}
