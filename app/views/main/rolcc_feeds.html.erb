@@ -68,7 +68,7 @@ span.addthis_inline_share_toolbox_ej7z {
           </div>
           <div class="select-option" style='margin-bottom: 12px;'>
             <i class="ti-angle-down"></i>
-            <%= select("achives", "book", @category_books.all.collect {|p| [ p.name, p.name ] }, {include_blank: 'Books'}) %>
+            <%= select("achives", "book", @category_books.all.collect {|p| [ p.name, p.name, p.name ] }, {include_blank: 'Books'}, :onchange => "window.location.replace('/rolcc_feeds/book/'+this.value);") %>
           </div>
         </div>
 			</div><!-- .sidebar end -->
