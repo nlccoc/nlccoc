@@ -94,13 +94,18 @@ class MainController < ApplicationController
   
   def rolcc_feeds
     # logger.debug params[:month]
+    @query_str = nil
+    @query_book = nil
+    @query_date = nil
     if !params[:search_string].nil?
+      @query_str = params[:search_string]
       @posts = RolccFeed.where("long_script like ? OR book like ?", "%#{params[:search_string]}%", "%#{params[:search_string]}%").paginate(page: params[:page], per_page: 5).order(date: :desc)
     else
       if params[:year].nil?
         if params[:book_name].nil?
           @posts = RolccFeed.paginate(page: params[:page], per_page: 5).order(date: :desc)
         else
+          @query_book = params[:book_name]
           @posts = RolccFeed.where("book like ?", "%#{params[:book_name]}%").paginate(page: params[:page], per_page: 5).order(date: :desc)
         end
       else
@@ -112,12 +117,14 @@ class MainController < ApplicationController
           query = query + "cast(strftime('%Y', date) as int) = ?"
         end
         @posts = RolccFeed.where(query, params[:year]).paginate(page: params[:page], per_page: 5).order(date: :desc)
+        @query_date = params[:year]
         if !params[:month].nil?
           if Rails.env.production?
             query = query += " AND extract(month from date) = ?"
           else
             query = query += " AND cast(strftime('%m', date) as int) = ?"
           end
+          @query_date = @query_date + '/' + params[:month]
           # logger.debug query
           @posts = RolccFeed.where(query, params[:year], params[:month]).paginate(page: params[:page], per_page: 5).order(date: :desc)
         end

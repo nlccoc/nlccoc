@@ -52,23 +52,35 @@ span.addthis_inline_share_toolbox_ej7z {
           <h6 class="title">Search By ...</h6>
           <hr>
           <form style='margin-bottom: 12px;' >
-              <input class="mb0" type="text" placeholder="Type Here" id='search'/>
+          <% if @query_str.nil? %>
+            <%= text_field(:search, :text, type: "text", class: "mb0", placeholder: "Search ...") %>
+          <% else %>
+            <%= text_field(:search, :text, type: "text", class: "mb0", placeholder: "Search ...", value: @query_str) %>
+          <% end %>
+          
           </form>
           
           <div class="select-option" style='margin-bottom: 12px;'>
             <i class="ti-angle-down"></i>
-            <%= select("achives", "date_month", @category_dates.all.collect {|p| [ "#{t('date.month_names')[p.month]}, #{p.year}", "#{p.year}/#{p.month}" ] }, {include_blank: 'Achives'}, :onchange => "window.location.replace('/rolcc_feeds/'+this.value);") %>
-            
-            <select>
+            <% if @query_date.nil? %>
+              <%= select("achives", "date_month", @category_dates.all.collect {|p| [ "#{t('date.month_names')[p.month]}, #{p.year}", "#{p.year}/#{p.month}" ] }, {include_blank: 'Achives'}, :onchange => "window.location.replace('/rolcc_feeds/'+this.value);", :class => 'rolcc_select') %>
+            <% else %>
+              <%= select("achives", "date_month", @category_dates.all.collect {|p| [ "#{t('date.month_names')[p.month]}, #{p.year}", "#{p.year}/#{p.month}" ] }, {include_blank: 'Achives', selected: @query_date}, :onchange => "window.location.replace('/rolcc_feeds/'+this.value);", :class => 'rolcc_select') %>
+            <% end %>
+            <!-- <select>
                 <option selected value="Default">Archives</option>
                 <option value="Small">February, 2017</option>
                 <option value="Medium">January, 2017</option>
                 <option value="Larger">December, 2016</option>
-            </select>
+            </select>--> 
           </div>
           <div class="select-option" style='margin-bottom: 12px;'>
             <i class="ti-angle-down"></i>
-            <%= select("achives", "book", @category_books.all.collect {|p| [ p.name, p.name, p.name ] }, {include_blank: 'Books'}, :onchange => "window.location.replace('/rolcc_feeds/book/'+this.value);") %>
+            <% if @query_book.nil?%>
+              <%= select("achives", "book", @category_books.all.collect {|p| [ p.name, p.name, p.name ] }, {include_blank: 'Books'}, :onchange => "window.location.replace('/rolcc_feeds/book/'+this.value);", :class => 'rolcc_select') %>
+            <% else %>
+              <%= select("achives", "book", @category_books.all.collect {|p| [ p.name, p.name, p.name ] }, {include_blank: 'Books', selected: @query_book}, :onchange => "window.location.replace('/rolcc_feeds/book/'+this.value);", :class => 'rolcc_select')%>
+            <% end %>
           </div>
         </div>
 			</div><!-- .sidebar end -->
@@ -80,7 +92,7 @@ span.addthis_inline_share_toolbox_ej7z {
 </section><!-- #content end -->
 
 <script>
-document.getElementById("search")
+document.getElementById("search_text")
   .addEventListener("keyup", function(event) {
   event.preventDefault();
   if (event.keyCode === 13) {
