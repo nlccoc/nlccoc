@@ -95,10 +95,14 @@ class MainController < ApplicationController
   def rolcc_feeds
     
     # logger.debug params[:month]
-
+    
     if params[:year].nil?
-      @posts = RolccFeed.paginate(page: params[:page], per_page: 5).order(date: :desc)
-      
+      if params[:book_name].nil?
+        @posts = RolccFeed.paginate(page: params[:page], per_page: 5).order(date: :desc)
+      else
+        logger.debug params[:book_name]
+        @posts = RolccFeed.where("book like ?", "%#{params[:book_name]}%").paginate(page: params[:page], per_page: 5).order(date: :desc)
+      end
     else
       # logger.debug params[:year]
       query = ""

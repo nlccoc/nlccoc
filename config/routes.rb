@@ -85,6 +85,7 @@ Rails.application.routes.draw do
     get "build" => "main#build"
     get "mission" => "main#mission"
     get "ministries" => "main#ministries"
+    get "rolcc_feeds/book/:book_name" => "main#rolcc_feeds"
     get "rolcc_feeds/:year" => "main#rolcc_feeds"
     get "rolcc_feeds/:year/:month" => "main#rolcc_feeds"
     get "rolcc_feeds" => "main#rolcc_feeds"
