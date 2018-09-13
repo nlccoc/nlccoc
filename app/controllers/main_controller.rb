@@ -93,9 +93,35 @@ class MainController < ApplicationController
   end
   
   def rolcc_feeds
-    @posts = RolccFeed.paginate(page: params[:page], per_page: 5).order(date: :desc)
+    
+    # logger.debug params[:month]
+
+    if params[:year].nil?
+      @posts = RolccFeed.paginate(page: params[:page], per_page: 5).order(date: :desc)
+      
+    else
+      # logger.debug params[:year]
+      query = ""
+      if Rails.env.production?
+        query = query + "extract(year from date) = ?"
+      else
+        query = query + "cast(strftime('%Y', date) as int) = ?"
+      end
+      @posts = RolccFeed.where(query, params[:year]).paginate(page: params[:page], per_page: 5).order(date: :desc)
+      if !params[:month].nil?
+        if Rails.env.production?
+          query = query += " AND extract(month from date) = ?"
+        else
+          query = query += " AND cast(strftime('%m', date) as int) = ?"
+        end
+        # logger.debug query
+        @posts = RolccFeed.where(query, params[:year], params[:month]).paginate(page: params[:page], per_page: 5).order(date: :desc)
+      end
+      
+    end
+
     @category_dates = RolccFeedCategoryDate.all.limit(20)
-    @category_books =RolccFeedCategoryBook.all
+    @category_books = RolccFeedCategoryBook.all
     respond_to do |format|
       format.html
       format.js
