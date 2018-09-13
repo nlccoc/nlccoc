@@ -51,8 +51,8 @@ span.addthis_inline_share_toolbox_ej7z {
 				<div class="widget">
           <h6 class="title">Search By ...</h6>
           <hr>
-          <form style='margin-bottom: 12px;'>
-              <input class="mb0" type="text" placeholder="Type Here" />
+          <form style='margin-bottom: 12px;' >
+              <input class="mb0" type="text" placeholder="Type Here" id='search'/>
           </form>
           
           <div class="select-option" style='margin-bottom: 12px;'>
@@ -78,3 +78,16 @@ span.addthis_inline_share_toolbox_ej7z {
 	</div>
 
 </section><!-- #content end -->
+
+<script>
+document.getElementById("search")
+  .addEventListener("keyup", function(event) {
+  event.preventDefault();
+  if (event.keyCode === 13) {
+    if (this.value === '') 
+      return;
+
+    window.location.replace('/rolcc_feeds?search_string=' + this.value);
+  }
+});
+</script>
