@@ -35,7 +35,7 @@ zh:
   calendar: "教會行事曆"
   serviceinfo: "主日時間 & 地點"
   irvine: "爾灣"
-  laverne: '拉文'
+  laverne: '庫卡蒙加'
   contact: '聯絡我們'
   menu:
     languages:
@@ -79,7 +79,7 @@ zh:
   ministryprayer: '禱告事工'
   ministrymission: '宣教事工'
   irvineministry: '爾灣牧區'
-  laverneministry: '拉文牧區'
+  laverneministry: '庫卡蒙加牧區'
   social_share_button:
     share_to: 分享到%{name}
     weibo: 新浪微博
@@ -95,7 +95,6 @@ zh:
           has_one: 由於 %{record} 需要此記錄，所以無法移除記錄
           has_many: 由於 %{record} 需要此記錄，所以無法移除記錄
   date:
-    day_names: ["週日", "週一", "週二", "週三", "週四", "週五", "週六"]
     abbr_day_names:
     - 周日
     - 周一
