@@ -13,6 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20171231235454) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "citext"
+
   create_table "annotations", force: :cascade do |t|
     t.string   "osis"
     t.string   "link"
@@ -53,6 +57,13 @@ ActiveRecord::Schema.define(version: 20171231235454) do
     t.integer "category_id"
   end
 
+  create_table "event_types", force: :cascade do |t|
+    t.string   "name"
+    t.string   "variable"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.text     "desc"
@@ -69,7 +80,7 @@ ActiveRecord::Schema.define(version: 20171231235454) do
     t.string  "subtitle"
   end
 
-  add_index "featured_infos", ["event_id"], name: "index_featured_infos_on_event_id"
+  add_index "featured_infos", ["event_id"], name: "index_featured_infos_on_event_id", using: :btree
 
   create_table "libraries", force: :cascade do |t|
     t.string   "name"
@@ -116,7 +127,7 @@ ActiveRecord::Schema.define(version: 20171231235454) do
     t.text "value"
   end
 
-  add_index "metadata", ["name"], name: "sqlite_autoindex_metadata_1", unique: true
+  add_index "metadata", ["name"], name: "sqlite_autoindex_metadata_1", unique: true, using: :btree
 
   create_table "mgmts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -136,9 +147,9 @@ ActiveRecord::Schema.define(version: 20171231235454) do
     t.string   "last_name"
   end
 
-  add_index "mgmts", ["email"], name: "index_mgmts_on_email", unique: true
-  add_index "mgmts", ["reset_password_token"], name: "index_mgmts_on_reset_password_token", unique: true
-  add_index "mgmts", ["role_id"], name: "index_mgmts_on_role_id"
+  add_index "mgmts", ["email"], name: "index_mgmts_on_email", unique: true, using: :btree
+  add_index "mgmts", ["reset_password_token"], name: "index_mgmts_on_reset_password_token", unique: true, using: :btree
+  add_index "mgmts", ["role_id"], name: "index_mgmts_on_role_id", using: :btree
 
   create_table "mvideos", force: :cascade do |t|
     t.string   "title"

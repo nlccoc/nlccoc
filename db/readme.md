@@ -1,0 +1,1 @@
+pg_restore --verbose --clean --no-acl --no-owner -h postgres-db -U username -d dbname latest.dump

@@ -1,0 +1,26 @@
+version: '3'
+services:
+  # store, api, postgresdb, admin-prod, admin-dev, mongodb
+  nlccoc:
+    # image: boo0330/dockerized-rails-mongo-postgres
+    build: "."
+    container_name: "nlccoc"
+    volumes: 
+      - "${PWD}:/var/app"
+    ports:
+      - "3000:3000"
+    depends_on: 
+      - postgres-db
+    links: 
+      - postgres-db
+  postgres-db:
+    image: postgres:latest
+    container_name: "postgres-db"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=example
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

@@ -11,7 +11,9 @@
             <h2 class="mb16 large uppercase banner-title nlcc-title"><%= t('nlcc') %></h2>
             <h5 class="uppercase mb32 mt64 nlcc-sub-title"><%= t('connect') %></h5>
             <div class="text-center modal-container">
-              <a class="btn btn-white btn-lg mb32 mt24" href="<%= @newsletter.path %>">本週最新週報</a>
+              <% if !@newsletter.nil? %>
+                <a class="btn btn-white btn-lg mb32 mt24" href="<%= @newsletter.path %>">本週最新週報</a>
+              <% end %>
               <a class="btn btn-white btn-lg mb32 mt24 inner-link" href="#connect">加入一個適合你的小組</a> 
               <a class="btn btn-white btn-lg mb32 mt24 btn-modal inline" href="#">新生命靈糧堂走過的路<i class="fa fa-play" style='margin-left: 10px'></i></a> 
               

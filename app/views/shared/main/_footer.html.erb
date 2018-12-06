@@ -35,8 +35,10 @@
         <div class="link-list widget">
           <h6 class="title">每 日 靈 修</h6>
           <hr>
-          <%= link_to rolcc_feed_path(@rolcc_feed, :locale => I18n.locale) do %>
-            <%= @rolcc_feed.verse.text %> ~ <span class='verse_highlight'><%= @rolcc_feed.book %></span>
+          <% if !@rolcc_feed.nil? %>
+            <%= link_to rolcc_feed_path(@rolcc_feed, :locale => I18n.locale) do %>
+              <%= @rolcc_feed.verse.text %> ~ <span class='verse_highlight'><%= @rolcc_feed.book %></span>
+            <% end %>
           <% end %>
         </div>
       <!--end of widget-->

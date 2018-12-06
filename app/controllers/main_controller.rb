@@ -102,6 +102,7 @@ class MainController < ApplicationController
       @posts = RolccFeed.where("long_script like ? OR book like ?", "%#{params[:search_string]}%", "%#{params[:search_string]}%").paginate(page: params[:page], per_page: 5).order(date: :desc)
     else
       if params[:year].nil?
+        # query without year
         if params[:book_name].nil?
           @posts = RolccFeed.paginate(page: params[:page], per_page: 5).order(date: :desc)
         else
@@ -112,17 +113,21 @@ class MainController < ApplicationController
         # logger.debug params[:year]
         query = ""
         if Rails.env.production?
+          # postgresql
           query = query + "extract(year from date) = ?"
         else
-          query = query + "cast(strftime('%Y', date) as int) = ?"
+          # postgresql
+          query = query + "extract(year from date) = ?"
         end
         @posts = RolccFeed.where(query, params[:year]).paginate(page: params[:page], per_page: 5).order(date: :desc)
         @query_date = params[:year]
         if !params[:month].nil?
           if Rails.env.production?
+            # postgresql
             query = query += " AND extract(month from date) = ?"
           else
-            query = query += " AND cast(strftime('%m', date) as int) = ?"
+            # postgresql
+            query = query += " AND extract(month from date) = ?"
           end
           @query_date = @query_date + '/' + params[:month]
           # logger.debug query

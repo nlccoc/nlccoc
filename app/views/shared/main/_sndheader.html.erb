@@ -116,29 +116,32 @@
       <!--<div class="v-align-transform text-center">-->
         <a href="#"><img alt="Logo" class="image-xs mb16 mb-xs-24" src="<%= asset_path('logo-light.png') %>"></a>
         <h4 class="uppercase mb0" style='color: #fff'><%= I18n.t('dailydevotion') %></h4>
-        <h5 class='mb8'><%= @rolcc_feed.date %></h5>
-        <div class="offscreen-content">
-          <h5 class='title mb8'><%= @rolcc_feed.book %></h5>
-          <p class='mb16'><%= @rolcc_feed.short_script.html_safe%></p>
-          <p class='mb8'><%= link_to rolcc_feed_path(@rolcc_feed), :target => '_blank', :class => 'btn btn-white btn-sm mb32 inner-link' do %> 閱讀更多 <% end %></p>
-        </div>
-        <ul class="list-inline social-list">
-          <li>
-            <a href="#">
-              <i class="ti-twitter-alt"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="ti-dribbble"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="ti-vimeo-alt"></i>
-            </a>
-          </li>
-        </ul>
+
+        <% if !@rolcc_feed.nil? %>
+          <h5 class='mb8'><%= @rolcc_feed.date %></h5>
+          <div class="offscreen-content">
+            <h5 class='title mb8'><%= @rolcc_feed.book %></h5>
+            <p class='mb16'><%= @rolcc_feed.short_script.html_safe%></p>
+            <p class='mb8'><%= link_to rolcc_feed_path(@rolcc_feed), :target => '_blank', :class => 'btn btn-white btn-sm mb32 inner-link' do %> 閱讀更多 <% end %></p>
+          </div>
+          <ul class="list-inline social-list">
+            <li>
+              <a href="#">
+                <i class="ti-twitter-alt"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="ti-dribbble"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="ti-vimeo-alt"></i>
+              </a>
+            </li>
+          </ul>
+        <% end %>
       </div>
     </div>
   </nav>

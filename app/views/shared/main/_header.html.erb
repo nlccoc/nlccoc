@@ -137,6 +137,7 @@
       <!--<div class="v-align-transform text-center">-->
         <a href="#"><img alt="Logo" class="image-xs mb16 mb-xs-24" src="<%= asset_path('logo-light.png') %>"></a>
         <h4 class="uppercase mb0" style='color: #fff'><%= I18n.t('dailydevotion') %></h4>
+        <% if !@rolcc_feed.nil?%>
         <h5 class='mb8'><%= @rolcc_feed.date %></h5>
         <div class="offscreen-content">
           <h5 class='title mb8'><%= @rolcc_feed.book %></h5>
@@ -144,6 +145,7 @@
           <p class='mb8'><%= link_to rolcc_feed_path(@rolcc_feed), :target => '_blank', :class => 'btn btn-white btn-sm mb32 inner-link' do %> 閱讀更多 <% end %></p>
 
         </div>
+        <% end %>
         <!--<ul class="list-inline social-list">
           <li>
             <a href="#">
