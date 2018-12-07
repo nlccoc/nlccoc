@@ -1,3 +1,12 @@
+<script src='https://www.google.com/recaptcha/api.js?render=6LeEfn8UAAAAAE6xF2O-qQ0hf_sP50Sp78ZBmuSe'></script>
+<script>
+grecaptcha.ready(function() {
+grecaptcha.execute('6LeEfn8UAAAAAE6xF2O-qQ0hf_sP50Sp78ZBmuSe', {action: 'contact'})
+.then(function(token) {
+  console.log(token);
+});
+});
+</script>
 <div class="main-container">
   <section class="p0 mt56">
     <div class="map-holder pt160 pb160">
@@ -35,7 +44,7 @@
 
           <%= f.text_area :message, :class=> 'validate-required', 'placeholder': I18n.t('contacts.message'), 'rows': '4'  %>
           
-          <%= f.button :submit, 'Send message'%>
+          <%= f.button :submit, '送出訊息'%>
         <% end %>
         <!--<form class="form-email" data-success="Thanks for your submission, we will be in touch shortly." data-error="Please fill all fields correctly.">
           <input type="text" class="validate-required" name="name" placeholder="Your Name">
