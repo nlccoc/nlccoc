@@ -20,6 +20,9 @@
 .left-addon input  { padding-left:  50px; }
 .right-addon input { padding-right: 50px; }
 
+.pagination {
+  margin-bottom: 20px;
+}
 
 </style>
 <section class='last'>
@@ -57,6 +60,8 @@
     </div>-->
     <div class='row list'>
       <div class="col-sm-6" style='font-size: 16px;'>
+      <% if @mvideos %>
+        <%= will_paginate @mvideos %>
         <% @mvideos.each do |video| %>
           <div class='table row' style='margin-bottom: 0px;'>
             <span><i class="ti-plus"></i></span>
@@ -72,7 +77,8 @@
             </span>
           </div>
         <% end %>
+      <% end %>
       </div>
     </div>
   </div>
-</div>
+</section>
