@@ -35,7 +35,7 @@ class MainController < ApplicationController
   end
   
   def videos
-    @mvideos = Mvideo.order(date: :desc)
+    @mvideos = Mvideo.paginate(:page => params[:page] || 1).order(date: :desc)
   end
   
   def youngadults
