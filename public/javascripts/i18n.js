@@ -70,20 +70,24 @@
   var isArray = function(val) {
     if (Array.isArray) {
       return Array.isArray(val);
-    };
+    }
     return Object.prototype.toString.call(val) === '[object Array]';
   };
 
   var isString = function(val) {
-    return typeof value == 'string' || Object.prototype.toString.call(val) === '[object String]';
+    return typeof val === 'string' || Object.prototype.toString.call(val) === '[object String]';
   };
 
   var isNumber = function(val) {
-    return typeof val == 'number' || Object.prototype.toString.call(val) === '[object Number]';
+    return typeof val === 'number' || Object.prototype.toString.call(val) === '[object Number]';
   };
 
   var isBoolean = function(val) {
     return val === true || val === false;
+  };
+
+  var isNull = function(val) {
+    return val === null;
   };
 
   var decimalAdjust = function(type, value, exp) {
@@ -117,7 +121,7 @@
     var key, value;
     for (key in obj) if (obj.hasOwnProperty(key)) {
       value = obj[key];
-      if (isString(value) || isNumber(value) || isBoolean(value)) {
+      if (isString(value) || isNumber(value) || isBoolean(value) || isArray(value) || isNull(value)) {
         dest[key] = value;
       } else {
         if (dest[key] == null) dest[key] = {};
@@ -388,7 +392,6 @@
     options = options || {}
 
     var locales = this.locales.get(options.locale).slice()
-      , requestedLocale = locales[0]
       , locale
       , scopes
       , fullScope
@@ -447,7 +450,6 @@
   I18n.pluralizationLookup = function(count, scope, options) {
     options = options || {}
     var locales = this.locales.get(options.locale).slice()
-      , requestedLocale = locales[0]
       , locale
       , scopes
       , translations
@@ -573,6 +575,7 @@
     var translationOptions = this.createTranslationOptions(scope, options);
 
     var translation;
+    var usedScope = scope;
 
     var optionsWithoutDefault = this.prepareOptions(options)
     delete optionsWithoutDefault.defaultValue
@@ -582,7 +585,8 @@
     var translationFound =
       translationOptions.some(function(translationOption) {
         if (isSet(translationOption.scope)) {
-          translation = this.lookup(translationOption.scope, optionsWithoutDefault);
+          usedScope = translationOption.scope;
+          translation = this.lookup(usedScope, optionsWithoutDefault);
         } else if (isSet(translationOption.message)) {
           translation = lazyEvaluate(translationOption.message, scope);
         }
@@ -598,8 +602,12 @@
 
     if (typeof(translation) === "string") {
       translation = this.interpolate(translation, options);
+    } else if (isArray(translation)) {
+      translation = translation.map(function(t) {
+        return (typeof(t) === "string" ? this.interpolate(t, options) : t);
+      }, this);
     } else if (isObject(translation) && isSet(options.count)) {
-      translation = this.pluralize(options.count, scope, options);
+      translation = this.pluralize(options.count, usedScope, options);
     }
 
     return translation;
@@ -607,6 +615,10 @@
 
   // This function interpolates the all variables in the given message.
   I18n.interpolate = function(message, options) {
+    if (message === null) {
+      return message;
+    }
+
     options = options || {}
     var matches = message.match(this.placeholder)
       , placeholder

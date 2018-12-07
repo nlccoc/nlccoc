@@ -1,4 +1,4 @@
-class CreateRolccFeed < ActiveRecord::Migration
+class CreateRolccFeed < ActiveRecord::Migration[5.2]
   def change
     create_table :rolcc_feeds do |t|
       t.string :book

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :set_locale, :get_feed
-  around_filter :set_time_zone
+  around_action :set_time_zone
   
   def current_translations
     @translations ||= I18n.backend.send(:translations)

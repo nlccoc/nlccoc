@@ -1,6 +1,6 @@
 class Mgmts::SessionsController < Devise::SessionsController
   layout 'login'
-  after_filter :log_failed_login, :only => :new
+  after_action :log_failed_login, :only => :new
 # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -30,7 +30,7 @@ class Mgmts::SessionsController < Devise::SessionsController
     end 
   
     def failed_login?
-      (options = env["warden.options"]) && options[:action] == "unauthenticated"
+      (options = ENV["warden.options"]) && options[:action] == "unauthenticated"
     end 
 
   protected

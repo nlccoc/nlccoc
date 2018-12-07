@@ -1,4 +1,4 @@
-class CreateBook < ActiveRecord::Migration
+class CreateBook < ActiveRecord::Migration[5.2]
   def change
     create_table :books do |t|
       t.integer :number

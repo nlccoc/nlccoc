@@ -10,7 +10,7 @@ class EventsController < ApplicationController
     @header_bg='bg-dark'
     
     respond_to do |format|
-      #format.html
+      format.html
       format.json { render json: @events }
     end
   end
