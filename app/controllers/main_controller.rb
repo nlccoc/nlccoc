@@ -1,7 +1,7 @@
 class MainController < ApplicationController
   layout "extmain", except: [:index]
   before_action :set_bg_dark, only: [:cellgroups, :videos, :youngadults, :children, :rolcc_feed, :rolcc_feeds, :cellgroups, :audio, :weeklynewspaper, :pdfviewer]
-  skip_before_filter :verify_authenticity_token, :only => [:audio]
+  skip_before_action :verify_authenticity_token, :only => [:audio]
   
   def index
     @mvideos = Mvideo.where('location_id = 1').order(date: :desc).limit(6)

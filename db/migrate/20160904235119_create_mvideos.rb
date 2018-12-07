@@ -1,4 +1,4 @@
-class CreateMvideos < ActiveRecord::Migration
+class CreateMvideos < ActiveRecord::Migration[5.2]
   def change
     create_table :mvideos do |t|
       t.string :title

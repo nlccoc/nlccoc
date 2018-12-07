@@ -1,4 +1,4 @@
-class CreateChapters < ActiveRecord::Migration
+class CreateChapters < ActiveRecord::Migration[5.2]
   def change
     create_table :chapters do |t|
       t.text :reference_osis,        null: false

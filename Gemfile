@@ -1,16 +1,17 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.6'
+gem 'rails', '5.2.2'
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2'
 gem 'angularjs-rails'
 gem 'angular-rails-templates'
 gem 'angular-ui-router-rails'
 gem "font-awesome-rails"
 gem 'simple-line-icons-rails'
 gem 'gon'
+gem 'sassc-rails'
 gem 'summernote-rails'
 gem 'whenever', '~> 0.9.4', :require => false
 gem 'sendgrid-ruby', :require => false
@@ -71,7 +72,7 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'sqlite3'
+  # gem 'sqlite3'
 end
 
 group :development do
@@ -83,5 +84,5 @@ group :development do
   gem 'spring'
 end
 
-ruby "2.3.0"
+ruby "2.3.8"
 

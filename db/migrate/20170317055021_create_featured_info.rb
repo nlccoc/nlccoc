@@ -1,4 +1,4 @@
-class CreateFeaturedInfo < ActiveRecord::Migration
+class CreateFeaturedInfo < ActiveRecord::Migration[5.2]
   def change
     create_table :featured_infos do |t|
       t.references :event, index: true, foreign_key: true

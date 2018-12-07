@@ -1,4 +1,4 @@
-class AddAttrsToRolccFeedCategortDate < ActiveRecord::Migration
+class AddAttrsToRolccFeedCategortDate < ActiveRecord::Migration[5.2]
   def change
     add_column :rolcc_feed_category_dates, :year, :integer
     add_column :rolcc_feed_category_dates, :month, :integer

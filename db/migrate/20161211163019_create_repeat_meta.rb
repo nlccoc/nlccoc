@@ -1,4 +1,4 @@
-class CreateRepeatMeta < ActiveRecord::Migration
+class CreateRepeatMeta < ActiveRecord::Migration[5.2]
   def change
     create_table :repeat_meta do |t|
       t.integer :event_id

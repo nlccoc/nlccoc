@@ -1,4 +1,4 @@
-class ChangeAudioColumn < ActiveRecord::Migration
+class ChangeAudioColumn < ActiveRecord::Migration[5.2]
   def self.up
     rename_column :maudios, :frontpage, :featured
   end

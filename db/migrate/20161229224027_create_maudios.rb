@@ -1,4 +1,4 @@
-class CreateMaudios < ActiveRecord::Migration
+class CreateMaudios < ActiveRecord::Migration[5.2]
   def change
     create_table :maudios do |t|
       t.string :title

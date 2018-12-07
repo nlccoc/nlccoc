@@ -1,4 +1,4 @@
-class AddSpeakerToMaudio < ActiveRecord::Migration
+class AddSpeakerToMaudio < ActiveRecord::Migration[5.2]
   def self.up
     add_column :maudios, :speaker, :string
   end
